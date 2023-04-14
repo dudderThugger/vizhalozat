@@ -40,13 +40,13 @@ public class Szkeleton {
     }
 
     public void kezdoFelulet() {
-        System.out.println("Valasszon tesztesetet!\n" +
-                "\t1. Pumpa elromlik" +
-                "\n\n");
         Scanner scanner = new Scanner(System.in);
         int selectedTest = 1;
 
         while(scanner.hasNext()) {
+            System.out.println("Valasszon tesztesetet!\n" +
+                    "\t1. Pumpa elromlik" +
+                    "\n\n");
             selectedTest = Integer.parseInt(scanner.nextLine());
             switch(selectedTest) {
                 case 1:
@@ -70,5 +70,6 @@ public class Szkeleton {
 
         j.pumpaElRomlik();
         System.out.println("Teszt vége\n");
+        lineCount = 0;
     }
 }
