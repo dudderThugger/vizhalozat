@@ -14,6 +14,7 @@ public abstract class Mezo {
         this.jatek = jatek;
         this.telitett = false;
         szomszedok = new ArrayList<Mezo>();
+        rajtaAllnak = new ArrayList<Jatekos>();
         this.szkeleton = szkeleton;
     }
     public void lelep(Jatekos j) {}

@@ -54,9 +54,18 @@ public class Ciszterna extends AktivElemek{
     @Override
     public Pumpa pumpaVasarlas() {
         szkeleton.hivas(this, "pumpaVasarlas");
-        Pumpa ret = new Pumpa(jatek, szkeleton);
-        szkeleton.ujObjektum(ret, "p");
-        szkeleton.visszateres(this, "pumpaVasarlas", ret);
+        if(rajtaAllnak.get(0).get_PumpaTart()==null) {
+            Pumpa ret = new Pumpa(jatek, szkeleton);
+            szkeleton.ujObjektum(ret, "p");
+            szkeleton.visszateres(this, "pumpaVasarlas", ret);
+            return ret;
+        }
+        szkeleton.visszateres(this, "pumpaVasarlas", "null");
         return null;
+    }
+    public void raAllit(Jatekos j){
+        szkeleton.hivas(this, "raAllit");
+        rajtaAllnak.add(j);
+        szkeleton.visszateres(this, "raAllit");
     }
 }

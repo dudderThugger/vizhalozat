@@ -28,4 +28,22 @@ public class Szerelo extends Jatekos{
         }
         szkeleton.visszateres(this, "lerak_pumpa");
     }
+    public void pumpatvesz(){
+        szkeleton.hivas(this, "pumpatvesz");
+
+        Pumpa p = rajtaAll.pumpaVasarlas();
+        if(tart==null){
+            pumpaTart = p;
+        }
+        szkeleton.visszateres(this, "pumpatvesz");
+    }
+    public void add_PumpaTart(Pumpa t){
+       // szkeleton.hivas(this, "add_PumpaTart");
+        pumpaTart = t;
+       // szkeleton.visszateres(this, "add_PumpaTart");
+    }
+    @Override
+    public Pumpa get_PumpaTart(){
+        return pumpaTart;
+    }
 }

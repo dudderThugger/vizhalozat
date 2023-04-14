@@ -2,6 +2,8 @@ package Vizhalozat;
 
 public class Pumpa extends AktivElemek{
     private boolean mukodik;
+    private Cso bemenet;
+    private Cso kimenet;
     public Pumpa(Jatek jatek, Szkeleton szkeleton) {
         super(jatek, szkeleton);
         mukodik = true;
@@ -31,5 +33,15 @@ public class Pumpa extends AktivElemek{
         szkeleton.hivas(this, "elromlik");
         mukodik = false;
         szkeleton.visszateres(this, "elromlik");
+    }
+    public void set_Be(Cso cs){
+        this.bemenet = cs;
+    }
+    @Override
+    public boolean csoLehelyezes(Cso cs) {
+        szkeleton.hivas(this, "csoLehelyezes");
+        this.addSzomszed(cs);
+        szkeleton.visszateres(this, "csoLehelyezes", "True");
+        return true;
     }
 }

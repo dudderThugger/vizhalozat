@@ -1,5 +1,5 @@
 package Vizhalozat;
-
+import java.util.ArrayList;
 public abstract class Jatekos {
     protected Szkeleton szkeleton;
     protected Jatek jatek;
@@ -11,6 +11,27 @@ public abstract class Jatekos {
         this.rajtaAll = rajtaAll;
         this.szkeleton = szkeleton;
     }
+    public void lerak_cso(){
+        szkeleton.hivas(this,"lerak_cso");
+        rajtaAll.csoLehelyezes(csoTart);
+        szkeleton.visszateres(this,"lerak_cso");
 
+    }
+    public void felvesz_cso(Cso felvesz){
+        szkeleton.hivas(this,"felvesz_cso");
+
+        // itt at lehetne adni a Pumpat, amin a jatekos all, es akkor mehetne
+        if(felvesz.felveszik()) {
+            // remove jatekos.felvesz_cso()-ben van vagy a cso.felveszik()-ben
+            rajtaAll.removeSzomszed(felvesz);
+        }
+        szkeleton.visszateres(this,"felvesz_cso");
+    }
     public abstract void lerak_pumpa();
+
+    public void add_Kezebe(Viheto t){
+        this.tart = t;
+    }
+
+   abstract Pumpa get_PumpaTart();
 }
