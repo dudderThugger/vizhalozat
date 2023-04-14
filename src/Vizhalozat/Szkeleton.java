@@ -63,8 +63,13 @@ public class Szkeleton {
         int selectedTest = 1;
 
         System.out.println("Valasszon tesztesetet!\n" +
-                "\t1. Pumpa elromlik" +
-                "\t69. Kilepes" +
+                "\t1. Pumpa elromlik\n" +
+                "\t2. Szerelo lerak egy pumpat\n" +
+                "\t6.Teszt: Cső lehelyezése\n" +
+                "\t7.Teszt: Cső lehelyezése csövön\n" +
+                "\t8.Teszt: Cső felvétele\n" +
+                "\t9.Teszt: Cső felvétele csövön\n" +
+                "\t10.Teszt: Pumpa vásárlás ciszternán\n" +
                 "\n\n");
 
         while(scanner.hasNext()) {
@@ -74,6 +79,21 @@ public class Szkeleton {
                 case 1:
                     teszt1();
                     break;
+                case 6:
+                    teszt6();
+                    break;
+                case 7:
+                    teszt7();
+                    break;
+                case 8:
+                    teszt8();
+                    break;
+                case 9:
+                    teszt9();
+                    break;
+                case 10:
+                    teszt10();
+                    break;
                 case 69:
                     System.exit(69);
                 default:
@@ -81,8 +101,13 @@ public class Szkeleton {
                     break;
             }
             System.out.println("Valasszon tesztesetet!\n" +
-                    "\t1. Pumpa elromlik" +
-                    "\t2. Szerelo lerak egy pumpat" +
+                    "\t1. Pumpa elromlik\n" +
+                    "\t2. Szerelo lerak egy pumpat\n" +
+                    "\t6.Teszt: Cső lehelyezése\n" +
+                    "\t7.Teszt: Cső lehelyezése csövön\n" +
+                    "\t8.Teszt: Cső felvétele\n" +
+                    "\t9.Teszt: Cső felvétele csövön\n" +
+                    "\t10.Teszt: Pumpa vásárlás ciszternán\n" +
                     "\n\n");
         }
     }
@@ -118,4 +143,102 @@ public class Szkeleton {
         System.out.println("Teszt vege\n");
         lineCount = 0;
     }
+    public void teszt6() {
+        System.out.println("6.Teszt: Cső lehelyezése");
+
+        Jatek j = new Jatek(this);
+        Cso tart = new Cso(j, this);
+        Pumpa rajtaAll = new Pumpa(j,this);
+        Szerelo sz = new Szerelo(rajtaAll,this);
+
+        ujObjektum(j,"j");
+        ujObjektum(tart,"tart");
+        ujObjektum(rajtaAll,"rajtaAll");
+        ujObjektum(sz,"sz");
+
+        sz.add_Kezebe(tart);
+        sz.lerak_cso();
+
+        System.out.println("Teszt vége\n");
+        lineCount = 0;
+    }
+    public void teszt7() {
+        System.out.println("7.Teszt: Cső lehelyezése csövön");
+
+        Jatek j = new Jatek(this);
+        Cso tart = new Cso(j, this);
+        Cso rajtaAll = new Cso(j,this);
+        Szerelo sz = new Szerelo(rajtaAll,this);
+
+        ujObjektum(j,"j");
+        ujObjektum(tart,"tart");
+        ujObjektum(rajtaAll,"rajtaAll");
+        ujObjektum(sz,"sz");
+
+        sz.add_Kezebe(tart);
+        sz.lerak_cso();
+
+        System.out.println("Teszt vége\n");
+        lineCount = 0;
+    }
+    public void teszt8() {
+        System.out.println("8.Teszt: Cső felvétele");
+
+        Jatek j = new Jatek(this);
+        Cso felveves = new Cso(j, this);
+        Pumpa rajtaAll = new Pumpa(j,this);
+        Szerelo sz = new Szerelo(rajtaAll,this);
+
+        ujObjektum(j,"j");
+        ujObjektum(felveves,"felveves");
+        ujObjektum(rajtaAll,"rajtaAll");
+        ujObjektum(sz,"sz");
+
+
+        rajtaAll.addSzomszed(felveves);
+        //felveves.addSzomszed(rajtaAll);
+
+
+        sz.felvesz_cso(felveves);
+
+        System.out.println("Teszt vége\n");
+        lineCount = 0;
+    }
+    public void teszt9() {
+        System.out.println("9.Teszt: Cső felvétele csövön");
+
+        Jatek j = new Jatek(this);
+        Cso rajtaAll = new Cso(j,this);
+        Szerelo sz = new Szerelo(rajtaAll,this);
+
+        ujObjektum(sz,"sz");
+        ujObjektum(rajtaAll,"rajtaAll");
+
+        sz.felvesz_cso(rajtaAll);
+        System.out.println("Teszt vége\n");
+        lineCount = 0;
+    }
+    public void teszt10() {
+        System.out.println("10.Teszt: Pumpa vásárlás ciszternán");
+
+        Jatek j = new Jatek(this);
+        Ciszterna rajtaAll = new Ciszterna(j,this);
+        Szerelo sz = new Szerelo(rajtaAll,this);
+        Pumpa tart = new Pumpa(j,this);
+
+
+        ujObjektum(tart,"tart");
+        ujObjektum(j,"j");
+        ujObjektum(rajtaAll,"rajtaAll");
+        ujObjektum(sz,"sz");
+
+        sz.add_PumpaTart(tart);
+        rajtaAll.raAllit(sz);
+
+        sz.pumpatvesz();
+
+        System.out.println("Teszt vége\n");
+        lineCount = 0;
+    }
+
 }
