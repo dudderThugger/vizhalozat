@@ -221,14 +221,14 @@ public class Szkeleton {
     public void teszt10() {
         System.out.println("10.Teszt: Pumpa vásárlás ciszternán");
 
-        Jatek j = new Jatek(this);
-        Ciszterna rajtaAll = new Ciszterna(j,this);
+        Jatek jatek = new Jatek(this);
+        Ciszterna rajtaAll = new Ciszterna(jatek,this);
         Szerelo sz = new Szerelo(rajtaAll,this);
-        Pumpa tart = new Pumpa(j,this);
+        Pumpa tart = new Pumpa(jatek,this);
 
 
         ujObjektum(tart,"tart");
-        ujObjektum(j,"j");
+        ujObjektum(jatek,"j");
         ujObjektum(rajtaAll,"rajtaAll");
         ujObjektum(sz,"sz");
 
