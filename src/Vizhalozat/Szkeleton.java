@@ -70,6 +70,7 @@ public class Szkeleton {
                 "\t8.Teszt: Cső felvétele\n" +
                 "\t9.Teszt: Cső felvétele csövön\n" +
                 "\t10.Teszt: Pumpa vásárlás ciszternán\n" +
+                "\t69. Kilépés\n" +
                 "\n\n");
 
         while(scanner.hasNext()) {
@@ -108,6 +109,7 @@ public class Szkeleton {
                     "\t8.Teszt: Cső felvétele\n" +
                     "\t9.Teszt: Cső felvétele csövön\n" +
                     "\t10.Teszt: Pumpa vásárlás ciszternán\n" +
+                    "\t69. Kilépés\n" +
                     "\n\n");
         }
     }
