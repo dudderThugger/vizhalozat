@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="szkeleton, félig kész osztályok">
+    <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="javitas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Szkeleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Szkeleton.java" afterDir="false" />
     </list>
@@ -75,7 +75,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681475786680</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="javitas">
+      <created>1681476055212</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1681476055212</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -93,6 +100,7 @@
     <MESSAGE value="elso commit" />
     <MESSAGE value="masodik" />
     <MESSAGE value="szkeleton, félig kész osztályok" />
-    <option name="LAST_COMMIT_MESSAGE" value="szkeleton, félig kész osztályok" />
+    <MESSAGE value="javitas" />
+    <option name="LAST_COMMIT_MESSAGE" value="javitas" />
   </component>
 </project>

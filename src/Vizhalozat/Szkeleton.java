@@ -43,19 +43,27 @@ public class Szkeleton {
         Scanner scanner = new Scanner(System.in);
         int selectedTest = 1;
 
+        System.out.println("Valasszon tesztesetet!\n" +
+                "\t1. Pumpa elromlik" +
+                "\t69. Kilepes" +
+                "\n\n");
+
         while(scanner.hasNext()) {
-            System.out.println("Valasszon tesztesetet!\n" +
-                    "\t1. Pumpa elromlik" +
-                    "\n\n");
+
             selectedTest = Integer.parseInt(scanner.nextLine());
             switch(selectedTest) {
                 case 1:
                     teszt1();
                     break;
+                case 69:
+                    System.exit(69);
                 default:
-                    System.exit(0);
+                    System.out.println("Nincs ilyen teszteset!");
                     break;
             }
+            System.out.println("Valasszon tesztesetet!\n" +
+                    "\t1. Pumpa elromlik" +
+                    "\n\n");
         }
     }
 
