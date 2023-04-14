@@ -14,6 +14,10 @@ public class Szkeleton {
         lineCount = 0;
     }
 
+    public void ujObjektum(Object obj, String name) {
+        ids.put(obj, name);
+    }
+
     public void hivas(Object caller, String functionName) {
         ++tabs;
         String name = ids.get(caller);
@@ -24,7 +28,22 @@ public class Szkeleton {
     public void visszateres(Object caller, String functionName) {
         String name = ids.get(caller);
         for (int i = 0; i < tabs; ++i) { System.out.print('\t');}
-        System.out.println(++lineCount + ". "+ name + "." + functionName + "() visszatér");
+        System.out.println(++lineCount + ". "+ name + "." + functionName + "() visszater");
+        --tabs;
+    }
+
+    public void visszateres(Object caller, String functionName, String ret) {
+        String name = ids.get(caller);
+        for (int i = 0; i < tabs; ++i) { System.out.print('\t');}
+        System.out.println(++lineCount + ". "+ name + "." + functionName + "() visszater " + ret + " ertekkel");
+        --tabs;
+    }
+
+    public void visszateres(Object caller, String functionName, Object ret) {
+        String retName = ids.get(ret);
+        String name = ids.get(caller);
+        for (int i = 0; i < tabs; ++i) { System.out.print('\t');}
+        System.out.println(++lineCount + ". "+ name + "." + functionName + "() visszater " + retName + " objektummal");
         --tabs;
     }
 
@@ -63,6 +82,7 @@ public class Szkeleton {
             }
             System.out.println("Valasszon tesztesetet!\n" +
                     "\t1. Pumpa elromlik" +
+                    "\t2. Szerelo lerak egy pumpat" +
                     "\n\n");
         }
     }
@@ -79,5 +99,9 @@ public class Szkeleton {
         j.pumpaElRomlik();
         System.out.println("Teszt vége\n");
         lineCount = 0;
+    }
+
+    public void teszt2() {
+
     }
 }

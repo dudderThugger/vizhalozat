@@ -7,6 +7,26 @@ public class Pumpa extends AktivElemek{
         mukodik = true;
     }
 
+    @Override
+    public boolean felveszik() {
+        return false;
+    }
+
+    @Override
+    public void befolyik() {
+
+    }
+
+    @Override
+    public boolean atAllit(Cso be, Cso ki) {
+        return false;
+    }
+
+    @Override
+    public boolean javitjak() {
+        return false;
+    }
+
     public void elromlik() {
         szkeleton.hivas(this, "elromlik");
         mukodik = false;

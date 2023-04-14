@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="javitas">
+    <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="69 kilepes">
+      <change afterPath="$PROJECT_DIR$/src/Vizhalozat/Ciszterna.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Vizhalozat/Cso.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Vizhalozat/Forras.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/AktivElemek.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/AktivElemek.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Mezo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Mezo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Pumpa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Pumpa.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Szkeleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Szkeleton.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,16 +36,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
-    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Vizhalozat.Main" />
+    <configuration name="App" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Vizhalozat.App" />
       <module name="Vizhalozat" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -82,7 +89,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681476055212</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="69 kilepes">
+      <created>1681476354109</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1681476354109</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -101,6 +115,7 @@
     <MESSAGE value="masodik" />
     <MESSAGE value="szkeleton, félig kész osztályok" />
     <MESSAGE value="javitas" />
-    <option name="LAST_COMMIT_MESSAGE" value="javitas" />
+    <MESSAGE value="69 kilepes" />
+    <option name="LAST_COMMIT_MESSAGE" value="69 kilepes" />
   </component>
 </project>
