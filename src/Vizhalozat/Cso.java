@@ -1,6 +1,8 @@
 package Vizhalozat;
 
-public class Cso extends Mezo{
+import java.util.Scanner;
+
+public class Cso extends Mezo implements Viheto {
     public Cso(Jatek jatek, Szkeleton szkeleton) {
         super(jatek, szkeleton);
     }
@@ -17,7 +19,9 @@ public class Cso extends Mezo{
 
     @Override
     public boolean pumpaLehelyez(Pumpa p) {
-        return false;
+        szkeleton.kerdes(this, "Allnak rajtam (Igen/Nem)");
+        szkeleton.visszateres(this, "pumpaLehelyez", "True");
+        return true;
     }
 
     @Override
@@ -48,5 +52,12 @@ public class Cso extends Mezo{
     @Override
     public boolean csoLehelyezes(Cso cs) {
         return false;
+    }
+
+    @Override
+    public void lerakjak(Jatekos lerako) {
+        szkeleton.hivas(this, "lerakjak");
+        rajtaAllnak.add(lerako);
+        szkeleton.visszateres(this, "lerakjak");
     }
 }

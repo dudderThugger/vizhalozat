@@ -1,12 +1,13 @@
 package Vizhalozat;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public abstract class Mezo {
     protected Szkeleton szkeleton;
     protected ArrayList<Mezo> szomszedok;
     protected Jatek jatek;
-    protected Jatekos rajtaAllnak;
+    protected ArrayList<Jatekos> rajtaAllnak;
     protected boolean telitett;
 
     public Mezo(Jatek jatek, Szkeleton szkeleton) {
@@ -17,9 +18,21 @@ public abstract class Mezo {
     }
     public void lelep(Jatekos j) {}
     public boolean ralep(Jatekos j) { return false;}
-    public ArrayList<Mezo> getSzomszedok() { return szomszedok; }
-    public void addSzomszed(Mezo m) { szomszedok.add(m);}
-    public void removeSzomszed(Mezo m) { szomszedok.remove(m); }
+    public ArrayList<Mezo> getSzomszedok() {
+        szkeleton.hivas(this, "getSzomszedok");
+        szkeleton.visszateres(this, "getSzomszedok", "szomszedok");
+        return szomszedok;
+    }
+    public void addSzomszed(Mezo m) {
+        szkeleton.hivas(this, "addSzomszed");
+        szkeleton.visszateres(this, "addSzomszed");
+        szomszedok.add(m);
+    }
+    public void removeSzomszed(Mezo m) {
+        szkeleton.hivas(this, "removeSzomszed");
+        szkeleton.visszateres(this, "removeSzomszed");
+        szomszedok.remove(m);
+    }
     public abstract boolean felveszik();
     public abstract void befolyik();
     public abstract boolean pumpaLehelyez(Pumpa p);

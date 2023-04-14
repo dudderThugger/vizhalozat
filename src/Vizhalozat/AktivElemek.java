@@ -84,7 +84,7 @@ public abstract class AktivElemek extends Mezo{
     public abstract boolean javitjak();
 
     /**
-     * Egy cső lehelyezése az elemen
+     * Egy cső lehelyezése az aktív elemen
      * @param cs a lehelyezendő cső
      * @return Mindig true
      */

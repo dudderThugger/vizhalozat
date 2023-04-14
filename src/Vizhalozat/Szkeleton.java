@@ -97,11 +97,25 @@ public class Szkeleton {
         ids.put(p, "p");
 
         j.pumpaElRomlik();
-        System.out.println("Teszt vége\n");
+        System.out.println("Teszt vege\n");
         lineCount = 0;
     }
 
     public void teszt2() {
+        System.out.println("2.Teszt: Szerelo lerak pumpat");
 
+        /** Objektumok létrehozása */
+        Jatek j = new Jatek(this);
+        Cso rajtaAll = new Cso(j, this);
+        Szerelo sz = new Szerelo(rajtaAll, this);
+        Pumpa szomszed = new Pumpa(j, this);
+        Pumpa tart = new Pumpa(j, this);
+        Cso uj = new Cso(j, this);
+
+        /** Objektumok referenciáinak beállítása */
+
+
+        System.out.println("Teszt vege\n");
+        lineCount = 0;
     }
 }
