@@ -73,6 +73,11 @@ public class Szkeleton {
                 "\t8.Teszt: Cső felvétele\n" +
                 "\t9.Teszt: Cső felvétele csövön\n" +
                 "\t10.Teszt: Pumpa vásárlás ciszternán\n" +
+                "\t16.Teszt: Szabotőr lyukaszt csövön\n" +
+                "\t17.Teszt: Szabotőr lyukaszt aktív elemen\n" +
+                "\t18.Teszt: Pumpa vízfolyás\n" +
+                "\t19.Teszt: Folyik a csőben a víz\n" +
+                "\t20.Teszt: Befolyik a ciszternába a víz\n" +
                 "\t69. Kilépés\n" +
                 "\n\n";
 
@@ -111,6 +116,21 @@ public class Szkeleton {
                     break;
                 case 10:
                     teszt10();
+                    break;
+                case 16:
+                    teszt16();
+                    break;
+                case 17:
+                    teszt17();
+                    break;
+                case 18:
+                    teszt18();
+                    break;
+                case 19:
+                    teszt19();
+                    break;
+                case 20:
+                    teszt20();
                     break;
                 case 69:
                     System.exit(69);
@@ -218,7 +238,7 @@ public class Szkeleton {
     }
 
     public void teszt5() {
-        System.out.println("4ó5.Teszt: Szerelo aktiv elemen foltoz");
+        System.out.println("5.Teszt: Szerelo aktiv elemen foltoz");
 
         /** Objektumok létrehozása */
         Jatek j = new Jatek(this);
@@ -337,6 +357,69 @@ public class Szkeleton {
         sz.pumpatvesz();
 
         System.out.println("Teszt vége\n");
+        ids.clear();
+        lineCount = 0;
+    }
+
+    public void teszt16(){
+        System.out.println("16.Teszt: Szabotőr lyukaszt csövön");
+
+        /** Objektumok létrehozása */
+        Jatek j = new Jatek(this);
+        Cso rajtaAll = new Cso(j, this);
+        Szabotor sz = new Szabotor(rajtaAll, this);
+
+        ids.put(j, "j");
+        ids.put(rajtaAll, "rajtaAll");
+        ids.put(sz, "sz");
+
+        /** Objektum referenciáinak beállítása */
+        rajtaAll.raAllit(sz);
+        sz.lyukaszt();
+
+        System.out.println("Teszt vege\n");
+        ids.clear();
+        lineCount = 0;
+    }
+    public void teszt17(){
+        System.out.println("17.Teszt: Szabotőr lyukaszt aktív elemen");
+
+        /** Objektumok létrehozása */
+        Jatek j = new Jatek(this);
+        Pumpa rajtaAll = new Pumpa(j, this);
+        Szabotor sz = new Szabotor(rajtaAll, this);
+
+        ids.put(j, "j");
+        ids.put(rajtaAll, "rajtaAll");
+        ids.put(sz, "sz");
+
+        /** Objektum referenciáinak beállítása */
+        rajtaAll.raAllit(sz);
+
+        sz.lyukaszt();
+
+        System.out.println("Teszt vege\n");
+        ids.clear();
+        lineCount = 0;
+    }
+    public void teszt18(){
+        System.out.println("18.Teszt: Pumpa vízfolyás");
+
+        System.out.println("Teszt vege\n");
+        ids.clear();
+        lineCount = 0;
+    }
+    public void teszt19(){
+        System.out.println("19.Folyik a csőben a víz");
+
+        System.out.println("Teszt vege\n");
+        ids.clear();
+        lineCount = 0;
+    }
+    public void teszt20(){
+        System.out.println("20.Teszt: Befolyik a ciszternába a víz");
+
+        System.out.println("Teszt vege\n");
         ids.clear();
         lineCount = 0;
     }
