@@ -27,12 +27,8 @@ public class Jatek {
     public void pumpaElRomlik() {
         szkeleton.hivas(this, "pumpaElromlik");
         Random random = new Random();
-
-        Scanner scanner = new Scanner(System.in);
         for (Pumpa pumpa : pumpak) {
-            szkeleton.kerdes(this, "Mi a random ertek?");
-            int ertek = Integer.parseInt(scanner.nextLine());
-            szkeleton.valasz(Integer.toString(ertek));
+            int ertek = Integer.parseInt(szkeleton.kerdes(this, "Mi a random ertek?"));
             if(ertek < 2) {
                 pumpa.elromlik();
             }

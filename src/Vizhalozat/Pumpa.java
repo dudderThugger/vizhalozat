@@ -1,6 +1,6 @@
 package Vizhalozat;
 
-public class Pumpa extends AktivElemek{
+public class Pumpa extends AktivElemek implements Viheto{
     private boolean mukodik;
     private Cso bemenet;
     private Cso kimenet;
@@ -41,7 +41,13 @@ public class Pumpa extends AktivElemek{
     public boolean csoLehelyezes(Cso cs) {
         szkeleton.hivas(this, "csoLehelyezes");
         this.addSzomszed(cs);
-        szkeleton.visszateres(this, "csoLehelyezes", "True");
+        szkeleton.visszateres(this, "csoLehelyezes", "true");
         return true;
+    }
+
+    @Override
+    public void lerakjak(Jatekos lerako) {
+        szkeleton.hivas(this, "lerakjak");
+        szkeleton.visszateres(this, "lerakjak");
     }
 }
