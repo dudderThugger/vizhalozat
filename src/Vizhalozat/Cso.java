@@ -31,6 +31,7 @@ public class Cso extends Mezo implements Viheto {
                 szomszed.befolyik();
             }
         }
+        szkeleton.visszateres(this, "befolyik");
     }
 
     /**

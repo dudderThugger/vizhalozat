@@ -395,7 +395,6 @@ public class Szkeleton {
 
         /** Objektum referenciáinak beállítása */
         rajtaAll.raAllit(sz);
-
         sz.lyukaszt();
 
         System.out.println("Teszt vege\n");
@@ -418,6 +417,26 @@ public class Szkeleton {
     }
     public void teszt20(){
         System.out.println("20.Teszt: Befolyik a ciszternába a víz");
+
+        /** Objektumok létrehozása */
+        Jatek j = new Jatek(this);
+        Cso cs = new Cso(j, this);
+        Ciszterna c = new Ciszterna(j, this);
+
+        ids.put(j, "j");
+        ids.put(cs, "cs");
+        ids.put(c, "c");
+
+        /** Objektum referenciáinak beállítása */
+        ArrayList<Mezo> csoSzomszed = new ArrayList<>();
+        ArrayList<Mezo> ciszternaSzomszed = new ArrayList<>();
+        csoSzomszed.add(c);
+        ciszternaSzomszed.add(cs);
+        cs.setSzomszedok(csoSzomszed);
+        c.setSzomszedok(ciszternaSzomszed);
+
+        cs.befolyik();
+
 
         System.out.println("Teszt vege\n");
         ids.clear();

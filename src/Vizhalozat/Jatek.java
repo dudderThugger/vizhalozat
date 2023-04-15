@@ -35,4 +35,9 @@ public class Jatek {
         }
         szkeleton.visszateres(this, "pumpaElromlik");
     }
+
+    public void szereloPontSzerzes(){
+        szkeleton.hivas(this, "szereloPontSzerzes");
+        szkeleton.visszateres(this, "szereloPontSzerzes");
+    }
 }

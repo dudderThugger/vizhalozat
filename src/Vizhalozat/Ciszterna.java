@@ -20,6 +20,7 @@ public class Ciszterna extends AktivElemek{
     @Override
     public void befolyik() {
         szkeleton.hivas(this, "befolyik");
+        jatek.szereloPontSzerzes();
         szkeleton.visszateres(this, "befolyik");
     }
 

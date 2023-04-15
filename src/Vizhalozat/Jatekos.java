@@ -1,5 +1,9 @@
 package Vizhalozat;
 import java.util.ArrayList;
+
+/**
+ * A játékot játszó játékosok absztrakt osztálya, definálja a közös akciókat.
+ */
 public abstract class Jatekos {
     protected Szkeleton szkeleton;
     protected Jatek jatek;
@@ -7,10 +11,16 @@ public abstract class Jatekos {
     protected Cso csoTart;
     protected Mezo rajtaAll;
 
+    /**
+     * A játékos egyetlen konstruktora
+     * @param rajtaAll A mező objektum referenciája
+     * @param szkeleton A szkeleton, tesztelő osztály konstruktora
+     */
     public Jatekos(Mezo rajtaAll, Szkeleton szkeleton) {
         this.rajtaAll = rajtaAll;
         this.szkeleton = szkeleton;
     }
+
     public void lerak_cso(){
         szkeleton.hivas(this,"lerak_cso");
         rajtaAll.csoLehelyezes(csoTart);

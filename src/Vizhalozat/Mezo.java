@@ -3,12 +3,22 @@ package Vizhalozat;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+/**
+ * Közös őse a különböző mezőfajtáknak. Közös interfészt nyújt,
+ * hogy a Játékos és Játék objektumok heterogénen tudják kezelni a mezőket.
+ */
 public abstract class Mezo {
     protected Szkeleton szkeleton;
     protected ArrayList<Mezo> szomszedok;
     protected Jatek jatek;
     protected ArrayList<Jatekos> rajtaAllnak;
     protected boolean telitett;
+
+    /**
+     * A mező egyetlen konstruktora
+     * @param jatek A játék objektum referenciája
+     * @param szkeleton A szkeleton, tesztelő osztály konstruktora
+     */
 
     public Mezo(Jatek jatek, Szkeleton szkeleton) {
         this.jatek = jatek;
