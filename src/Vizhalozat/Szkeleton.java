@@ -1,5 +1,6 @@
 package Vizhalozat;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -47,31 +48,35 @@ public class Szkeleton {
         --tabs;
     }
 
-    public void kerdes(Object caller, String question) {
+    public String kerdes(Object caller, String question) {
         String name = ids.get(caller);
         for (int i = 0; i < tabs; ++i) { System.out.print('\t');}
         System.out.println(++lineCount + ". "+ name + ": " + question + "?");
-    }
-
-    public void valasz(String answer) {
+        Scanner scanner = new Scanner(System.in);
+        String answer = scanner.nextLine();
         for (int i = 0; i < tabs; ++i) { System.out.print('\t');}
         System.out.println(++lineCount + ". tesztelo: " + answer);
+        return answer;
     }
 
     public void kezdoFelulet() {
         Scanner scanner = new Scanner(System.in);
         int selectedTest = 1;
-
-        System.out.println("Valasszon tesztesetet!\n" +
+        String menu = "Valasszon tesztesetet!\n" +
                 "\t1. Pumpa elromlik\n" +
                 "\t2. Szerelo lerak egy pumpat\n" +
+                "\t3. Szerelo rossz helyen rak le pumpat\n" +
+                "\t4. Szerelo foltoz\n" +
+                "\t5. Szerelo aktiv elemen foltoz\n" +
                 "\t6.Teszt: Cső lehelyezése\n" +
                 "\t7.Teszt: Cső lehelyezése csövön\n" +
                 "\t8.Teszt: Cső felvétele\n" +
                 "\t9.Teszt: Cső felvétele csövön\n" +
                 "\t10.Teszt: Pumpa vásárlás ciszternán\n" +
                 "\t69. Kilépés\n" +
-                "\n\n");
+                "\n\n";
+
+        System.out.println(menu);
 
         while(scanner.hasNext()) {
 
@@ -79,6 +84,18 @@ public class Szkeleton {
             switch(selectedTest) {
                 case 1:
                     teszt1();
+                    break;
+                case 2:
+                    teszt2();
+                    break;
+                case 3:
+                    teszt3();
+                    break;
+                case 4:
+                    teszt4();
+                    break;
+                case 5:
+                    teszt5();
                     break;
                 case 6:
                     teszt6();
@@ -101,16 +118,7 @@ public class Szkeleton {
                     System.out.println("Nincs ilyen teszteset!");
                     break;
             }
-            System.out.println("Valasszon tesztesetet!\n" +
-                    "\t1. Pumpa elromlik\n" +
-                    "\t2. Szerelo lerak egy pumpat\n" +
-                    "\t6.Teszt: Cső lehelyezése\n" +
-                    "\t7.Teszt: Cső lehelyezése csövön\n" +
-                    "\t8.Teszt: Cső felvétele\n" +
-                    "\t9.Teszt: Cső felvétele csövön\n" +
-                    "\t10.Teszt: Pumpa vásárlás ciszternán\n" +
-                    "\t69. Kilépés\n" +
-                    "\n\n");
+            System.out.println(menu);
         }
     }
 
@@ -135,14 +143,99 @@ public class Szkeleton {
         Jatek j = new Jatek(this);
         Cso rajtaAll = new Cso(j, this);
         Szerelo sz = new Szerelo(rajtaAll, this);
-        Pumpa szomszed = new Pumpa(j, this);
+        Pumpa szomszed1 = new Pumpa(j, this);
+        Pumpa szomszed2 = new Pumpa(j, this);
         Pumpa tart = new Pumpa(j, this);
-        Cso uj = new Cso(j, this);
+
+        ids.put(j, "j");
+        ids.put(rajtaAll, "rajtaAll");
+        ids.put(sz, "sz");
+        ids.put(szomszed1, "szomszed1");
+        ids.put(szomszed2, "szomszed2");
+        ids.put(tart, "tart");
 
         /** Objektumok referenciáinak beállítása */
+        sz.add_PumpaTart(tart);
+        rajtaAll.raAllit(sz);
+        ArrayList<Mezo> szomszedok = new ArrayList<Mezo>();
+        szomszedok.add(szomszed1);
+        szomszedok.add(szomszed2);
+        rajtaAll.setSzomszedok(szomszedok);
 
+        sz.lerak_pumpa();
 
         System.out.println("Teszt vege\n");
+        ids.clear();
+        lineCount = 0;
+    }
+
+    public void teszt3() {
+        System.out.println("3.Teszt: Szerelo rossz helyen rak le pumpat");
+
+        /** Objektumok létrehozása */
+        Jatek j = new Jatek(this);
+        Pumpa rajtaAll = new Pumpa(j, this);
+        Szerelo sz = new Szerelo(rajtaAll, this);
+        Pumpa tart = new Pumpa(j, this);
+
+        ids.put(j, "j");
+        ids.put(rajtaAll, "rajtaAll");
+        ids.put(sz, "sz");
+        ids.put(tart, "tart");
+
+        /** Objektum referenciáinak beállítása */
+        sz.add_Kezebe(tart);
+        sz.add_PumpaTart(tart);
+        rajtaAll.raAllit(sz);
+
+        sz.lerak_pumpa();
+
+        System.out.println("Teszt vege\n");
+        ids.clear();
+        lineCount = 0;
+    }
+
+    public void teszt4() {
+        System.out.println("4.Teszt: Szerelo foltoz");
+
+        /** Objektumok létrehozása */
+        Jatek j = new Jatek(this);
+        Cso rajtaAll = new Cso(j, this);
+        Szerelo sz = new Szerelo(rajtaAll, this);
+
+        ids.put(j, "j");
+        ids.put(rajtaAll, "rajtaAll");
+        ids.put(sz, "sz");
+
+        /** Objektum referenciáinak beállítása */
+        rajtaAll.raAllit(sz);
+
+        sz.foltoz();
+
+        System.out.println("Teszt vege\n");
+        ids.clear();
+        lineCount = 0;
+    }
+
+    public void teszt5() {
+        System.out.println("4ó5.Teszt: Szerelo aktiv elemen foltoz");
+
+        /** Objektumok létrehozása */
+        Jatek j = new Jatek(this);
+        Pumpa rajtaAll = new Pumpa(j, this);
+        Szerelo sz = new Szerelo(rajtaAll, this);
+
+        ids.put(j, "j");
+        ids.put(rajtaAll, "rajtaAll");
+        ids.put(sz, "sz");
+
+        /** Objektum referenciáinak beállítása */
+        rajtaAll.raAllit(sz);
+
+        sz.foltoz();
+
+        System.out.println("Teszt vege\n");
+        ids.clear();
         lineCount = 0;
     }
     public void teszt6() {
@@ -162,6 +255,7 @@ public class Szkeleton {
         sz.lerak_cso();
 
         System.out.println("Teszt vége\n");
+        ids.clear();
         lineCount = 0;
     }
     public void teszt7() {
@@ -181,6 +275,7 @@ public class Szkeleton {
         sz.lerak_cso();
 
         System.out.println("Teszt vége\n");
+        ids.clear();
         lineCount = 0;
     }
     public void teszt8() {
@@ -204,6 +299,7 @@ public class Szkeleton {
         sz.felvesz_cso(felveves);
 
         System.out.println("Teszt vége\n");
+        ids.clear();
         lineCount = 0;
     }
     public void teszt9() {
@@ -218,6 +314,7 @@ public class Szkeleton {
 
         sz.felvesz_cso(rajtaAll);
         System.out.println("Teszt vége\n");
+        ids.clear();
         lineCount = 0;
     }
     public void teszt10() {
@@ -240,6 +337,7 @@ public class Szkeleton {
         sz.pumpatvesz();
 
         System.out.println("Teszt vége\n");
+        ids.clear();
         lineCount = 0;
     }
 

@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="69 kilepes">
+    <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="teszt 2 elkezdése">
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023__04__14__18_27__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023__04__14__18_27__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Cso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Cso.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Jatek.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Jatek.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Mezo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Mezo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Pumpa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Pumpa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Szerelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Szerelo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Szkeleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Szkeleton.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

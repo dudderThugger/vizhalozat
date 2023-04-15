@@ -9,22 +9,18 @@ public class Cso extends Mezo implements Viheto {
 
     @Override
     public boolean felveszik() {
-        Scanner scanner = new Scanner(System.in);
-
         szkeleton.hivas(this, "felveszik");
-        szkeleton.kerdes(this, "Allnak rajtam?(Igen/Nem)");
-        String ertek = scanner.nextLine();
+        String ertek = szkeleton.kerdes(this, "Allnak rajtam?(Igen/Nem)");
         if(ertek.equals("Nem") ){
-            szkeleton.visszateres(this, "felveszik", "True");
+            szkeleton.visszateres(this, "felveszik", "true");
             return true;
         }
-            szkeleton.visszateres(this, "felveszik", "False");
-            return false;
+        szkeleton.visszateres(this, "felveszik", "false");
+        return false;
     }
     /**
-    Telitett lesz,ha nem volt az,
-    es meghivja az osszes szomszedjara a
-    befolyik() fuggvenyt.
+     * Telitett lesz,ha nem volt az, es meghivja az osszes szomszedjara a
+     * befolyik() fuggvenyt.
      */
     @Override
     public void befolyik() {
@@ -46,22 +42,34 @@ public class Cso extends Mezo implements Viheto {
         szkeleton.hivas(this, "ralep");
         if(rajtaAllnak.size()==0){
             rajtaAllnak.add(j);
-            szkeleton.visszateres(this, "ralep", "True");
+            szkeleton.visszateres(this, "ralep", "true");
             return true;
         }
-        szkeleton.visszateres(this, "ralep", "False");
+        szkeleton.visszateres(this, "ralep", "false");
         return false;
     }
 
     /**
      * @param p Pumpat var
-     * @return mindig false
+     * @return true, ha nem allnak a csövön
      */
     @Override
     public boolean pumpaLehelyez(Pumpa p) {
+        szkeleton.hivas(this, "pumpaLehelyez");
         szkeleton.kerdes(this, "Allnak rajtam (Igen/Nem)");
-        szkeleton.visszateres(this, "pumpaLehelyez", "True");
-        return true;
+        Scanner scanner = new Scanner(System.in);
+        String answer = scanner.nextLine();
+        if(answer.equals("Igen")) {
+            szkeleton.visszateres(this, "pumpaLehelyez", "false");
+            return false;
+        } else if(answer.equals("Nem")) {
+            szkeleton.visszateres(this, "pumpaLehelyez", "true");
+            szomszedok.add(p);
+            return true;
+        } else {
+            szkeleton.visszateres(this, "pumpaLehelyez", "false");
+            return false;
+        }
     }
 
     /**
@@ -72,12 +80,14 @@ public class Cso extends Mezo implements Viheto {
     public boolean foltoz()
     {
         szkeleton.hivas(this, "foltoz");
-        if(lyukas){
+        String answer = szkeleton.kerdes(this, "Lyukas vagyok (Igen/Nem)");
+        if(answer.equals("Igen")){
           lyukas = false;
-            szkeleton.visszateres(this, "foltoz","True");
+          szkeleton.visszateres(this, "foltoz","true");
           return true;
         }
-        szkeleton.visszateres(this, "foltoz","False");
+        lyukas = false;
+        szkeleton.visszateres(this, "foltoz","false");
         return false;
     }
     /**
@@ -87,12 +97,14 @@ public class Cso extends Mezo implements Viheto {
     @Override
     public boolean lyukaszt() {
         szkeleton.hivas(this, "lyukaszt");
-        if(!lyukas){
+        String answer = szkeleton.kerdes(this, "Lyukas vagyok(Igen/Nem)");
+        if(answer.equals("Nem")){
             lyukas = true;
-            szkeleton.visszateres(this, "lyukaszt", "True");
+            szkeleton.visszateres(this, "lyukaszt", "true");
             return true;
         }
-        szkeleton.visszateres(this, "lyukaszt", "False");
+        lyukas = true;
+        szkeleton.visszateres(this, "lyukaszt", "false");
         return false;
     }
 
@@ -106,21 +118,21 @@ public class Cso extends Mezo implements Viheto {
     @Override
     public boolean atAllit(Cso be, Cso ki) {
         szkeleton.hivas(this, "atAllit");
-        szkeleton.visszateres(this, "atAllit", "False");
+        szkeleton.visszateres(this, "atAllit", "false");
         return false;
     }
 
     @Override
     public boolean javitjak() {
         szkeleton.hivas(this, "javitjak");
-        szkeleton.visszateres(this, "javitjak", "False");
+        szkeleton.visszateres(this, "javitjak", "false");
         return false;
     }
 
     @Override
     public boolean csoLehelyezes(Cso cs) {
         szkeleton.hivas(this, "csoLehelyezes");
-        szkeleton.visszateres(this, "csoLehelyezes", "False");
+        szkeleton.visszateres(this, "csoLehelyezes", "false");
         return false;
     }
 

@@ -43,4 +43,9 @@ public abstract class Mezo {
     public abstract boolean atAllit(Cso be, Cso ki);
     public abstract boolean javitjak();
     public abstract boolean csoLehelyezes(Cso cs);
+    public void raAllit(Jatekos ra) { rajtaAllnak.add(ra); }
+
+    public void setSzomszedok(ArrayList<Mezo> szomszedok) {
+        this.szomszedok = szomszedok;
+    }
 }
