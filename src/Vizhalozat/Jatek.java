@@ -40,4 +40,9 @@ public class Jatek {
         szkeleton.hivas(this, "szereloPontSzerzes");
         szkeleton.visszateres(this, "szereloPontSzerzes");
     }
+
+    public void szabotorPontSzerzes(){
+        szkeleton.hivas(this, "szabotorPontSzerzes");
+        szkeleton.visszateres(this, "szabotorPontSzerzes");
+    }
 }

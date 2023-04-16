@@ -428,6 +428,23 @@ public class Szkeleton {
     public void teszt19(){
         System.out.println("19.Folyik a csőben a víz");
 
+        /** Objektumok létrehozása */
+        Jatek j = new Jatek(this);
+        Pumpa p = new Pumpa(j, this);
+        Cso be = new Cso(j, this);
+        Cso ki = new Cso(j, this);
+
+        ids.put(j, "j");
+        ids.put(p, "p");
+        ids.put(be, "be");
+        ids.put(ki, "ki");
+
+        /** Objektum referenciáinak beállítása */
+        p.setBemenet(be);
+        p.setKimenet(ki);
+
+        p.befolyik();
+
         System.out.println("Teszt vege\n");
         ids.clear();
         lineCount = 0;

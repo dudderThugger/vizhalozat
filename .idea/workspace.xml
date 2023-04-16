@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="20-as teszt eset elkészítése">
+    <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="18-as teszt eset elkészítése">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Cso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Cso.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Pumpa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Pumpa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Jatek.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Jatek.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Szkeleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Szkeleton.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -115,7 +115,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681601609432</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="18-as teszt eset elkészítése">
+      <created>1681603519626</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1681603519626</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -138,6 +145,7 @@
     <MESSAGE value="16-17-es teszt esetek elkészítése" />
     <MESSAGE value="Szabotor osztaly" />
     <MESSAGE value="20-as teszt eset elkészítése" />
-    <option name="LAST_COMMIT_MESSAGE" value="20-as teszt eset elkészítése" />
+    <MESSAGE value="18-as teszt eset elkészítése" />
+    <option name="LAST_COMMIT_MESSAGE" value="18-as teszt eset elkészítése" />
   </component>
 </project>

@@ -40,7 +40,11 @@ public class Cso extends Mezo implements Viheto {
     @Override
     public void befolyik() {
         szkeleton.hivas(this, "befolyik");
-        if(!telitett){
+        String ertek = szkeleton.kerdes(this, "Lyukas vagyok?(Igen/Nem)");
+        if(ertek.equals("Igen")){
+            jatek.szabotorPontSzerzes();
+        }
+        else if(!telitett){
             telitett = true;
             for(Mezo szomszed : szomszedok) {
                 szomszed.befolyik();
