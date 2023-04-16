@@ -5,12 +5,12 @@ import java.util.ArrayList;
  * A játékot játszó játékosok absztrakt osztálya, definálja a közös akciókat.
  */
 public abstract class Jatekos {
-    protected Szkeleton szkeleton;
-    protected Jatek jatek;
-    protected Viheto tart;
-    protected Cso csoTart;
-    protected Mezo rajtaAll;
-    protected int varakozasiIdo;
+    protected Szkeleton szkeleton;  // a figyelő és hívásszámontartó osztály referenciája
+    protected Jatek jatek;  // Jatekot irányító osztály referenciája
+    protected Viheto tart; //referencia a tárgyra, amit a játékos tart
+    protected Cso csoTart; //a játékos kezében lévő cső referenciája
+    protected Mezo rajtaAll; // referencia a mezőre, amin a játékos áll
+    protected int varakozasiIdo; // a játékosnak mennyi időt kell várnia a következő aktív akciójáig
 
     /**
      * A játékos egyetlen konstruktora
@@ -134,10 +134,12 @@ public abstract class Jatekos {
         szkeleton.visszateres(this,"felvesz_cso");
     }
 
+    /**
+     * A Jatekos kezebe teszi valamilyen Vihető objektum referenciáját
+     * @param t
+     */
     public void add_Kezebe(Viheto t){
         this.tart = t;
     }
 
-    abstract Pumpa get_PumpaTart();
-    public abstract void lerak_pumpa();
 }

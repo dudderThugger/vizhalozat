@@ -18,7 +18,6 @@ public class Szerelo extends Jatekos{
      * és a régi és a létrejött cső közé beköti a pumpát
      * a Vihető függvényét valósítja meg
      */
-    @Override
     public void lerak_pumpa() {
         szkeleton.hivas(this, "lerak_pumpa");
         if(pumpaTart != null) {
@@ -69,7 +68,6 @@ public class Szerelo extends Jatekos{
      * Lekéri a szerelőnél lévő pumpát
      * @return kézben tartott pumpa referenciája
      */
-    @Override
     public Pumpa get_PumpaTart(){
         return pumpaTart;
     }
