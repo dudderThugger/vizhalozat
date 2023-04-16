@@ -39,7 +39,7 @@ public class Pumpa extends AktivElemek implements Viheto{
     @Override
     public boolean atAllit(Cso be, Cso ki) {
         szkeleton.hivas(this, "atAllit");
-        szkeleton.visszateres(this, "atAllit");
+        szkeleton.visszateres(this, "atAllit", "true");
         return true;
     }
 
@@ -50,8 +50,15 @@ public class Pumpa extends AktivElemek implements Viheto{
     @Override
     public boolean javitjak() {
         szkeleton.hivas(this, "javitjak");
-        szkeleton.visszateres(this, "javitjak");
-        return false;
+        if(szkeleton.kerdes(this, "Javításra van szükség? (Igen, Nem)").equalsIgnoreCase("igen")){
+            mukodik = true;
+            szkeleton.visszateres(this, "javitjak", "true");
+            return true;
+        }
+        else {
+            szkeleton.visszateres(this, "javitjak", "false");
+            return false;
+        }
     }
 
     /**

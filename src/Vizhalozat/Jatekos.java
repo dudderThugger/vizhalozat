@@ -37,6 +37,25 @@ public abstract class Jatekos {
      */
     public void pumpaAllitas(){
         szkeleton.hivas(this, "pumpaAllitas");
+
+        ArrayList<Mezo> szomszedok = rajtaAll.getSzomszedok();
+        Cso[] csovek = new Cso[2];
+        if(rajtaAll.atAllit(csovek[0], csovek[1])){
+            for(int i = 0; i < 2; i++){
+                for(int j = 1; j <= szomszedok.size(); j++){
+                    szkeleton.uzenet("Cső " + j );
+                }
+                int valasz = Integer.parseInt(szkeleton.kerdes(this, "Az " + (i + 1) +". cső kiválasztása: (A fentiek közül)\n"));
+                if(valasz > 0 && valasz <= szomszedok.size()) csovek[i] = (Cso)szomszedok.remove(valasz -1);
+                else{
+                    System.out.println("Nem megfelelő válasz!");
+                    i--;
+                }
+            }
+        }
+
+        rajtaAll.atAllit(csovek[0], csovek[1]);
+
         szkeleton.visszateres(this, "pumpaAllitas");
     }
 
@@ -71,6 +90,6 @@ public abstract class Jatekos {
         this.tart = t;
     }
 
-   abstract Pumpa get_PumpaTart();
+    abstract Pumpa get_PumpaTart();
     public abstract void lerak_pumpa();
 }

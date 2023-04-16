@@ -39,10 +39,10 @@ public class Szerelo extends Jatekos{
         szkeleton.visszateres(this, "pumpatvesz");
     }
     public void add_PumpaTart(Pumpa t){
-       // szkeleton.hivas(this, "add_PumpaTart");
+        // szkeleton.hivas(this, "add_PumpaTart");
         pumpaTart = t;
         tart = t;
-       // szkeleton.visszateres(this, "add_PumpaTart");
+        // szkeleton.visszateres(this, "add_PumpaTart");
     }
     @Override
     public Pumpa get_PumpaTart(){
@@ -53,5 +53,11 @@ public class Szerelo extends Jatekos{
         szkeleton.hivas(this, "foltoz");
         rajtaAll.foltoz();
         szkeleton.visszateres(this, "foltoz");
+    }
+
+    public void szerel(){
+        szkeleton.hivas(this, "szerel");
+        rajtaAll.javitjak();
+        szkeleton.visszateres(this, "szerel");
     }
 }
