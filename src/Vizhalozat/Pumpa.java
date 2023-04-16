@@ -1,8 +1,20 @@
 package Vizhalozat;
 
+/**
+ * Legalább két csövet csatlakoztató mező típus a bemenetéből a kimenetébe pumpálja a vizet, ha működik.
+ */
 public class Pumpa extends AktivElemek implements Viheto{
+    /**
+     * Azt jelöli, hogy a pumpa rossz-e vagy működik
+     */
     private boolean mukodik;
+    /**
+     * A bemeneti cső referenciája
+     */
     private Cso bemenet;
+    /**
+     * A kimeneti cső referenciája
+     */
     private Cso kimenet;
 
     /**
@@ -70,13 +82,6 @@ public class Pumpa extends AktivElemek implements Viheto{
         mukodik = false;
         szkeleton.visszateres(this, "elromlik");
     }
-    public void setBemenet(Cso cs){
-        this.bemenet = cs;
-    }
-
-    public void setKimenet(Cso cs){
-        this.kimenet = cs;
-    }
 
     /**
      * meghívja a tartó játékos lerak_pumpa metódusát
@@ -87,5 +92,20 @@ public class Pumpa extends AktivElemek implements Viheto{
         szkeleton.hivas(this, "lerakjak");
         lerako.lerak_pumpa();
         szkeleton.visszateres(this, "lerakjak");
+    }
+
+    /**
+     * setter
+     * @param cs lesz az új bemenet
+     */
+    public void setBemenet(Cso cs){
+        this.bemenet = cs;
+    }
+    /**
+     * setter
+     * @param cs lesz az új kimenet
+     */
+    public void setKimenet(Cso cs){
+        this.kimenet = cs;
     }
 }
