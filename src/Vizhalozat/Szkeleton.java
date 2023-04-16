@@ -428,10 +428,13 @@ public class Szkeleton {
 
         /** Objektum referenciáinak beállítása */
         p.raAllit(sz);
-        p.addSzomszed(cs1);
-        p.addSzomszed(cs2);
-        p.addSzomszed(cs3);
-        p.addSzomszed(cs4);
+        ArrayList<Mezo> csovek = new ArrayList<Mezo>();
+        csovek.add(cs1);
+        csovek.add(cs2);
+        csovek.add(cs3);
+        csovek.add(cs4);
+
+        p.setSzomszedok(csovek);
         sz.pumpaAllitas();
 
         System.out.println("Teszt vege\n");
