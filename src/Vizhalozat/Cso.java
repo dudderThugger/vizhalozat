@@ -7,6 +7,21 @@ public class Cso extends Mezo implements Viheto {
         super(jatek, szkeleton);
     }
 
+    /**
+     *  Visszaadja, hogy az adott cső telített-e
+     * @return true, ha telitett
+     */
+    public boolean getTelitett() {
+        szkeleton.hivas(this, "getTelitett");
+        String ertek = szkeleton.kerdes(this, "Van bennem víz?(Igen/Nem)");
+        if(ertek.equals("Igen") ){
+            szkeleton.visszateres(this, "getTelitett", "true");
+            return true;
+        }
+        szkeleton.visszateres(this, "getTelitett", "false");
+        return false;
+    }
+
     @Override
     public boolean felveszik() {
         szkeleton.hivas(this, "felveszik");
