@@ -4,21 +4,38 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
+/**
+ * Szkeleton osztály a teszteléshez
+ */
 public class Szkeleton {
-    private HashMap<Object, String> ids;
+    /** Az azonosítókat és referenciáikat tároló hashmap */
+    private final HashMap<Object, String> ids;
+    /** A behúzás mértéke */
     private int tabs;
+    /** A tesztben lévő sorok sorszáma */
     private int lineCount;
 
+    /** Konstruktor */
     public Szkeleton() {
-        ids = new HashMap<Object, String>();
+        ids = new HashMap<>();
         tabs = 0;
         lineCount = 0;
     }
 
+    /**
+     * Egy új objektum hozzáadása az ids-hoz
+     * @param obj Az új objektum referenciája
+     * @param name Az új objektum neve
+     */
     public void ujObjektum(Object obj, String name) {
         ids.put(obj, name);
     }
 
+    /**
+     * Egy függvényhívás hozzáadása a tesztelői felülethez
+     * @param caller Az objektum, amin a függvényt meghívták
+     * @param functionName A meghívott függvény neve
+     */
     public void hivas(Object caller, String functionName) {
         ++tabs;
         String name = ids.get(caller);
@@ -26,6 +43,11 @@ public class Szkeleton {
         System.out.println(++lineCount + ". "+ name + "." + functionName + "()");
     }
 
+    /**
+     * Egy függvényvisszatérés hozzáadása a tesztelői felülethez
+     * @param caller Az objektum amin a függvényt meghívták
+     * @param functionName A visszatérő függvény neve
+     */
     public void visszateres(Object caller, String functionName) {
         String name = ids.get(caller);
         for (int i = 0; i < tabs; ++i) { System.out.print('\t');}
@@ -33,6 +55,12 @@ public class Szkeleton {
         --tabs;
     }
 
+    /**
+     * Egy függvényvisszatérés hozzáadása a tesztelői felülethez
+     * @param caller Az objektum amin a függvényt meghívták
+     * @param functionName A visszatérő függvény neve
+     * @param ret A visszatérés értéke szövegesen
+     */
     public void visszateres(Object caller, String functionName, String ret) {
         String name = ids.get(caller);
         for (int i = 0; i < tabs; ++i) { System.out.print('\t');}
@@ -40,6 +68,12 @@ public class Szkeleton {
         --tabs;
     }
 
+    /**
+     * Egy függvényvisszatérés hozzáadása a tesztelői felülethez
+     * @param caller Az objektum amin a függvényt meghívták
+     * @param functionName A visszatérő függvény neve
+     * @param ret A visszatérés értéke, mint objektum referencia
+     */
     public void visszateres(Object caller, String functionName, Object ret) {
         String retName = ids.get(ret);
         String name = ids.get(caller);
@@ -48,6 +82,12 @@ public class Szkeleton {
         --tabs;
     }
 
+    /**
+     * Kérdés feltevése a tesztelőnek
+     * @param caller A kérdést feltevő objektum referenciája
+     * @param question A kérdés szövegesen
+     * @return A tesztelő által adott válasz
+     */
     public String kerdes(Object caller, String question) {
         String name = ids.get(caller);
         for (int i = 0; i < tabs; ++i) { System.out.print('\t');}
@@ -59,6 +99,10 @@ public class Szkeleton {
         return answer;
     }
 
+    /**
+     * Üzenet küldése a tesztelőknek
+     * @param uzenet Az üzenet szövegesen
+     */
     public void uzenet( String uzenet) {
         ++tabs;
         for (int i = 0; i < tabs; ++i) { System.out.print('\t');}
@@ -66,10 +110,12 @@ public class Szkeleton {
         --tabs;
     }
 
-
+    /**
+     * A kezdő felületet kezelő függvény
+     */
     public void kezdoFelulet() {
         Scanner scanner = new Scanner(System.in);
-        int selectedTest = 1;
+        int selectedTest;
         String menu = "Valasszon tesztesetet!\n" +
                 "\t1. Pumpa elromlik\n" +
                 "\t2. Szerelo lerak egy pumpat\n" +
@@ -203,7 +249,7 @@ public class Szkeleton {
     public void teszt2() {
         System.out.println("2.Teszt: Szerelo lerak pumpat");
 
-        /** Objektumok létrehozása */
+        /* Objektumok létrehozása */
         Jatek j = new Jatek(this);
         Cso rajtaAll = new Cso(j, this);
         Szerelo sz = new Szerelo(rajtaAll, this);
@@ -218,10 +264,10 @@ public class Szkeleton {
         ids.put(szomszed2, "szomszed2");
         ids.put(tart, "tart");
 
-        /** Objektumok referenciáinak beállítása */
+        /* Objektumok referenciáinak beállítása */
         sz.add_PumpaTart(tart);
         rajtaAll.raAllit(sz);
-        ArrayList<Mezo> szomszedok = new ArrayList<Mezo>();
+        ArrayList<Mezo> szomszedok = new ArrayList<>();
         szomszedok.add(szomszed1);
         szomszedok.add(szomszed2);
         rajtaAll.setSzomszedok(szomszedok);
@@ -236,7 +282,7 @@ public class Szkeleton {
     public void teszt3() {
         System.out.println("3.Teszt: Szerelo rossz helyen rak le pumpat");
 
-        /** Objektumok létrehozása */
+        /* Objektumok létrehozása */
         Jatek j = new Jatek(this);
         Pumpa rajtaAll = new Pumpa(j, this);
         Szerelo sz = new Szerelo(rajtaAll, this);
@@ -247,7 +293,7 @@ public class Szkeleton {
         ids.put(sz, "sz");
         ids.put(tart, "tart");
 
-        /** Objektum referenciáinak beállítása */
+        /* Objektum referenciáinak beállítása */
         sz.add_Kezebe(tart);
         sz.add_PumpaTart(tart);
         rajtaAll.raAllit(sz);
@@ -262,7 +308,7 @@ public class Szkeleton {
     public void teszt4() {
         System.out.println("4.Teszt: Szerelo foltoz");
 
-        /** Objektumok létrehozása */
+        /* Objektumok létrehozása */
         Jatek j = new Jatek(this);
         Cso rajtaAll = new Cso(j, this);
         Szerelo sz = new Szerelo(rajtaAll, this);
@@ -271,7 +317,7 @@ public class Szkeleton {
         ids.put(rajtaAll, "rajtaAll");
         ids.put(sz, "sz");
 
-        /** Objektum referenciáinak beállítása */
+        /* Objektum referenciáinak beállítása */
         rajtaAll.raAllit(sz);
 
         sz.foltoz();
@@ -284,7 +330,7 @@ public class Szkeleton {
     public void teszt5() {
         System.out.println("5.Teszt: Szerelo aktiv elemen foltoz");
 
-        /** Objektumok létrehozása */
+        /* Objektumok létrehozása */
         Jatek j = new Jatek(this);
         Pumpa rajtaAll = new Pumpa(j, this);
         Szerelo sz = new Szerelo(rajtaAll, this);
@@ -293,7 +339,7 @@ public class Szkeleton {
         ids.put(rajtaAll, "rajtaAll");
         ids.put(sz, "sz");
 
-        /** Objektum referenciáinak beállítása */
+        /* Objektum referenciáinak beállítása */
         rajtaAll.raAllit(sz);
 
         sz.foltoz();
@@ -408,7 +454,7 @@ public class Szkeleton {
     public void teszt11(){
         System.out.println("11.Teszt: Pumpa vásárlás nem ciszternán");
 
-        /** Objektumok létrehozása */
+        /* Objektumok létrehozása */
         Jatek jatek = new Jatek(this);
         Cso rajtaAll = new Cso(jatek, this);
         Szerelo sz = new Szerelo(rajtaAll, this);
@@ -417,7 +463,7 @@ public class Szkeleton {
         ids.put(rajtaAll, "rajtaAll");
         ids.put(sz, "sz");
 
-        /** Objektum referenciáinak beállítása */
+        /* Objektum referenciáinak beállítása */
         rajtaAll.raAllit(sz);
         sz.pumpatvesz();
 
@@ -429,7 +475,7 @@ public class Szkeleton {
     public void teszt12(){
         System.out.println("12.Teszt: Játékos pumpát állít pumpán");
 
-        /** Objektumok létrehozása */
+        /* Objektumok létrehozása */
         Jatek jatek = new Jatek(this);
         Pumpa p = new Pumpa(jatek, this);
         Szerelo sz = new Szerelo(p, this);
@@ -442,9 +488,9 @@ public class Szkeleton {
         ids.put(p, "p");
         ids.put(sz, "sz");
 
-        /** Objektum referenciáinak beállítása */
+        /* Objektum referenciáinak beállítása */
         p.raAllit(sz);
-        ArrayList<Mezo> csovek = new ArrayList<Mezo>();
+        ArrayList<Mezo> csovek = new ArrayList<>();
         csovek.add(cs1);
         csovek.add(cs2);
         csovek.add(cs3);
@@ -461,7 +507,7 @@ public class Szkeleton {
     public void teszt13(){
         System.out.println("13.Teszt: Játékos pumpát állít nem pumpán");
 
-        /** Objektumok létrehozása */
+        /* Objektumok létrehozása */
         Jatek jatek = new Jatek(this);
         Cso rajtaAll = new Cso(jatek, this);
         Szerelo sz = new Szerelo(rajtaAll, this);
@@ -470,7 +516,7 @@ public class Szkeleton {
         ids.put(rajtaAll, "rajtaAll");
         ids.put(sz, "sz");
 
-        /** Objektum referenciáinak beállítása */
+        /* Objektum referenciáinak beállítása */
         rajtaAll.raAllit(sz);
         sz.pumpaAllitas();
 
@@ -482,7 +528,7 @@ public class Szkeleton {
     public void teszt14(){
         System.out.println("14.Teszt: Pumpa javítás pumpán");
 
-        /** Objektumok létrehozása */
+        /* Objektumok létrehozása */
         Jatek jatek = new Jatek(this);
         Pumpa rajtaAll = new Pumpa(jatek, this);
         Szerelo sz = new Szerelo(rajtaAll, this);
@@ -491,7 +537,7 @@ public class Szkeleton {
         ids.put(rajtaAll, "rajtaAll");
         ids.put(sz, "sz");
 
-        /** Objektum referenciáinak beállítása */
+        /* Objektum referenciáinak beállítása */
         rajtaAll.raAllit(sz);
         sz.szerel();
 
@@ -503,7 +549,7 @@ public class Szkeleton {
     public void teszt15(){
         System.out.println("15.Teszt: Pumpa javítás nem pumpán");
 
-        /** Objektumok létrehozása */
+        /* Objektumok létrehozása */
         Jatek jatek = new Jatek(this);
         Cso rajtaAll = new Cso(jatek, this);
         Szerelo sz = new Szerelo(rajtaAll, this);
@@ -512,7 +558,7 @@ public class Szkeleton {
         ids.put(rajtaAll, "rajtaAll");
         ids.put(sz, "sz");
 
-        /** Objektum referenciáinak beállítása */
+        /* Objektum referenciáinak beállítása */
         rajtaAll.raAllit(sz);
         sz.szerel();
 
@@ -524,7 +570,7 @@ public class Szkeleton {
     public void teszt16(){
         System.out.println("16.Teszt: Szabotőr lyukaszt csövön");
 
-        /** Objektumok létrehozása */
+        /* Objektumok létrehozása */
         Jatek j = new Jatek(this);
         Cso rajtaAll = new Cso(j, this);
         Szabotor sz = new Szabotor(rajtaAll, this);
@@ -533,7 +579,7 @@ public class Szkeleton {
         ids.put(rajtaAll, "rajtaAll");
         ids.put(sz, "sz");
 
-        /** Objektum referenciáinak beállítása */
+        /* Objektum referenciáinak beállítása */
         rajtaAll.raAllit(sz);
         sz.lyukaszt();
 
@@ -544,7 +590,7 @@ public class Szkeleton {
     public void teszt17(){
         System.out.println("17.Teszt: Szabotőr lyukaszt aktív elemen");
 
-        /** Objektumok létrehozása */
+        /* Objektumok létrehozása */
         Jatek j = new Jatek(this);
         Pumpa rajtaAll = new Pumpa(j, this);
         Szabotor sz = new Szabotor(rajtaAll, this);
@@ -553,7 +599,7 @@ public class Szkeleton {
         ids.put(rajtaAll, "rajtaAll");
         ids.put(sz, "sz");
 
-        /** Objektum referenciáinak beállítása */
+        /* Objektum referenciáinak beállítása */
         rajtaAll.raAllit(sz);
         sz.lyukaszt();
 
@@ -564,7 +610,7 @@ public class Szkeleton {
     public void teszt18(){
         System.out.println("18.Teszt: Pumpa vízfolyás");
 
-        /** Objektumok létrehozása */
+        /* Objektumok létrehozása */
         Jatek j = new Jatek(this);
         Pumpa p = new Pumpa(j, this);
         Cso be = new Cso(j, this);
@@ -575,7 +621,7 @@ public class Szkeleton {
         ids.put(be, "be");
         ids.put(ki, "ki");
 
-        /** Objektum referenciáinak beállítása */
+        /* Objektum referenciáinak beállítása */
         p.setBemenet(be);
         p.setKimenet(ki);
 
@@ -588,7 +634,7 @@ public class Szkeleton {
     public void teszt19(){
         System.out.println("19.Folyik a csőben a víz");
 
-        /** Objektumok létrehozása */
+        /* Objektumok létrehozása */
         Jatek j = new Jatek(this);
         Pumpa p = new Pumpa(j, this);
         Cso be = new Cso(j, this);
@@ -599,7 +645,7 @@ public class Szkeleton {
         ids.put(be, "be");
         ids.put(ki, "ki");
 
-        /** Objektum referenciáinak beállítása */
+        /* Objektum referenciáinak beállítása */
         p.setBemenet(be);
         p.setKimenet(ki);
 
@@ -612,7 +658,7 @@ public class Szkeleton {
     public void teszt20(){
         System.out.println("20.Teszt: Befolyik a ciszternába a víz");
 
-        /** Objektumok létrehozása */
+        /* Objektumok létrehozása */
         Jatek j = new Jatek(this);
         Cso cs = new Cso(j, this);
         Ciszterna c = new Ciszterna(j, this);
@@ -621,7 +667,7 @@ public class Szkeleton {
         ids.put(cs, "cs");
         ids.put(c, "c");
 
-        /** Objektum referenciáinak beállítása */
+        /* Objektum referenciáinak beállítása */
         ArrayList<Mezo> csoSzomszed = new ArrayList<>();
         ArrayList<Mezo> ciszternaSzomszed = new ArrayList<>();
         csoSzomszed.add(c);
@@ -707,5 +753,4 @@ public class Szkeleton {
         lineCount = 0;
         ids.clear();
     }
-
 }
