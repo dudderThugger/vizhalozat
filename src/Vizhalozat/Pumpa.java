@@ -35,7 +35,7 @@ public class Pumpa extends AktivElemek implements Viheto{
     @Override
     public void befolyik() {
         szkeleton.hivas(this, "befolyik");
-        if(bemenet.getTelitett() && this.telitett==false) {
+        if(mukodik && bemenet.getTelitett() && !this.telitett) {
             telitett = true;
             kimenet.befolyik();
         }
@@ -90,7 +90,6 @@ public class Pumpa extends AktivElemek implements Viheto{
     @Override
     public void lerakjak(Jatekos lerako) {
         szkeleton.hivas(this, "lerakjak");
-        lerako.lerak_pumpa();
         szkeleton.visszateres(this, "lerakjak");
     }
 
