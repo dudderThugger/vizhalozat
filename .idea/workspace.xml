@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="Jatekos, Pumpa, Mezo osztályok">
+    <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="21-24 es tesztek kesz&#10;szabotor, szerelo, viheto osztalyok kommentalva&#10;az altalam letrehozott fuggvenyek amik a tesztekhez kellettek kommentalva">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Jatekos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Jatekos.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +36,8 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;
   }
 }</component>
   <component name="RunManager">
@@ -126,12 +128,12 @@
       <option name="project" value="LOCAL" />
       <updated>1681604676023</updated>
     </task>
-    <task id="LOCAL-00011" summary="Jatekos, Pumpa, Mezo osztályok">
-      <created>1681607609561</created>
+    <task id="LOCAL-00011" summary="első 20 teszt fasza, minimális javítások">
+      <created>1681670843667</created>
       <option name="number" value="00011" />
       <option name="presentableId" value="LOCAL-00011" />
       <option name="project" value="LOCAL" />
-      <updated>1681607609561</updated>
+      <updated>1681670843667</updated>
     </task>
     <option name="localTasksCounter" value="12" />
     <servers />
@@ -158,7 +160,7 @@
     <MESSAGE value="20-as teszt eset elkészítése" />
     <MESSAGE value="18-as teszt eset elkészítése" />
     <MESSAGE value="19-es teszt eset elkészítése" />
-    <MESSAGE value="Jatekos, Pumpa, Mezo osztályok" />
-    <option name="LAST_COMMIT_MESSAGE" value="Jatekos, Pumpa, Mezo osztályok" />
+    <MESSAGE value="első 20 teszt fasza, minimális javítások" />
+    <option name="LAST_COMMIT_MESSAGE" value="első 20 teszt fasza, minimális javítások" />
   </component>
 </project>

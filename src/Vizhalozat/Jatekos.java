@@ -23,12 +23,60 @@ public abstract class Jatekos {
     }
 
     /**
-     *  Megkísérli a lépést a paraméterként megadott mezőre,
-     *  ha sikeres átáll arra a mezőre
-     * @param m annak a Mezo-nek a referencuiája, ahova lépni akar
+     * Amikor a játékos csőre lép, ekkor hívja ezt a függvényt
+     * lekéri a pozíciója szomszédjait és ha nem állnak a lépni kívánt csövön átlép rá és lelép az aktuálísról
+     * @param szomszed a cso típusú objektum amire lép a játékos
      */
-    public void lepes(Mezo m){
+    public void lepes(Cso szomszed){
+        szkeleton.ujObjektum(szomszed, "szomszed");
+
         szkeleton.hivas(this, "lepes");
+        ArrayList<Mezo> szomszedok = rajtaAll.getSzomszedok();
+
+        szomszedok.add(szomszed);
+
+        if(szomszedok.contains(szomszed)){
+            szkeleton.hivas(szomszed, "ralep");
+
+            String valasz = szkeleton.kerdes(szomszed, "Áll játékos éppen a kiválasztott csövön? (igen/nem)");
+
+            if(valasz.equals("igen")){
+                szkeleton.visszateres(szomszed, "ralep", "false");
+            } else if (valasz.equals("nem")) {
+                szkeleton.visszateres(szomszed, "ralep", "true");
+
+                szkeleton.hivas(rajtaAll, "lelep");
+                szkeleton.visszateres(rajtaAll, "lelep");
+            }
+        }
+
+        szkeleton.visszateres(this, "lepes");
+    }
+
+    /**
+     * Amikor a játékos NEM csőre lép, ekkor hívja ezt a függvényt
+     * lekéri a pozíciója szomszédjait és ha a visszakapott szomszédok között van a lépni kívánt AktívElem, rálép
+     * @param szomszed a AktivElemek típusú objektum amire lép a játékos
+     */
+    public void lepes(AktivElemek szomszed){
+        szkeleton.ujObjektum(szomszed, "szomszed");
+
+        szkeleton.hivas(this, "lepes");
+        ArrayList<Mezo> szomszedok = rajtaAll.getSzomszedok();
+
+        szomszedok.add(szomszed);
+
+        if(szomszedok.contains(szomszed)){
+            szkeleton.hivas(szomszed, "ralep");
+            szkeleton.visszateres(szomszed, "ralep", "true");
+
+            szkeleton.hivas(rajtaAll, "lelep");
+            szkeleton.visszateres(rajtaAll, "lelep");
+
+        }else{
+            szkeleton.visszateres(szomszed, "ralep", "false");
+        }
+
         szkeleton.visszateres(this, "lepes");
     }
 
@@ -37,6 +85,25 @@ public abstract class Jatekos {
      */
     public void pumpaAllitas(){
         szkeleton.hivas(this, "pumpaAllitas");
+
+        ArrayList<Mezo> szomszedok = rajtaAll.getSzomszedok();
+        Cso[] csovek = new Cso[2];
+        if(szomszedok.size() > 0) {
+            for (int i = 0; i < 2; i++) {
+                for (int j = 1; j <= szomszedok.size(); j++) {
+                    szkeleton.uzenet("Cső " + j);
+                }
+                int valasz = Integer.parseInt(szkeleton.kerdes(this, "Az " + (i + 1) + ". cső kiválasztása: (A fentiek közül)"));
+                if (valasz > 0 && valasz <= szomszedok.size()) csovek[i] = (Cso) szomszedok.remove(valasz - 1);
+                else {
+                    System.out.println("Nem megfelelő válasz!");
+                    i--;
+                }
+            }
+        }
+
+        rajtaAll.atAllit(csovek[0], csovek[1]);
+
         szkeleton.visszateres(this, "pumpaAllitas");
     }
 
@@ -71,6 +138,6 @@ public abstract class Jatekos {
         this.tart = t;
     }
 
-   abstract Pumpa get_PumpaTart();
+    abstract Pumpa get_PumpaTart();
     public abstract void lerak_pumpa();
 }
