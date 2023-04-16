@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="21-24 es tesztek kesz&#10;szabotor, szerelo, viheto osztalyok kommentalva&#10;az altalam letrehozott fuggvenyek amik a tesztekhez kellettek kommentalva">
+    <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="kommentek csőnél">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Jatekos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Jatekos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Ciszterna.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Ciszterna.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Cso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Cso.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Jatek.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Jatek.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,6 +164,7 @@
     <MESSAGE value="18-as teszt eset elkészítése" />
     <MESSAGE value="19-es teszt eset elkészítése" />
     <MESSAGE value="első 20 teszt fasza, minimális javítások" />
-    <option name="LAST_COMMIT_MESSAGE" value="első 20 teszt fasza, minimális javítások" />
+    <MESSAGE value="kommentek csőnél" />
+    <option name="LAST_COMMIT_MESSAGE" value="kommentek csőnél" />
   </component>
 </project>

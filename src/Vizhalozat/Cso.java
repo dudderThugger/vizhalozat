@@ -1,7 +1,11 @@
 package Vizhalozat;
 import java.util.Scanner;
 
+/**
+ * Két mezőt csatlakoztató mezőtípus, a vízhálózat építőeleme.
+ */
 public class Cso extends Mezo implements Viheto {
+    /** Azt jelzi, hogy lyukas-e a cső */
     protected boolean lyukas;
     public Cso(Jatek jatek, Szkeleton szkeleton) {
         super(jatek, szkeleton);
@@ -128,6 +132,10 @@ public class Cso extends Mezo implements Viheto {
         return false;
     }
 
+    /**
+     * Szerelő megkísérli egy pumpa vásárlását a csövön
+     * @return Mindig null
+     */
     @Override
     public Pumpa pumpaVasarlas() {
         szkeleton.hivas(this, "pumpaVasarlas");
@@ -135,6 +143,12 @@ public class Cso extends Mezo implements Viheto {
         return null;
     }
 
+    /**
+     * Játékos megkísérli a cső átállítását
+     * @param be Az új bemenet
+     * @param ki Az új kimenet
+     * @return Mindig false
+     */
     @Override
     public boolean atAllit(Cso be, Cso ki) {
         szkeleton.hivas(this, "atAllit");
@@ -142,6 +156,10 @@ public class Cso extends Mezo implements Viheto {
         return false;
     }
 
+    /**
+     * Szerelő megkísérli a cső javítását
+     * @return Mindig false
+     */
     @Override
     public boolean javitjak() {
         szkeleton.hivas(this, "javitjak");
@@ -149,6 +167,11 @@ public class Cso extends Mezo implements Viheto {
         return false;
     }
 
+    /**
+     * Játékos megpróbál csövet lehelyezni a csőre
+     * @param cs A lehelyezendő cső
+     * @return Mindig false
+     */
     @Override
     public boolean csoLehelyezes(Cso cs) {
         szkeleton.hivas(this, "csoLehelyezes");
@@ -156,6 +179,10 @@ public class Cso extends Mezo implements Viheto {
         return false;
     }
 
+    /**
+     * Lerakják a csövet
+     * @param lerako a Jatekos, aki lerakja a az adott objektumot
+     */
     @Override
     public void lerakjak(Jatekos lerako) {
         szkeleton.hivas(this, "lerakjak");

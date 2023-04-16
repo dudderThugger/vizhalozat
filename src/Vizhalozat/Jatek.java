@@ -1,29 +1,27 @@
 package Vizhalozat;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Random;
-import java.util.Scanner;
 
 /**
  * A játék belső szerkezetéért felelős osztály. A játék ciklusának futtatásáért, játékosok és mezők létrehozasaért
  * és az aktuális állás számontartásáért felelős
  */
 public class Jatek {
-    private Szkeleton szkeleton;
-
-    private ArrayList<Mezo> mezok;
-    private ArrayList<Pumpa> pumpak;
-    private int szabotorPont;
-    private int szereloPont;
+    /** A szkeletonra mutató referencia */
+    private final Szkeleton szkeleton;
+    /** A pumpákat tartalmazó lista */
+    private final ArrayList<Pumpa> pumpak;
+    /** A szabotőrök pontjait jelző egész érték */
+    int szabotorPont;
+    /** A szerelők pontjait jelző egész érték */
+    int szereloPont;
 
     /**
      * A játék osztály egyetlen konstruktora
      * @param sz A szkeleton, tesztelő osztály konstruktora
      */
     public Jatek(Szkeleton sz) {
-        mezok = new ArrayList<Mezo>();
-        pumpak = new ArrayList<Pumpa>();
+        pumpak = new ArrayList<>();
         szkeleton = sz;
         szabotorPont = 0;
         szereloPont = 0;
@@ -42,7 +40,6 @@ public class Jatek {
      */
     public void pumpaElRomlik() {
         szkeleton.hivas(this, "pumpaElromlik");
-        Random random = new Random();
         for (Pumpa pumpa : pumpak) {
             int ertek = Integer.parseInt(szkeleton.kerdes(this, "Mi a random ertek?"));
             if(ertek < 2) {
