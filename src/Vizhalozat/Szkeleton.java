@@ -78,6 +78,10 @@ public class Szkeleton {
                 "\t18.Teszt: Pumpa vízfolyás\n" +
                 "\t19.Teszt: Folyik a csőben a víz\n" +
                 "\t20.Teszt: Befolyik a ciszternába a víz\n" +
+                "\t21.Teszt: Játékos csőre lép\n" +
+                "\t22.Teszt: Játékos AktívElemre lép\n" +
+                "\t23.Teszt: Játék indítása, main meghívása\n" +
+                "\t24.Teszt: Csövek generálása ciszternáknál\n" +
                 "\t69. Kilépés\n" +
                 "\n\n";
 
@@ -131,6 +135,18 @@ public class Szkeleton {
                     break;
                 case 20:
                     teszt20();
+                    break;
+                case 21:
+                    teszt21();
+                    break;
+                case 22:
+                    teszt22();
+                    break;
+                case 23:
+                    teszt23();
+                    break;
+                case 24:
+                    teszt24();
                     break;
                 case 69:
                     System.exit(69);
@@ -475,6 +491,77 @@ public class Szkeleton {
         System.out.println("Teszt vege\n");
         ids.clear();
         lineCount = 0;
+    }
+
+    public void teszt21(){
+        System.out.println("21.Teszt: Játékos csőre lép");
+        Jatek j = new Jatek(this);
+        Pumpa rajtaAll = new Pumpa( j,this);
+        Szerelo sz = new Szerelo(rajtaAll ,this);
+        Cso szomszed = new Cso(j, this);
+
+
+        ids.put(j, "j");
+        ids.put(rajtaAll, "rajtaAll");
+        ids.put(sz, "sz");
+        ids.put(szomszed, "szomszed");
+
+        sz.lepes(szomszed);
+        System.out.println("Teszt vege\n");
+        lineCount = 0;
+        ids.clear();
+    }
+
+    public void teszt22(){
+        System.out.println("22.Teszt: Játékos AktívElemre lép");
+        Jatek j = new Jatek(this);
+        Cso rajtaAll = new Cso( j,this);
+        Szerelo sz = new Szerelo(rajtaAll ,this);
+        Forras szomszed = new Forras(j, this);
+
+
+        ids.put(j, "j");
+        ids.put(rajtaAll, "rajtaAll");
+        ids.put(sz, "sz");
+        ids.put(szomszed, "szomszed");
+
+        sz.lepes(szomszed);
+        System.out.println("Teszt vege\n");
+        lineCount = 0;
+        ids.clear();
+    }
+
+    public void teszt23(){
+        System.out.println("23.Teszt: Játék indítása, main meghívása");
+
+        App a = new App();
+
+        ids.put(a, "a");
+
+        a.main();
+
+        System.out.println("Teszt vege\n");
+        lineCount = 0;
+        ids.clear();
+    }
+
+    public void teszt24(){
+        System.out.println("24.Teszt: Csövek generálása ciszternáknál");
+        Jatek j = new Jatek(this);
+        Ciszterna c = new Ciszterna(j, this);
+        ids.put(c, "c");
+
+        Szkeleton szkeleton = new Szkeleton();
+        ids.put(szkeleton, "szkeleton");
+
+        String valasz = kerdes(szkeleton, "Eltelt annyi idő amennyi alatt legenerálódik egy cső? (igen/nem)");
+        if(valasz.equals("igen")) {
+            c.csoKeszul();
+        }
+
+        System.out.println("Teszt vege\n");
+        lineCount = 0;
+        ids.clear();
     }
 
 }

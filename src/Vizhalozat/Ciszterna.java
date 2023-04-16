@@ -69,4 +69,22 @@ public class Ciszterna extends AktivElemek{
         rajtaAllnak.add(j);
         szkeleton.visszateres(this, "raAllit");
     }
+
+    /**
+     * Random időközönként hívja a Játék
+     * Ez hozza létre az új csöveket, amik az egyes ciszternákhoz kapcsolódnak létrejöttükkor
+     */
+    public void csoKeszul(){
+        szkeleton.hivas(this, "csoKeszul");
+
+        Cso cs = new Cso(jatek, szkeleton);
+        szkeleton.ujObjektum(cs, "cs");
+        szkeleton.hivas(cs, "<<create>>");
+        szkeleton.visszateres(cs, "<<create>>");
+
+        cs.addSzomszed(this);
+        addSzomszed(cs);
+
+        szkeleton.visszateres(this, "csoKeszul");
+    }
 }

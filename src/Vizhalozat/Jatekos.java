@@ -44,4 +44,62 @@ public abstract class Jatekos {
     }
 
    abstract Pumpa get_PumpaTart();
+
+    /**
+     * Amikor a játékos csőre lép, ekkor hívja ezt a függvényt
+     * lekéri a pozíciója szomszédjait és ha nem állnak a lépni kívánt csövön átlép rá és lelép az aktuálísról
+     * @param szomszed a cso típusú objektum amire lép a játékos
+     */
+    public void lepes(Cso szomszed){
+        szkeleton.ujObjektum(szomszed, "szomszed");
+
+        szkeleton.hivas(this, "lepes");
+        ArrayList<Mezo> szomszedok = rajtaAll.getSzomszedok();
+
+        szomszedok.add(szomszed);
+
+        if(szomszedok.contains(szomszed)){
+            szkeleton.hivas(szomszed, "ralep");
+
+            String valasz = szkeleton.kerdes(szomszed, "Áll játékos éppen a kiválasztott csövön? (igen/nem)");
+
+            if(valasz.equals("igen")){
+                szkeleton.visszateres(szomszed, "ralep", "false");
+            } else if (valasz.equals("nem")) {
+                szkeleton.visszateres(szomszed, "ralep", "true");
+
+                szkeleton.hivas(rajtaAll, "lelep");
+                szkeleton.visszateres(rajtaAll, "lelep");
+            }
+        }
+
+        szkeleton.visszateres(this, "lepes");
+    }
+
+    /**
+     * Amikor a játékos NEM csőre lép, ekkor hívja ezt a függvényt
+     * lekéri a pozíciója szomszédjait és ha a visszakapott szomszédok között van a lépni kívánt AktívElem, rálép
+     * @param szomszed a AktivElemek típusú objektum amire lép a játékos
+     */
+    public void lepes(AktivElemek szomszed){
+        szkeleton.ujObjektum(szomszed, "szomszed");
+
+        szkeleton.hivas(this, "lepes");
+        ArrayList<Mezo> szomszedok = rajtaAll.getSzomszedok();
+
+        szomszedok.add(szomszed);
+
+        if(szomszedok.contains(szomszed)){
+            szkeleton.hivas(szomszed, "ralep");
+            szkeleton.visszateres(szomszed, "ralep", "true");
+
+            szkeleton.hivas(rajtaAll, "lelep");
+            szkeleton.visszateres(rajtaAll, "lelep");
+
+        }else{
+            szkeleton.visszateres(szomszed, "ralep", "false");
+        }
+
+        szkeleton.visszateres(this, "lepes");
+    }
 }
