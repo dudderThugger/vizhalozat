@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="19-es teszt eset elkészítése">
+    <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="Jatekos, Pumpa, Mezo osztályok">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Jatekos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Jatekos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Mezo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Mezo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Pumpa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Pumpa.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +126,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681604676023</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Jatekos, Pumpa, Mezo osztályok">
+      <created>1681607609561</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1681607609561</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -154,6 +158,7 @@
     <MESSAGE value="20-as teszt eset elkészítése" />
     <MESSAGE value="18-as teszt eset elkészítése" />
     <MESSAGE value="19-es teszt eset elkészítése" />
-    <option name="LAST_COMMIT_MESSAGE" value="19-es teszt eset elkészítése" />
+    <MESSAGE value="Jatekos, Pumpa, Mezo osztályok" />
+    <option name="LAST_COMMIT_MESSAGE" value="Jatekos, Pumpa, Mezo osztályok" />
   </component>
 </project>
