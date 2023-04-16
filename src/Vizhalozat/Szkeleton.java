@@ -685,7 +685,7 @@ public class Szkeleton {
 
     public void teszt21(){
         System.out.println("21.Teszt: Játékos csőre lép");
-        /** Objektumok létrehozása */
+        /* Objektumok létrehozása */
         Jatek j = new Jatek(this);
         Pumpa rajtaAll = new Pumpa( j,this);
         Szerelo sz = new Szerelo(rajtaAll ,this);
@@ -705,7 +705,7 @@ public class Szkeleton {
 
     public void teszt22(){
         System.out.println("22.Teszt: Játékos AktívElemre lép");
-        /** Objektumok létrehozása */
+        /* Objektumok létrehozása */
         Jatek j = new Jatek(this);
         Cso rajtaAll = new Cso( j,this);
         Szerelo sz = new Szerelo(rajtaAll ,this);
@@ -725,7 +725,7 @@ public class Szkeleton {
 
     public void teszt23(){
         System.out.println("23.Teszt: Játék indítása, main meghívása");
-        /** Objektumok létrehozása */
+        /* Objektumok létrehozása */
         App a = new App();
 
         ids.put(a, "a");
@@ -739,7 +739,7 @@ public class Szkeleton {
 
     public void teszt24(){
         System.out.println("24.Teszt: Csövek generálása ciszternáknál");
-        /** Objektumok létrehozása */
+        /* Objektumok létrehozása */
         Jatek j = new Jatek(this);
         Ciszterna c = new Ciszterna(j, this);
         ids.put(c, "c");
