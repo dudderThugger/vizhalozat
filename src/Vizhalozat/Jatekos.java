@@ -10,6 +10,7 @@ public abstract class Jatekos {
     protected Viheto tart;
     protected Cso csoTart;
     protected Mezo rajtaAll;
+    protected int varakozasiIdo;
 
     /**
      * A játékos egyetlen konstruktora
@@ -21,12 +22,59 @@ public abstract class Jatekos {
         this.szkeleton = szkeleton;
     }
 
+    /**
+     *  Megkísérli a lépést a paraméterként megadott mezőre,
+     *  ha sikeres átáll arra a mezőre
+     * @param m annak a Mezo-nek a referencuiája, ahova lépni akar
+     */
+    public void lepes(Mezo m){
+        szkeleton.hivas(this, "lepes");
+        szkeleton.visszateres(this, "lepes");
+    }
+
+    /**
+     * megkísérli átállítani a mezőt, amin áll, csak pumpa mezőn hatásos
+     */
+    public void pumpaAllitas(){
+        szkeleton.hivas(this, "pumpaAllitas");
+
+        ArrayList<Mezo> szomszedok = rajtaAll.getSzomszedok();
+        Cso[] csovek = new Cso[2];
+        if(szomszedok.size() > 0) {
+            for (int i = 0; i < 2; i++) {
+                for (int j = 1; j <= szomszedok.size(); j++) {
+                    szkeleton.uzenet("Cső " + j);
+                }
+                int valasz = Integer.parseInt(szkeleton.kerdes(this, "Az " + (i + 1) + ". cső kiválasztása: (A fentiek közül)"));
+                if (valasz > 0 && valasz <= szomszedok.size()) csovek[i] = (Cso) szomszedok.remove(valasz - 1);
+                else {
+                    System.out.println("Nem megfelelő válasz!");
+                    i--;
+                }
+            }
+        }
+
+        rajtaAll.atAllit(csovek[0], csovek[1]);
+
+        szkeleton.visszateres(this, "pumpaAllitas");
+    }
+
+    /**
+     * Megkísérli a cső lehelyézést a mezőn amin áll a
+     * csoLehelyez függvény meghívásával,
+     * ha sikeres lerakja a csövet az aktuális és az m: Mező közé
+     */
     public void lerak_cso(){
         szkeleton.hivas(this,"lerak_cso");
         rajtaAll.csoLehelyezes(csoTart);
         szkeleton.visszateres(this,"lerak_cso");
 
     }
+
+    /**
+     * Megkísérel felvenni egy csövet a megadott mezőről
+     * @param felvesz annak csőnek a referenciája, amit felvesz
+     */
     public void felvesz_cso(Cso felvesz){
         szkeleton.hivas(this,"felvesz_cso");
 
@@ -37,69 +85,11 @@ public abstract class Jatekos {
         }
         szkeleton.visszateres(this,"felvesz_cso");
     }
-    public abstract void lerak_pumpa();
 
     public void add_Kezebe(Viheto t){
         this.tart = t;
     }
 
-   abstract Pumpa get_PumpaTart();
-
-    /**
-     * Amikor a játékos csőre lép, ekkor hívja ezt a függvényt
-     * lekéri a pozíciója szomszédjait és ha nem állnak a lépni kívánt csövön átlép rá és lelép az aktuálísról
-     * @param szomszed a cso típusú objektum amire lép a játékos
-     */
-    public void lepes(Cso szomszed){
-        szkeleton.ujObjektum(szomszed, "szomszed");
-
-        szkeleton.hivas(this, "lepes");
-        ArrayList<Mezo> szomszedok = rajtaAll.getSzomszedok();
-
-        szomszedok.add(szomszed);
-
-        if(szomszedok.contains(szomszed)){
-            szkeleton.hivas(szomszed, "ralep");
-
-            String valasz = szkeleton.kerdes(szomszed, "Áll játékos éppen a kiválasztott csövön? (igen/nem)");
-
-            if(valasz.equals("igen")){
-                szkeleton.visszateres(szomszed, "ralep", "false");
-            } else if (valasz.equals("nem")) {
-                szkeleton.visszateres(szomszed, "ralep", "true");
-
-                szkeleton.hivas(rajtaAll, "lelep");
-                szkeleton.visszateres(rajtaAll, "lelep");
-            }
-        }
-
-        szkeleton.visszateres(this, "lepes");
-    }
-
-    /**
-     * Amikor a játékos NEM csőre lép, ekkor hívja ezt a függvényt
-     * lekéri a pozíciója szomszédjait és ha a visszakapott szomszédok között van a lépni kívánt AktívElem, rálép
-     * @param szomszed a AktivElemek típusú objektum amire lép a játékos
-     */
-    public void lepes(AktivElemek szomszed){
-        szkeleton.ujObjektum(szomszed, "szomszed");
-
-        szkeleton.hivas(this, "lepes");
-        ArrayList<Mezo> szomszedok = rajtaAll.getSzomszedok();
-
-        szomszedok.add(szomszed);
-
-        if(szomszedok.contains(szomszed)){
-            szkeleton.hivas(szomszed, "ralep");
-            szkeleton.visszateres(szomszed, "ralep", "true");
-
-            szkeleton.hivas(rajtaAll, "lelep");
-            szkeleton.visszateres(rajtaAll, "lelep");
-
-        }else{
-            szkeleton.visszateres(szomszed, "ralep", "false");
-        }
-
-        szkeleton.visszateres(this, "lepes");
-    }
+    abstract Pumpa get_PumpaTart();
+    public abstract void lerak_pumpa();
 }
