@@ -10,20 +10,16 @@ public class App {
      * @param args a program argumentumai
      */
     public static void main(String[] args) {
-        szkeleton = new Szkeleton();
-
-        szkeleton.kezdoFelulet();
+        Proto proto = new Proto();
+        proto.parancsIndito();
     }
 
     /**
      * A rendes játékban létező main függvény, ami legenerálja a mapot és elindítja a játékot
      */
     public void main(){
-        szkeleton.hivas(this, "main");
-        Jatek j = new Jatek(szkeleton);
-        szkeleton.ujObjektum(j, "j");
+        Jatek j = new Jatek();
         j.init();
-        szkeleton.visszateres(this, "main");
     }
 
 }

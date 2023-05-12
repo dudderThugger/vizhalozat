@@ -9,8 +9,7 @@ import java.util.Scanner;
  */
 public class Szerelo extends Jatekos{
     private Pumpa pumpaTart;
-    public Szerelo(Mezo rajtaAll, Szkeleton szkeleton) {
-        super(rajtaAll, szkeleton);
+    public Szerelo() {
     }
 
     /**
@@ -19,24 +18,24 @@ public class Szerelo extends Jatekos{
      * a Vihető függvényét valósítja meg
      */
     public void lerak_pumpa() {
-        szkeleton.hivas(this, "lerak_pumpa");
-        if(pumpaTart != null) {
-            if(rajtaAll.pumpaLehelyez(pumpaTart)) {
-                Cso uj = new Cso(jatek, szkeleton);
-                szkeleton.ujObjektum(uj, "uj");
-                ArrayList<Mezo> szomszedok = rajtaAll.getSzomszedok();
-                Mezo szomszed = szomszedok.get(0);
-                rajtaAll.removeSzomszed(szomszed);
-                uj.addSzomszed(szomszed);
-                uj.addSzomszed(pumpaTart);
-                tart.lerakjak(this);
-                pumpaTart.addSzomszed(uj);
-                pumpaTart.addSzomszed(rajtaAll);
-                szomszed.removeSzomszed(rajtaAll);
-                szomszed.addSzomszed(uj);
-            }
-        }
-        szkeleton.visszateres(this, "lerak_pumpa");
+//        szkeleton.hivas(this, "lerak_pumpa");
+//        if(pumpaTart != null) {
+//            if(rajtaAll.pumpaLehelyez(pumpaTart)) {
+//                Cso uj = new Cso(jatek, szkeleton);
+//                szkeleton.ujObjektum(uj, "uj");
+//                ArrayList<Mezo> szomszedok = rajtaAll.getSzomszedok();
+//                Mezo szomszed = szomszedok.get(0);
+//                rajtaAll.removeSzomszed(szomszed);
+//                uj.addSzomszed(szomszed);
+//                uj.addSzomszed(pumpaTart);
+//                tart.lerakjak(this);
+//                pumpaTart.addSzomszed(uj);
+//                pumpaTart.addSzomszed(rajtaAll);
+//                szomszed.removeSzomszed(rajtaAll);
+//                szomszed.addSzomszed(uj);
+//            }
+//        }
+//        szkeleton.visszateres(this, "lerak_pumpa");
     }
 
     /**
@@ -44,13 +43,13 @@ public class Szerelo extends Jatekos{
      * ilyenkor lényegében a Forrás amin áll a Szerelő, legenerál egy új pumpát beleteszi a Szerelő kezébe
      */
     public void pumpatvesz(){
-        szkeleton.hivas(this, "pumpatvesz");
-
-        Pumpa p = rajtaAll.pumpaVasarlas();
-        if(tart==null){
-            pumpaTart = p;
-        }
-        szkeleton.visszateres(this, "pumpatvesz");
+//        szkeleton.hivas(this, "pumpatvesz");
+//
+//        Pumpa p = rajtaAll.pumpaVasarlas();
+//        if(tart==null){
+//            pumpaTart = p;
+//        }
+//        szkeleton.visszateres(this, "pumpatvesz");
     }
 
     /**
@@ -76,14 +75,14 @@ public class Szerelo extends Jatekos{
      * Amennyiben lyukas az adott cső amin a Szerelő áll, azt ezzel a függvénnyel befoltozza
      */
     public void foltoz() {
-        szkeleton.hivas(this, "foltoz");
-        rajtaAll.foltoz();
-        szkeleton.visszateres(this, "foltoz");
+//        szkeleton.hivas(this, "foltoz");
+//        rajtaAll.foltoz();
+//        szkeleton.visszateres(this, "foltoz");
     }
 
     public void szerel(){
-        szkeleton.hivas(this, "szerel");
-        rajtaAll.javitjak();
-        szkeleton.visszateres(this, "szerel");
+//        szkeleton.hivas(this, "szerel");
+//        rajtaAll.javitjak();
+//        szkeleton.visszateres(this, "szerel");
     }
 }

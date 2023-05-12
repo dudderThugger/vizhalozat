@@ -8,10 +8,9 @@ public abstract class AktivElemek extends Mezo{
     /**
      * Az osztály egyetlen konstruktora
      * @param jatek A játék objektumára mutató referencia
-     * @param szkeleton A tesztelő osztály objektumára mutató referencia
      */
-    public AktivElemek(Jatek jatek, Szkeleton szkeleton) {
-        super(jatek, szkeleton);
+    public AktivElemek(Jatek jatek) {
+        super(jatek);
     }
 
     /**
@@ -19,8 +18,6 @@ public abstract class AktivElemek extends Mezo{
      * @return Mindig false
      */
     public boolean felveszik() {
-        szkeleton.hivas(this, "felveszik");
-        szkeleton.visszateres(this, "felveszik", "false");
         return false;
     }
 
@@ -31,8 +28,6 @@ public abstract class AktivElemek extends Mezo{
      */
     @Override
     public boolean pumpaLehelyez(Pumpa p) {
-        szkeleton.hivas(this, "pumpaLehelyez");
-        szkeleton.visszateres(this, "pumpaLehelyez", "false");
         return false;
     }
 
@@ -42,8 +37,6 @@ public abstract class AktivElemek extends Mezo{
      */
     @Override
     public boolean foltoz() {
-        szkeleton.hivas(this, "foltoz");
-        szkeleton.visszateres(this, "foltoz", "false");
         return false;
     }
 
@@ -53,8 +46,6 @@ public abstract class AktivElemek extends Mezo{
      */
     @Override
     public boolean lyukaszt() {
-        szkeleton.hivas(this, "lyukaszt");
-        szkeleton.visszateres(this, "lyukaszt", "false");
         return false;
     }
 
@@ -64,8 +55,6 @@ public abstract class AktivElemek extends Mezo{
      */
     @Override
     public Pumpa pumpaVasarlas() {
-        szkeleton.hivas(this, "pumpaVasarlas");
-        szkeleton.visszateres(this, "pumpaVasarlas", "null");
         return null;
     }
 
@@ -90,10 +79,7 @@ public abstract class AktivElemek extends Mezo{
      */
     @Override
     public boolean csoLehelyezes(Cso cs) {
-        szkeleton.hivas(this, "csoLehelyezes");
-        szomszedok.add(cs);
         cs.addSzomszed(this);
-        szkeleton.visszateres(this, "csoLehelyezes", "true");
         return false;
     }
 }

@@ -4,9 +4,7 @@ package Vizhalozat;
  * Forrás osztály felelős a víz elindításáért (folyatásáért) a szomszédos mezőkbe
  */
 public class Forras extends AktivElemek{
-    public Forras(Jatek jatek, Szkeleton szkeleton) {
-        super(jatek, szkeleton);
-    }
+    public Forras(Jatek jatek) { super(jatek); }
 
     /**
      * Biztosan false-al tér vissza, mivel nem felet felvenni
@@ -14,8 +12,8 @@ public class Forras extends AktivElemek{
      */
     @Override
     public boolean felveszik() {
-        szkeleton.hivas(this, "felveszik");
-        szkeleton.visszateres(this, "felveszik");
+//        szkeleton.hivas(this, "felveszik");
+//        szkeleton.visszateres(this, "felveszik");
         return false;
     }
 
@@ -23,11 +21,11 @@ public class Forras extends AktivElemek{
      * Víz folyatás szomszédos mezőkbe
      */
     public void vizTermeles() {
-        szkeleton.hivas(this, "vizTermeles");
-        for(Mezo szomszed : szomszedok) {
-            szomszed.befolyik();
-        }
-        szkeleton.visszateres(this, "vizTermeles");
+//        szkeleton.hivas(this, "vizTermeles");
+//        for(Mezo szomszed : szomszedok) {
+//            szomszed.befolyik();
+//        }
+//        szkeleton.visszateres(this, "vizTermeles");
     }
 
     /**
@@ -35,8 +33,8 @@ public class Forras extends AktivElemek{
      */
     @Override
     public void befolyik() {
-        szkeleton.hivas(this, "befolyik");
-        szkeleton.visszateres(this, "befolyik");
+//        szkeleton.hivas(this, "befolyik");
+//        szkeleton.visszateres(this, "befolyik");
     }
 
     /**
@@ -47,8 +45,8 @@ public class Forras extends AktivElemek{
      */
     @Override
     public boolean atAllit(Cso be, Cso ki) {
-        szkeleton.hivas(this, "atAllit");
-        szkeleton.visszateres(this, "atAllit");
+//        szkeleton.hivas(this, "atAllit");
+//        szkeleton.visszateres(this, "atAllit");
         return false;
     }
 
@@ -58,8 +56,8 @@ public class Forras extends AktivElemek{
      */
     @Override
     public boolean javitjak() {
-        szkeleton.hivas(this, "javitjak");
-        szkeleton.visszateres(this, "javitjak");
+//        szkeleton.hivas(this, "javitjak");
+//        szkeleton.visszateres(this, "javitjak");
         return false;
     }
 }

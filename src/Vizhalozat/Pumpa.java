@@ -20,10 +20,9 @@ public class Pumpa extends AktivElemek implements Viheto{
     /**
      * A Pumpa egyetlen konstruktora
      * @param jatek A játék objektum referenciája
-     * @param szkeleton A szkeleton, tesztelő osztály konstruktora
      */
-    public Pumpa(Jatek jatek, Szkeleton szkeleton) {
-        super(jatek, szkeleton);
+    public Pumpa(Jatek jatek) {
+        super(jatek);
         mukodik = true;
     }
 
@@ -34,12 +33,12 @@ public class Pumpa extends AktivElemek implements Viheto{
      */
     @Override
     public void befolyik() {
-        szkeleton.hivas(this, "befolyik");
-        if(mukodik && bemenet.getTelitett() && !this.telitett) {
-            telitett = true;
-            kimenet.befolyik();
-        }
-        szkeleton.visszateres(this, "befolyik");
+//        szkeleton.hivas(this, "befolyik");
+//        if(mukodik && bemenet.getTelitett() && !this.telitett) {
+//            telitett = true;
+//            kimenet.befolyik();
+//        }
+//        szkeleton.visszateres(this, "befolyik");
     }
 
     /**
@@ -50,8 +49,8 @@ public class Pumpa extends AktivElemek implements Viheto{
      */
     @Override
     public boolean atAllit(Cso be, Cso ki) {
-        szkeleton.hivas(this, "atAllit");
-        szkeleton.visszateres(this, "atAllit", "true");
+//        szkeleton.hivas(this, "atAllit");
+//        szkeleton.visszateres(this, "atAllit", "true");
         return true;
     }
 
@@ -61,16 +60,16 @@ public class Pumpa extends AktivElemek implements Viheto{
      */
     @Override
     public boolean javitjak() {
-        szkeleton.hivas(this, "javitjak");
-        if(szkeleton.kerdes(this, "Javításra van szükség? (Igen, Nem)").equalsIgnoreCase("igen")){
-            mukodik = true;
-            szkeleton.visszateres(this, "javitjak", "true");
-            return true;
-        }
-        else {
-            szkeleton.visszateres(this, "javitjak", "false");
+//        szkeleton.hivas(this, "javitjak");
+//        if(szkeleton.kerdes(this, "Javításra van szükség? (Igen, Nem)").equalsIgnoreCase("igen")){
+//            mukodik = true;
+//            szkeleton.visszateres(this, "javitjak", "true");
+//            return true;
+//        }
+//        else {
+//            szkeleton.visszateres(this, "javitjak", "false");
             return false;
-        }
+//        }
     }
 
     /**
@@ -78,9 +77,9 @@ public class Pumpa extends AktivElemek implements Viheto{
      * hogy elromlik az adott pumpa vagy sem
      */
     public void elromlik() {
-        szkeleton.hivas(this, "elromlik");
-        mukodik = false;
-        szkeleton.visszateres(this, "elromlik");
+//        szkeleton.hivas(this, "elromlik");
+//        mukodik = false;
+//        szkeleton.visszateres(this, "elromlik");
     }
 
     /**
@@ -89,8 +88,8 @@ public class Pumpa extends AktivElemek implements Viheto{
      */
     @Override
     public void lerakjak(Jatekos lerako) {
-        szkeleton.hivas(this, "lerakjak");
-        szkeleton.visszateres(this, "lerakjak");
+//        szkeleton.hivas(this, "lerakjak");
+//        szkeleton.visszateres(this, "lerakjak");
     }
 
     /**

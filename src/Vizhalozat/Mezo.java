@@ -8,7 +8,6 @@ import java.util.ArrayList;
  * hogy a Játékos és Játék objektumok heterogénen tudják kezelni a mezőket.
  */
 public abstract class Mezo {
-    protected Szkeleton szkeleton;
     protected ArrayList<Mezo> szomszedok;
     protected Jatek jatek;
     protected ArrayList<Jatekos> rajtaAllnak;
@@ -17,15 +16,13 @@ public abstract class Mezo {
     /**
      * A mező egyetlen konstruktora
      * @param jatek A játék objektum referenciája
-     * @param szkeleton A szkeleton, tesztelő osztály konstruktora
      */
 
-    public Mezo(Jatek jatek, Szkeleton szkeleton) {
+    public Mezo(Jatek jatek) {
         this.jatek = jatek;
         this.telitett = false;
         szomszedok = new ArrayList<Mezo>();
         rajtaAllnak = new ArrayList<Jatekos>();
-        this.szkeleton = szkeleton;
     }
 
     /**
@@ -34,8 +31,8 @@ public abstract class Mezo {
      * @param j Jatekos próbál lelépni a mezőről
      */
     public void lelep(Jatekos j) {
-        szkeleton.hivas(this, "lelep");
-        szkeleton.visszateres(this, "lelep");
+//        szkeleton.hivas(this, "lelep");
+//        szkeleton.visszateres(this, "lelep");
     }
 
     /**
@@ -46,8 +43,8 @@ public abstract class Mezo {
      *      attribútumhoz egyébként hamissal tér vissza
      */
     public boolean ralep(Jatekos j) {
-        szkeleton.hivas(this, "ralep");
-        szkeleton.visszateres(this, "lelralepep");
+//        szkeleton.hivas(this, "ralep");
+//        szkeleton.visszateres(this, "lelralepep");
         return false;
     }
 
@@ -56,8 +53,8 @@ public abstract class Mezo {
      * @return szomszédos mezők listája
      */
     public ArrayList<Mezo> getSzomszedok() {
-        szkeleton.hivas(this, "getSzomszedok");
-        szkeleton.visszateres(this, "getSzomszedok", "szomszedok");
+//        szkeleton.hivas(this, "getSzomszedok");
+//        szkeleton.visszateres(this, "getSzomszedok", "szomszedok");
         return szomszedok;
     }
 
@@ -66,8 +63,8 @@ public abstract class Mezo {
      * @param m a hozzáadandó Mező
      */
     public void addSzomszed(Mezo m) {
-        szkeleton.hivas(this, "addSzomszed");
-        szkeleton.visszateres(this, "addSzomszed");
+//        szkeleton.hivas(this, "addSzomszed");
+//        szkeleton.visszateres(this, "addSzomszed");
         szomszedok.add(m);
     }
 
@@ -76,8 +73,8 @@ public abstract class Mezo {
      * @param m eltávolítandó Mezo
      */
     public void removeSzomszed(Mezo m) {
-        szkeleton.hivas(this, "removeSzomszed");
-        szkeleton.visszateres(this, "removeSzomszed");
+//        szkeleton.hivas(this, "removeSzomszed");
+//        szkeleton.visszateres(this, "removeSzomszed");
         szomszedok.remove(m);
     }
 

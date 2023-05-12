@@ -8,10 +8,9 @@ public class Ciszterna extends AktivElemek{
     /**
      * A ciszterna egyetlen konstruktora, meghívja az ős konstruktorát
      * @param jatek A játék objektum referenciája
-     * @param szkeleton A szkeleton, tesztelő osztály konstruktora
      */
-    public Ciszterna(Jatek jatek, Szkeleton szkeleton) {
-        super(jatek, szkeleton);
+    public Ciszterna(Jatek jatek) {
+        super(jatek);
     }
 
     /**
@@ -19,9 +18,8 @@ public class Ciszterna extends AktivElemek{
      */
     @Override
     public void befolyik() {
-        szkeleton.hivas(this, "befolyik");
+        telitett = true;
         jatek.szereloPontSzerzes();
-        szkeleton.visszateres(this, "befolyik");
     }
 
     /**
@@ -32,8 +30,6 @@ public class Ciszterna extends AktivElemek{
      */
     @Override
     public boolean atAllit(Cso be, Cso ki) {
-        szkeleton.hivas(this, "atAlllit");
-        szkeleton.visszateres(this, "atAllit", "false");
         return false;
     }
 
@@ -43,8 +39,6 @@ public class Ciszterna extends AktivElemek{
      */
     @Override
     public boolean javitjak() {
-        szkeleton.hivas(this, "javitjak");
-        szkeleton.visszateres(this, "javitjak", "false");
         return false;
     }
 
@@ -54,10 +48,7 @@ public class Ciszterna extends AktivElemek{
      */
     @Override
     public Pumpa pumpaVasarlas() {
-        szkeleton.hivas(this, "pumpaVasarlas");
-        Pumpa ret = new Pumpa(jatek, szkeleton);
-        szkeleton.ujObjektum(ret, "p");
-        szkeleton.visszateres(this, "pumpaVasarlas", ret);
+        Pumpa ret = new Pumpa(jatek);
         return ret;
     }
 
@@ -66,16 +57,9 @@ public class Ciszterna extends AktivElemek{
      * Ez hozza létre az új csöveket, amik az egyes ciszternákhoz kapcsolódnak létrejöttükkor
      */
     public void csoKeszul(){
-        szkeleton.hivas(this, "csoKeszul");
-
-        Cso cs = new Cso(jatek, szkeleton);
-        szkeleton.ujObjektum(cs, "cs");
-        szkeleton.hivas(cs, "<<create>>");
-        szkeleton.visszateres(cs, "<<create>>");
+        Cso cs = new Cso(jatek);
 
         cs.addSzomszed(this);
         addSzomszed(cs);
-
-        szkeleton.visszateres(this, "csoKeszul");
     }
 }

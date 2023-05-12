@@ -1,0 +1,6 @@
+JatekLetrehoz jatek1
+JatekKivalaszt jatek1
+JatekosLetrehoz szerelo1 szerelo
+MezoLetrehoz ciszterna1 ciszterna
+MezoLetrehoz cso1 cso
+SzomszedBeallit ciszterna1 cso1
