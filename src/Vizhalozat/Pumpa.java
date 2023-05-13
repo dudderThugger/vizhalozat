@@ -1,5 +1,7 @@
 package Vizhalozat;
 
+import java.util.Random;
+
 /**
  * Legalább két csövet csatlakoztató mező típus a bemenetéből a kimenetébe pumpálja a vizet, ha működik.
  */
@@ -39,6 +41,11 @@ public class Pumpa extends AktivElemek implements Viheto{
 //            kimenet.befolyik();
 //        }
 //        szkeleton.visszateres(this, "befolyik");
+
+        if(!telitett && bemenet.getTelitett()){
+            telitett = true;
+            kimenet.befolyik();
+        }
     }
 
     /**
@@ -51,6 +58,9 @@ public class Pumpa extends AktivElemek implements Viheto{
     public boolean atAllit(Cso be, Cso ki) {
 //        szkeleton.hivas(this, "atAllit");
 //        szkeleton.visszateres(this, "atAllit", "true");
+
+        bemenet = be;
+        kimenet = ki;
         return true;
     }
 
@@ -68,9 +78,18 @@ public class Pumpa extends AktivElemek implements Viheto{
 //        }
 //        else {
 //            szkeleton.visszateres(this, "javitjak", "false");
-            return false;
+//            return false;
 //        }
+
+        if(!mukodik){
+            mukodik = true;
+            return true;
+        }
+        else
+            return false;
     }
+
+
 
     @Override
     public Mezo megcsuszik() {
@@ -95,6 +114,12 @@ public class Pumpa extends AktivElemek implements Viheto{
 //        szkeleton.hivas(this, "elromlik");
 //        mukodik = false;
 //        szkeleton.visszateres(this, "elromlik");
+
+        Random rnd = new Random();
+        int hatar = rnd.nextInt(10) + 1;
+        if(hatar == 10){
+            mukodik = false;
+        }
     }
 
     /**
@@ -105,6 +130,21 @@ public class Pumpa extends AktivElemek implements Viheto{
     public void lerakjak(Jatekos lerako) {
 //        szkeleton.hivas(this, "lerakjak");
 //        szkeleton.visszateres(this, "lerakjak");
+    }
+
+    @Override
+    public boolean felveszik() {
+        return super.felveszik();
+    }
+
+    /**
+     * egy szerelő megpróbálja letenni a pumpát a kezéből a pumpára amin áll
+     * @param p A lehelyezendő pumpa
+     * @return Mindig hamissal tér vissza és nem történik semmi
+     */
+    @Override
+    public boolean pumpaLehelyez(Pumpa p) {
+        return false;
     }
 
     /**
