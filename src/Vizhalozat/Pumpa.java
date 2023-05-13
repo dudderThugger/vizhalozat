@@ -161,4 +161,8 @@ public class Pumpa extends AktivElemek implements Viheto{
     public void setKimenet(Cso cs){
         this.kimenet = cs;
     }
+
+    public void setMukodik(boolean mukodik) {
+        this.mukodik = mukodik;
+    }
 }

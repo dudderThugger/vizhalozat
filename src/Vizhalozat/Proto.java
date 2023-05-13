@@ -1,5 +1,6 @@
 package Vizhalozat;
 
+import javax.sound.midi.Soundbank;
 import java.awt.print.PrinterException;
 import java.io.Console;
 import java.io.File;
@@ -346,7 +347,90 @@ public class Proto {
                         }
                     }catch (ProtoException e){
                         System.out.println("Nem sikerult a pumpa javitasa");
-                }
+                    }
+                case "PumpaElront":
+                    String pumpa = arguments[1];
+                    try{
+                        if (jelenlegiJatek == null) throw new ProtoException();
+                        if(jelenlegiJatek.mezok.containsKey(pumpa)){
+                            Pumpa p = (Pumpa) jelenlegiJatek.mezok.get(pumpa);
+                            p.setMukodik(false);
+                            System.out.println(pumpa + " nevű pumpa elromlott.");
+                        }
+                    }catch (ProtoException e){
+                        System.out.println("Nem sikerult a pumpa elrontasa");
+                    }
+                    break;
+                case "CsoFelvesz":
+                    String lecsatlakozatoNev = arguments[1];
+                    String lecsatlakoztatottCso = arguments[2];
+                    try{
+                        if (jelenlegiJatek == null) throw new ProtoException();
+                        if(jelenlegiJatek.jatekosok.containsKey(lecsatlakozatoNev) && jelenlegiJatek.csovek.containsKey(lecsatlakoztatottCso)){
+
+                        }
+
+                    }catch (ProtoException e){
+                        System.out.println("Nem sikerult a pumpa elrontasa");
+                    }
+                    break;
+                case "CsoLerak":
+                    String lerakNev = arguments[1];
+                    String lerakottMezo = arguments[2];
+                    try{
+                        if (jelenlegiJatek == null) throw new ProtoException();
+                        if(jelenlegiJatek.jatekosok.containsKey(lerakNev) && jelenlegiJatek.mezok.containsKey(lerakottMezo)){
+
+                        }
+
+                    }catch (ProtoException e){
+                        System.out.println("Nem sikerult a pumpa elrontasa");
+                    }
+                    break;
+                case "PumpaVasarlas":
+                    String vasarlo = arguments[1];
+                    try{
+                        if (jelenlegiJatek == null) throw new ProtoException();
+                        if(jelenlegiJatek.jatekosok.containsKey(vasarlo)){
+
+                        }
+
+                    }catch (ProtoException e){
+                        System.out.println("Nem sikerult a pumpa elrontasa");
+                    }
+                    break;
+                case "PumpaLehelyez":
+                    String lehelyezo = arguments[1];
+                    String lehelyezendoMezo = arguments[1];
+                    try{
+                        if (jelenlegiJatek == null) throw new ProtoException();
+                        if(jelenlegiJatek.jatekosok.containsKey(lehelyezo) && jelenlegiJatek.mezok.containsKey(lehelyezendoMezo)){
+
+                        }
+
+                    }catch (ProtoException e){
+                        System.out.println("Nem sikerult a pumpa elrontasa");
+                    }
+                    break;
+                case "RandomBe":
+                    try{
+                        if (jelenlegiJatek == null) throw new ProtoException();
+
+                        System.out.println("Random mód bekapcsolva");
+                    }catch (ProtoException e){
+                        System.out.println("Nem sikerult a pumpa elrontasa");
+                    }
+                    break;
+                case "RandomKi":
+                    try{
+                        if (jelenlegiJatek == null) throw new ProtoException();
+
+
+                    }catch (ProtoException e){
+                        System.out.println("Nem sikerult a pumpa elrontasa");
+                    }
+                    break;
+
             }
         }
     }
