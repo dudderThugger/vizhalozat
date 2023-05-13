@@ -171,4 +171,8 @@ public abstract class Mezo {
      * @return csőn igaz, máshol hamis
      */
     public abstract boolean csuszik();
+
+    public ArrayList<Jatekos> getRajtaAllnak() {
+        return rajtaAllnak;
+    }
 }

@@ -50,7 +50,7 @@ public abstract class Jatekos {
 //
 //        szkeleton.visszateres(this, "lepes");
 
-        if(rajtaAll.getSzomszedok().contains(szomszed)){
+        if(rajtaAll.getSzomszedok().contains(szomszed) && szomszed.getRajtaAllnak().isEmpty()){
             szomszed.ralep(this);
             rajtaAll.lelep(this);
         }
@@ -83,6 +83,11 @@ public abstract class Jatekos {
 //        }
 //
 //        szkeleton.visszateres(this, "lepes");
+
+        if(rajtaAll.getSzomszedok().contains(szomszed)){
+            szomszed.ralep(this);
+            rajtaAll.lelep(this);
+        }
     }
 
     /**
@@ -138,7 +143,7 @@ public abstract class Jatekos {
 //        }
 //        szkeleton.visszateres(this,"felvesz_cso");
 
-
+        rajtaAll.felveszik();
     }
 
     /**
@@ -152,6 +157,20 @@ public abstract class Jatekos {
    *  Megprobalja leragasztani a mezot
    */
     public void ragaszt(){
-        rajtaAll.ragaszt();
+        if(varakozasiIdo == 0) {
+            boolean siker = rajtaAll.ragaszt();
+            if(siker){
+                varakozasiIdo = 3;
+            }
+        }
+    }
+
+    public void lyukaszt(){
+        if(varakozasiIdo == 0) {
+            boolean siker = rajtaAll.lyukaszt();
+            if(siker){
+                varakozasiIdo = 3;
+            }
+        }
     }
 }
