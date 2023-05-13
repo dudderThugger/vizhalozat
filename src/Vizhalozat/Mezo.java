@@ -33,6 +33,8 @@ public abstract class Mezo {
     public void lelep(Jatekos j) {
 //        szkeleton.hivas(this, "lelep");
 //        szkeleton.visszateres(this, "lelep");
+
+        rajtaAllnak.remove(j);
     }
 
     /**
@@ -45,7 +47,8 @@ public abstract class Mezo {
     public boolean ralep(Jatekos j) {
 //        szkeleton.hivas(this, "ralep");
 //        szkeleton.visszateres(this, "lelralepep");
-        return false;
+        rajtaAllnak.add(j);
+        return true;
     }
 
     /**
@@ -83,14 +86,66 @@ public abstract class Mezo {
      * @return
      */
     public abstract boolean felveszik();
+
+    /**
+     * absztrakt függvény, ha egy szomszéd vizet szállít az adott mezőbe,
+     * akkor ezt a függvényt hívja meg
+     */
     public abstract void befolyik();
+
+    /**
+     * absztrakt függvény, ezt a függvényt hívja meg a Játékos a  lerakPumpa akciójakor
+     * @param p lehelyezendo pumpa
+     * @return
+     */
     public abstract boolean pumpaLehelyez(Pumpa p);
+
+    /**
+     * absztrakt függvény, ez a függvény hívódik meg,
+     * amikor a Szerelő meg akar javítani egy csövet,
+     * csak csövön sikeres. A cső állapota nem lyukas lesz.
+     * @return csövön igaz, máshol hamis
+     */
     public abstract boolean foltoz();
+
+    /**
+     * absztrakt függvény, ez a függvény hívódik meg,
+     * amikor a Játékos ki akar lyukasztani egy csövet.A cső állapota lyukas lesz.
+     * @return csövön igaz, máshol hamis
+     */
     public abstract boolean lyukaszt();
+
+    /**
+     * absztrakt függvény, ez a függvény hívódik meg,
+     * amikor a Szerelő pumpát akar venni. Csak ciszternán érvényes.
+     * @return ciszternán igaz, máshol hamis
+     */
     public abstract Pumpa pumpaVasarlas();
+
+    /**
+     * absztrakt függvény, ez a függvény hívódik meg,
+     * amikor a pumpát próbálja meg valaki átállítani. Csak pumpán érvényes.
+     * @param be
+     * @param ki
+     * @return pumpán igaz, máshol hamis
+     */
     public abstract boolean atAllit(Cso be, Cso ki);
+
+    /**
+     * absztrakt függvény, ez a függvény hívódik meg,
+     * amikor a pumpát próbálja meg egy Szerelő javítani. Csak pumpán érvényes.
+     * @return pumpán igaz, máshol hamis
+     */
     public abstract boolean javitjak();
     public abstract boolean csoLehelyezes(Cso cs);
+
+    /**
+     * absztrakt függvény, ami ragadóssá teszi a mezőt.
+     * Egy külső játékos hívja a mezőre. Akkor sikeres, ha csőről van szó.
+     * @return csőn igaz, máshol hamis
+     */
+    public abstract boolean ragaszt();
+
 
     /**
      * ra állít egy mezőre egy játékost
@@ -110,7 +165,10 @@ public abstract class Mezo {
 
     public  abstract Mezo megcsuszik();
 
-
-    public abstract boolean ragaszt();
+    /**
+     * absztrakt függvény, ami csúszóssá teszi a mezőt.
+     * Egy szabotőr hívhatja a mezőre. Akkor sikeres, ha csőről van szó
+     * @return csőn igaz, máshol hamis
+     */
     public abstract boolean csuszik();
 }

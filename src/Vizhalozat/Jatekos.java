@@ -1,5 +1,6 @@
 package Vizhalozat;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A játékot játszó játékosok absztrakt osztálya, definálja a közös akciókat.
@@ -48,6 +49,11 @@ public abstract class Jatekos {
 //        }
 //
 //        szkeleton.visszateres(this, "lepes");
+
+        if(rajtaAll.getSzomszedok().contains(szomszed)){
+            szomszed.ralep(this);
+            rajtaAll.lelep(this);
+        }
     }
 
     public void setRagadasiIdo(int x) { ragadasiIdo = x; }
@@ -131,6 +137,8 @@ public abstract class Jatekos {
 //            rajtaAll.removeSzomszed(felvesz);
 //        }
 //        szkeleton.visszateres(this,"felvesz_cso");
+
+
     }
 
     /**
