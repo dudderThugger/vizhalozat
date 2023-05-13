@@ -43,13 +43,10 @@ public class Szerelo extends Jatekos{
      * ilyenkor lényegében a Forrás amin áll a Szerelő, legenerál egy új pumpát beleteszi a Szerelő kezébe
      */
     public void pumpatvesz(){
-//        szkeleton.hivas(this, "pumpatvesz");
-//
-//        Pumpa p = rajtaAll.pumpaVasarlas();
-//        if(tart==null){
-//            pumpaTart = p;
-//        }
-//        szkeleton.visszateres(this, "pumpatvesz");
+        Pumpa p = rajtaAll.pumpaVasarlas();
+        if(tart ==null){
+            tart =p;
+        }
     }
 
     /**
@@ -57,10 +54,8 @@ public class Szerelo extends Jatekos{
      * @param t, amit a szerelő megkap a kezébe
      */
     public void add_PumpaTart(Pumpa t){
-        // szkeleton.hivas(this, "add_PumpaTart");
         pumpaTart = t;
         tart = t;
-        // szkeleton.visszateres(this, "add_PumpaTart");
     }
 
     /**
@@ -75,14 +70,13 @@ public class Szerelo extends Jatekos{
      * Amennyiben lyukas az adott cső amin a Szerelő áll, azt ezzel a függvénnyel befoltozza
      */
     public void foltoz() {
-//        szkeleton.hivas(this, "foltoz");
-//        rajtaAll.foltoz();
-//        szkeleton.visszateres(this, "foltoz");
+            rajtaAll.foltoz();
     }
 
+    /**
+     * Amennyiben nem mukodik a,a szerelo megjavitja
+     */
     public void szerel(){
-//        szkeleton.hivas(this, "szerel");
-//        rajtaAll.javitjak();
-//        szkeleton.visszateres(this, "szerel");
+        rajtaAll.javitjak();
     }
 }

@@ -140,5 +140,10 @@ public abstract class Jatekos {
     public void add_Kezebe(Viheto t){
         this.tart = t;
     }
-
+  /**
+   *  Megprobalja leragasztani a mezot
+   */
+    public void ragaszt(){
+        rajtaAll.ragaszt();
+    }
 }

@@ -108,6 +108,8 @@ public class Cso extends Mezo implements Viheto {
 
     }
 
+
+
     /**
      * @param p Pumpat var
      * @return true, ha nem allnak a csövön

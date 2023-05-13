@@ -6,11 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="szkeleton kommentezése">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Ciszterna.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Ciszterna.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Cso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Cso.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Forras.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Forras.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Jatek.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Jatek.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Jatekos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Jatekos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Mezo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Mezo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Proto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Proto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Szabotor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Szabotor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Szerelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Szerelo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

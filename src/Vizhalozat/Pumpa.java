@@ -72,6 +72,21 @@ public class Pumpa extends AktivElemek implements Viheto{
 //        }
     }
 
+    @Override
+    public Mezo megcsuszik() {
+        return null;
+    }
+
+    @Override
+    public boolean ragaszt() {
+        return false;
+    }
+
+    @Override
+    public boolean csuszik() {
+        return false;
+    }
+
     /**
      * minden körben lefut a függvény és randomizált folyamat végén eldől,
      * hogy elromlik az adott pumpa vagy sem

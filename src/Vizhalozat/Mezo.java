@@ -107,4 +107,10 @@ public abstract class Mezo {
     }
 
     public void setTelitett(boolean x) {telitett = x;}
+
+    public  abstract Mezo megcsuszik();
+
+
+    public abstract boolean ragaszt();
+    public abstract boolean csuszik();
 }

@@ -43,6 +43,15 @@ public class Ciszterna extends AktivElemek{
     }
 
     /**
+     * Ciszternan nem lehet megcsuszni
+     * @return null
+     */
+    @Override
+    public Mezo megcsuszik() {
+        return null;
+    }
+
+    /**
      * Megpróbálnak pumpát venni a ciszternán, ekkor a ciszterna létrehoz egy új pumpát
      * @return Az új pumpa
      */
@@ -62,4 +71,16 @@ public class Ciszterna extends AktivElemek{
         cs.addSzomszed(this);
         addSzomszed(cs);
     }
+
+    /**
+     * Ciszterma nem lehet csuszos
+     * @return FALSE
+     */
+    public boolean csuszik(){return false;}
+
+    /**
+     * Ciszterna nem ragadhat
+     * @return FALSE
+     */
+    public boolean ragaszt(){return false;}
 }

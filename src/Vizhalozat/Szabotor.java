@@ -14,4 +14,13 @@ public class Szabotor extends Jatekos{
     public void lyukaszt(){
         rajtaAll.lyukaszt();
     }
+
+    /**
+     * Meprrbalja csuszossa tenni a mezot
+     */
+    public void  csuszik(){
+            rajtaAll.csuszik();
+    }
+
+
 }
