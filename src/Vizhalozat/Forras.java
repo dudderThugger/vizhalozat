@@ -65,4 +65,19 @@ public class Forras extends AktivElemek{
 //        szkeleton.visszateres(this, "javitjak");
         return false;
     }
+
+    @Override
+    public Mezo megcsuszik() {
+        return null;
+    }
+
+    @Override
+    public boolean ragaszt() {
+        return false;
+    }
+
+    @Override
+    public boolean csuszik() {
+        return false;
+    }
 }

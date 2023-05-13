@@ -237,8 +237,21 @@ public class Proto {
                         }
                     }catch (ProtoException e){
                         System.out.println("Nem sikerult a pumpa allitasa");
-
                     }
+                case "Javit":
+                    String javitnev = arguments[1];
+                    try {
+                        if (jelenlegiJatek == null) throw new ProtoException();
+                        if (jelenlegiJatek.szerelok.containsKey(javitnev)) {
+                            Szerelo sz1 = jelenlegiJatek.szerelok.get(javitnev);
+                            sz1.foltoz();
+                            System.out.println(javitnev + "megjavitotta a pumpat, amin allt");
+                        } else {
+                            throw new ProtoException();
+                        }
+                    }catch (ProtoException e){
+                        System.out.println("Nem sikerult a pumpa javitasa");
+                }
             }
         }
     }
