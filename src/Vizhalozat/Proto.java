@@ -16,6 +16,7 @@ public class Proto {
 
     private class ProtoJatek {
         Jatek jatek = new Jatek();
+        boolean randomKi;
         HashMap<String, Jatekos> jatekosok = new HashMap<>();
         HashMap<String, Szerelo> szerelok = new HashMap<>();
         HashMap<String, Szabotor> szabotorok = new HashMap<>();
@@ -57,7 +58,7 @@ public class Proto {
                     jelenlegiJatek = null;
                     System.out.println("Kilepes");
                     break;
-                case "Futtatas":
+                case "Futtatas": {
                     File fajl = new File(arguments[1]);
                     try {
                         parancsKezelo(new Scanner(fajl));
@@ -65,6 +66,7 @@ public class Proto {
                         System.out.println("Nem talalhato a megadott fajl!");
                     }
                     break;
+                }
                 case "JatekosLetrehoz":
                     String ujJatekosNeve = arguments[1];
                     String jatekosTipus = arguments[2];
@@ -89,7 +91,7 @@ public class Proto {
                         System.out.println("Nem sikerult letrehozni a jatekost");
                     }
                     break;
-                case "MezoLetrehoz":
+                case "MezoLetrehoz": {
                     String mezoNeve = arguments[1];
                     String mezoTipusa = arguments[2];
                     try {
@@ -120,7 +122,8 @@ public class Proto {
                         System.out.println("Nem sikerult letrehozni a mezot!");
                     }
                     break;
-                case "SzomszedBeallit":
+                }
+                case "SzomszedBeallit":{
                     String mezo1Neve = arguments[1];
                     String mezo2Neve = arguments[2];
                     try {
@@ -138,6 +141,98 @@ public class Proto {
                         System.out.println("Nem sikerult beallitani a szomszedokat!");
                     }
                     break;
+            }
+            case "RaAllit": {
+                String jatekosNeve = arguments[1];
+                String mezoNeve = arguments[2];
+                try {
+                    if (jelenlegiJatek == null) throw new ProtoException();
+                    if (jelenlegiJatek.jatekosok.containsKey(jatekosNeve) && jelenlegiJatek.mezok.containsKey(mezoNeve)) {
+                        Jatekos j = jelenlegiJatek.jatekosok.get(jatekosNeve);
+                        Mezo m = jelenlegiJatek.mezok.get(mezoNeve);
+                        m.ralep(j);
+
+                        System.out.println( jatekosNeve + " ráállt a " + mezoNeve + " mezőre!");
+                    } else {
+                        throw new ProtoException();
+                    }
+                } catch (ProtoException e) {
+                    System.out.println("Nem sikerült ráállítani a mezőre!");
+                }
+            }
+            case "KezebeAd": {
+                String jatekosNeve = arguments[1];
+                String mezoNeve = arguments[2];
+                try {
+                    if (jelenlegiJatek == null) throw new ProtoException();
+                    if (jelenlegiJatek.jatekosok.containsKey(jatekosNeve) && jelenlegiJatek.mezok.containsKey(mezoNeve)) {
+                        Jatekos j = jelenlegiJatek.jatekosok.get(jatekosNeve);
+                        Mezo m = jelenlegiJatek.mezok.get(mezoNeve);
+                        j.add_Kezebe((Viheto)m);
+
+                        System.out.println( jatekosNeve + " kezében " + mezoNeve + " van!");
+                    } else {
+                        throw new ProtoException();
+                    }
+                } catch (ProtoException e) {
+                    System.out.println("Nem sikerült a kézbe adás!");
+                }
+            }
+            case "Mentes": {
+                File fajl = new File(arguments[1]);
+                try {
+                    if (jelenlegiJatek == null) throw new ProtoException();
+
+                    System.out.println("Saved!");
+                } catch (ProtoException e) {
+                    System.out.println("Nem sikerült a játék mentése!");
+                }
+            }
+            case "Betoltes": {
+                File fajl = new File(arguments[1]);
+                try {
+                    if (jelenlegiJatek == null) throw new ProtoException();
+
+                    System.out.println("Sikeres betöltés!");
+                } catch (ProtoException e) {
+                    System.out.println("Nem sikerült betölteni a fájlt!");
+                }
+            }
+            case "Inditas": {
+                try {
+                    if (jelenlegiJatek == null) throw new ProtoException();
+
+                    System.out.println("Start!");
+                } catch (ProtoException e) {
+                    System.out.println("Nem sikerült elindítani a játékot!");
+                }
+            }
+            case "Leallit": {
+                try {
+                    if (jelenlegiJatek == null) throw new ProtoException();
+
+                    System.out.println("Game Over!");
+                } catch (ProtoException e) {
+                    System.out.println("Nem sikerült leállítani a játékot!");
+                }
+            }
+            case "Init": {
+                try {
+                    if (jelenlegiJatek == null) throw new ProtoException();
+                    jelenlegiJatek.jatek.init();
+                    if(jelenlegiJatek.randomKi) {
+                        System.out.println("Inicializálás! \n" +
+                                "A következő objektumok jöttek létre:\n" +
+                                "szerelo1, szerelo2, szabotor1, szabotor2, forras1, forras2, ciszterna1, ciszterna 2\n");
+                    } else {
+                        System.out.println("Inicializálás! \n" +
+                                "A következő objektumok jöttek létre:\n" +
+                                "<létrejövő objektumok nevei>\n");
+                    }
+                } catch (ProtoException e) {
+                    System.out.println("Nem sikerült az inicializálás!");
+                }
+            }
                 case "Leptet":
                     String jatekosneve = arguments[1];
                     String mezoneve = arguments[2];
