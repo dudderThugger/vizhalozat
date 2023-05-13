@@ -11,6 +11,7 @@ public abstract class Jatekos {
     protected Cso csoTart; //a játékos kezében lévő cső referenciája
     protected Mezo rajtaAll; // referencia a mezőre, amin a játékos áll
     protected int varakozasiIdo; // a játékosnak mennyi időt kell várnia a következő aktív akciójáig
+    protected int ragadasiIdo;
 
     /**
      * A játékos egyetlen konstruktora
@@ -48,6 +49,8 @@ public abstract class Jatekos {
 //
 //        szkeleton.visszateres(this, "lepes");
     }
+
+    public void setRagadasiIdo(int x) { ragadasiIdo = x; }
 
     /**
      * Amikor a játékos NEM csőre lép, ekkor hívja ezt a függvényt

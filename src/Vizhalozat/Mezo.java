@@ -105,4 +105,6 @@ public abstract class Mezo {
     public void setSzomszedok(ArrayList<Mezo> szomszedok) {
         this.szomszedok = szomszedok;
     }
+
+    public void setTelitett(boolean x) {telitett = x;}
 }

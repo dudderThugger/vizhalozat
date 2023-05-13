@@ -1,4 +1,5 @@
 package Vizhalozat;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -7,8 +8,18 @@ import java.util.Scanner;
 public class Cso extends Mezo implements Viheto {
     /** Azt jelzi, hogy lyukas-e a cső */
     protected boolean lyukas;
+    /** Azt jelzi, hogy ragados-e a cso vagy sem*/
+    protected boolean ragad;
+    /** Azt jelzi, hogy csuszik-e a cso vagy sem*/
+    protected boolean csuszik;
+    /** Azt jelzi, hogy milyen reg lyukasztottak ki a csovet */
+    protected int lyukasztasiIdo;
+    /** Annak a jatekosnak a referenciaja, aki ragadossa tette a csovet*/
+    protected Jatekos ragasztotta;
+
     public Cso(Jatek jatek) {
         super(jatek);
+        lyukas = false; ragad = false; csuszik = false;
     }
 
     /**
@@ -19,7 +30,7 @@ public class Cso extends Mezo implements Viheto {
 //        if(ertek.equals("Igen") ){
 //            return true;
 //        }
-        return false;
+        return telitett;
     }
 
     @Override
@@ -27,6 +38,8 @@ public class Cso extends Mezo implements Viheto {
 //        if(ertek.equals("Nem") ){
 //            return true;
 //        }
+        if(rajtaAllnak.size()==0) return true;
+
         return false;
     }
     /**
@@ -45,6 +58,13 @@ public class Cso extends Mezo implements Viheto {
 //            }
 //        }
 //        szkeleton.visszateres(this, "befolyik");
+
+        if(!telitett) {
+            telitett = true;
+            for (Mezo m: szomszedok) {
+                m.befolyik();
+            }
+        }
     }
 
     /**
@@ -60,7 +80,32 @@ public class Cso extends Mezo implements Viheto {
 //            return true;
 //        }
 //        szkeleton.visszateres(this, "ralep", "false");
+
+        if(rajtaAllnak.size() == 0) {
+            rajtaAllnak.add(j);
+            if(j != ragasztotta && ragad){
+                j.setRagadasiIdo(30);
+            }
+
+            if(csuszik){
+                megcsuszik().ralep(j);
+                rajtaAllnak.remove(j);
+            }
+
+            return true;
+        }
         return false;
+    }
+
+    public Mezo megcsuszik(){
+        if(csuszik){
+            Random r = new Random();
+            int randszomsz = r.nextInt(szomszedok.size());
+            return szomszedok.get(randszomsz);
+        } else {
+            return null;
+        }
+
     }
 
     /**
@@ -82,8 +127,18 @@ public class Cso extends Mezo implements Viheto {
 //            return true;
 //        } else {
 //            szkeleton.visszateres(this, "pumpaLehelyez", "false");
-            return false;
 //        }
+
+        Cso ujCso = new Cso(jatek);
+        ujCso.addSzomszed(szomszedok.get(0));
+        removeSzomszed(szomszedok.get(0));
+
+        ujCso.addSzomszed(p);
+        p.addSzomszed(ujCso);
+
+        p.addSzomszed(this);
+        addSzomszed(p);
+        return true;
     }
 
     /**
@@ -102,6 +157,11 @@ public class Cso extends Mezo implements Viheto {
 //        }
 //        lyukas = false;
 //        szkeleton.visszateres(this, "foltoz","false");
+        if(lyukas){
+            lyukas = false;
+            return true;
+        }
+
         return false;
     }
     /**
@@ -119,6 +179,12 @@ public class Cso extends Mezo implements Viheto {
 //        }
 //        lyukas = true;
 //        szkeleton.visszateres(this, "lyukaszt", "false");
+
+        if(!lyukas){
+            lyukas = true;
+            return true;
+        }
+
         return false;
     }
 
@@ -178,5 +244,29 @@ public class Cso extends Mezo implements Viheto {
 //        szkeleton.hivas(this, "lerakjak");
 //        rajtaAllnak.add(lerako);
 //        szkeleton.visszateres(this, "lerakjak");
+    }
+
+    /**
+     * ha ragadossa akarja egy jatekos tenni a csovet akkor ezt hivja meg
+     * @return igaz/hamis ertek attol fuggoen, hogy sikerult e a ragasztas vagy sem
+     */
+    public boolean ragaszt() {
+        if(!ragad){
+            ragad = true;
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * ha csuszossa akarja egy szabotor tenni a csovet akkor ezt hivja meg
+     * @return igaz/hamis ertek attol fuggoen, hogy sikerult e a csusztatas vagy sem
+     */
+    public boolean csuszik() {
+        if(!csuszik){
+            csuszik = true;
+            return true;
+        }
+        return false;
     }
 }

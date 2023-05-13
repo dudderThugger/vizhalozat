@@ -1,6 +1,7 @@
 package Vizhalozat;
 
 import java.util.ArrayList;
+import java.util.Timer;
 
 /**
  * A játék belső szerkezetéért felelős osztály. A játék ciklusának futtatásáért, játékosok és mezők létrehozasaért
@@ -19,14 +20,17 @@ public class Jatek {
     int szabotorPont;
     /** A szerelők pontjait jelző egész érték */
     int szereloPont;
+    /** időzítő, ami a vizFolyas és pumpaElromlik metódus időközönkénti meghívásáért felelős*/
+    private Timer timer;
+    /** A csöveket tartalmazó lista */
+    private final ArrayList<Cso> csovek;
 
     /**
      * A játék osztály egyetlen konstruktora
      */
     public Jatek() {
         pumpak = new ArrayList<>();
-        szabotorPont = 0;
-        szereloPont = 0;
+        csovek = new ArrayList<>();
     }
 
     public void addJatekos(Szerelo jatekos) {
@@ -67,12 +71,42 @@ public class Jatek {
     /**
      * Minden pumpára kisorsolja, hogy elromlik-e vagy sem
      */
-    public void pumpaElRomlik() {
+    public void pumpaElRomlik(boolean randomKi) {
 //        for (Pumpa pumpa : pumpak) {
 //            if(ertek < 2) {
 //                pumpa.elromlik();
 //            }
 //        }
+
+        if(randomKi) {
+            for (Pumpa p: pumpak) {
+                p.elromlik();
+            }
+        }
+    }
+
+    public void vizFolyas(boolean randomKi){
+        if(randomKi){
+            for (Pumpa p : pumpak) {
+                p.setTelitett(false);
+            }
+            for (Mezo m : mezok) {
+                m.setTelitett(false);
+            }
+            for (Cso cs : csovek) {
+                cs.setTelitett(false);
+            }
+            for (Forras f : forrasok) {
+                f.setTelitett(false);
+            }
+            for (Ciszterna c : ciszternak) {
+                c.setTelitett(false);
+            }
+
+            for (Forras f : forrasok) {
+                f.vizTermeles();
+            }
+        }
     }
 
     /**
@@ -82,6 +116,7 @@ public class Jatek {
 //        szkeleton.hivas(this, "szereloPontSzerzes");
 //        szereloPont++;
 //        szkeleton.visszateres(this, "szereloPontSzerzes");
+        szereloPont++;
     }
 
     /**
@@ -91,6 +126,7 @@ public class Jatek {
 //        szkeleton.hivas(this, "szabotorPontSzerzes");
 //        szabotorPont++;
 //        szkeleton.visszateres(this, "szabotorPontSzerzes");
+        szabotorPont++;
     }
 
     /**
@@ -138,5 +174,25 @@ public class Jatek {
 //        cs2.addSzomszed(c1);
 //
 //        szkeleton.visszateres(this, "init");
+
+        timer.notify();
+        szabotorPont = 0;
+        szereloPont = 0;
+
+        Szabotor szab1 = new Szabotor();
+        Szabotor szab2 = new Szabotor();
+        szabotorok.add(szab1); szabotorok.add(szab2);
+
+        Szerelo szer1 = new Szerelo();
+        Szerelo szer2 = new Szerelo();
+        szerelok.add(szer1); szerelok.add(szer2);
+
+        Forras f1 = new Forras(this);
+        Forras f2 = new Forras(this);
+        forrasok.add(f1); forrasok.add(f2);
+
+        Ciszterna c1 = new Ciszterna(this);
+        Ciszterna c2 = new Ciszterna(this);
+        ciszternak.add(c1); ciszternak.add(c2);
     }
 }

@@ -26,6 +26,10 @@ public class Forras extends AktivElemek{
 //            szomszed.befolyik();
 //        }
 //        szkeleton.visszateres(this, "vizTermeles");
+
+        for (Mezo m: szomszedok) {
+            m.befolyik();
+        }
     }
 
     /**
@@ -35,6 +39,7 @@ public class Forras extends AktivElemek{
     public void befolyik() {
 //        szkeleton.hivas(this, "befolyik");
 //        szkeleton.visszateres(this, "befolyik");
+        telitett = true;
     }
 
     /**
