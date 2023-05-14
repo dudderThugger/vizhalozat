@@ -31,8 +31,6 @@ public abstract class Mezo {
      * @param j Jatekos próbál lelépni a mezőről
      */
     public void lelep(Jatekos j) {
-//        szkeleton.hivas(this, "lelep");
-//        szkeleton.visszateres(this, "lelep");
 
         rajtaAllnak.remove(j);
     }
@@ -45,8 +43,6 @@ public abstract class Mezo {
      *      attribútumhoz egyébként hamissal tér vissza
      */
     public boolean ralep(Jatekos j) {
-//        szkeleton.hivas(this, "ralep");
-//        szkeleton.visszateres(this, "lelralepep");
         rajtaAllnak.add(j);
         return true;
     }
@@ -56,8 +52,6 @@ public abstract class Mezo {
      * @return szomszédos mezők listája
      */
     public ArrayList<Mezo> getSzomszedok() {
-//        szkeleton.hivas(this, "getSzomszedok");
-//        szkeleton.visszateres(this, "getSzomszedok", "szomszedok");
         return szomszedok;
     }
 
@@ -66,8 +60,6 @@ public abstract class Mezo {
      * @param m a hozzáadandó Mező
      */
     public void addSzomszed(Mezo m) {
-//        szkeleton.hivas(this, "addSzomszed");
-//        szkeleton.visszateres(this, "addSzomszed");
         szomszedok.add(m);
     }
 
@@ -76,8 +68,6 @@ public abstract class Mezo {
      * @param m eltávolítandó Mezo
      */
     public void removeSzomszed(Mezo m) {
-//        szkeleton.hivas(this, "removeSzomszed");
-//        szkeleton.visszateres(this, "removeSzomszed");
         szomszedok.remove(m);
     }
 

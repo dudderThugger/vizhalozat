@@ -11,10 +11,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
+/**
+ * Prototípus osztály megvalósítása
+ */
 public class Proto {
     private HashMap<String, ProtoJatek> jatekAdatok = new HashMap<String, ProtoJatek>();
     private ProtoJatek jelenlegiJatek = null;
 
+    /**
+     * Prototípusjáték
+     */
     private class ProtoJatek {
         Jatek jatek = new Jatek();
         boolean randomKi;
@@ -43,7 +49,7 @@ public class Proto {
                         jatekAdatok.put(ujJatekNeve, new ProtoJatek());
                         System.out.println(ujJatekNeve + " sikeresen letrehozva!");
                     } else {
-                        System.out.println("Nem sikerult letrehozni a jatekot!");
+                        System.out.println("Nem sikerült létrehozni a játékot!");
                     }
                     break;
                 case "JatekKivalaszt":
@@ -52,7 +58,7 @@ public class Proto {
                         jelenlegiJatek = jatekAdatok.get(jatekNeve);
                         System.out.println(jatekNeve + " kivalasztva!");
                     } else {
-                        System.out.println("Nem sikerult kivalasztani a jatekot!");
+                        System.out.println("Nem sikerült kivalasztani a játékot!");
                     }
                     break;
                 case "JatekKilep":
@@ -64,7 +70,7 @@ public class Proto {
                     try {
                         parancsKezelo(new Scanner(fajl));
                     } catch (FileNotFoundException e) {
-                        System.out.println("Nem talalhato a megadott fajl!");
+                        System.out.println("Nem található a megadott fájl!");
                     }
                     break;
                 }
@@ -87,9 +93,9 @@ public class Proto {
                         } else {
                             throw new ProtoException();
                         }
-                        System.out.println(ujJatekosNeve + " jatekos sikeresen letrehozva!");
+                        System.out.println(ujJatekosNeve + " játékos sikeresen létrehozva!");
                     } catch (ProtoException e) {
-                        System.out.println("Nem sikerult letrehozni a jatekost");
+                        System.out.println("Nem sikerült letrehozni a játékost");
                     }
                     break;
                 case "MezoLetrehoz": {
@@ -118,9 +124,9 @@ public class Proto {
                         } else {
                             throw new ProtoException();
                         }
-                        System.out.println(mezoNeve + " mezo sikeresen letrehozva!");
+                        System.out.println(mezoNeve + " mező sikeresen létrehozva!");
                     } catch (ProtoException e) {
-                        System.out.println("Nem sikerult letrehozni a mezot!");
+                        System.out.println("Nem sikerült létrehozni a mezőt!");
                     }
                     break;
                 }
@@ -137,9 +143,9 @@ public class Proto {
                         } else {
                             throw new ProtoException();
                         }
-                        System.out.println("Szomszedsag beallitva!");
+                        System.out.println("Szomszedság beállítva!");
                     } catch (ProtoException e) {
-                        System.out.println("Nem sikerult beallitani a szomszedokat!");
+                        System.out.println("Nem sikerült beállitani a szomszédokat!");
                     }
                     break;
             }
@@ -244,7 +250,7 @@ public class Proto {
                             Jatekos jatekos1 = jelenlegiJatek.jatekosok.get(jatekosneve);
 
                             mezo1.ralep(jatekos1);
-                            System.out.println(jatekosneve + "ralepett a " + mezoneve + "mezore!");
+                            System.out.println(jatekosneve + "rálépett a " + mezoneve + "mezőre!");
                         } else {
                             throw new ProtoException();
                         }
@@ -261,12 +267,12 @@ public class Proto {
                             Szabotor szabotor1 = jelenlegiJatek.szabotorok.get(jatekosnev);
 
                             szabotor1.lyukaszt();
-                            System.out.println(jatekosnev + "kilyukasztotta a mezot,amin all");
+                            System.out.println(jatekosnev + "kilyukasztotta a mezőt, amin áll!");
                         } else {
                             throw new ProtoException();
                         }
                     } catch (ProtoException e) {
-                        System.out.println("Nem sikerult a lyukasztas");
+                        System.out.println("Nem sikerült a lyukasztás!");
                     }
                 case "Foltoz":
                     String szerelonev = arguments[1];
@@ -281,7 +287,7 @@ public class Proto {
                             throw new ProtoException();
                         }
                     } catch (ProtoException e) {
-                        System.out.println("Nem sikerult a befoltozas!");
+                        System.out.println("Nem sikerült a befoltozas!");
                     }
                 case "Ragaszt":
                     String ragasztnev = arguments[1];
@@ -296,7 +302,7 @@ public class Proto {
                             throw new ProtoException();
                         }
                     } catch (ProtoException e) {
-                        System.out.println("Nem sikerult a mezo beragasztasa!");
+                        System.out.println("Nem sikerült a mező beragasztása!");
                     }
                 case "Vazelinez":
                     String vazelineznev = arguments[1];
@@ -311,7 +317,7 @@ public class Proto {
                             throw new ProtoException();
                         }
                     } catch (ProtoException e) {
-                        System.out.println("Nem sikerult a vezelinezes!");
+                        System.out.println("Nem sikerült a vazelinezés!");
                     }
                 case "PumpatAllit":
                     String allitonev = arguments[1];
@@ -326,13 +332,13 @@ public class Proto {
                             Cso csoki = jelenlegiJatek.csovek.get(kimeneticso);
                             if(m1.szomszedok.contains(csobe)&&m1.szomszedok.contains(csoki)) {
                                 m1.atAllit(csobe, csoki);
-                                System.out.println(allitonev + "atallitotta a pumpat, amin allt");
+                                System.out.println(allitonev + "atallitotta a pumpat, amin áll!");
                             }
                         }else{
                             throw new ProtoException();
                         }
                     }catch (ProtoException e){
-                        System.out.println("Nem sikerult a pumpa allitasa");
+                        System.out.println("Nem sikerült a pumpa állitása!");
                     }
                 case "Javit":
                     String javitnev = arguments[1];
@@ -346,7 +352,7 @@ public class Proto {
                             throw new ProtoException();
                         }
                     }catch (ProtoException e){
-                        System.out.println("Nem sikerult a pumpa javitasa");
+                        System.out.println("Nem sikerült a pumpa javítása!");
                     }
                 case "PumpaElront":
                     String pumpa = arguments[1];
@@ -358,7 +364,7 @@ public class Proto {
                             System.out.println(pumpa + " nevű pumpa elromlott.");
                         }
                     }catch (ProtoException e){
-                        System.out.println("Nem sikerult a pumpa elrontasa");
+                        System.out.println("Nem sikerült a pumpa elrontása!");
                     }
                     break;
                 case "CsoFelvesz":
@@ -371,7 +377,7 @@ public class Proto {
                         }
 
                     }catch (ProtoException e){
-                        System.out.println("Nem sikerult a pumpa elrontasa");
+                        System.out.println("Nem sikerült a cső felvétele!");
                     }
                     break;
                 case "CsoLerak":
@@ -384,7 +390,7 @@ public class Proto {
                         }
 
                     }catch (ProtoException e){
-                        System.out.println("Nem sikerult a pumpa elrontasa");
+                        System.out.println("Nem sikerült a cső lerakása!");
                     }
                     break;
                 case "PumpaVasarlas":
@@ -396,12 +402,12 @@ public class Proto {
                         }
 
                     }catch (ProtoException e){
-                        System.out.println("Nem sikerult a pumpa elrontasa");
+                        System.out.println("Nem sikerült a pumpa vásárlása!");
                     }
                     break;
                 case "PumpaLehelyez":
                     String lehelyezo = arguments[1];
-                    String lehelyezendoMezo = arguments[1];
+                    String lehelyezendoMezo = arguments[2];
                     try{
                         if (jelenlegiJatek == null) throw new ProtoException();
                         if(jelenlegiJatek.jatekosok.containsKey(lehelyezo) && jelenlegiJatek.mezok.containsKey(lehelyezendoMezo)){
@@ -409,26 +415,119 @@ public class Proto {
                         }
 
                     }catch (ProtoException e){
-                        System.out.println("Nem sikerult a pumpa elrontasa");
+                        System.out.println("Nem sikerult a pumpa lehelyezése!");
                     }
                     break;
                 case "RandomBe":
                     try{
                         if (jelenlegiJatek == null) throw new ProtoException();
-
+                        jelenlegiJatek.randomKi = false;
                         System.out.println("Random mód bekapcsolva");
                     }catch (ProtoException e){
-                        System.out.println("Nem sikerult a pumpa elrontasa");
+                        System.out.println("Nem sikerult a random mód bekapcsolása!");
                     }
                     break;
                 case "RandomKi":
                     try{
                         if (jelenlegiJatek == null) throw new ProtoException();
-
+                        jelenlegiJatek.randomKi = true;
+                        System.out.println("Random mód kikapcsolva");
+                    }catch (ProtoException e){
+                        System.out.println("Nem sikerult a random mód kikapcsolása!");
+                    }
+                    break;
+                case "Befolyik":
+                    String mezoneve1 = arguments[1];
+                    try{
+                        if (jelenlegiJatek == null) throw new ProtoException();
+                        if(jelenlegiJatek.mezok.containsKey(mezoneve1)){
+                            Mezo m = jelenlegiJatek.mezok.get(mezoneve1);
+                            m.befolyik();
+                            System.out.println(m + "-be befolyik a víz ");
+                            for (Mezo m1: m.getSzomszedok()) {
+                                System.out.println(m1 +  "-be tovább folyt a víz!");
+                            }
+                        }
+                    }catch (ProtoException e){
+                        System.out.println("Nem sikerült!");
+                    }
+                    break;
+                case "Var":
+                    int msIdo = Integer.parseInt(arguments[1]);
+                    try{
+                        if (jelenlegiJatek == null) throw new ProtoException();
+                        System.out.println(msIdo + "ms várása!");
+                    }catch (ProtoException e){
+                        System.out.println("Nem sikerült várni!");
+                    }
+                    break;
+                case "Vizfolyas":
+                    try{
+                        if (jelenlegiJatek == null) throw new ProtoException();
+                        jelenlegiJatek.jatek.vizFolyas(jelenlegiJatek.randomKi);
+                        for (Forras f : jelenlegiJatek.jatek.getForrasok()) {
+                            System.out.println(f + "-ből elindult a víz! ");
+                        }
+                        for (Cso cs : jelenlegiJatek.jatek.getCsovek()) {
+                            System.out.println(cs + "-be befolyt a víz! ");
+                        }
+                        for (Pumpa p : jelenlegiJatek.jatek.getPumpak()) {
+                            System.out.println(p + "-be befolyt a víz! ");
+                        }
+                        for (Ciszterna c : jelenlegiJatek.jatek.getCiszternak()) {
+                            System.out.println(c + " elnyelte a vizet! ");
+                        }
 
                     }catch (ProtoException e){
-                        System.out.println("Nem sikerult a pumpa elrontasa");
+                        System.out.println("Nem sikerült!");
                     }
+                    break;
+                case "BeallitCso":
+                    String csoNeve = arguments[1];
+                    boolean lyukase = arguments[2].equalsIgnoreCase("igen");
+                    boolean ragade = arguments[3].equalsIgnoreCase("igen");
+                    boolean csuszike = arguments[4].equalsIgnoreCase("igen");
+                    int msLyukasztasIdo = Integer.parseInt(arguments[5]);
+                    String ragasztottaNeve = arguments[6];
+                    try{
+                        if (jelenlegiJatek == null) throw new ProtoException();
+                        if(jelenlegiJatek.mezok.containsKey(csoNeve)) {
+                            Cso cso1 = (Cso) jelenlegiJatek.mezok.get(csoNeve);
+                            cso1.lyukas = lyukase;
+                            cso1.ragad = ragade;
+                            cso1.csuszik = csuszike;
+                            cso1.lyukasztasiIdo = msLyukasztasIdo;
+                            if(jelenlegiJatek.jatekosok.containsKey(ragasztottaNeve)) cso1.ragasztotta = jelenlegiJatek.jatekosok.get(ragasztottaNeve);
+                            System.out.println(csoNeve + " állapota sikeresen beállítva: " + "lyukas: " + (lyukase ? "igen " : "nem ") + "ragad: " + (ragade ? "igen " : "nem ")
+                                    + "csúszik: " + (csuszike ? "igen " : "nem ") + "lyukasztási idő: " + msLyukasztasIdo +  " ragasztotta: " + ragasztottaNeve);
+                        }
+                    }catch (ProtoException e){
+                        System.out.println("Nem sikerült a cső beállítása!");
+                    }
+                    break;
+                case "Pumpaszerkesztes":
+                    String pumpaNeve = arguments[1];
+                    String csoKimenet = arguments[2];
+                    String csoBemenet = arguments[3];
+                    try{
+                        if (jelenlegiJatek == null) throw new ProtoException();
+                        if(jelenlegiJatek.mezok.containsKey(pumpaNeve)) {
+                            Pumpa pumpa1 = (Pumpa) jelenlegiJatek.mezok.get(pumpaNeve);
+                            Cso kimenet = null;
+                            Cso bemenet = null;
+                            for (Mezo cs1 : pumpa1.getSzomszedok()) {
+                                if(cs1.equals((Cso) jelenlegiJatek.mezok.get(csoKimenet))) kimenet = (Cso) jelenlegiJatek.mezok.get(csoKimenet);
+                                else if( cs1.equals((Cso) jelenlegiJatek.mezok.get(csoBemenet))) bemenet = (Cso) jelenlegiJatek.mezok.get(csoBemenet);
+                            }
+                            pumpa1.atAllit(bemenet, kimenet);
+                            System.out.println(pumpaNeve + " beállítva!");
+                        }
+                    }catch (ProtoException e){
+                        System.out.println("Nem sikerült beállítani!");
+                    }
+                    break;
+                default:
+                    System.out.println("Nem megfelelő formátum!");
                     break;
 
             }

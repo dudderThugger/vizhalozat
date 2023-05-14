@@ -11,7 +11,6 @@ public class Szerelo extends Jatekos{
     private Pumpa pumpaTart;
     public Szerelo() {
 
-
     }
 
     /**

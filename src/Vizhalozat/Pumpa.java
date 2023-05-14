@@ -35,17 +35,14 @@ public class Pumpa extends AktivElemek implements Viheto{
      */
     @Override
     public void befolyik() {
-//        szkeleton.hivas(this, "befolyik");
-//        if(mukodik && bemenet.getTelitett() && !this.telitett) {
-//            telitett = true;
-//            kimenet.befolyik();
-//        }
-//        szkeleton.visszateres(this, "befolyik");
-
-        if(!telitett && bemenet.getTelitett()){
+        if(mukodik && kimenet != null) {
             telitett = true;
+            kimenet.szomszedok.remove(this);
             kimenet.befolyik();
+            kimenet.szomszedok.add(this);
         }
+        else System.out.println("Nincs csatlakoztatva kimenet");
+
     }
 
     /**
@@ -56,11 +53,11 @@ public class Pumpa extends AktivElemek implements Viheto{
      */
     @Override
     public boolean atAllit(Cso be, Cso ki) {
-//        szkeleton.hivas(this, "atAllit");
-//        szkeleton.visszateres(this, "atAllit", "true");
-
-        bemenet = be;
-        kimenet = ki;
+        if(be != null && ki != null) {
+            bemenet = be;
+            kimenet = ki;
+        }
+        else throw new RuntimeException("Nem megfelelo be / kimenet");
         return true;
     }
 
@@ -70,17 +67,6 @@ public class Pumpa extends AktivElemek implements Viheto{
      */
     @Override
     public boolean javitjak() {
-//        szkeleton.hivas(this, "javitjak");
-//        if(szkeleton.kerdes(this, "Javításra van szükség? (Igen, Nem)").equalsIgnoreCase("igen")){
-//            mukodik = true;
-//            szkeleton.visszateres(this, "javitjak", "true");
-//            return true;
-//        }
-//        else {
-//            szkeleton.visszateres(this, "javitjak", "false");
-//            return false;
-//        }
-
         if(!mukodik){
             mukodik = true;
             return true;
@@ -122,10 +108,6 @@ public class Pumpa extends AktivElemek implements Viheto{
      * hogy elromlik az adott pumpa vagy sem
      */
     public void elromlik() {
-//        szkeleton.hivas(this, "elromlik");
-//        mukodik = false;
-//        szkeleton.visszateres(this, "elromlik");
-
         Random rnd = new Random();
         int hatar = rnd.nextInt(10) + 1;
         if(hatar == 10){

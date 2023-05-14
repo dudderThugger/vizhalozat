@@ -12,8 +12,6 @@ public class Forras extends AktivElemek{
      */
     @Override
     public boolean felveszik() {
-//        szkeleton.hivas(this, "felveszik");
-//        szkeleton.visszateres(this, "felveszik");
         return false;
     }
 
@@ -21,11 +19,9 @@ public class Forras extends AktivElemek{
      * Víz folyatás szomszédos mezőkbe
      */
     public void vizTermeles() {
-//        szkeleton.hivas(this, "vizTermeles");
 //        for(Mezo szomszed : szomszedok) {
 //            szomszed.befolyik();
 //        }
-//        szkeleton.visszateres(this, "vizTermeles");
 
         for (Mezo m: szomszedok) {
             m.befolyik();
@@ -37,9 +33,15 @@ public class Forras extends AktivElemek{
      */
     @Override
     public void befolyik() {
-//        szkeleton.hivas(this, "befolyik");
-//        szkeleton.visszateres(this, "befolyik");
-        telitett = true;
+        if(!telitett)  telitett = true;
+        for (Mezo szomszed : szomszedok) {
+            if(szomszed != null) {
+                szomszed.removeSzomszed(this);
+                szomszed.befolyik();
+                szomszed.addSzomszed(this);
+            }
+        }
+
     }
 
     /**
@@ -50,8 +52,6 @@ public class Forras extends AktivElemek{
      */
     @Override
     public boolean atAllit(Cso be, Cso ki) {
-//        szkeleton.hivas(this, "atAllit");
-//        szkeleton.visszateres(this, "atAllit");
         return false;
     }
 
@@ -61,8 +61,6 @@ public class Forras extends AktivElemek{
      */
     @Override
     public boolean javitjak() {
-//        szkeleton.hivas(this, "javitjak");
-//        szkeleton.visszateres(this, "javitjak");
         return false;
     }
 

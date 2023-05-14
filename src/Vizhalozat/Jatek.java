@@ -8,11 +8,17 @@ import java.util.Timer;
  * és az aktuális állás számontartásáért felelős
  */
 public class Jatek {
+    /** A játékosokat tartalmazó lista */
     private ArrayList<Jatekos> jatekosok = new ArrayList<>();
+    /** A szerelőket tartalmazó lista */
     private ArrayList<Szerelo> szerelok = new ArrayList<>();
+    /** A szabotőröket tartalmazó lista */
     private ArrayList<Szabotor> szabotorok = new ArrayList<>();
+    /** A mezőket tartalmazó lista */
     private ArrayList<Mezo> mezok = new ArrayList<>();
+    /** A ciszternákat tartalmazó lista */
     private ArrayList<Ciszterna> ciszternak = new ArrayList<>();
+    /** A forrásokat tartalmazó lista */
     private ArrayList<Forras> forrasok = new ArrayList<>();
     /** A pumpákat tartalmazó lista */
     private final ArrayList<Pumpa> pumpak;
@@ -33,28 +39,50 @@ public class Jatek {
         csovek = new ArrayList<>();
     }
 
+    /**
+     * A játék Játékosok listájához ad hozzá egy szerelőt
+     * @param jatekos Szerelo tipust ad a listához
+     */
     public void addJatekos(Szerelo jatekos) {
         jatekosok.add(jatekos);
         szerelok.add(jatekos);
     }
+    /**
+     * A játék Játékosok listájához ad hozzá egy szabotőrt
+     * @param jatekos Szabotor tipust ad a listához
+     */
     public void addJatekos(Szabotor jatekos) {
         jatekosok.add(jatekos);
         szabotorok.add(jatekos);
     }
-
+    /**
+     * A játék Mezők listájához ad hozzá egy ciszternát
+     * @param mezo Ciszterna tipust ad a listához
+     */
     public void addMezo(Ciszterna mezo) {
         mezok.add(mezo);
         ciszternak.add(mezo);
     }
+    /**
+     * A játék Mezők listájához ad hozzá egy csövet
+     * @param mezo Cso tipust ad a listához
+     */
     public void addMezo(Cso mezo) {
         mezok.add(mezo);
+        csovek.add(mezo);
     }
-
+    /**
+     * A játék Mezők listájához ad hozzá egy forást
+     * @param mezo Forras tipust ad a listához
+     */
     public void addMezo(Forras mezo) {
         mezok.add(mezo);
         forrasok.add(mezo);
     }
-
+    /**
+     * A játék Mezők listájához ad hozzá egy pumpát
+     * @param mezo Pumpa tipust ad a listához
+     */
     public void addMezo(Pumpa mezo) {
         mezok.add(mezo);
         pumpak.add(mezo);
@@ -72,11 +100,6 @@ public class Jatek {
      * Minden pumpára kisorsolja, hogy elromlik-e vagy sem
      */
     public void pumpaElRomlik(boolean randomKi) {
-//        for (Pumpa pumpa : pumpak) {
-//            if(ertek < 2) {
-//                pumpa.elromlik();
-//            }
-//        }
 
         if(randomKi) {
             for (Pumpa p: pumpak) {
@@ -109,13 +132,21 @@ public class Jatek {
         }
     }
 
+
+    public ArrayList<Jatekos> getJatekosok() { return jatekosok; }
+    public ArrayList<Szerelo> getSzerelok() { return szerelok; }
+    public ArrayList<Szabotor> getSzabotorok() { return szabotorok; }
+    public ArrayList<Mezo> getMezok() { return mezok; }
+    public ArrayList<Forras> getForrasok() { return forrasok; }
+    public ArrayList<Ciszterna> getCiszternak() { return ciszternak; }
+    public ArrayList<Pumpa> getPumpak() { return pumpak; }
+    public ArrayList<Cso> getCsovek() { return csovek; }
+
+
     /**
      * A szerelők pontját növelő függvény
      */
     public void szereloPontSzerzes(){
-//        szkeleton.hivas(this, "szereloPontSzerzes");
-//        szereloPont++;
-//        szkeleton.visszateres(this, "szereloPontSzerzes");
         szereloPont++;
     }
 
@@ -123,9 +154,6 @@ public class Jatek {
      * A szabotőrök pontját növelő függvény
      */
     public void szabotorPontSzerzes(){
-//        szkeleton.hivas(this, "szabotorPontSzerzes");
-//        szabotorPont++;
-//        szkeleton.visszateres(this, "szabotorPontSzerzes");
         szabotorPont++;
     }
 
@@ -134,33 +162,16 @@ public class Jatek {
      * Legenerálja az alap pályát és beállítja az elemeket szomszédoknak
      */
     public void init(){
-//        szkeleton.hivas(this, "init");
-//
 //        Forras f1 = new Forras(this, szkeleton);
-//        szkeleton.ujObjektum(f1, "f1");
-//        szkeleton.hivas(f1, "<<create>>");
-//        szkeleton.visszateres(f1, "<<create>>");
-//
+
 //        Cso cs1 = new Cso(this, szkeleton);
-//        szkeleton.ujObjektum(cs1, "cs1");
-//        szkeleton.hivas(cs1, "<<create>>");
-//        szkeleton.visszateres(cs1, "<<create>>");
-//
+
 //        Pumpa p1 = new Pumpa(this, szkeleton);
-//        szkeleton.ujObjektum(p1, "p1");
-//        szkeleton.hivas(p1, "<<create>>");
-//        szkeleton.visszateres(p1, "<<create>>");
-//
+
 //        Cso cs2 = new Cso(this, szkeleton);
-//        szkeleton.ujObjektum(cs2, "cs2");
-//        szkeleton.hivas(cs2, "<<create>>");
-//        szkeleton.visszateres(cs2, "<<create>>");
-//
+
 //        Ciszterna c1 = new Ciszterna(this, szkeleton);
-//        szkeleton.ujObjektum(c1, "c1");
-//        szkeleton.hivas(c1, "<<create>>");
-//        szkeleton.visszateres(c1, "<<create>>");
-//
+
 //        cs1.addSzomszed(f1);
 //        f1.addSzomszed(cs1);
 //
@@ -172,8 +183,6 @@ public class Jatek {
 //
 //        c1.addSzomszed(cs2);
 //        cs2.addSzomszed(c1);
-//
-//        szkeleton.visszateres(this, "init");
 
         timer.notify();
         szabotorPont = 0;

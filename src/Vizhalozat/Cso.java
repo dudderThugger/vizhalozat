@@ -48,21 +48,12 @@ public class Cso extends Mezo implements Viheto {
      */
     @Override
     public void befolyik() {
-//        if(ertek.equals("Igen")){
-//            jatek.szabotorPontSzerzes();
-//        }
-//        else if(!telitett){
-//            telitett = true;
-//            for(Mezo szomszed : szomszedok) {
-//                szomszed.befolyik();
-//            }
-//        }
-//        szkeleton.visszateres(this, "befolyik");
-
-        if(!telitett) {
-            telitett = true;
-            for (Mezo m: szomszedok) {
-                m.befolyik();
+        if(!telitett)  telitett = true;
+        for (Mezo szomszed : szomszedok) {
+            if(szomszed != null) {
+                szomszed.removeSzomszed(this);
+                szomszed.befolyik();
+                szomszed.addSzomszed(this);
             }
         }
     }
@@ -73,13 +64,10 @@ public class Cso extends Mezo implements Viheto {
      */
     @Override
     public boolean ralep(Jatekos j){
-//        szkeleton.hivas(this, "ralep");
 //        if(rajtaAllnak.size()==0){
 //            rajtaAllnak.add(j);
-//            szkeleton.visszateres(this, "ralep", "true");
 //            return true;
 //        }
-//        szkeleton.visszateres(this, "ralep", "false");
 
         if(rajtaAllnak.size() == 0) {
             rajtaAllnak.add(j);
@@ -116,21 +104,6 @@ public class Cso extends Mezo implements Viheto {
      */
     @Override
     public boolean pumpaLehelyez(Pumpa p) {
-//        szkeleton.hivas(this, "pumpaLehelyez");
-//        szkeleton.kerdes(this, "Allnak rajtam (Igen/Nem)");
-//        Scanner scanner = new Scanner(System.in);
-//        String answer = scanner.nextLine();
-//        if(answer.equals("Igen")) {
-//            szkeleton.visszateres(this, "pumpaLehelyez", "false");
-//            return false;
-//        } else if(answer.equals("Nem")) {
-//            szkeleton.visszateres(this, "pumpaLehelyez", "true");
-//            szomszedok.add(p);
-//            return true;
-//        } else {
-//            szkeleton.visszateres(this, "pumpaLehelyez", "false");
-//        }
-
         Cso ujCso = new Cso(jatek);
         ujCso.addSzomszed(szomszedok.get(0));
         removeSzomszed(szomszedok.get(0));
@@ -150,15 +123,6 @@ public class Cso extends Mezo implements Viheto {
     @Override
     public boolean foltoz()
     {
-//        szkeleton.hivas(this, "foltoz");
-//        String answer = szkeleton.kerdes(this, "Lyukas vagyok (Igen/Nem)");
-//        if(answer.equals("Igen")){
-//          lyukas = false;
-//          szkeleton.visszateres(this, "foltoz","true");
-//          return true;
-//        }
-//        lyukas = false;
-//        szkeleton.visszateres(this, "foltoz","false");
         if(lyukas){
             lyukas = false;
             return true;
@@ -172,15 +136,12 @@ public class Cso extends Mezo implements Viheto {
      */
     @Override
     public boolean lyukaszt() {
-//        szkeleton.hivas(this, "lyukaszt");
 //        String answer = szkeleton.kerdes(this, "Lyukas vagyok(Igen/Nem)");
 //        if(answer.equals("Nem")){
 //            lyukas = true;
-//            szkeleton.visszateres(this, "lyukaszt", "true");
 //            return true;
 //        }
 //        lyukas = true;
-//        szkeleton.visszateres(this, "lyukaszt", "false");
 
         if(!lyukas){
             lyukas = true;
@@ -196,8 +157,6 @@ public class Cso extends Mezo implements Viheto {
      */
     @Override
     public Pumpa pumpaVasarlas() {
-//        szkeleton.hivas(this, "pumpaVasarlas");
-//        szkeleton.visszateres(this, "pumpaVasarlas", "null");
         return null;
     }
 
@@ -209,8 +168,6 @@ public class Cso extends Mezo implements Viheto {
      */
     @Override
     public boolean atAllit(Cso be, Cso ki) {
-//        szkeleton.hivas(this, "atAllit");
-//        szkeleton.visszateres(this, "atAllit", "false");
         return false;
     }
 
@@ -220,8 +177,6 @@ public class Cso extends Mezo implements Viheto {
      */
     @Override
     public boolean javitjak() {
-//        szkeleton.hivas(this, "javitjak");
-//        szkeleton.visszateres(this, "javitjak", "false");
         return false;
     }
 
@@ -232,8 +187,6 @@ public class Cso extends Mezo implements Viheto {
      */
     @Override
     public boolean csoLehelyezes(Cso cs) {
-//        szkeleton.hivas(this, "csoLehelyezes");
-//        szkeleton.visszateres(this, "csoLehelyezes", "false");
         return false;
     }
 
@@ -243,9 +196,7 @@ public class Cso extends Mezo implements Viheto {
      */
     @Override
     public void lerakjak(Jatekos lerako) {
-//        szkeleton.hivas(this, "lerakjak");
 //        rajtaAllnak.add(lerako);
-//        szkeleton.visszateres(this, "lerakjak");
     }
 
     /**
