@@ -8,4 +8,6 @@ cso1 mező sikeresen létrehozva!
 pumpa1 mező sikeresen létrehozva!
 Szomszedság beállítva!
 cso1 állapota sikeresen beállítva: lyukas: igen ragad: nem csúszik: nem lyukasztási idő: 0 ragasztotta: szabotor1
-Nem sikerult
+cso1-be befolyatta a vízet
+Mezo telitettlen
+
