@@ -248,9 +248,8 @@ public class Proto {
                         if (jelenlegiJatek.mezok.containsKey(mezoneve) && jelenlegiJatek.jatekosok.containsKey(jatekosneve)) {
                             Mezo mezo1 = jelenlegiJatek.mezok.get(mezoneve);
                             Jatekos jatekos1 = jelenlegiJatek.jatekosok.get(jatekosneve);
-
                             mezo1.ralep(jatekos1);
-                            System.out.println(jatekosneve + "rálépett a " + mezoneve + "mezőre!");
+                            System.out.println(jatekosneve + " rálépett a " + mezoneve + "mezőre!");
                         } else {
                             throw new ProtoException();
                         }
@@ -263,9 +262,8 @@ public class Proto {
                     String jatekosnev = arguments[1];
                     try {
                         if (jelenlegiJatek == null) throw new ProtoException();
-                        if (jelenlegiJatek.szabotorok.containsKey(jatekosnev)) {
-                            Szabotor szabotor1 = jelenlegiJatek.szabotorok.get(jatekosnev);
-
+                        if (jelenlegiJatek.jatekosok.containsKey(jatekosnev)) {
+                            Jatekos szabotor1 = jelenlegiJatek.szabotorok.get(jatekosnev);
                             szabotor1.lyukaszt();
                             System.out.println(jatekosnev + "kilyukasztotta a mezőt, amin áll!");
                         } else {
@@ -274,6 +272,7 @@ public class Proto {
                     } catch (ProtoException e) {
                         System.out.println("Nem sikerült a lyukasztás!");
                     }
+                    break;
                 case "Foltoz":
                     String szerelonev = arguments[1];
                     try {
@@ -289,6 +288,7 @@ public class Proto {
                     } catch (ProtoException e) {
                         System.out.println("Nem sikerült a befoltozas!");
                     }
+                    break;
                 case "Ragaszt":
                     String ragasztnev = arguments[1];
                     try {
@@ -304,6 +304,7 @@ public class Proto {
                     } catch (ProtoException e) {
                         System.out.println("Nem sikerült a mező beragasztása!");
                     }
+                    break;
                 case "Vazelinez":
                     String vazelineznev = arguments[1];
                     try {
@@ -319,6 +320,7 @@ public class Proto {
                     } catch (ProtoException e) {
                         System.out.println("Nem sikerült a vazelinezés!");
                     }
+                    break;
                 case "PumpatAllit":
                     String allitonev = arguments[1];
                     String bemeneticso = arguments[2];
@@ -340,6 +342,7 @@ public class Proto {
                     }catch (ProtoException e){
                         System.out.println("Nem sikerült a pumpa állitása!");
                     }
+                    break;
                 case "Javit":
                     String javitnev = arguments[1];
                     try {
@@ -354,6 +357,7 @@ public class Proto {
                     }catch (ProtoException e){
                         System.out.println("Nem sikerült a pumpa javítása!");
                     }
+                    break;
                 case "PumpaElront":
                     String pumpa = arguments[1];
                     try{
