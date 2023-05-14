@@ -9,5 +9,5 @@ Szomszédság beállítva!
 pumpa1 mező sikeresen létrehozva!
 szerelo1  kezében pumpa1  van!
 szerelo1  ráállt a cso1 mezőre!
-szerelo1 lerakta a <Mező neve> pumpát!
+szerelo1 lerakta a  pumpát!
 
