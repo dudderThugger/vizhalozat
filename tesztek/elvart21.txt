@@ -1,10 +1,12 @@
-jatek1 sikeresen létrehozva! 
-jatek1 kiválasztva!
-Random mód kikapcsolása!
+jatek1 sikeresen letrehozva!
+jatek1 kivalasztva!
+Random mód kikapcsolva
 Inicializálás! 
-A következő objektumok jöttek létre: szerelo1, szerelo2, szabotor1, szabotor2, forras1, forras2, ciszterna1, ciszterna 2
-Cso1 létrehozva
-Pumpa1 létrehozva
-Szomszédság beállítva
-Cso1 állapota sikeresen beállítva:lyukas
-Nem sikerült a mezőbe befolyatni a vizet!
+A következő objektumok jöttek létre:
+szerelo1, szerelo2, szabotor1, szabotor2, forras1, forras2, ciszterna1, ciszterna 2
+cso1 mező sikeresen létrehozva!
+pumpa1 mező sikeresen létrehozva!
+Szomszedság beállítva!
+cso1 állapota sikeresen beállítva: lyukas: igen ragad: nem csúszik: nem lyukasztási idő: 0 ragasztotta: szabotor1
+cso1-be befolyik a víz 
+
