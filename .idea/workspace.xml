@@ -4,16 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="faszkodás">
+    <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="lolol">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Proto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Proto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tesztek/elvart18.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tesztek/elvart18.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tesztek/elvart3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tesztek/elvart3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tesztek/teszt15.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tesztek/teszt15.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tesztek/teszt16.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tesztek/teszt16.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tesztek/teszt3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tesztek/teszt3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tesztek/teszt4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tesztek/teszt4.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tesztek/teszt5.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tesztek/teszt5.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,7 +220,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684100509577</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="lolol">
+      <created>1684102651435</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1684102651435</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -270,7 +270,8 @@
     <MESSAGE value="&#10;Push hogy mas ne kezdje el ami mar meglehet" />
     <MESSAGE value="Utolso parancsok" />
     <MESSAGE value="faszkodás" />
-    <option name="LAST_COMMIT_MESSAGE" value="faszkodás" />
+    <MESSAGE value="lolol" />
+    <option name="LAST_COMMIT_MESSAGE" value="lolol" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

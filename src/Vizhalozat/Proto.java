@@ -261,6 +261,8 @@ public class Proto {
                         jelenlegiJatek.mezok.put("forras2", forras2);
                         jelenlegiJatek.jatek.addMezo(forras1);
                         jelenlegiJatek.jatek.addMezo(forras2);
+                        jelenlegiJatek.aktivelemek.put("forras1", forras1);
+                        jelenlegiJatek.aktivelemek.put("forras2", forras2);
 
                         Ciszterna ciszterna1 = new Ciszterna(jelenlegiJatek.jatek);
                         Ciszterna ciszterna2 = new Ciszterna(jelenlegiJatek.jatek);
@@ -268,6 +270,8 @@ public class Proto {
                         jelenlegiJatek.mezok.put("ciszterna2", ciszterna2);
                         jelenlegiJatek.jatek.addMezo(ciszterna1);
                         jelenlegiJatek.jatek.addMezo(ciszterna2);
+                        jelenlegiJatek.aktivelemek.put("ciszterna1", forras1);
+                        jelenlegiJatek.aktivelemek.put("ciszterna2", forras2);
                     } else {
                         System.out.println("Inicializálás! \n" +
                                 "A következő objektumok jöttek létre:\n" +
