@@ -321,11 +321,10 @@ public class Proto {
                 String szerelonev = arguments[1];
                 try {
                     if (jelenlegiJatek == null) throw new ProtoException();
-                    if (jelenlegiJatek.szerelok.containsKey(szerelonev)) {
-                        Szerelo szerelo1 = jelenlegiJatek.szerelok.get(szerelonev);
-
+                    if (jelenlegiJatek.jatekosok.containsKey(szerelonev)) {
+                        Szerelo szerelo1 = (Szerelo) jelenlegiJatek.jatekosok.get(szerelonev);
                         szerelo1.foltoz();
-                        System.out.println(szerelonev + "befoltozta a mezőt, amin áll!");
+                        System.out.println(szerelonev + " befoltozta a mezőt, amin áll!");
                     } else {
                         throw new ProtoException();
                     }
@@ -337,7 +336,7 @@ public class Proto {
                 String ragasztnev = arguments[1];
                 try {
                     if (jelenlegiJatek == null) throw new ProtoException();
-                    if (jelenlegiJatek.szerelok.containsKey(ragasztnev)) {
+                    if (jelenlegiJatek.jatekosok.containsKey(ragasztnev)) {
                         Jatekos jatekos1 = jelenlegiJatek.jatekosok.get(ragasztnev);
 
                         jatekos1.ragaszt();
@@ -353,8 +352,8 @@ public class Proto {
                 String vazelineznev = arguments[1];
                 try {
                     if (jelenlegiJatek == null) throw new ProtoException();
-                    if (jelenlegiJatek.szerelok.containsKey(vazelineznev)) {
-                        Szabotor jatekos1 = jelenlegiJatek.szabotorok.get(vazelineznev);
+                    if (jelenlegiJatek.jatekosok.containsKey(vazelineznev)) {
+                        Szabotor jatekos1 = (Szabotor)jelenlegiJatek.jatekosok.get(vazelineznev);
 
                         jatekos1.csuszik();
                         System.out.println(vazelineznev + "csuszossa tette a mezőt, amin áll!");
@@ -427,7 +426,7 @@ public class Proto {
                         Jatekos j = jelenlegiJatek.jatekosok.get(lecsatlakozatoNev);
                         Cso cs = jelenlegiJatek.csovek.get(lecsatlakoztatottCso);
                         j.felvesz_cso(cs);
-                        System.out.println(j + " felvette a " + cs + " csövet!");
+                        System.out.println(lecsatlakozatoNev + " felvette a " + lecsatlakoztatottCso + " csövet!");
                     }
                     else{
                         throw new ProtoException();
@@ -447,7 +446,7 @@ public class Proto {
                         Mezo m = jelenlegiJatek.mezok.get(lerakottMezo);
                         if(j.getRajtaAll().equals(m) && j.getTart() != null){
                             j.lerak_cso();
-                            System.out.println(j + " lerakta a kezében tartott csövet a " + m +" mezőre!");
+                            System.out.println(lerakNev + " lerakta a kezében tartott csövet a " + lerakottMezo +" mezőre!");
                         }
                         else{
                             throw new ProtoException();
@@ -466,9 +465,9 @@ public class Proto {
                 try{
                     if (jelenlegiJatek == null) throw new ProtoException();
                     if(jelenlegiJatek.jatekosok.containsKey(vasarlo)){
-                        Szerelo sz = jelenlegiJatek.szerelok.get(vasarlo);
+                        Szerelo sz = (Szerelo)jelenlegiJatek.jatekosok.get(vasarlo);
                         sz.pumpatvesz();
-                        System.out.println(sz + "vásárolt egy pumpát!");
+                        System.out.println(vasarlo + " vásárolt egy pumpát!");
                     }
                     else{
                         throw new ProtoException();
@@ -526,10 +525,7 @@ public class Proto {
                     if(jelenlegiJatek.mezok.containsKey(mezoneve1)){
                         Mezo m = jelenlegiJatek.mezok.get(mezoneve1);
                         m.befolyik();
-                        System.out.println(m + "-be befolyik a víz ");
-                        for (Mezo m1: m.getSzomszedok()) {
-                            System.out.println(m1 +  "-be tovább folyt a víz!");
-                        }
+                        System.out.println(mezoneve1 + "-be befolyik a víz ");
                     }
                 }catch (ProtoException e){
                     System.out.println("Nem sikerült!");

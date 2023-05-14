@@ -5,6 +5,6 @@ Inicializálás!
 A következő objektumok jöttek létre: szerelo1, szerelo2, szabotor1, szabotor2, forras1, forras2, ciszterna1, ciszterna 2
 cso1 mező sikeresen létrehozva!
 Szomszédság beállítva!
-cso1 allapota sikeresen beallitva: nem igen nem 0 nem
+cso1 allapota sikeresen beallitva: nem igen nem 0 szabotor1
 szerelo1 ráállt a cso1 mezőre!
 Nem sikerült a lépés!
