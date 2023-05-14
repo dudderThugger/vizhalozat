@@ -137,4 +137,12 @@ public abstract class Jatekos {
             }
         }
     }
+
+    public Mezo getRajtaAll() {
+        return rajtaAll;
+    }
+
+    public Viheto getTart() {
+        return tart;
+    }
 }

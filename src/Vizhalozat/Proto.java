@@ -373,7 +373,10 @@ public class Proto {
                     try{
                         if (jelenlegiJatek == null) throw new ProtoException();
                         if(jelenlegiJatek.jatekosok.containsKey(lecsatlakozatoNev) && jelenlegiJatek.csovek.containsKey(lecsatlakoztatottCso)){
-
+                            Jatekos j = jelenlegiJatek.jatekosok.get(lecsatlakozatoNev);
+                            Cso cs = jelenlegiJatek.csovek.get(lecsatlakoztatottCso);
+                            j.felvesz_cso(cs);
+                            System.out.println(j + " felvette a " + cs + " csövet!");
                         }
 
                     }catch (ProtoException e){
@@ -386,11 +389,19 @@ public class Proto {
                     try{
                         if (jelenlegiJatek == null) throw new ProtoException();
                         if(jelenlegiJatek.jatekosok.containsKey(lerakNev) && jelenlegiJatek.mezok.containsKey(lerakottMezo)){
-
+                            Jatekos j = jelenlegiJatek.jatekosok.get(lerakNev);
+                            Mezo m = jelenlegiJatek.mezok.get(lerakottMezo);
+                            if(j.getRajtaAll().equals(m) && j.getTart() != null){
+                                j.lerak_cso();
+                                System.out.println(j + " lerakta a kezében tartott csövet a " + m +" mezőre!");
+                            }
+                            else{
+                                System.out.println("Nem sikerült a cső lehelyezése!");
+                            }
                         }
 
                     }catch (ProtoException e){
-                        System.out.println("Nem sikerült a cső lerakása!");
+                        System.out.println("Nem sikerült a cső lehelyezése!");
                     }
                     break;
                 case "PumpaVasarlas":
@@ -398,7 +409,9 @@ public class Proto {
                     try{
                         if (jelenlegiJatek == null) throw new ProtoException();
                         if(jelenlegiJatek.jatekosok.containsKey(vasarlo)){
-
+                            Szerelo sz = jelenlegiJatek.szerelok.get(vasarlo);
+                            sz.pumpatvesz();
+                            System.out.println(sz + "vásárolt egy pumpát!");
                         }
 
                     }catch (ProtoException e){
@@ -411,9 +424,16 @@ public class Proto {
                     try{
                         if (jelenlegiJatek == null) throw new ProtoException();
                         if(jelenlegiJatek.jatekosok.containsKey(lehelyezo) && jelenlegiJatek.mezok.containsKey(lehelyezendoMezo)){
-
+                            Szerelo sz = jelenlegiJatek.szerelok.get(lehelyezo);
+                            Mezo m = jelenlegiJatek.mezok.get(lehelyezendoMezo);
+                            if(sz.getRajtaAll().equals(m) && sz.getTart() != null){
+                                sz.lerak_pumpa();
+                                System.out.println(sz + " lerakta a pumpát " + m + " mezőre!");
+                            }
+                            else{
+                                System.out.println("Nem sikerult a pumpa lehelyezése!");
+                            }
                         }
-
                     }catch (ProtoException e){
                         System.out.println("Nem sikerult a pumpa lehelyezése!");
                     }

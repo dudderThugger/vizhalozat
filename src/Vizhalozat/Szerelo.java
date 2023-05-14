@@ -42,7 +42,7 @@ public class Szerelo extends Jatekos{
      */
     public void pumpatvesz(){
         Pumpa p = rajtaAll.pumpaVasarlas();
-        if(tart ==null){
+        if(tart == null){
             tart =p;
         }
     }

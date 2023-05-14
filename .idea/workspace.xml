@@ -5,15 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="Utolso parancsok">
-      <change afterPath="$PROJECT_DIR$/.idea/git_toolbox_prj.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023__05__14__12_14__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023__05__14__12_14__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023__05__14__9_56__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023__05__14__9_56__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023__05__14__9_56__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023__05__14__9_56__Changes_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Cso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Cso.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Forras.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Forras.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Jatek.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Jatek.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Jatekos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Jatekos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Mezo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Mezo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Proto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Proto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Pumpa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Pumpa.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Szerelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Szerelo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
