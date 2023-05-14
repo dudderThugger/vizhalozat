@@ -363,6 +363,9 @@ public class Proto {
                             p.setMukodik(false);
                             System.out.println(pumpa + " nevű pumpa elromlott.");
                         }
+                        else{
+                            throw  new ProtoException();
+                        }
                     }catch (ProtoException e){
                         System.out.println("Nem sikerült a pumpa elrontása!");
                     }
@@ -377,6 +380,9 @@ public class Proto {
                             Cso cs = jelenlegiJatek.csovek.get(lecsatlakoztatottCso);
                             j.felvesz_cso(cs);
                             System.out.println(j + " felvette a " + cs + " csövet!");
+                        }
+                        else{
+                            throw new ProtoException();
                         }
 
                     }catch (ProtoException e){
@@ -396,8 +402,11 @@ public class Proto {
                                 System.out.println(j + " lerakta a kezében tartott csövet a " + m +" mezőre!");
                             }
                             else{
-                                System.out.println("Nem sikerült a cső lehelyezése!");
+                                throw new ProtoException();
                             }
+                        }
+                        else{
+                            throw new ProtoException();
                         }
 
                     }catch (ProtoException e){
@@ -412,6 +421,9 @@ public class Proto {
                             Szerelo sz = jelenlegiJatek.szerelok.get(vasarlo);
                             sz.pumpatvesz();
                             System.out.println(sz + "vásárolt egy pumpát!");
+                        }
+                        else{
+                            throw new ProtoException();
                         }
 
                     }catch (ProtoException e){
@@ -431,8 +443,11 @@ public class Proto {
                                 System.out.println(sz + " lerakta a pumpát " + m + " mezőre!");
                             }
                             else{
-                                System.out.println("Nem sikerult a pumpa lehelyezése!");
+                                throw new ProtoException();
                             }
+                        }
+                        else{
+                            throw new ProtoException();
                         }
                     }catch (ProtoException e){
                         System.out.println("Nem sikerult a pumpa lehelyezése!");
