@@ -19,10 +19,6 @@ public class Forras extends AktivElemek{
      * Víz folyatás szomszédos mezőkbe
      */
     public void vizTermeles() {
-//        for(Mezo szomszed : szomszedok) {
-//            szomszed.befolyik();
-//        }
-
         for (Mezo m: szomszedok) {
             m.befolyik();
         }
@@ -33,15 +29,12 @@ public class Forras extends AktivElemek{
      */
     @Override
     public void befolyik() {
-        if(!telitett)  telitett = true;
-        for (Mezo szomszed : szomszedok) {
-            if(szomszed != null) {
-                szomszed.removeSzomszed(this);
-                szomszed.befolyik();
-                szomszed.addSzomszed(this);
+        if (!telitett) {
+            for (Mezo szomszed : szomszedok) {
+                    szomszed.befolyik();
             }
+            telitett = true;
         }
-
     }
 
     /**

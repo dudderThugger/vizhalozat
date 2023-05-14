@@ -1,6 +1,15 @@
 JatekLetrehoz jatek1
 JatekKivalaszt jatek1
-JatekosLetrehoz szerelo1 szerelo
-MezoLetrehoz ciszterna1 ciszterna
-MezoLetrehoz cso1 cso
-SzomszedBeallit ciszterna1 cso1
+RandomKi
+Init
+MezoLétrehoz pumpa pumpa1
+MezoLetrehoz cso cso1
+MezoLetrehoz cso cs2
+SzomszedBeallit cso1 pumpa1
+SzomszedBeallit cso2 pumpa1
+SzomszedBeallit cso1 forras1
+SzomszedBeallit cso2 ciszterna1
+Pumpaszerkesztés pumpa1 cso1 cso2
+Vizfolyas
+Var 2000 ms
+

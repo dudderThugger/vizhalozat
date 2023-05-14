@@ -35,14 +35,12 @@ public class Pumpa extends AktivElemek implements Viheto{
      */
     @Override
     public void befolyik() {
-        if(mukodik && kimenet != null) {
-            telitett = true;
-            kimenet.szomszedok.remove(this);
-            kimenet.befolyik();
-            kimenet.szomszedok.add(this);
+        if(!telitett) {
+            if(mukodik && bemenet != null && bemenet.getTelitett() && kimenet != null) {
+                kimenet.befolyik();
+                telitett = true;
+            }
         }
-        else System.out.println("Nincs csatlakoztatva kimenet");
-
     }
 
     /**

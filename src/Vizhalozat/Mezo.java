@@ -180,4 +180,5 @@ public abstract class Mezo {
     public ArrayList<Jatekos> getRajtaAllnak() {
         return rajtaAllnak;
     }
+    public boolean getTelitett() { return telitett;}
 }

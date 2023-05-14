@@ -2,6 +2,7 @@ package Vizhalozat;
 
 import java.util.ArrayList;
 import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * A játék belső szerkezetéért felelős osztály. A játék ciklusának futtatásáért, játékosok és mezők létrehozasaért
@@ -30,13 +31,21 @@ public class Jatek {
     private Timer timer;
     /** A csöveket tartalmazó lista */
     private final ArrayList<Cso> csovek;
+    private boolean randomKi;
+    private boolean gameOver;
 
     /**
      * A játék osztály egyetlen konstruktora
      */
     public Jatek() {
+        randomKi = false;
+        timer = new Timer();
         pumpak = new ArrayList<>();
         csovek = new ArrayList<>();
+    }
+
+    public void setRandomKi(boolean randomKi) {
+        this.randomKi = randomKi;
     }
 
     /**
@@ -100,11 +109,8 @@ public class Jatek {
      * Minden pumpára kisorsolja, hogy elromlik-e vagy sem
      */
     public void pumpaElRomlik(boolean randomKi) {
-
-        if(randomKi) {
-            for (Pumpa p: pumpak) {
-                p.elromlik();
-            }
+        for (Pumpa p: pumpak) {
+            p.elromlik();
         }
     }
 
@@ -162,29 +168,6 @@ public class Jatek {
      * Legenerálja az alap pályát és beállítja az elemeket szomszédoknak
      */
     public void init(){
-//        Forras f1 = new Forras(this, szkeleton);
-
-//        Cso cs1 = new Cso(this, szkeleton);
-
-//        Pumpa p1 = new Pumpa(this, szkeleton);
-
-//        Cso cs2 = new Cso(this, szkeleton);
-
-//        Ciszterna c1 = new Ciszterna(this, szkeleton);
-
-//        cs1.addSzomszed(f1);
-//        f1.addSzomszed(cs1);
-//
-//        p1.addSzomszed(cs1);
-//        cs1.addSzomszed(p1);
-//
-//        cs2.addSzomszed(p1);
-//        p1.addSzomszed(cs2);
-//
-//        c1.addSzomszed(cs2);
-//        cs2.addSzomszed(c1);
-
-        timer.notify();
         szabotorPont = 0;
         szereloPont = 0;
 
@@ -203,5 +186,34 @@ public class Jatek {
         Ciszterna c1 = new Ciszterna(this);
         Ciszterna c2 = new Ciszterna(this);
         ciszternak.add(c1); ciszternak.add(c2);
+    }
+
+    public void tick() {
+        for(Jatekos jatekos : jatekosok ) {
+            jatekos.tick();
+        }
+        for(Cso cso : csovek) {
+            cso.tick();
+        }
+    }
+
+    public void inditas() {
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                if(!gameOver) {
+                    vizFolyas(randomKi);
+                    tick();
+                    pumpaElRomlik(randomKi);
+                    if(szereloPont == 15) {
+                        gameOver = true;
+                    }
+                    if(szabotorPont == 15) {
+                        gameOver = false;
+                    }
+                }
+            }
+        };
+        timer.scheduleAtFixedRate(timerTask, 0, 1000);
     }
 }

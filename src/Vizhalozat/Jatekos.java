@@ -6,18 +6,25 @@ import java.util.List;
  * A játékot játszó játékosok absztrakt osztálya, definálja a közös akciókat.
  */
 public abstract class Jatekos {
-    protected Szkeleton szkeleton;  // a figyelő és hívásszámontartó osztály referenciája
     protected Jatek jatek;  // Jatekot irányító osztály referenciája
     protected Viheto tart; //referencia a tárgyra, amit a játékos tart
     protected Cso csoTart; //a játékos kezében lévő cső referenciája
     protected Mezo rajtaAll; // referencia a mezőre, amin a játékos áll
-    protected int varakozasiIdo; // a játékosnak mennyi időt kell várnia a következő aktív akciójáig
     protected int ragadasiIdo;
 
     /**
      * A játékos egyetlen konstruktora
      */
     public Jatekos() {
+        ragadasiIdo = 0;
+    }
+
+    public void tick() {
+        if(ragadasiIdo > 0) ragadasiIdo--;
+    }
+
+    public void raAllit(Mezo m) {
+        rajtaAll = m;
     }
 
     /**
@@ -40,9 +47,6 @@ public abstract class Jatekos {
      * @param szomszed a AktivElemek típusú objektum amire lép a játékos
      */
     public void lepes(AktivElemek szomszed){
-//        ArrayList<Mezo> szomszedok = rajtaAll.getSzomszedok();
-//        szomszedok.add(szomszed);
-
         if(rajtaAll.getSzomszedok().contains(szomszed)){
             szomszed.ralep(this);
             rajtaAll.lelep(this);
@@ -55,20 +59,6 @@ public abstract class Jatekos {
      * @param ki kimenete
      */
     public void pumpaAllitas(Cso be, Cso ki){
-//        ArrayList<Mezo> szomszedok = rajtaAll.getSzomszedok();
-//        Cso[] csovek = new Cso[2];
-//        if(szomszedok.size() > 0) {
-//            for (int i = 0; i < 2; i++) {
-//                int valasz = Integer.parseInt(szkeleton.kerdes(this, "Az " + (i + 1) + ". cső kiválasztása: (A fentiek közül)"));
-//                if (valasz > 0 && valasz <= szomszedok.size()) csovek[i] = (Cso) szomszedok.remove(valasz - 1);
-//                else {
-//                    System.out.println("Nem megfelelő válasz!");
-//                    i--;
-//                }
-//            }
-//        }
-//        rajtaAll.atAllit(csovek[0], csovek[1]);
-
         List<Mezo> szomszedok = rajtaAll.getSzomszedok();
         if(szomszedok.contains(be) && szomszedok.contains(ki))
             rajtaAll.atAllit(be, ki);
@@ -121,21 +111,11 @@ public abstract class Jatekos {
      *  Megprobalja leragasztani a mezot
      */
     public void ragaszt(){
-        if(varakozasiIdo == 0) {
-            boolean siker = rajtaAll.ragaszt();
-            if(siker){
-                varakozasiIdo = 3;
-            }
-        }
+        boolean siker = rajtaAll.ragaszt();
     }
 
     public void lyukaszt(){
-        if(varakozasiIdo == 0) {
-            boolean siker = rajtaAll.lyukaszt();
-            if(siker){
-                varakozasiIdo = 3;
-            }
-        }
+        boolean siker = rajtaAll.lyukaszt();
     }
 
     public Mezo getRajtaAll() {

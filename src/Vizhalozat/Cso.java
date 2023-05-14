@@ -15,11 +15,22 @@ public class Cso extends Mezo implements Viheto {
     /** Azt jelzi, hogy milyen reg lyukasztottak ki a csovet */
     protected int lyukasztasiIdo;
     /** Annak a jatekosnak a referenciaja, aki ragadossa tette a csovet*/
+    private int csuszasIdo;
+    private int ragasztasiIdo;
     protected Jatekos ragasztotta;
+
+    public void tick() {
+        if(lyukasztasiIdo > 0) lyukasztasiIdo--;
+        if(csuszasIdo > 0) csuszasIdo--;
+        if(ragasztasiIdo > 0) ragasztasiIdo--;
+    }
 
     public Cso(Jatek jatek) {
         super(jatek);
         lyukas = false; ragad = false; csuszik = false;
+        lyukasztasiIdo = 0;
+        csuszasIdo = 0;
+        ragasztasiIdo = 0;
     }
 
     /**
@@ -27,19 +38,12 @@ public class Cso extends Mezo implements Viheto {
      * @return true, ha telitett
      */
     public boolean getTelitett() {
-//        if(ertek.equals("Igen") ){
-//            return true;
-//        }
         return telitett;
     }
 
     @Override
     public boolean felveszik() {
-//        if(ertek.equals("Nem") ){
-//            return true;
-//        }
         if(rajtaAllnak.size()==0) return true;
-
         return false;
     }
     /**
@@ -48,13 +52,11 @@ public class Cso extends Mezo implements Viheto {
      */
     @Override
     public void befolyik() {
-        if(!telitett)  telitett = true;
-        for (Mezo szomszed : szomszedok) {
-            if(szomszed != null) {
-                szomszed.removeSzomszed(this);
+        if (!telitett) {
+            for (Mezo szomszed : szomszedok) {
                 szomszed.befolyik();
-                szomszed.addSzomszed(this);
             }
+            telitett = true;
         }
     }
 
@@ -64,11 +66,6 @@ public class Cso extends Mezo implements Viheto {
      */
     @Override
     public boolean ralep(Jatekos j){
-//        if(rajtaAllnak.size()==0){
-//            rajtaAllnak.add(j);
-//            return true;
-//        }
-
         if(rajtaAllnak.size() == 0) {
             rajtaAllnak.add(j);
             if(j != ragasztotta && ragad){
@@ -136,12 +133,6 @@ public class Cso extends Mezo implements Viheto {
      */
     @Override
     public boolean lyukaszt() {
-//        String answer = szkeleton.kerdes(this, "Lyukas vagyok(Igen/Nem)");
-//        if(answer.equals("Nem")){
-//            lyukas = true;
-//            return true;
-//        }
-//        lyukas = true;
 
         if(!lyukas){
             lyukas = true;
