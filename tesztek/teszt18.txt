@@ -1,0 +1,6 @@
+JatekLetrehoz jatek1
+JatekKivalaszt jatek1
+RandomKi
+Init
+RaAllit szerelo1 ciszterna1
+PumpaVasarlas szerelo1

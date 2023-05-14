@@ -1,0 +1,10 @@
+JatekLetrehoz jatek1
+JatekKivalaszt jatek1
+RandomKi
+Init
+MezoLetrehoz cso1 cso
+SzomszedBeallit cso1 forras1
+BeallitCso cso1 nem nem nem 2000 szabotor1
+Var 1000
+RaAllit szabotor1 cso1
+Lyukasz szabotor1
