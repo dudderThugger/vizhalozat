@@ -3,7 +3,6 @@ jatek1 kiválasztva!
 Random mód kikapcsolása!
 Inicializálás!
 A következő objektumok jöttek létre: szerelo1, szerelo2, szabotor1, szabotor2, forras1, forras2, ciszterna1, ciszterna 2
-cso1 mező sikeresen létrehozva!
 Szomszédság beállítva!
 szerelo1 ráállt a forras1 mezőre!
 szerelo1 rálépett a  cso1 mezőre!
