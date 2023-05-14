@@ -82,8 +82,8 @@ public abstract class Mezo {
     }
 
     /**
-     *
-     * @return
+     * Egy mező elem felvevését megkísérlő absztrakt metódus
+     * @return igaz, ha sikerült felvenni
      */
     public abstract boolean felveszik();
 
@@ -137,6 +137,12 @@ public abstract class Mezo {
      * @return pumpán igaz, máshol hamis
      */
     public abstract boolean javitjak();
+
+    /**
+     * absztrakt függvénye a cső lehelyezésének
+     * @param cs a lehelyezendő cső
+     * @return igaz ha sikerült lehelyezni a csövet
+     */
     public abstract boolean csoLehelyezes(Cso cs);
 
     /**
@@ -163,6 +169,10 @@ public abstract class Mezo {
 
     public void setTelitett(boolean x) {telitett = x;}
 
+    /**
+     * megcsuszik metódus absztrakt függvénye
+     * @return
+     */
     public  abstract Mezo megcsuszik();
 
     /**
@@ -171,6 +181,11 @@ public abstract class Mezo {
      * @return csőn igaz, máshol hamis
      */
     public abstract boolean csuszik();
+
+    /**
+     * sima gettere a rajtaAll tagváltozónak
+     * @return
+     */
 
     public ArrayList<Jatekos> getRajtaAllnak() {
         return rajtaAllnak;
