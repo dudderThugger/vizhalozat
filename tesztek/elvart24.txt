@@ -1,0 +1,22 @@
+jatek1 sikeresen létrehozva! 
+jatek1 kiválasztva!
+Random mód kikapcsolása!
+Inicializálás
+A következő objektumok jöttek létre: szerelo1, szerelo2, szabotor1, szabotor2, forras1, forras2, ciszterna1, ciszterna 2
+pumpa1 sikeresen létrehozva
+cso1 sikeresen létrehozva
+cso2 sikeresen létrehozva
+Szomszédság beállítva!
+Szomszédság beállítva!
+Szomszédság beállítva!
+Szomszédság beállítva!
+Pump1 beállítva
+Vizfolyik
+Forras1-ből elindult a víz!
+Forras2-bőé elindult a víz!
+Cso1-be befolyt a víz!
+Pumpa1-be befolyt a víz!
+Cso2-be befolyt a víz!
+Ciszterna1 elnyelte a vizet!
+2000 ms várása
+Vizfolyik
