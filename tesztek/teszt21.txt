@@ -7,3 +7,4 @@ MezoLetrehoz pumpa1 pumpa
 SzomszedBeallit cso1 pumpa1
 BeallitCso cso1 igen nem nem 0 szabotor1
 Befolyik cso1
+Nedvese cso1
