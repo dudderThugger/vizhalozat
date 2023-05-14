@@ -255,11 +255,16 @@ public class Proto {
                     String mezoneve = arguments[2];
                     try {
                         if (jelenlegiJatek == null) throw new ProtoException();
-                        if (jelenlegiJatek.mezok.containsKey(mezoneve) && jelenlegiJatek.jatekosok.containsKey(jatekosneve)) {
-                            Mezo mezo1 = jelenlegiJatek.mezok.get(mezoneve);
+                        if (jelenlegiJatek.csovek.containsKey(mezoneve) && jelenlegiJatek.jatekosok.containsKey(jatekosneve)) {
+                            Cso mezo1 = jelenlegiJatek.csovek.get(mezoneve);
                             Jatekos jatekos1 = jelenlegiJatek.jatekosok.get(jatekosneve);
-                            mezo1.ralep(jatekos1);
-                            System.out.println(jatekosneve + " rálépett a " + mezoneve + "mezőre!");
+                            jatekos1.lepes(mezo1);
+                        }
+                        if (jelenlegiJatek.aktivelemek.containsKey(mezoneve) && jelenlegiJatek.jatekosok.containsKey(jatekosneve)) {
+                                AktivElemek mezo1 = jelenlegiJatek.aktivelemek.get(mezoneve);
+                                Jatekos jatekos1 = jelenlegiJatek.jatekosok.get(jatekosneve);
+                                jatekos1.lepes(mezo1);
+                                System.out.println(jatekosneve + " rálépett a " + mezoneve + "mezőre!");
                         } else {
                             throw new ProtoException();
                         }
