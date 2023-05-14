@@ -92,8 +92,10 @@ public abstract class Jatekos {
 
     /**
      * megkísérli átállítani a mezőt, amin áll, csak pumpa mezőn hatásos
+     * @param be bemenet
+     * @param ki kimenete
      */
-    public void pumpaAllitas(){
+    public void pumpaAllitas(Cso be, Cso ki){
 //        szkeleton.hivas(this, "pumpaAllitas");
 //
 //        ArrayList<Mezo> szomszedok = rajtaAll.getSzomszedok();
@@ -115,6 +117,7 @@ public abstract class Jatekos {
 //        rajtaAll.atAllit(csovek[0], csovek[1]);
 //
 //        szkeleton.visszateres(this, "pumpaAllitas");
+        rajtaAll.atAllit(be, ki);
     }
 
     /**

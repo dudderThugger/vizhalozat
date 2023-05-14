@@ -90,16 +90,27 @@ public class Pumpa extends AktivElemek implements Viheto{
     }
 
 
-
+    /**
+     * csak a cső mezőn hatásos
+     * @return
+     */
     @Override
     public Mezo megcsuszik() {
         return null;
     }
 
+    /**
+     * csak a cső mezőn hatásos
+     * @return
+     */
     @Override
     public boolean ragaszt() {
         return false;
     }
+    /**
+     * csak a cső mezőn hatásos
+     * @return
+     */
 
     @Override
     public boolean csuszik() {
