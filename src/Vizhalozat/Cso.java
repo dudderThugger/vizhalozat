@@ -52,12 +52,13 @@ public class Cso extends Mezo implements Viheto {
      */
     @Override
     public void befolyik() {
-        if (!telitett) {
-            for (Mezo szomszed : szomszedok) {
-                szomszed.befolyik();
+        if (!telitett && !lyukas) {
+            for(Mezo m : szomszedok) {
+                m.befolyik();
             }
             telitett = true;
         }
+        if(lyukas) jatek.szabotorPontSzerzes();
     }
 
     /**

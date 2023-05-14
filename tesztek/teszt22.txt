@@ -6,4 +6,3 @@ MezoLetrehoz cso1 cso
 MezoLetrehoz pumpa1 pumpa
 SzomszedBeallit cso1 pumpa1
 Befolyik cso1
-Nedvese pumpa2

@@ -306,12 +306,12 @@ public class Proto {
                     System.out.println("Nem sikerült a lépés!");
                 }
                 break;
-            case "lyukaszt":
+            case "Lyukaszt":
                 String jatekosnev = arguments[1];
                 try {
                     if (jelenlegiJatek == null) throw new ProtoException();
                     if (jelenlegiJatek.jatekosok.containsKey(jatekosnev)) {
-                        Jatekos szabotor1 = jelenlegiJatek.szabotorok.get(jatekosnev);
+                        Jatekos szabotor1 = jelenlegiJatek.jatekosok.get(jatekosnev);
                         szabotor1.lyukaszt();
                         System.out.println(jatekosnev + " kilyukasztotta a mezőt, amin áll!");
                     } else {
@@ -374,12 +374,12 @@ public class Proto {
                 String kimeneticso = arguments[3];
                 try{
                     if(jelenlegiJatek==null)throw new ProtoException();
-                    if(jelenlegiJatek.szerelok.containsKey(allitonev)&& jelenlegiJatek.csovek.containsKey(bemeneticso)&&jelenlegiJatek.csovek.containsKey(kimeneticso)){
-                        Szerelo sz1 = jelenlegiJatek.szerelok.get(allitonev);
+                    if(jelenlegiJatek.jatekosok.containsKey(allitonev)&& jelenlegiJatek.csovek.containsKey(bemeneticso)&&jelenlegiJatek.csovek.containsKey(kimeneticso)){
+                        Szerelo sz1 = (Szerelo) jelenlegiJatek.jatekosok.get(allitonev);
                         Mezo m1 = sz1.rajtaAll;
                         Cso csobe = jelenlegiJatek.csovek.get(bemeneticso);
                         Cso csoki = jelenlegiJatek.csovek.get(kimeneticso);
-                        if(m1.szomszedok.contains(csobe)&&m1.szomszedok.contains(csoki)) {
+                        if(m1.szomszedok.contains(csobe) && m1.szomszedok.contains(csoki)) {
                             m1.atAllit(csobe, csoki);
                             System.out.println(allitonev + "atallitotta a pumpat, amin áll!");
                         }
@@ -429,7 +429,8 @@ public class Proto {
                     if(jelenlegiJatek.jatekosok.containsKey(lecsatlakozatoNev) && jelenlegiJatek.csovek.containsKey(lecsatlakoztatottCso)){
                         Jatekos j = jelenlegiJatek.jatekosok.get(lecsatlakozatoNev);
                         Cso cs = jelenlegiJatek.csovek.get(lecsatlakoztatottCso);
-                        j.felvesz_cso(cs);
+                        if(cs.getRajtaAllnak().size() == 0) j.felvesz_cso(cs);
+                        else throw new ProtoException();
                         System.out.println(lecsatlakozatoNev + " felvette a " + lecsatlakoztatottCso + " csövet!");
                     }
                     else{
@@ -487,11 +488,11 @@ public class Proto {
                 try{
                     if (jelenlegiJatek == null) throw new ProtoException();
                     if(jelenlegiJatek.jatekosok.containsKey(lehelyezo) && jelenlegiJatek.mezok.containsKey(lehelyezendoMezo)){
-                        Szerelo sz = jelenlegiJatek.szerelok.get(lehelyezo);
+                        Szerelo sz = (Szerelo) jelenlegiJatek.jatekosok.get(lehelyezo);
                         Mezo m = jelenlegiJatek.mezok.get(lehelyezendoMezo);
                         if(sz.getRajtaAll().equals(m) && sz.getTart() != null){
                             sz.lerak_pumpa();
-                            System.out.println(sz + " lerakta a pumpát " + m + " mezőre!");
+                            System.out.println(lehelyezo + " lerakta a pumpát!");
                         }
                         else{
                             throw new ProtoException();
@@ -529,7 +530,7 @@ public class Proto {
                     if(jelenlegiJatek.mezok.containsKey(mezoneve1)){
                         Mezo m = jelenlegiJatek.mezok.get(mezoneve1);
                         m.befolyik();
-                        System.out.println(mezoneve1 + "-be befolyik a víz ");
+                        System.out.println(mezoneve1 + "-be befolyattad a vizet ");
                     }
                 }catch (ProtoException e){
                     System.out.println("Nem sikerült!");
@@ -625,6 +626,20 @@ public class Proto {
                             }
                         }
                         System.out.println(jatekosNeve + " a " + mezoNeve + " mezon all!");
+                    }
+                }catch (ProtoException e){
+                    System.out.println("Nem sikerült a lekerdezes!");
+                }
+                break;
+            case "Nedvese":
+                String mezoNeve = arguments[1];
+                try{
+                    if (jelenlegiJatek == null) throw new ProtoException();
+                    if(jelenlegiJatek.mezok.containsKey(mezoNeve)) {
+                        Mezo mezo = jelenlegiJatek.mezok.get(mezoNeve);
+                        Boolean nedvese = mezo.getTelitett();
+                        if(nedvese) System.out.println("A mező telített!");
+                        else System.out.println("A mező telítetlen!");
                     }
                 }catch (ProtoException e){
                     System.out.println("Nem sikerült a lekerdezes!");

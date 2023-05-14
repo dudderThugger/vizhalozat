@@ -25,6 +25,7 @@ public abstract class Jatekos {
 
     public void raAllit(Mezo m) {
         rajtaAll = m;
+        m.ralep(this);
     }
 
     /**

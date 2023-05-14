@@ -1,17 +1,16 @@
-jatek1 sikeresen létrehozva!
-jatek1 kiválasztva!
-Random mód kikapcsolása!
-Inicializálás!
-A következő objektumok jöttek létre: szerelo1, szerelo2, szabotor1, szabotor2, forras1, forras2, ciszterna1, ciszterna 2
-cso1 mező sikeresen létrehozva!
-Szomszédság beállítva!
-cso2 mező sikeresen létrehozva!
-Szomszédság beállítva!
-cso3 mező sikeresen létrehozva!
-Szomszédság beállítva!
-pumpa1 mező sikeresen létrehozva!
-Szomszédság beállítva!
-Szomszédság beállítva!
-szerelo1  ráállt a cso1 mezőre!
-szerelo1 átállította a pumpát, amin áll!
-Nem sikerült a  pumpa átállítása!
+JatekLetrehoz jatek1
+JatekKivalaszt jatek1
+RandomKi
+Init
+MezoLetrehoz cso1 cso
+SzomszedBeallit cso1 forras1
+MezoLetrehoz cso2 cso
+SzomszedBeallit cso2 ciszterna1
+MezoLetrehoz cso3 cso
+SzomszedBeallit cso3 forras2
+MezoLetrehoz pumpa1 pumpa
+SzomszedBeallit pumpa1 cso1
+SzomszedBeallit pumpa1 cso2
+RaAllit szerelo1 pumpa1
+PumpatAllit szerelo1 cso1 cso2
+PumpatAllit szerelo1 cso1 cso3

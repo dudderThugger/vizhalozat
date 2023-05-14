@@ -2,10 +2,11 @@ jatek1 sikeresen létrehozva!
 jatek1 kiválasztva!
 Random mód kikapcsolása!
 Inicializálás!
-A következő objektumok jöttek létre: szerelo1, szerelo2, szabotor1, szabotor2, forras1, forras2, ciszterna1, ciszterna 2
+A következő objektumok jöttek létre:
+szerelo1, szerelo2, szabotor1, szabotor2, forras1, forras2, ciszterna1, ciszterna 2
 cso1 mező sikeresen létrehozva!
 Szomszédság beállítva!
-cso1 allapota sikeresen beallitva: nem nem nem 2000 nem
+cso1 állapota sikeresen beállítva: lyukas: nem ragad: nem csúszik: nem lyukasztási idő: 2000 ragasztotta: szabotor1
 3000 ms várása!
 szabotor1  ráállt a cso1 mezőre!
 szabotor1 kilyukasztotta mezőt, amin áll!

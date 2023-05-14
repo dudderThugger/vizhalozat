@@ -6,7 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="lolol">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Cso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Cso.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Jatekos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Jatekos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Proto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Proto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesztek/elvart19.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tesztek/elvart19.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesztek/elvart22.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tesztek/elvart22.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesztek/elvart8.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tesztek/elvart8.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesztek/elvart9.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tesztek/elvart9.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesztek/teszt19.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tesztek/teszt19.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesztek/teszt22.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tesztek/teszt22.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesztek/teszt24.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tesztek/teszt24.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesztek/teszt8.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tesztek/teszt8.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesztek/teszt9.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tesztek/teszt9.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,7 +238,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684102651435</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="lolol">
+      <created>1684102972450</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1684102972450</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
