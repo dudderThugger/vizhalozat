@@ -1,13 +1,14 @@
-jatek1 sikeresen létrehozva! 
-jatek1 kiválasztva!
-Random mód kikapcsolása!
+jatek1 sikeresen letrehozva!
+jatek1 kivalasztva!
+Random mód kikapcsolva
 Inicializálás! 
-A következő objektumok jöttek létre: szerelo1, szerelo2, szabotor1, szabotor2, forras1, forras2, ciszterna1, ciszterna 2
+A következő objektumok jöttek létre:
+szerelo1, szerelo2, szabotor1, szabotor2, forras1, forras2, ciszterna1, ciszterna 2
 cso1 mező sikeresen létrehozva!
-Szomszédság beállítva!
+Szomszedság beállítva!
 cso2 mező sikeresen létrehozva!
-Szomszédság beállítva!
+Szomszedság beállítva!
 pumpa1 mező sikeresen létrehozva!
-Szomszédság beállítva!
-Szomszédság beállítva!
-Tesztelő elrontotta a pumpát
+Szomszedság beállítva!
+Szomszedság beállítva!
+pumpa1 nevű pumpa elromlott.
