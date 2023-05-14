@@ -29,7 +29,7 @@ public class Proto {
         HashMap<String, Szabotor> szabotorok = new HashMap<>();
         HashMap<String, Mezo> mezok = new HashMap<>();
         HashMap<String, Cso> csovek = new HashMap<>();
-
+        HashMap<String,AktivElemek> aktivelemek = new HashMap<>();
     }
 
     private class ProtoException extends RuntimeException {}
@@ -109,6 +109,7 @@ public class Proto {
                             Ciszterna ujCiszterna = new Ciszterna(jelenlegiJatek.jatek);
                             jelenlegiJatek.jatek.addMezo(ujCiszterna);
                             jelenlegiJatek.mezok.put(mezoNeve, ujCiszterna);
+                            jelenlegiJatek.aktivelemek.put(mezoNeve,ujCiszterna);
                         } else if (mezoTipusa.equals("cso")) {
                             Cso ujCso = new Cso(jelenlegiJatek.jatek);
                             jelenlegiJatek.jatek.addMezo(ujCso);
@@ -118,10 +119,12 @@ public class Proto {
                             Forras ujForras = new Forras(jelenlegiJatek.jatek);
                             jelenlegiJatek.jatek.addMezo(ujForras);
                             jelenlegiJatek.mezok.put(mezoNeve, ujForras);
+                            jelenlegiJatek.aktivelemek.put(mezoNeve,ujForras);
                         } else if (mezoTipusa.equals("pumpa")) {
                             Pumpa ujPumpa = new Pumpa(jelenlegiJatek.jatek);
                             jelenlegiJatek.jatek.addMezo(ujPumpa);
                             jelenlegiJatek.mezok.put(mezoNeve, ujPumpa);
+                            jelenlegiJatek.aktivelemek.put(mezoNeve,ujPumpa);
                         } else {
                             throw new ProtoException();
                         }
