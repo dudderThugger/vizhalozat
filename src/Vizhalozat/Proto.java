@@ -161,7 +161,6 @@ public class Proto {
                     if (jelenlegiJatek.jatekosok.containsKey(jatekosNeve) && jelenlegiJatek.mezok.containsKey(mezoNeve)) {
                         Jatekos j = jelenlegiJatek.jatekosok.get(jatekosNeve);
                         Mezo m = jelenlegiJatek.mezok.get(mezoNeve);
-                        m.ralep(j);
                         j.raAllit(m);
                         System.out.println( jatekosNeve + " ráállt a " + mezoNeve + " mezőre!");
                     } else {
@@ -239,11 +238,7 @@ public class Proto {
                     if(jelenlegiJatek.randomKi) {
                         System.out.println("Inicializálás! \n" +
                                 "A következő objektumok jöttek létre:\n" +
-                                "szerelo1, szerelo2, szabotor1, szabotor2, forras1, forras2, ciszterna1, ciszterna 2\n");
-                    } else {
-                        System.out.println("Inicializálás! \n" +
-                                "A következő objektumok jöttek létre:\n" +
-                                "<létrejövő objektumok nevei>\n");
+                                "szerelo1, szerelo2, szabotor1, szabotor2, forras1, forras2, ciszterna1, ciszterna 2");
                     }
                 } catch (ProtoException e) {
                     System.out.println("Nem sikerült az inicializálás!");
@@ -259,12 +254,13 @@ public class Proto {
                             Cso mezo1 = jelenlegiJatek.csovek.get(mezoneve);
                             Jatekos jatekos1 = jelenlegiJatek.jatekosok.get(jatekosneve);
                             jatekos1.lepes(mezo1);
+                            System.out.println(jatekosneve + " rálépett a " + mezoneve + " mezőre!");
                         }
                         if (jelenlegiJatek.aktivelemek.containsKey(mezoneve) && jelenlegiJatek.jatekosok.containsKey(jatekosneve)) {
                                 AktivElemek mezo1 = jelenlegiJatek.aktivelemek.get(mezoneve);
                                 Jatekos jatekos1 = jelenlegiJatek.jatekosok.get(jatekosneve);
                                 jatekos1.lepes(mezo1);
-                                System.out.println(jatekosneve + " rálépett a " + mezoneve + "mezőre!");
+                                System.out.println(jatekosneve + " rálépett a " + mezoneve + " cdmezőre!");
                         } else {
                             throw new ProtoException();
                         }
