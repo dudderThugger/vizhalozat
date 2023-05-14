@@ -1,0 +1,383 @@
+Index: src/Vizhalozat/Proto.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Vizhalozat;\n\nimport javax.sound.midi.Soundbank;\nimport java.awt.print.PrinterException;\nimport java.io.Console;\nimport java.io.File;\nimport java.io.FileNotFoundException;\nimport java.io.InputStream;\nimport java.lang.reflect.Array;\nimport java.util.ArrayList;\nimport java.util.HashMap;\nimport java.util.Scanner;\n\n/**\n * Prototípus osztály megvalósítása\n */\npublic class Proto {\n    private HashMap<String, ProtoJatek> jatekAdatok = new HashMap<String, ProtoJatek>();\n    private ProtoJatek jelenlegiJatek = null;\n\n    /**\n     * Prototípusjáték\n     */\n    private class ProtoJatek {\n        Jatek jatek = new Jatek();\n        boolean randomKi;\n        HashMap<String, Jatekos> jatekosok = new HashMap<>();\n        HashMap<String, Szerelo> szerelok = new HashMap<>();\n        HashMap<String, Szabotor> szabotorok = new HashMap<>();\n        HashMap<String, Mezo> mezok = new HashMap<>();\n        HashMap<String, Cso> csovek = new HashMap<>();\n    }\n\n    private class ProtoException extends RuntimeException {}\n\n    public void parancsIndito() {\n        Scanner scanner = new Scanner(System.in);\n        System.out.println(\"Vizhalozat prototipusa\\n\\n\");\n        parancsKezelo(scanner);\n    }\n\n    public void parancsKezelo(Scanner scanner) {\n        while(scanner.hasNext()) {\n            String[] arguments = scanner.nextLine().split(\" \");\n            switch (arguments[0]) {\n                case \"JatekLetrehoz\":\n                    String ujJatekNeve = arguments[1];\n                    if (!jatekAdatok.containsKey(ujJatekNeve)) {\n                        jatekAdatok.put(ujJatekNeve, new ProtoJatek());\n                        System.out.println(ujJatekNeve + \" sikeresen letrehozva!\");\n                    } else {\n                        System.out.println(\"Nem sikerült létrehozni a játékot!\");\n                    }\n                    break;\n                case \"JatekKivalaszt\":\n                    String jatekNeve = arguments[1];\n                    if (jatekAdatok.containsKey(jatekNeve)) {\n                        jelenlegiJatek = jatekAdatok.get(jatekNeve);\n                        System.out.println(jatekNeve + \" kivalasztva!\");\n                    } else {\n                        System.out.println(\"Nem sikerült kivalasztani a játékot!\");\n                    }\n                    break;\n                case \"JatekKilep\":\n                    jelenlegiJatek = null;\n                    System.out.println(\"Kilepes\");\n                    break;\n                case \"Futtatas\": {\n                    File fajl = new File(arguments[1]);\n                    try {\n                        parancsKezelo(new Scanner(fajl));\n                    } catch (FileNotFoundException e) {\n                        System.out.println(\"Nem található a megadott fájl!\");\n                    }\n                    break;\n                }\n                case \"JatekosLetrehoz\":\n                    String ujJatekosNeve = arguments[1];\n                    String jatekosTipus = arguments[2];\n                    try {\n                        if (jelenlegiJatek == null) throw new ProtoException();\n                        if (jelenlegiJatek.jatekosok.containsKey(ujJatekosNeve)) throw new ProtoException();\n                        if (jatekosTipus.equals(\"szerelo\")) {\n                            Szerelo ujSzerelo = new Szerelo();\n                            jelenlegiJatek.jatek.addJatekos(ujSzerelo);\n                            jelenlegiJatek.jatekosok.put(ujJatekosNeve, ujSzerelo);\n                            jelenlegiJatek.szerelok.put(ujJatekosNeve, ujSzerelo);\n                        } else if (jatekosTipus.equals(\"szabotor\")) {\n                            Szabotor ujSzabotor = new Szabotor();\n                            jelenlegiJatek.jatek.addJatekos(ujSzabotor);\n                            jelenlegiJatek.jatekosok.put(ujJatekosNeve, ujSzabotor);\n                            jelenlegiJatek.szabotorok.put(ujJatekosNeve, ujSzabotor);\n                        } else {\n                            throw new ProtoException();\n                        }\n                        System.out.println(ujJatekosNeve + \" játékos sikeresen létrehozva!\");\n                    } catch (ProtoException e) {\n                        System.out.println(\"Nem sikerült letrehozni a játékost\");\n                    }\n                    break;\n                case \"MezoLetrehoz\": {\n                    String mezoNeve = arguments[1];\n                    String mezoTipusa = arguments[2];\n                    try {\n                        if (jelenlegiJatek == null) throw new ProtoException();\n                        if (jelenlegiJatek.mezok.containsKey(mezoNeve)) throw new ProtoException();\n                        if (mezoTipusa.equals(\"ciszterna\")) {\n                            Ciszterna ujCiszterna = new Ciszterna(jelenlegiJatek.jatek);\n                            jelenlegiJatek.jatek.addMezo(ujCiszterna);\n                            jelenlegiJatek.mezok.put(mezoNeve, ujCiszterna);\n                        } else if (mezoTipusa.equals(\"cso\")) {\n                            Cso ujCso = new Cso(jelenlegiJatek.jatek);\n                            jelenlegiJatek.jatek.addMezo(ujCso);\n                            jelenlegiJatek.mezok.put(mezoNeve, ujCso);\n                            jelenlegiJatek.csovek.put(mezoNeve, ujCso);\n                        } else if (mezoTipusa.equals(\"forras\")) {\n                            Forras ujForras = new Forras(jelenlegiJatek.jatek);\n                            jelenlegiJatek.jatek.addMezo(ujForras);\n                            jelenlegiJatek.mezok.put(mezoNeve, ujForras);\n                        } else if (mezoTipusa.equals(\"pumpa\")) {\n                            Pumpa ujPumpa = new Pumpa(jelenlegiJatek.jatek);\n                            jelenlegiJatek.jatek.addMezo(ujPumpa);\n                            jelenlegiJatek.mezok.put(mezoNeve, ujPumpa);\n                        } else {\n                            throw new ProtoException();\n                        }\n                        System.out.println(mezoNeve + \" mező sikeresen létrehozva!\");\n                    } catch (ProtoException e) {\n                        System.out.println(\"Nem sikerült létrehozni a mezőt!\");\n                    }\n                    break;\n                }\n                case \"SzomszedBeallit\":{\n                    String mezo1Neve = arguments[1];\n                    String mezo2Neve = arguments[2];\n                    try {\n                        if (jelenlegiJatek == null) throw new ProtoException();\n                        if (jelenlegiJatek.mezok.containsKey(mezo1Neve) && jelenlegiJatek.mezok.containsKey(mezo2Neve)) {\n                            Mezo mezo1 = jelenlegiJatek.mezok.get(mezo1Neve);\n                            Mezo mezo2 = jelenlegiJatek.mezok.get(mezo2Neve);\n                            mezo1.addSzomszed(mezo2);\n                            mezo2.addSzomszed(mezo1);\n                        } else {\n                            throw new ProtoException();\n                        }\n                        System.out.println(\"Szomszedság beállítva!\");\n                    } catch (ProtoException e) {\n                        System.out.println(\"Nem sikerült beállitani a szomszédokat!\");\n                    }\n                    break;\n            }\n            case \"RaAllit\": {\n                String jatekosNeve = arguments[1];\n                String mezoNeve = arguments[2];\n                try {\n                    if (jelenlegiJatek == null) throw new ProtoException();\n                    if (jelenlegiJatek.jatekosok.containsKey(jatekosNeve) && jelenlegiJatek.mezok.containsKey(mezoNeve)) {\n                        Jatekos j = jelenlegiJatek.jatekosok.get(jatekosNeve);\n                        Mezo m = jelenlegiJatek.mezok.get(mezoNeve);\n                        m.ralep(j);\n\n                        System.out.println( jatekosNeve + \" ráállt a \" + mezoNeve + \" mezőre!\");\n                    } else {\n                        throw new ProtoException();\n                    }\n                } catch (ProtoException e) {\n                    System.out.println(\"Nem sikerült ráállítani a mezőre!\");\n                }\n            }\n            case \"KezebeAd\": {\n                String jatekosNeve = arguments[1];\n                String mezoNeve = arguments[2];\n                try {\n                    if (jelenlegiJatek == null) throw new ProtoException();\n                    if (jelenlegiJatek.jatekosok.containsKey(jatekosNeve) && jelenlegiJatek.mezok.containsKey(mezoNeve)) {\n                        Jatekos j = jelenlegiJatek.jatekosok.get(jatekosNeve);\n                        Mezo m = jelenlegiJatek.mezok.get(mezoNeve);\n                        j.add_Kezebe((Viheto)m);\n\n                        System.out.println( jatekosNeve + \" kezében \" + mezoNeve + \" van!\");\n                    } else {\n                        throw new ProtoException();\n                    }\n                } catch (ProtoException e) {\n                    System.out.println(\"Nem sikerült a kézbe adás!\");\n                }\n            }\n            case \"Mentes\": {\n                File fajl = new File(arguments[1]);\n                try {\n                    if (jelenlegiJatek == null) throw new ProtoException();\n\n                    System.out.println(\"Saved!\");\n                } catch (ProtoException e) {\n                    System.out.println(\"Nem sikerült a játék mentése!\");\n                }\n            }\n            case \"Betoltes\": {\n                File fajl = new File(arguments[1]);\n                try {\n                    if (jelenlegiJatek == null) throw new ProtoException();\n\n                    System.out.println(\"Sikeres betöltés!\");\n                } catch (ProtoException e) {\n                    System.out.println(\"Nem sikerült betölteni a fájlt!\");\n                }\n            }\n            case \"Inditas\": {\n                try {\n                    if (jelenlegiJatek == null) throw new ProtoException();\n\n                    System.out.println(\"Start!\");\n                } catch (ProtoException e) {\n                    System.out.println(\"Nem sikerült elindítani a játékot!\");\n                }\n            }\n            case \"Leallit\": {\n                try {\n                    if (jelenlegiJatek == null) throw new ProtoException();\n\n                    System.out.println(\"Game Over!\");\n                } catch (ProtoException e) {\n                    System.out.println(\"Nem sikerült leállítani a játékot!\");\n                }\n            }\n            case \"Init\": {\n                try {\n                    if (jelenlegiJatek == null) throw new ProtoException();\n                    jelenlegiJatek.jatek.init();\n                    if(jelenlegiJatek.randomKi) {\n                        System.out.println(\"Inicializálás! \\n\" +\n                                \"A következő objektumok jöttek létre:\\n\" +\n                                \"szerelo1, szerelo2, szabotor1, szabotor2, forras1, forras2, ciszterna1, ciszterna 2\\n\");\n                    } else {\n                        System.out.println(\"Inicializálás! \\n\" +\n                                \"A következő objektumok jöttek létre:\\n\" +\n                                \"<létrejövő objektumok nevei>\\n\");\n                    }\n                } catch (ProtoException e) {\n                    System.out.println(\"Nem sikerült az inicializálás!\");\n                }\n            }\n                case \"Leptet\":\n                    String jatekosneve = arguments[1];\n                    String mezoneve = arguments[2];\n                    try {\n                        if (jelenlegiJatek == null) throw new ProtoException();\n                        if (jelenlegiJatek.mezok.containsKey(mezoneve) && jelenlegiJatek.jatekosok.containsKey(jatekosneve)) {\n                            Mezo mezo1 = jelenlegiJatek.mezok.get(mezoneve);\n                            Jatekos jatekos1 = jelenlegiJatek.jatekosok.get(jatekosneve);\n                            mezo1.ralep(jatekos1);\n                            System.out.println(jatekosneve + \" rálépett a \" + mezoneve + \"mezőre!\");\n                        } else {\n                            throw new ProtoException();\n                        }\n\n                    } catch (ProtoException e) {\n                        System.out.println(\"Nem sikerült a lépés!\");\n                    }\n                    break;\n                case \"lyukaszt\":\n                    String jatekosnev = arguments[1];\n                    try {\n                        if (jelenlegiJatek == null) throw new ProtoException();\n                        if (jelenlegiJatek.jatekosok.containsKey(jatekosnev)) {\n                            Jatekos szabotor1 = jelenlegiJatek.szabotorok.get(jatekosnev);\n                            szabotor1.lyukaszt();\n                            System.out.println(jatekosnev + \"kilyukasztotta a mezőt, amin áll!\");\n                        } else {\n                            throw new ProtoException();\n                        }\n                    } catch (ProtoException e) {\n                        System.out.println(\"Nem sikerült a lyukasztás!\");\n                    }\n                    break;\n                case \"Foltoz\":\n                    String szerelonev = arguments[1];\n                    try {\n                        if (jelenlegiJatek == null) throw new ProtoException();\n                        if (jelenlegiJatek.szerelok.containsKey(szerelonev)) {\n                            Szerelo szerelo1 = jelenlegiJatek.szerelok.get(szerelonev);\n\n                            szerelo1.foltoz();\n                            System.out.println(szerelonev + \"befoltozta a mezőt, amin áll!\");\n                        } else {\n                            throw new ProtoException();\n                        }\n                    } catch (ProtoException e) {\n                        System.out.println(\"Nem sikerült a befoltozas!\");\n                    }\n                    break;\n                case \"Ragaszt\":\n                    String ragasztnev = arguments[1];\n                    try {\n                        if (jelenlegiJatek == null) throw new ProtoException();\n                        if (jelenlegiJatek.szerelok.containsKey(ragasztnev)) {\n                            Jatekos jatekos1 = jelenlegiJatek.jatekosok.get(ragasztnev);\n\n                            jatekos1.ragaszt();\n                            System.out.println(ragasztnev + \"beragasztotta a mezőt, amin áll!\");\n                        } else {\n                            throw new ProtoException();\n                        }\n                    } catch (ProtoException e) {\n                        System.out.println(\"Nem sikerült a mező beragasztása!\");\n                    }\n                    break;\n                case \"Vazelinez\":\n                    String vazelineznev = arguments[1];\n                    try {\n                        if (jelenlegiJatek == null) throw new ProtoException();\n                        if (jelenlegiJatek.szerelok.containsKey(vazelineznev)) {\n                            Szabotor jatekos1 = jelenlegiJatek.szabotorok.get(vazelineznev);\n\n                            jatekos1.csuszik();\n                            System.out.println(vazelineznev + \"csuszossa tette a mezőt, amin áll!\");\n                        } else {\n                            throw new ProtoException();\n                        }\n                    } catch (ProtoException e) {\n                        System.out.println(\"Nem sikerült a vazelinezés!\");\n                    }\n                    break;\n                case \"PumpatAllit\":\n                    String allitonev = arguments[1];\n                    String bemeneticso = arguments[2];\n                    String kimeneticso = arguments[3];\n                    try{\n                        if(jelenlegiJatek==null)throw new ProtoException();\n                        if(jelenlegiJatek.szerelok.containsKey(allitonev)&& jelenlegiJatek.csovek.containsKey(bemeneticso)&&jelenlegiJatek.csovek.containsKey(kimeneticso)){\n                            Szerelo sz1 = jelenlegiJatek.szerelok.get(allitonev);\n                            Mezo m1 = sz1.rajtaAll;\n                            Cso csobe = jelenlegiJatek.csovek.get(bemeneticso);\n                            Cso csoki = jelenlegiJatek.csovek.get(kimeneticso);\n                            if(m1.szomszedok.contains(csobe)&&m1.szomszedok.contains(csoki)) {\n                                m1.atAllit(csobe, csoki);\n                                System.out.println(allitonev + \"atallitotta a pumpat, amin áll!\");\n                            }\n                        }else{\n                            throw new ProtoException();\n                        }\n                    }catch (ProtoException e){\n                        System.out.println(\"Nem sikerült a pumpa állitása!\");\n                    }\n                    break;\n                case \"Javit\":\n                    String javitnev = arguments[1];\n                    try {\n                        if (jelenlegiJatek == null) throw new ProtoException();\n                        if (jelenlegiJatek.szerelok.containsKey(javitnev)) {\n                            Szerelo sz1 = jelenlegiJatek.szerelok.get(javitnev);\n                            sz1.foltoz();\n                            System.out.println(javitnev + \"megjavitotta a pumpat, amin allt\");\n                        } else {\n                            throw new ProtoException();\n                        }\n                    }catch (ProtoException e){\n                        System.out.println(\"Nem sikerült a pumpa javítása!\");\n                    }\n                    break;\n                case \"PumpaElront\":\n                    String pumpa = arguments[1];\n                    try{\n                        if (jelenlegiJatek == null) throw new ProtoException();\n                        if(jelenlegiJatek.mezok.containsKey(pumpa)){\n                            Pumpa p = (Pumpa) jelenlegiJatek.mezok.get(pumpa);\n                            p.setMukodik(false);\n                            System.out.println(pumpa + \" nevű pumpa elromlott.\");\n                        }\n                        else{\n                            throw  new ProtoException();\n                        }\n                    }catch (ProtoException e){\n                        System.out.println(\"Nem sikerült a pumpa elrontása!\");\n                    }\n                    break;\n                case \"CsoFelvesz\":\n                    String lecsatlakozatoNev = arguments[1];\n                    String lecsatlakoztatottCso = arguments[2];\n                    try{\n                        if (jelenlegiJatek == null) throw new ProtoException();\n                        if(jelenlegiJatek.jatekosok.containsKey(lecsatlakozatoNev) && jelenlegiJatek.csovek.containsKey(lecsatlakoztatottCso)){\n                            Jatekos j = jelenlegiJatek.jatekosok.get(lecsatlakozatoNev);\n                            Cso cs = jelenlegiJatek.csovek.get(lecsatlakoztatottCso);\n                            j.felvesz_cso(cs);\n                            System.out.println(j + \" felvette a \" + cs + \" csövet!\");\n                        }\n                        else{\n                            throw new ProtoException();\n                        }\n\n                    }catch (ProtoException e){\n                        System.out.println(\"Nem sikerült a cső felvétele!\");\n                    }\n                    break;\n                case \"CsoLerak\":\n                    String lerakNev = arguments[1];\n                    String lerakottMezo = arguments[2];\n                    try{\n                        if (jelenlegiJatek == null) throw new ProtoException();\n                        if(jelenlegiJatek.jatekosok.containsKey(lerakNev) && jelenlegiJatek.mezok.containsKey(lerakottMezo)){\n                            Jatekos j = jelenlegiJatek.jatekosok.get(lerakNev);\n                            Mezo m = jelenlegiJatek.mezok.get(lerakottMezo);\n                            if(j.getRajtaAll().equals(m) && j.getTart() != null){\n                                j.lerak_cso();\n                                System.out.println(j + \" lerakta a kezében tartott csövet a \" + m +\" mezőre!\");\n                            }\n                            else{\n                                throw new ProtoException();\n                            }\n                        }\n                        else{\n                            throw new ProtoException();\n                        }\n\n                    }catch (ProtoException e){\n                        System.out.println(\"Nem sikerült a cső lehelyezése!\");\n                    }\n                    break;\n                case \"PumpaVasarlas\":\n                    String vasarlo = arguments[1];\n                    try{\n                        if (jelenlegiJatek == null) throw new ProtoException();\n                        if(jelenlegiJatek.jatekosok.containsKey(vasarlo)){\n                            Szerelo sz = jelenlegiJatek.szerelok.get(vasarlo);\n                            sz.pumpatvesz();\n                            System.out.println(sz + \"vásárolt egy pumpát!\");\n                        }\n                        else{\n                            throw new ProtoException();\n                        }\n\n                    }catch (ProtoException e){\n                        System.out.println(\"Nem sikerült a pumpa vásárlása!\");\n                    }\n                    break;\n                case \"PumpaLehelyez\":\n                    String lehelyezo = arguments[1];\n                    String lehelyezendoMezo = arguments[2];\n                    try{\n                        if (jelenlegiJatek == null) throw new ProtoException();\n                        if(jelenlegiJatek.jatekosok.containsKey(lehelyezo) && jelenlegiJatek.mezok.containsKey(lehelyezendoMezo)){\n                            Szerelo sz = jelenlegiJatek.szerelok.get(lehelyezo);\n                            Mezo m = jelenlegiJatek.mezok.get(lehelyezendoMezo);\n                            if(sz.getRajtaAll().equals(m) && sz.getTart() != null){\n                                sz.lerak_pumpa();\n                                System.out.println(sz + \" lerakta a pumpát \" + m + \" mezőre!\");\n                            }\n                            else{\n                                throw new ProtoException();\n                            }\n                        }\n                        else{\n                            throw new ProtoException();\n                        }\n                    }catch (ProtoException e){\n                        System.out.println(\"Nem sikerult a pumpa lehelyezése!\");\n                    }\n                    break;\n                case \"RandomBe\":\n                    try{\n                        if (jelenlegiJatek == null) throw new ProtoException();\n                        jelenlegiJatek.randomKi = false;\n                        System.out.println(\"Random mód bekapcsolva\");\n                    }catch (ProtoException e){\n                        System.out.println(\"Nem sikerult a random mód bekapcsolása!\");\n                    }\n                    break;\n                case \"RandomKi\":\n                    try{\n                        if (jelenlegiJatek == null) throw new ProtoException();\n                        jelenlegiJatek.randomKi = true;\n                        System.out.println(\"Random mód kikapcsolva\");\n                    }catch (ProtoException e){\n                        System.out.println(\"Nem sikerult a random mód kikapcsolása!\");\n                    }\n                    break;\n                case \"Befolyik\":\n                    String mezoneve1 = arguments[1];\n                    try{\n                        if (jelenlegiJatek == null) throw new ProtoException();\n                        if(jelenlegiJatek.mezok.containsKey(mezoneve1)){\n                            Mezo m = jelenlegiJatek.mezok.get(mezoneve1);\n                            m.befolyik();\n                            System.out.println(m + \"-be befolyik a víz \");\n                            for (Mezo m1: m.getSzomszedok()) {\n                                System.out.println(m1 +  \"-be tovább folyt a víz!\");\n                            }\n                        }\n                    }catch (ProtoException e){\n                        System.out.println(\"Nem sikerült!\");\n                    }\n                    break;\n                case \"Var\":\n                    int msIdo = Integer.parseInt(arguments[1]);\n                    try{\n                        if (jelenlegiJatek == null) throw new ProtoException();\n                        System.out.println(msIdo + \"ms várása!\");\n                    }catch (ProtoException e){\n                        System.out.println(\"Nem sikerült várni!\");\n                    }\n                    break;\n                case \"Vizfolyas\":\n                    try{\n                        if (jelenlegiJatek == null) throw new ProtoException();\n                        jelenlegiJatek.jatek.vizFolyas(jelenlegiJatek.randomKi);\n                        for (Forras f : jelenlegiJatek.jatek.getForrasok()) {\n                            System.out.println(f + \"-ből elindult a víz! \");\n                        }\n                        for (Cso cs : jelenlegiJatek.jatek.getCsovek()) {\n                            System.out.println(cs + \"-be befolyt a víz! \");\n                        }\n                        for (Pumpa p : jelenlegiJatek.jatek.getPumpak()) {\n                            System.out.println(p + \"-be befolyt a víz! \");\n                        }\n                        for (Ciszterna c : jelenlegiJatek.jatek.getCiszternak()) {\n                            System.out.println(c + \" elnyelte a vizet! \");\n                        }\n\n                    }catch (ProtoException e){\n                        System.out.println(\"Nem sikerült!\");\n                    }\n                    break;\n                case \"BeallitCso\":\n                    String csoNeve = arguments[1];\n                    boolean lyukase = arguments[2].equalsIgnoreCase(\"igen\");\n                    boolean ragade = arguments[3].equalsIgnoreCase(\"igen\");\n                    boolean csuszike = arguments[4].equalsIgnoreCase(\"igen\");\n                    int msLyukasztasIdo = Integer.parseInt(arguments[5]);\n                    String ragasztottaNeve = arguments[6];\n                    try{\n                        if (jelenlegiJatek == null) throw new ProtoException();\n                        if(jelenlegiJatek.mezok.containsKey(csoNeve)) {\n                            Cso cso1 = (Cso) jelenlegiJatek.mezok.get(csoNeve);\n                            cso1.lyukas = lyukase;\n                            cso1.ragad = ragade;\n                            cso1.csuszik = csuszike;\n                            cso1.lyukasztasiIdo = msLyukasztasIdo;\n                            if(jelenlegiJatek.jatekosok.containsKey(ragasztottaNeve)) cso1.ragasztotta = jelenlegiJatek.jatekosok.get(ragasztottaNeve);\n                            System.out.println(csoNeve + \" állapota sikeresen beállítva: \" + \"lyukas: \" + (lyukase ? \"igen \" : \"nem \") + \"ragad: \" + (ragade ? \"igen \" : \"nem \")\n                                    + \"csúszik: \" + (csuszike ? \"igen \" : \"nem \") + \"lyukasztási idő: \" + msLyukasztasIdo +  \" ragasztotta: \" + ragasztottaNeve);\n                        }\n                    }catch (ProtoException e){\n                        System.out.println(\"Nem sikerült a cső beállítása!\");\n                    }\n                    break;\n                case \"Pumpaszerkesztes\":\n                    String pumpaNeve = arguments[1];\n                    String csoKimenet = arguments[2];\n                    String csoBemenet = arguments[3];\n                    try{\n                        if (jelenlegiJatek == null) throw new ProtoException();\n                        if(jelenlegiJatek.mezok.containsKey(pumpaNeve)) {\n                            Pumpa pumpa1 = (Pumpa) jelenlegiJatek.mezok.get(pumpaNeve);\n                            Cso kimenet = null;\n                            Cso bemenet = null;\n                            for (Mezo cs1 : pumpa1.getSzomszedok()) {\n                                if(cs1.equals((Cso) jelenlegiJatek.mezok.get(csoKimenet))) kimenet = (Cso) jelenlegiJatek.mezok.get(csoKimenet);\n                                else if( cs1.equals((Cso) jelenlegiJatek.mezok.get(csoBemenet))) bemenet = (Cso) jelenlegiJatek.mezok.get(csoBemenet);\n                            }\n                            pumpa1.atAllit(bemenet, kimenet);\n                            System.out.println(pumpaNeve + \" beállítva!\");\n                        }\n                    }catch (ProtoException e){\n                        System.out.println(\"Nem sikerült beállítani!\");\n                    }\n                    break;\n                default:\n                    System.out.println(\"Nem megfelelő formátum!\");\n                    break;\n\n            }\n        }\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Vizhalozat/Proto.java b/src/Vizhalozat/Proto.java
+--- a/src/Vizhalozat/Proto.java	(revision 142f8382592a952b68d7c00247367595e8f0c178)
++++ b/src/Vizhalozat/Proto.java	(date 1684095591637)
+@@ -130,7 +130,7 @@
+                     }
+                     break;
+                 }
+-                case "SzomszedBeallit":{
++                case "SzomszedBeallit": {
+                     String mezo1Neve = arguments[1];
+                     String mezo2Neve = arguments[2];
+                     try {
+@@ -148,108 +148,120 @@
+                         System.out.println("Nem sikerült beállitani a szomszédokat!");
+                     }
+                     break;
+-            }
+-            case "RaAllit": {
+-                String jatekosNeve = arguments[1];
+-                String mezoNeve = arguments[2];
+-                try {
+-                    if (jelenlegiJatek == null) throw new ProtoException();
+-                    if (jelenlegiJatek.jatekosok.containsKey(jatekosNeve) && jelenlegiJatek.mezok.containsKey(mezoNeve)) {
+-                        Jatekos j = jelenlegiJatek.jatekosok.get(jatekosNeve);
+-                        Mezo m = jelenlegiJatek.mezok.get(mezoNeve);
+-                        m.ralep(j);
++                }
++                case "RaAllit": {
++                    String jatekosNeve = arguments[1];
++                    String mezoNeve = arguments[2];
++                    try {
++                        if (jelenlegiJatek == null) throw new ProtoException();
++                        if (jelenlegiJatek.jatekosok.containsKey(jatekosNeve) && jelenlegiJatek.mezok.containsKey(mezoNeve)) {
++                            Jatekos j = jelenlegiJatek.jatekosok.get(jatekosNeve);
++                            Mezo m = jelenlegiJatek.mezok.get(mezoNeve);
++                            m.ralep(j);
+ 
+-                        System.out.println( jatekosNeve + " ráállt a " + mezoNeve + " mezőre!");
+-                    } else {
+-                        throw new ProtoException();
+-                    }
+-                } catch (ProtoException e) {
+-                    System.out.println("Nem sikerült ráállítani a mezőre!");
+-                }
+-            }
+-            case "KezebeAd": {
+-                String jatekosNeve = arguments[1];
+-                String mezoNeve = arguments[2];
+-                try {
+-                    if (jelenlegiJatek == null) throw new ProtoException();
+-                    if (jelenlegiJatek.jatekosok.containsKey(jatekosNeve) && jelenlegiJatek.mezok.containsKey(mezoNeve)) {
+-                        Jatekos j = jelenlegiJatek.jatekosok.get(jatekosNeve);
+-                        Mezo m = jelenlegiJatek.mezok.get(mezoNeve);
+-                        j.add_Kezebe((Viheto)m);
++                            System.out.println(jatekosNeve + " ráállt a " + mezoNeve + " mezőre!");
++                        } else {
++                            throw new ProtoException();
++                        }
++                    } catch (ProtoException e) {
++                        System.out.println("Nem sikerült ráállítani a mezőre!");
++                    }
++                    break;
++                }
++                case "KezebeAd": {
++                    String jatekosNeve = arguments[1];
++                    String mezoNeve = arguments[2];
++                    try {
++                        if (jelenlegiJatek == null) throw new ProtoException();
++                        if (jelenlegiJatek.jatekosok.containsKey(jatekosNeve) && jelenlegiJatek.mezok.containsKey(mezoNeve)) {
++                            Jatekos j = jelenlegiJatek.jatekosok.get(jatekosNeve);
++                            Mezo m = jelenlegiJatek.mezok.get(mezoNeve);
++                            j.add_Kezebe((Viheto) m);
+ 
+-                        System.out.println( jatekosNeve + " kezében " + mezoNeve + " van!");
+-                    } else {
+-                        throw new ProtoException();
+-                    }
+-                } catch (ProtoException e) {
+-                    System.out.println("Nem sikerült a kézbe adás!");
+-                }
+-            }
+-            case "Mentes": {
+-                File fajl = new File(arguments[1]);
+-                try {
+-                    if (jelenlegiJatek == null) throw new ProtoException();
++                            System.out.println(jatekosNeve + " kezében " + mezoNeve + " van!");
++                        } else {
++                            throw new ProtoException();
++                        }
++                    } catch (ProtoException e) {
++                        System.out.println("Nem sikerült a kézbe adás!");
++                    }
++                    break;
++                }
++                case "Mentes": {
++                    File fajl = new File(arguments[1]);
++                    try {
++                        if (jelenlegiJatek == null) throw new ProtoException();
+ 
+-                    System.out.println("Saved!");
+-                } catch (ProtoException e) {
+-                    System.out.println("Nem sikerült a játék mentése!");
+-                }
+-            }
+-            case "Betoltes": {
+-                File fajl = new File(arguments[1]);
+-                try {
+-                    if (jelenlegiJatek == null) throw new ProtoException();
++                        System.out.println("Saved!");
++                    } catch (ProtoException e) {
++                        System.out.println("Nem sikerült a játék mentése!");
++                    }
++                    break;
++                }
++                case "Betoltes": {
++                    File fajl = new File(arguments[1]);
++                    try {
++                        if (jelenlegiJatek == null) throw new ProtoException();
+ 
+-                    System.out.println("Sikeres betöltés!");
+-                } catch (ProtoException e) {
+-                    System.out.println("Nem sikerült betölteni a fájlt!");
+-                }
+-            }
+-            case "Inditas": {
+-                try {
+-                    if (jelenlegiJatek == null) throw new ProtoException();
++                        System.out.println("Sikeres betöltés!");
++                    } catch (ProtoException e) {
++                        System.out.println("Nem sikerült betölteni a fájlt!");
++                    }
++                    break;
++                }
++                case "Inditas": {
++                    try {
++                        if (jelenlegiJatek == null) throw new ProtoException();
+ 
+-                    System.out.println("Start!");
+-                } catch (ProtoException e) {
+-                    System.out.println("Nem sikerült elindítani a játékot!");
+-                }
+-            }
+-            case "Leallit": {
+-                try {
+-                    if (jelenlegiJatek == null) throw new ProtoException();
++                        System.out.println("Start!");
++                    } catch (ProtoException e) {
++                        System.out.println("Nem sikerült elindítani a játékot!");
++                    }
++                    break;
++                }
++                case "Leallit": {
++                    try {
++                        if (jelenlegiJatek == null) throw new ProtoException();
+ 
+-                    System.out.println("Game Over!");
+-                } catch (ProtoException e) {
+-                    System.out.println("Nem sikerült leállítani a játékot!");
+-                }
+-            }
+-            case "Init": {
+-                try {
+-                    if (jelenlegiJatek == null) throw new ProtoException();
+-                    jelenlegiJatek.jatek.init();
+-                    if(jelenlegiJatek.randomKi) {
+-                        System.out.println("Inicializálás! \n" +
+-                                "A következő objektumok jöttek létre:\n" +
+-                                "szerelo1, szerelo2, szabotor1, szabotor2, forras1, forras2, ciszterna1, ciszterna 2\n");
+-                    } else {
+-                        System.out.println("Inicializálás! \n" +
+-                                "A következő objektumok jöttek létre:\n" +
+-                                "<létrejövő objektumok nevei>\n");
+-                    }
+-                } catch (ProtoException e) {
+-                    System.out.println("Nem sikerült az inicializálás!");
+-                }
+-            }
++                        System.out.println("Game Over!");
++                    } catch (ProtoException e) {
++                        System.out.println("Nem sikerült leállítani a játékot!");
++                    }
++                    break;
++                }
++                case "Init": {
++                    try {
++                        if (jelenlegiJatek == null) throw new ProtoException();
++                        jelenlegiJatek.jatek.init();
++                        if (jelenlegiJatek.randomKi) {
++                            System.out.println("Inicializálás! \n" +
++                                    "A következő objektumok jöttek létre:\n" +
++                                    "szerelo1, szerelo2, szabotor1, szabotor2, forras1, forras2, ciszterna1, ciszterna 2\n");
++                        } else {
++                            System.out.println("Inicializálás! \n" +
++                                    "A következő objektumok jöttek létre:\n" +
++                                    "<létrejövő objektumok nevei>\n");
++                        }
++                    } catch (ProtoException e) {
++                        System.out.println("Nem sikerült az inicializálás!");
++                    }
++                    break;
++                }
+                 case "Leptet":
+                     String jatekosneve = arguments[1];
+                     String mezoneve = arguments[2];
+                     try {
+                         if (jelenlegiJatek == null) throw new ProtoException();
+-                        if (jelenlegiJatek.mezok.containsKey(mezoneve) && jelenlegiJatek.jatekosok.containsKey(jatekosneve)) {
+-                            Mezo mezo1 = jelenlegiJatek.mezok.get(mezoneve);
++                        if (jelenlegiJatek.mezok.containsKey(mezoneve) && jelenlegiJatek.jatekosok.containsKey(jatekosneve) && jelenlegiJatek.csovek.containsKey(mezoneve)) {
++                            Cso mezo1 = jelenlegiJatek.csovek.get(mezoneve);
+                             Jatekos jatekos1 = jelenlegiJatek.jatekosok.get(jatekosneve);
+-                            mezo1.ralep(jatekos1);
+-                            System.out.println(jatekosneve + " rálépett a " + mezoneve + "mezőre!");
++                            jatekos1.lepes(mezo1);
++                            System.out.println(jatekosneve + " rálépett a " + mezoneve + " mezőre!");
++                        }if (jelenlegiJatek.mezok.containsKey(mezoneve) && jelenlegiJatek.jatekosok.containsKey(jatekosneve) && jelenlegiJatek.csovek.containsKey(mezoneve)) {
++                                Cso mezo1 = jelenlegiJatek.csovek.get(mezoneve);
++                                Jatekos jatekos1 = jelenlegiJatek.jatekosok.get(jatekosneve);
++                                jatekos1.lepes(mezo1);
++                                System.out.println(jatekosneve + " rálépett a " + mezoneve + " mezőre!");
+                         } else {
+                             throw new ProtoException();
+                         }
+@@ -258,14 +270,23 @@
+                         System.out.println("Nem sikerült a lépés!");
+                     }
+                     break;
++
+                 case "lyukaszt":
+                     String jatekosnev = arguments[1];
+                     try {
+                         if (jelenlegiJatek == null) throw new ProtoException();
+-                        if (jelenlegiJatek.jatekosok.containsKey(jatekosnev)) {
+-                            Jatekos szabotor1 = jelenlegiJatek.szabotorok.get(jatekosnev);
++                        if (jelenlegiJatek.szerelok.containsKey(jatekosnev)) {
++                            Szerelo szabotor1 = jelenlegiJatek.szerelok.get(jatekosnev);
++                            if(szabotor1.rajtaAll!=null) {
++                                szabotor1.lyukaszt();
++                                System.out.println(jatekosnev + "kilyukasztotta a mezőt, amin áll!");
++                            }
++                        }
++                        if (jelenlegiJatek.szabotorok.containsKey(jatekosnev)) {
++                            Szabotor szabotor1 = jelenlegiJatek.szabotorok.get(jatekosnev);
+                             szabotor1.lyukaszt();
+                             System.out.println(jatekosnev + "kilyukasztotta a mezőt, amin áll!");
++
+                         } else {
+                             throw new ProtoException();
+                         }
+@@ -273,13 +294,13 @@
+                         System.out.println("Nem sikerült a lyukasztás!");
+                     }
+                     break;
++
+                 case "Foltoz":
+                     String szerelonev = arguments[1];
+                     try {
+                         if (jelenlegiJatek == null) throw new ProtoException();
+                         if (jelenlegiJatek.szerelok.containsKey(szerelonev)) {
+                             Szerelo szerelo1 = jelenlegiJatek.szerelok.get(szerelonev);
+-
+                             szerelo1.foltoz();
+                             System.out.println(szerelonev + "befoltozta a mezőt, amin áll!");
+                         } else {
+@@ -289,15 +310,21 @@
+                         System.out.println("Nem sikerült a befoltozas!");
+                     }
+                     break;
++
+                 case "Ragaszt":
+                     String ragasztnev = arguments[1];
+                     try {
+                         if (jelenlegiJatek == null) throw new ProtoException();
+                         if (jelenlegiJatek.szerelok.containsKey(ragasztnev)) {
+-                            Jatekos jatekos1 = jelenlegiJatek.jatekosok.get(ragasztnev);
++                            Szerelo jatekos1 = jelenlegiJatek.szerelok.get(ragasztnev);
+ 
+                             jatekos1.ragaszt();
+                             System.out.println(ragasztnev + "beragasztotta a mezőt, amin áll!");
++                        }
++                        if (jelenlegiJatek.szabotorok.containsKey(ragasztnev)) {
++                                Szabotor jatekos1 = jelenlegiJatek.szabotorok.get(ragasztnev);
++                                jatekos1.ragaszt();
++                                System.out.println(ragasztnev + "beragasztotta a mezőt, amin áll!");
+                         } else {
+                             throw new ProtoException();
+                         }
+@@ -305,11 +332,12 @@
+                         System.out.println("Nem sikerült a mező beragasztása!");
+                     }
+                     break;
++
+                 case "Vazelinez":
+                     String vazelineznev = arguments[1];
+                     try {
+                         if (jelenlegiJatek == null) throw new ProtoException();
+-                        if (jelenlegiJatek.szerelok.containsKey(vazelineznev)) {
++                        if (jelenlegiJatek.szabotorok.containsKey(vazelineznev)) {
+                             Szabotor jatekos1 = jelenlegiJatek.szabotorok.get(vazelineznev);
+ 
+                             jatekos1.csuszik();
+@@ -327,15 +355,24 @@
+                     String kimeneticso = arguments[3];
+                     try{
+                         if(jelenlegiJatek==null)throw new ProtoException();
+-                        if(jelenlegiJatek.szerelok.containsKey(allitonev)&& jelenlegiJatek.csovek.containsKey(bemeneticso)&&jelenlegiJatek.csovek.containsKey(kimeneticso)){
++                        if(jelenlegiJatek.szerelok.containsKey(allitonev)&& jelenlegiJatek.csovek.containsKey(bemeneticso)&&jelenlegiJatek.csovek.containsKey(kimeneticso)) {
+                             Szerelo sz1 = jelenlegiJatek.szerelok.get(allitonev);
+                             Mezo m1 = sz1.rajtaAll;
+                             Cso csobe = jelenlegiJatek.csovek.get(bemeneticso);
+                             Cso csoki = jelenlegiJatek.csovek.get(kimeneticso);
+-                            if(m1.szomszedok.contains(csobe)&&m1.szomszedok.contains(csoki)) {
+-                                m1.atAllit(csobe, csoki);
+-                                System.out.println(allitonev + "atallitotta a pumpat, amin áll!");
+-                            }
++                            if (m1.szomszedok.contains(csobe) && m1.szomszedok.contains(csoki)) {
++                                m1.atAllit(csobe, csoki);
++                                System.out.println(allitonev + "atallitotta a pumpat, amin áll!");
++                            }
++                        }if(jelenlegiJatek.szabotorok.containsKey(allitonev)&& jelenlegiJatek.csovek.containsKey(bemeneticso)&&jelenlegiJatek.csovek.containsKey(kimeneticso)){
++                                Szabotor sz1 = jelenlegiJatek.szabotorok.get(allitonev);
++                                Mezo m1 = sz1.rajtaAll;
++                                Cso csobe = jelenlegiJatek.csovek.get(bemeneticso);
++                                Cso csoki = jelenlegiJatek.csovek.get(kimeneticso);
++                                if(m1.szomszedok.contains(csobe)&&m1.szomszedok.contains(csoki)) {
++                                    m1.atAllit(csobe, csoki);
++                                    System.out.println(allitonev + "atallitotta a pumpat, amin áll!");
++                                }
+                         }else{
+                             throw new ProtoException();
+                         }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"42eca659-eca3-45a1-802e-11296cb13373\" name=\"Changes\" comment=\"&#10;Push hogy mas ne kezdje el ami mar meglehet\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/Vizhalozat/Proto.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Vizhalozat/Proto.java\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Class\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"ProjectId\" id=\"2OPjhpCATCZ3MLgG7nsG1xmDBF6\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\n    &quot;git-widget-placeholder&quot;: &quot;master&quot;\n  }\n}</component>\n  <component name=\"RecentsManager\">\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"C:\\Users\\Szelestey\\IdeaProjects\\Vizhalozat\" />\n    </key>\n  </component>\n  <component name=\"RunManager\">\n    <configuration name=\"App\" type=\"Application\" factoryName=\"Application\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"Vizhalozat.App\" />\n      <module name=\"Vizhalozat\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"42eca659-eca3-45a1-802e-11296cb13373\" name=\"Changes\" comment=\"\" />\n      <created>1681469248739</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1681469248739</updated>\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"elso commit\">\n      <created>1681469342419</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1681469342420</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"masodik\">\n      <created>1681469449647</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1681469449647</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"szkeleton, félig kész osztályok\">\n      <created>1681475786680</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1681475786680</updated>\n    </task>\n    <task id=\"LOCAL-00004\" summary=\"javitas\">\n      <created>1681476055212</created>\n      <option name=\"number\" value=\"00004\" />\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1681476055212</updated>\n    </task>\n    <task id=\"LOCAL-00005\" summary=\"69 kilepes\">\n      <created>1681476354109</created>\n      <option name=\"number\" value=\"00005\" />\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1681476354109</updated>\n    </task>\n    <task id=\"LOCAL-00006\" summary=\"16-17-es teszt esetek elkészítése\">\n      <created>1681598772351</created>\n      <option name=\"number\" value=\"00006\" />\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1681598772351</updated>\n    </task>\n    <task id=\"LOCAL-00007\" summary=\"Szabotor osztaly\">\n      <created>1681598949648</created>\n      <option name=\"number\" value=\"00007\" />\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1681598949648</updated>\n    </task>\n    <task id=\"LOCAL-00008\" summary=\"20-as teszt eset elkészítése\">\n      <created>1681601609432</created>\n      <option name=\"number\" value=\"00008\" />\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1681601609432</updated>\n    </task>\n    <task id=\"LOCAL-00009\" summary=\"18-as teszt eset elkészítése\">\n      <created>1681603519626</created>\n      <option name=\"number\" value=\"00009\" />\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1681603519626</updated>\n    </task>\n    <task id=\"LOCAL-00010\" summary=\"19-es teszt eset elkészítése\">\n      <created>1681604676023</created>\n      <option name=\"number\" value=\"00010\" />\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1681604676023</updated>\n    </task>\n    <task id=\"LOCAL-00011\" summary=\"első 20 teszt fasza, minimális javítások\">\n      <created>1681670843667</created>\n      <option name=\"number\" value=\"00011\" />\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1681670843667</updated>\n    </task>\n    <task id=\"LOCAL-00012\" summary=\"kommentek csőnél\">\n      <created>1681675334635</created>\n      <option name=\"number\" value=\"00012\" />\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1681675334635</updated>\n    </task>\n    <task id=\"LOCAL-00013\" summary=\"kommentek csőnél\">\n      <created>1681675455800</created>\n      <option name=\"number\" value=\"00013\" />\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1681675455800</updated>\n    </task>\n    <task id=\"LOCAL-00014\" summary=\"szkeleton kommentezése\">\n      <created>1681676699224</created>\n      <option name=\"number\" value=\"00014\" />\n      <option name=\"presentableId\" value=\"LOCAL-00014\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1681676699224</updated>\n    </task>\n    <task id=\"LOCAL-00015\" summary=\"szkeleton kommentezése\">\n      <created>1681676745972</created>\n      <option name=\"number\" value=\"00015\" />\n      <option name=\"presentableId\" value=\"LOCAL-00015\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1681676745972</updated>\n    </task>\n    <task id=\"LOCAL-00016\" summary=\"&#10;Push hogy mas ne kezdje el ami mar meglehet\">\n      <created>1684005333841</created>\n      <option name=\"number\" value=\"00016\" />\n      <option name=\"presentableId\" value=\"LOCAL-00016\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1684005333841</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"17\" />\n    <servers />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"elso commit\" />\n    <MESSAGE value=\"masodik\" />\n    <MESSAGE value=\"szkeleton, félig kész osztályok\" />\n    <MESSAGE value=\"javitas\" />\n    <MESSAGE value=\"69 kilepes\" />\n    <MESSAGE value=\"16-17-es teszt esetek elkészítése\" />\n    <MESSAGE value=\"Szabotor osztaly\" />\n    <MESSAGE value=\"20-as teszt eset elkészítése\" />\n    <MESSAGE value=\"18-as teszt eset elkészítése\" />\n    <MESSAGE value=\"19-es teszt eset elkészítése\" />\n    <MESSAGE value=\"első 20 teszt fasza, minimális javítások\" />\n    <MESSAGE value=\"kommentek csőnél\" />\n    <MESSAGE value=\"szkeleton kommentezése\" />\n    <MESSAGE value=\"&#10;Push hogy mas ne kezdje el ami mar meglehet\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"&#10;Push hogy mas ne kezdje el ami mar meglehet\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 142f8382592a952b68d7c00247367595e8f0c178)
++++ b/.idea/workspace.xml	(date 1684093336857)
+@@ -4,7 +4,7 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="&#10;Push hogy mas ne kezdje el ami mar meglehet">
++    <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="upsz">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Proto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Proto.java" afterDir="false" />
+     </list>
+@@ -175,7 +175,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1684005333841</updated>
+     </task>
+-    <option name="localTasksCounter" value="17" />
++    <task id="LOCAL-00017" summary="upsz">
++      <created>1684092828998</created>
++      <option name="number" value="00017" />
++      <option name="presentableId" value="LOCAL-00017" />
++      <option name="project" value="LOCAL" />
++      <updated>1684092828999</updated>
++    </task>
++    <option name="localTasksCounter" value="18" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -204,6 +211,7 @@
+     <MESSAGE value="kommentek csőnél" />
+     <MESSAGE value="szkeleton kommentezése" />
+     <MESSAGE value="&#10;Push hogy mas ne kezdje el ami mar meglehet" />
+-    <option name="LAST_COMMIT_MESSAGE" value="&#10;Push hogy mas ne kezdje el ami mar meglehet" />
++    <MESSAGE value="upsz" />
++    <option name="LAST_COMMIT_MESSAGE" value="upsz" />
+   </component>
+ </project>
+\ No newline at end of file
