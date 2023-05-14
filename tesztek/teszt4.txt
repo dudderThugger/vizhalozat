@@ -6,5 +6,5 @@ MezoLetrehoz cso1 cso
 SzomszedBeallit cso1 forras1
 MezoLetrehoz pumpa1 pumpa
 SzomszedBeallit cso1 pumpa1
-Raallit szerelo1 cso1
+RaAllit szerelo1 cso1
 Leptet szerelo1 pumpa1

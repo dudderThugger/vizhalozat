@@ -1,0 +1,15 @@
+jatek1 sikeresen letrehozva!
+jatek1 kivalasztva!
+Random mód kikapcsolva
+Inicializálás! 
+A következő objektumok jöttek létre:
+szerelo1, szerelo2, szabotor1, szabotor2, forras1, forras2, ciszterna1, ciszterna 2
+cso1 mező sikeresen létrehozva!
+cso2 mező sikeresen létrehozva!
+pumpa1 mező sikeresen létrehozva!
+Szomszedság beállítva!
+Szomszedság beállítva!
+pumpa1 beállítva!
+cso1-be befolyik a víz 
+Mezo telitett
+Mezo telitett

@@ -6,7 +6,7 @@ MezoLetrehoz cso1 cso
 SzomszedBeallit cso1 forras1
 MezoLetrehoz cso2 cso
 SzomszedBeallit cso2 ciszterna1
-MezoLetrehoz pumpa1
+MezoLetrehoz pumpa1 pumpa
 SzomszedBeallit pumpa1 cso1
 SzomszedBeallit pumpa1 cso2
 RaAllit szerelo1 pumpa1

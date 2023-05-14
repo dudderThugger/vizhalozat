@@ -2,8 +2,9 @@ JatekLetrehoz jatek1
 JatekKivalaszt jatek1
 RandomKi
 Init
-MezoLetrehoz cso cso1
-MezoLetrehoz pumpa pumpa 1
+MezoLetrehoz cso1 cso
+MezoLetrehoz pumpa1 pumpa
 SzomszedBeallit cso1 pumpa1
-BeAllitCso cso1 igen nem nem 0 szabotor1
+BeallitCso cso1 igen nem nem 0 szabotor1
 Befolyik cso1
+Nedvese cso1

@@ -1,0 +1,535 @@
+Index: src/Vizhalozat/Forras.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Vizhalozat;\r\n\r\n/**\r\n * Forrás osztály felelős a víz elindításáért (folyatásáért) a szomszédos mezőkbe\r\n */\r\npublic class Forras extends AktivElemek{\r\n    public Forras(Jatek jatek) { super(jatek); }\r\n\r\n    /**\r\n     * Biztosan false-al tér vissza, mivel nem felet felvenni\r\n     * @return mindig false\r\n     */\r\n    @Override\r\n    public boolean felveszik() {\r\n        return false;\r\n    }\r\n\r\n    /**\r\n     * Víz folyatás szomszédos mezőkbe\r\n     */\r\n    public void vizTermeles() {\r\n//        for(Mezo szomszed : szomszedok) {\r\n//            szomszed.befolyik();\r\n//        }\r\n\r\n        for (Mezo m: szomszedok) {\r\n            m.befolyik();\r\n        }\r\n    }\r\n\r\n    /**\r\n     * Override-olja az ősosztály függvényét\r\n     */\r\n    @Override\r\n    public void befolyik() {\r\n        if(!telitett)  telitett = true;\r\n        for (Mezo szomszed : szomszedok) {\r\n            if(szomszed != null) {\r\n                szomszed.removeSzomszed(this);\r\n                szomszed.befolyik();\r\n                szomszed.addSzomszed(this);\r\n            }\r\n        }\r\n\r\n    }\r\n\r\n    /**\r\n     * Mindig false-al tér vissza, mivel a forrást nem lehet átállítani\r\n     * @param be A forrás új bemenete\r\n     * @param ki A forrás új kimenete\r\n     * @return Mindig false\r\n     */\r\n    @Override\r\n    public boolean atAllit(Cso be, Cso ki) {\r\n        return false;\r\n    }\r\n\r\n    /**\r\n     * Mindig false-al tér vissza, mivel a forrást nem lehet javítani\r\n     * @return Mindig false\r\n     */\r\n    @Override\r\n    public boolean javitjak() {\r\n        return false;\r\n    }\r\n\r\n    @Override\r\n    public Mezo megcsuszik() {\r\n        return null;\r\n    }\r\n\r\n    @Override\r\n    public boolean ragaszt() {\r\n        return false;\r\n    }\r\n\r\n    @Override\r\n    public boolean csuszik() {\r\n        return false;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Vizhalozat/Forras.java b/src/Vizhalozat/Forras.java
+--- a/src/Vizhalozat/Forras.java	(revision 31540484e23b0dad48b5a7bef5683ee3bf5aba58)
++++ b/src/Vizhalozat/Forras.java	(date 1684089224513)
+@@ -19,10 +19,6 @@
+      * Víz folyatás szomszédos mezőkbe
+      */
+     public void vizTermeles() {
+-//        for(Mezo szomszed : szomszedok) {
+-//            szomszed.befolyik();
+-//        }
+-
+         for (Mezo m: szomszedok) {
+             m.befolyik();
+         }
+@@ -33,15 +29,12 @@
+      */
+     @Override
+     public void befolyik() {
+-        if(!telitett)  telitett = true;
+-        for (Mezo szomszed : szomszedok) {
+-            if(szomszed != null) {
+-                szomszed.removeSzomszed(this);
+-                szomszed.befolyik();
+-                szomszed.addSzomszed(this);
++        if (!telitett) {
++            for (Mezo szomszed : szomszedok) {
++                    szomszed.befolyik();
+             }
++            telitett = true;
+         }
+-
+     }
+ 
+     /**
+Index: src/Vizhalozat/Proto.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Vizhalozat;\r\n\r\nimport javax.sound.midi.Soundbank;\r\nimport java.awt.print.PrinterException;\r\nimport java.io.Console;\r\nimport java.io.File;\r\nimport java.io.FileNotFoundException;\r\nimport java.io.InputStream;\r\nimport java.lang.reflect.Array;\r\nimport java.util.ArrayList;\r\nimport java.util.HashMap;\r\nimport java.util.Scanner;\r\n\r\n/**\r\n * Prototípus osztály megvalósítása\r\n */\r\npublic class Proto {\r\n    private HashMap<String, ProtoJatek> jatekAdatok = new HashMap<String, ProtoJatek>();\r\n    private ProtoJatek jelenlegiJatek = null;\r\n\r\n    /**\r\n     * Prototípusjáték\r\n     */\r\n    private class ProtoJatek {\r\n        Jatek jatek = new Jatek();\r\n        boolean randomKi;\r\n        HashMap<String, Jatekos> jatekosok = new HashMap<>();\r\n        HashMap<String, Szerelo> szerelok = new HashMap<>();\r\n        HashMap<String, Szabotor> szabotorok = new HashMap<>();\r\n        HashMap<String, Mezo> mezok = new HashMap<>();\r\n        HashMap<String, Cso> csovek = new HashMap<>();\r\n    }\r\n\r\n    private class ProtoException extends RuntimeException {}\r\n\r\n    public void parancsIndito() {\r\n        Scanner scanner = new Scanner(System.in);\r\n        System.out.println(\"Vizhalozat prototipusa\\n\\n\");\r\n        parancsKezelo(scanner);\r\n    }\r\n\r\n    public void parancsKezelo(Scanner scanner) {\r\n        while(scanner.hasNext()) {\r\n            String[] arguments = scanner.nextLine().split(\" \");\r\n            switch (arguments[0]) {\r\n                case \"JatekLetrehoz\":\r\n                    String ujJatekNeve = arguments[1];\r\n                    if (!jatekAdatok.containsKey(ujJatekNeve)) {\r\n                        jatekAdatok.put(ujJatekNeve, new ProtoJatek());\r\n                        System.out.println(ujJatekNeve + \" sikeresen letrehozva!\");\r\n                    } else {\r\n                        System.out.println(\"Nem sikerült létrehozni a játékot!\");\r\n                    }\r\n                    break;\r\n                case \"JatekKivalaszt\":\r\n                    String jatekNeve = arguments[1];\r\n                    if (jatekAdatok.containsKey(jatekNeve)) {\r\n                        jelenlegiJatek = jatekAdatok.get(jatekNeve);\r\n                        System.out.println(jatekNeve + \" kivalasztva!\");\r\n                    } else {\r\n                        System.out.println(\"Nem sikerült kivalasztani a játékot!\");\r\n                    }\r\n                    break;\r\n                case \"JatekKilep\":\r\n                    jelenlegiJatek = null;\r\n                    System.out.println(\"Kilepes\");\r\n                    break;\r\n                case \"Futtatas\": {\r\n                    File fajl = new File(arguments[1]);\r\n                    try {\r\n                        parancsKezelo(new Scanner(fajl));\r\n                    } catch (FileNotFoundException e) {\r\n                        System.out.println(\"Nem található a megadott fájl!\");\r\n                    }\r\n                    break;\r\n                }\r\n                case \"JatekosLetrehoz\":\r\n                    String ujJatekosNeve = arguments[1];\r\n                    String jatekosTipus = arguments[2];\r\n                    try {\r\n                        if (jelenlegiJatek == null) throw new ProtoException();\r\n                        if (jelenlegiJatek.jatekosok.containsKey(ujJatekosNeve)) throw new ProtoException();\r\n                        if (jatekosTipus.equals(\"szerelo\")) {\r\n                            Szerelo ujSzerelo = new Szerelo();\r\n                            jelenlegiJatek.jatek.addJatekos(ujSzerelo);\r\n                            jelenlegiJatek.jatekosok.put(ujJatekosNeve, ujSzerelo);\r\n                            jelenlegiJatek.szerelok.put(ujJatekosNeve, ujSzerelo);\r\n                        } else if (jatekosTipus.equals(\"szabotor\")) {\r\n                            Szabotor ujSzabotor = new Szabotor();\r\n                            jelenlegiJatek.jatek.addJatekos(ujSzabotor);\r\n                            jelenlegiJatek.jatekosok.put(ujJatekosNeve, ujSzabotor);\r\n                            jelenlegiJatek.szabotorok.put(ujJatekosNeve, ujSzabotor);\r\n                        } else {\r\n                            throw new ProtoException();\r\n                        }\r\n                        System.out.println(ujJatekosNeve + \" játékos sikeresen létrehozva!\");\r\n                    } catch (ProtoException e) {\r\n                        System.out.println(\"Nem sikerült letrehozni a játékost\");\r\n                    }\r\n                    break;\r\n                case \"MezoLetrehoz\": {\r\n                    String mezoNeve = arguments[1];\r\n                    String mezoTipusa = arguments[2];\r\n                    try {\r\n                        if (jelenlegiJatek == null) throw new ProtoException();\r\n                        if (jelenlegiJatek.mezok.containsKey(mezoNeve)) throw new ProtoException();\r\n                        if (mezoTipusa.equals(\"ciszterna\")) {\r\n                            Ciszterna ujCiszterna = new Ciszterna(jelenlegiJatek.jatek);\r\n                            jelenlegiJatek.jatek.addMezo(ujCiszterna);\r\n                            jelenlegiJatek.mezok.put(mezoNeve, ujCiszterna);\r\n                        } else if (mezoTipusa.equals(\"cso\")) {\r\n                            Cso ujCso = new Cso(jelenlegiJatek.jatek);\r\n                            jelenlegiJatek.jatek.addMezo(ujCso);\r\n                            jelenlegiJatek.mezok.put(mezoNeve, ujCso);\r\n                            jelenlegiJatek.csovek.put(mezoNeve, ujCso);\r\n                        } else if (mezoTipusa.equals(\"forras\")) {\r\n                            Forras ujForras = new Forras(jelenlegiJatek.jatek);\r\n                            jelenlegiJatek.jatek.addMezo(ujForras);\r\n                            jelenlegiJatek.mezok.put(mezoNeve, ujForras);\r\n                        } else if (mezoTipusa.equals(\"pumpa\")) {\r\n                            Pumpa ujPumpa = new Pumpa(jelenlegiJatek.jatek);\r\n                            jelenlegiJatek.jatek.addMezo(ujPumpa);\r\n                            jelenlegiJatek.mezok.put(mezoNeve, ujPumpa);\r\n                        } else {\r\n                            throw new ProtoException();\r\n                        }\r\n                        System.out.println(mezoNeve + \" mező sikeresen létrehozva!\");\r\n                    } catch (ProtoException e) {\r\n                        System.out.println(\"Nem sikerült létrehozni a mezőt!\");\r\n                    }\r\n                    break;\r\n                }\r\n                case \"SzomszedBeallit\":{\r\n                    String mezo1Neve = arguments[1];\r\n                    String mezo2Neve = arguments[2];\r\n                    try {\r\n                        if (jelenlegiJatek == null) throw new ProtoException();\r\n                        if (jelenlegiJatek.mezok.containsKey(mezo1Neve) && jelenlegiJatek.mezok.containsKey(mezo2Neve)) {\r\n                            Mezo mezo1 = jelenlegiJatek.mezok.get(mezo1Neve);\r\n                            Mezo mezo2 = jelenlegiJatek.mezok.get(mezo2Neve);\r\n                            mezo1.addSzomszed(mezo2);\r\n                            mezo2.addSzomszed(mezo1);\r\n                        } else {\r\n                            throw new ProtoException();\r\n                        }\r\n                        System.out.println(\"Szomszedság beállítva!\");\r\n                    } catch (ProtoException e) {\r\n                        System.out.println(\"Nem sikerült beállitani a szomszédokat!\");\r\n                    }\r\n                    break;\r\n            }\r\n            case \"RaAllit\": {\r\n                String jatekosNeve = arguments[1];\r\n                String mezoNeve = arguments[2];\r\n                try {\r\n                    if (jelenlegiJatek == null) throw new ProtoException();\r\n                    if (jelenlegiJatek.jatekosok.containsKey(jatekosNeve) && jelenlegiJatek.mezok.containsKey(mezoNeve)) {\r\n                        Jatekos j = jelenlegiJatek.jatekosok.get(jatekosNeve);\r\n                        Mezo m = jelenlegiJatek.mezok.get(mezoNeve);\r\n                        m.ralep(j);\r\n\r\n                        System.out.println( jatekosNeve + \" ráállt a \" + mezoNeve + \" mezőre!\");\r\n                    } else {\r\n                        throw new ProtoException();\r\n                    }\r\n                } catch (ProtoException e) {\r\n                    System.out.println(\"Nem sikerült ráállítani a mezőre!\");\r\n                }\r\n            }\r\n            case \"KezebeAd\": {\r\n                String jatekosNeve = arguments[1];\r\n                String mezoNeve = arguments[2];\r\n                try {\r\n                    if (jelenlegiJatek == null) throw new ProtoException();\r\n                    if (jelenlegiJatek.jatekosok.containsKey(jatekosNeve) && jelenlegiJatek.mezok.containsKey(mezoNeve)) {\r\n                        Jatekos j = jelenlegiJatek.jatekosok.get(jatekosNeve);\r\n                        Mezo m = jelenlegiJatek.mezok.get(mezoNeve);\r\n                        j.add_Kezebe((Viheto)m);\r\n\r\n                        System.out.println( jatekosNeve + \" kezében \" + mezoNeve + \" van!\");\r\n                    } else {\r\n                        throw new ProtoException();\r\n                    }\r\n                } catch (ProtoException e) {\r\n                    System.out.println(\"Nem sikerült a kézbe adás!\");\r\n                }\r\n            }\r\n            case \"Mentes\": {\r\n                File fajl = new File(arguments[1]);\r\n                try {\r\n                    if (jelenlegiJatek == null) throw new ProtoException();\r\n\r\n                    System.out.println(\"Saved!\");\r\n                } catch (ProtoException e) {\r\n                    System.out.println(\"Nem sikerült a játék mentése!\");\r\n                }\r\n            }\r\n            case \"Betoltes\": {\r\n                File fajl = new File(arguments[1]);\r\n                try {\r\n                    if (jelenlegiJatek == null) throw new ProtoException();\r\n\r\n                    System.out.println(\"Sikeres betöltés!\");\r\n                } catch (ProtoException e) {\r\n                    System.out.println(\"Nem sikerült betölteni a fájlt!\");\r\n                }\r\n            }\r\n            case \"Inditas\": {\r\n                try {\r\n                    if (jelenlegiJatek == null) throw new ProtoException();\r\n\r\n                    System.out.println(\"Start!\");\r\n                } catch (ProtoException e) {\r\n                    System.out.println(\"Nem sikerült elindítani a játékot!\");\r\n                }\r\n            }\r\n            case \"Leallit\": {\r\n                try {\r\n                    if (jelenlegiJatek == null) throw new ProtoException();\r\n\r\n                    System.out.println(\"Game Over!\");\r\n                } catch (ProtoException e) {\r\n                    System.out.println(\"Nem sikerült leállítani a játékot!\");\r\n                }\r\n            }\r\n            case \"Init\": {\r\n                try {\r\n                    if (jelenlegiJatek == null) throw new ProtoException();\r\n                    jelenlegiJatek.jatek.init();\r\n                    if(jelenlegiJatek.randomKi) {\r\n                        System.out.println(\"Inicializálás! \\n\" +\r\n                                \"A következő objektumok jöttek létre:\\n\" +\r\n                                \"szerelo1, szerelo2, szabotor1, szabotor2, forras1, forras2, ciszterna1, ciszterna 2\\n\");\r\n                    } else {\r\n                        System.out.println(\"Inicializálás! \\n\" +\r\n                                \"A következő objektumok jöttek létre:\\n\" +\r\n                                \"<létrejövő objektumok nevei>\\n\");\r\n                    }\r\n                } catch (ProtoException e) {\r\n                    System.out.println(\"Nem sikerült az inicializálás!\");\r\n                }\r\n            }\r\n                case \"Leptet\":\r\n                    String jatekosneve = arguments[1];\r\n                    String mezoneve = arguments[2];\r\n                    try {\r\n                        if (jelenlegiJatek == null) throw new ProtoException();\r\n                        if (jelenlegiJatek.mezok.containsKey(mezoneve) && jelenlegiJatek.jatekosok.containsKey(jatekosneve)) {\r\n                            Mezo mezo1 = jelenlegiJatek.mezok.get(mezoneve);\r\n                            Jatekos jatekos1 = jelenlegiJatek.jatekosok.get(jatekosneve);\r\n\r\n                            mezo1.ralep(jatekos1);\r\n                            System.out.println(jatekosneve + \"rálépett a \" + mezoneve + \"mezőre!\");\r\n                        } else {\r\n                            throw new ProtoException();\r\n                        }\r\n\r\n                    } catch (ProtoException e) {\r\n                        System.out.println(\"Nem sikerült a lépés!\");\r\n                    }\r\n                    break;\r\n                case \"lyukaszt\":\r\n                    String jatekosnev = arguments[1];\r\n                    try {\r\n                        if (jelenlegiJatek == null) throw new ProtoException();\r\n                        if (jelenlegiJatek.szabotorok.containsKey(jatekosnev)) {\r\n                            Szabotor szabotor1 = jelenlegiJatek.szabotorok.get(jatekosnev);\r\n\r\n                            szabotor1.lyukaszt();\r\n                            System.out.println(jatekosnev + \"kilyukasztotta a mezőt, amin áll!\");\r\n                        } else {\r\n                            throw new ProtoException();\r\n                        }\r\n                    } catch (ProtoException e) {\r\n                        System.out.println(\"Nem sikerült a lyukasztás!\");\r\n                    }\r\n                case \"Foltoz\":\r\n                    String szerelonev = arguments[1];\r\n                    try {\r\n                        if (jelenlegiJatek == null) throw new ProtoException();\r\n                        if (jelenlegiJatek.szerelok.containsKey(szerelonev)) {\r\n                            Szerelo szerelo1 = jelenlegiJatek.szerelok.get(szerelonev);\r\n\r\n                            szerelo1.foltoz();\r\n                            System.out.println(szerelonev + \"befoltozta a mezőt, amin áll!\");\r\n                        } else {\r\n                            throw new ProtoException();\r\n                        }\r\n                    } catch (ProtoException e) {\r\n                        System.out.println(\"Nem sikerült a befoltozas!\");\r\n                    }\r\n                case \"Ragaszt\":\r\n                    String ragasztnev = arguments[1];\r\n                    try {\r\n                        if (jelenlegiJatek == null) throw new ProtoException();\r\n                        if (jelenlegiJatek.szerelok.containsKey(ragasztnev)) {\r\n                            Jatekos jatekos1 = jelenlegiJatek.jatekosok.get(ragasztnev);\r\n\r\n                            jatekos1.ragaszt();\r\n                            System.out.println(ragasztnev + \"beragasztotta a mezőt, amin áll!\");\r\n                        } else {\r\n                            throw new ProtoException();\r\n                        }\r\n                    } catch (ProtoException e) {\r\n                        System.out.println(\"Nem sikerült a mező beragasztása!\");\r\n                    }\r\n                case \"Vazelinez\":\r\n                    String vazelineznev = arguments[1];\r\n                    try {\r\n                        if (jelenlegiJatek == null) throw new ProtoException();\r\n                        if (jelenlegiJatek.szerelok.containsKey(vazelineznev)) {\r\n                            Szabotor jatekos1 = jelenlegiJatek.szabotorok.get(vazelineznev);\r\n\r\n                            jatekos1.csuszik();\r\n                            System.out.println(vazelineznev + \"csuszossa tette a mezőt, amin áll!\");\r\n                        } else {\r\n                            throw new ProtoException();\r\n                        }\r\n                    } catch (ProtoException e) {\r\n                        System.out.println(\"Nem sikerült a vazelinezés!\");\r\n                    }\r\n                case \"PumpatAllit\":\r\n                    String allitonev = arguments[1];\r\n                    String bemeneticso = arguments[2];\r\n                    String kimeneticso = arguments[3];\r\n                    try{\r\n                        if(jelenlegiJatek==null)throw new ProtoException();\r\n                        if(jelenlegiJatek.szerelok.containsKey(allitonev)&& jelenlegiJatek.csovek.containsKey(bemeneticso)&&jelenlegiJatek.csovek.containsKey(kimeneticso)){\r\n                            Szerelo sz1 = jelenlegiJatek.szerelok.get(allitonev);\r\n                            Mezo m1 = sz1.rajtaAll;\r\n                            Cso csobe = jelenlegiJatek.csovek.get(bemeneticso);\r\n                            Cso csoki = jelenlegiJatek.csovek.get(kimeneticso);\r\n                            if(m1.szomszedok.contains(csobe)&&m1.szomszedok.contains(csoki)) {\r\n                                m1.atAllit(csobe, csoki);\r\n                                System.out.println(allitonev + \"atallitotta a pumpat, amin áll!\");\r\n                            }\r\n                        }else{\r\n                            throw new ProtoException();\r\n                        }\r\n                    }catch (ProtoException e){\r\n                        System.out.println(\"Nem sikerült a pumpa állitása!\");\r\n                    }\r\n                case \"Javit\":\r\n                    String javitnev = arguments[1];\r\n                    try {\r\n                        if (jelenlegiJatek == null) throw new ProtoException();\r\n                        if (jelenlegiJatek.szerelok.containsKey(javitnev)) {\r\n                            Szerelo sz1 = jelenlegiJatek.szerelok.get(javitnev);\r\n                            sz1.foltoz();\r\n                            System.out.println(javitnev + \"megjavitotta a pumpat, amin allt\");\r\n                        } else {\r\n                            throw new ProtoException();\r\n                        }\r\n                    }catch (ProtoException e){\r\n                        System.out.println(\"Nem sikerült a pumpa javítása!\");\r\n                    }\r\n                case \"PumpaElront\":\r\n                    String pumpa = arguments[1];\r\n                    try{\r\n                        if (jelenlegiJatek == null) throw new ProtoException();\r\n                        if(jelenlegiJatek.mezok.containsKey(pumpa)){\r\n                            Pumpa p = (Pumpa) jelenlegiJatek.mezok.get(pumpa);\r\n                            p.setMukodik(false);\r\n                            System.out.println(pumpa + \" nevű pumpa elromlott.\");\r\n                        }\r\n                        else{\r\n                            throw  new ProtoException();\r\n                        }\r\n                    }catch (ProtoException e){\r\n                        System.out.println(\"Nem sikerült a pumpa elrontása!\");\r\n                    }\r\n                    break;\r\n                case \"CsoFelvesz\":\r\n                    String lecsatlakozatoNev = arguments[1];\r\n                    String lecsatlakoztatottCso = arguments[2];\r\n                    try{\r\n                        if (jelenlegiJatek == null) throw new ProtoException();\r\n                        if(jelenlegiJatek.jatekosok.containsKey(lecsatlakozatoNev) && jelenlegiJatek.csovek.containsKey(lecsatlakoztatottCso)){\r\n                            Jatekos j = jelenlegiJatek.jatekosok.get(lecsatlakozatoNev);\r\n                            Cso cs = jelenlegiJatek.csovek.get(lecsatlakoztatottCso);\r\n                            j.felvesz_cso(cs);\r\n                            System.out.println(j + \" felvette a \" + cs + \" csövet!\");\r\n                        }\r\n                        else{\r\n                            throw new ProtoException();\r\n                        }\r\n\r\n                    }catch (ProtoException e){\r\n                        System.out.println(\"Nem sikerült a cső felvétele!\");\r\n                    }\r\n                    break;\r\n                case \"CsoLerak\":\r\n                    String lerakNev = arguments[1];\r\n                    String lerakottMezo = arguments[2];\r\n                    try{\r\n                        if (jelenlegiJatek == null) throw new ProtoException();\r\n                        if(jelenlegiJatek.jatekosok.containsKey(lerakNev) && jelenlegiJatek.mezok.containsKey(lerakottMezo)){\r\n                            Jatekos j = jelenlegiJatek.jatekosok.get(lerakNev);\r\n                            Mezo m = jelenlegiJatek.mezok.get(lerakottMezo);\r\n                            if(j.getRajtaAll().equals(m) && j.getTart() != null){\r\n                                j.lerak_cso();\r\n                                System.out.println(j + \" lerakta a kezében tartott csövet a \" + m +\" mezőre!\");\r\n                            }\r\n                            else{\r\n                                throw new ProtoException();\r\n                            }\r\n                        }\r\n                        else{\r\n                            throw new ProtoException();\r\n                        }\r\n\r\n                    }catch (ProtoException e){\r\n                        System.out.println(\"Nem sikerült a cső lehelyezése!\");\r\n                    }\r\n                    break;\r\n                case \"PumpaVasarlas\":\r\n                    String vasarlo = arguments[1];\r\n                    try{\r\n                        if (jelenlegiJatek == null) throw new ProtoException();\r\n                        if(jelenlegiJatek.jatekosok.containsKey(vasarlo)){\r\n                            Szerelo sz = jelenlegiJatek.szerelok.get(vasarlo);\r\n                            sz.pumpatvesz();\r\n                            System.out.println(sz + \"vásárolt egy pumpát!\");\r\n                        }\r\n                        else{\r\n                            throw new ProtoException();\r\n                        }\r\n\r\n                    }catch (ProtoException e){\r\n                        System.out.println(\"Nem sikerült a pumpa vásárlása!\");\r\n                    }\r\n                    break;\r\n                case \"PumpaLehelyez\":\r\n                    String lehelyezo = arguments[1];\r\n                    String lehelyezendoMezo = arguments[2];\r\n                    try{\r\n                        if (jelenlegiJatek == null) throw new ProtoException();\r\n                        if(jelenlegiJatek.jatekosok.containsKey(lehelyezo) && jelenlegiJatek.mezok.containsKey(lehelyezendoMezo)){\r\n                            Szerelo sz = jelenlegiJatek.szerelok.get(lehelyezo);\r\n                            Mezo m = jelenlegiJatek.mezok.get(lehelyezendoMezo);\r\n                            if(sz.getRajtaAll().equals(m) && sz.getTart() != null){\r\n                                sz.lerak_pumpa();\r\n                                System.out.println(sz + \" lerakta a pumpát \" + m + \" mezőre!\");\r\n                            }\r\n                            else{\r\n                                throw new ProtoException();\r\n                            }\r\n                        }\r\n                        else{\r\n                            throw new ProtoException();\r\n                        }\r\n                    }catch (ProtoException e){\r\n                        System.out.println(\"Nem sikerult a pumpa lehelyezése!\");\r\n                    }\r\n                    break;\r\n                case \"RandomBe\":\r\n                    try{\r\n                        if (jelenlegiJatek == null) throw new ProtoException();\r\n                        jelenlegiJatek.randomKi = false;\r\n                        System.out.println(\"Random mód bekapcsolva\");\r\n                    }catch (ProtoException e){\r\n                        System.out.println(\"Nem sikerult a random mód bekapcsolása!\");\r\n                    }\r\n                    break;\r\n                case \"RandomKi\":\r\n                    try{\r\n                        if (jelenlegiJatek == null) throw new ProtoException();\r\n                        jelenlegiJatek.randomKi = true;\r\n                        System.out.println(\"Random mód kikapcsolva\");\r\n                    }catch (ProtoException e){\r\n                        System.out.println(\"Nem sikerult a random mód kikapcsolása!\");\r\n                    }\r\n                    break;\r\n                case \"Befolyik\":\r\n                    String mezoneve1 = arguments[1];\r\n                    try{\r\n                        if (jelenlegiJatek == null) throw new ProtoException();\r\n                        if(jelenlegiJatek.mezok.containsKey(mezoneve1)){\r\n                            Mezo m = jelenlegiJatek.mezok.get(mezoneve1);\r\n                            m.befolyik();\r\n                            System.out.println(m + \"-be befolyik a víz \");\r\n                            for (Mezo m1: m.getSzomszedok()) {\r\n                                System.out.println(m1 +  \"-be tovább folyt a víz!\");\r\n                            }\r\n                        }\r\n                    }catch (ProtoException e){\r\n                        System.out.println(\"Nem sikerült!\");\r\n                    }\r\n                    break;\r\n                case \"Var\":\r\n                    int msIdo = Integer.parseInt(arguments[1]);\r\n                    try{\r\n                        if (jelenlegiJatek == null) throw new ProtoException();\r\n                        System.out.println(msIdo + \"ms várása!\");\r\n                    }catch (ProtoException e){\r\n                        System.out.println(\"Nem sikerült várni!\");\r\n                    }\r\n                    break;\r\n                case \"Vizfolyas\":\r\n                    try{\r\n                        if (jelenlegiJatek == null) throw new ProtoException();\r\n                        jelenlegiJatek.jatek.vizFolyas(jelenlegiJatek.randomKi);\r\n                        for (Forras f : jelenlegiJatek.jatek.getForrasok()) {\r\n                            System.out.println(f + \"-ből elindult a víz! \");\r\n                        }\r\n                        for (Cso cs : jelenlegiJatek.jatek.getCsovek()) {\r\n                            System.out.println(cs + \"-be befolyt a víz! \");\r\n                        }\r\n                        for (Pumpa p : jelenlegiJatek.jatek.getPumpak()) {\r\n                            System.out.println(p + \"-be befolyt a víz! \");\r\n                        }\r\n                        for (Ciszterna c : jelenlegiJatek.jatek.getCiszternak()) {\r\n                            System.out.println(c + \" elnyelte a vizet! \");\r\n                        }\r\n\r\n                    }catch (ProtoException e){\r\n                        System.out.println(\"Nem sikerült!\");\r\n                    }\r\n                    break;\r\n                case \"BeallitCso\":\r\n                    String csoNeve = arguments[1];\r\n                    boolean lyukase = arguments[2].equalsIgnoreCase(\"igen\");\r\n                    boolean ragade = arguments[3].equalsIgnoreCase(\"igen\");\r\n                    boolean csuszike = arguments[4].equalsIgnoreCase(\"igen\");\r\n                    int msLyukasztasIdo = Integer.parseInt(arguments[5]);\r\n                    String ragasztottaNeve = arguments[6];\r\n                    try{\r\n                        if (jelenlegiJatek == null) throw new ProtoException();\r\n                        if(jelenlegiJatek.mezok.containsKey(csoNeve)) {\r\n                            Cso cso1 = (Cso) jelenlegiJatek.mezok.get(csoNeve);\r\n                            cso1.lyukas = lyukase;\r\n                            cso1.ragad = ragade;\r\n                            cso1.csuszik = csuszike;\r\n                            cso1.lyukasztasiIdo = msLyukasztasIdo;\r\n                            if(jelenlegiJatek.jatekosok.containsKey(ragasztottaNeve)) cso1.ragasztotta = jelenlegiJatek.jatekosok.get(ragasztottaNeve);\r\n                            System.out.println(csoNeve + \" állapota sikeresen beállítva: \" + \"lyukas: \" + (lyukase ? \"igen \" : \"nem \") + \"ragad: \" + (ragade ? \"igen \" : \"nem \")\r\n                                    + \"csúszik: \" + (csuszike ? \"igen \" : \"nem \") + \"lyukasztási idő: \" + msLyukasztasIdo +  \" ragasztotta: \" + ragasztottaNeve);\r\n                        }\r\n                    }catch (ProtoException e){\r\n                        System.out.println(\"Nem sikerült a cső beállítása!\");\r\n                    }\r\n                    break;\r\n                case \"Pumpaszerkesztes\":\r\n                    String pumpaNeve = arguments[1];\r\n                    String csoKimenet = arguments[2];\r\n                    String csoBemenet = arguments[3];\r\n                    try{\r\n                        if (jelenlegiJatek == null) throw new ProtoException();\r\n                        if(jelenlegiJatek.mezok.containsKey(pumpaNeve)) {\r\n                            Pumpa pumpa1 = (Pumpa) jelenlegiJatek.mezok.get(pumpaNeve);\r\n                            Cso kimenet = null;\r\n                            Cso bemenet = null;\r\n                            for (Mezo cs1 : pumpa1.getSzomszedok()) {\r\n                                if(cs1.equals((Cso) jelenlegiJatek.mezok.get(csoKimenet))) kimenet = (Cso) jelenlegiJatek.mezok.get(csoKimenet);\r\n                                else if( cs1.equals((Cso) jelenlegiJatek.mezok.get(csoBemenet))) bemenet = (Cso) jelenlegiJatek.mezok.get(csoBemenet);\r\n                            }\r\n                            pumpa1.atAllit(bemenet, kimenet);\r\n                            System.out.println(pumpaNeve + \" beállítva!\");\r\n                        }\r\n                    }catch (ProtoException e){\r\n                        System.out.println(\"Nem sikerült beállítani!\");\r\n                    }\r\n                    break;\r\n                default:\r\n                    System.out.println(\"Nem megfelelő formátum!\");\r\n                    break;\r\n\r\n            }\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Vizhalozat/Proto.java b/src/Vizhalozat/Proto.java
+--- a/src/Vizhalozat/Proto.java	(revision 31540484e23b0dad48b5a7bef5683ee3bf5aba58)
++++ b/src/Vizhalozat/Proto.java	(date 1684092863742)
+@@ -185,30 +185,10 @@
+                     System.out.println("Nem sikerült a kézbe adás!");
+                 }
+             }
+-            case "Mentes": {
+-                File fajl = new File(arguments[1]);
+-                try {
+-                    if (jelenlegiJatek == null) throw new ProtoException();
+-
+-                    System.out.println("Saved!");
+-                } catch (ProtoException e) {
+-                    System.out.println("Nem sikerült a játék mentése!");
+-                }
+-            }
+-            case "Betoltes": {
+-                File fajl = new File(arguments[1]);
+-                try {
+-                    if (jelenlegiJatek == null) throw new ProtoException();
+-
+-                    System.out.println("Sikeres betöltés!");
+-                } catch (ProtoException e) {
+-                    System.out.println("Nem sikerült betölteni a fájlt!");
+-                }
+-            }
+             case "Inditas": {
+                 try {
+                     if (jelenlegiJatek == null) throw new ProtoException();
+-
++                    jelenlegiJatek.jatek.inditas();
+                     System.out.println("Start!");
+                 } catch (ProtoException e) {
+                     System.out.println("Nem sikerült elindítani a játékot!");
+@@ -239,6 +219,7 @@
+                 } catch (ProtoException e) {
+                     System.out.println("Nem sikerült az inicializálás!");
+                 }
++                break;
+             }
+                 case "Leptet":
+                     String jatekosneve = arguments[1];
+@@ -259,7 +240,7 @@
+                         System.out.println("Nem sikerült a lépés!");
+                     }
+                     break;
+-                case "lyukaszt":
++                case "Lyukaszt":
+                     String jatekosnev = arguments[1];
+                     try {
+                         if (jelenlegiJatek == null) throw new ProtoException();
+@@ -274,6 +255,7 @@
+                     } catch (ProtoException e) {
+                         System.out.println("Nem sikerült a lyukasztás!");
+                     }
++                    break;
+                 case "Foltoz":
+                     String szerelonev = arguments[1];
+                     try {
+@@ -466,6 +448,7 @@
+                     try{
+                         if (jelenlegiJatek == null) throw new ProtoException();
+                         jelenlegiJatek.randomKi = true;
++                        jelenlegiJatek.jatek.setRandomKi(true);
+                         System.out.println("Random mód kikapcsolva");
+                     }catch (ProtoException e){
+                         System.out.println("Nem sikerult a random mód kikapcsolása!");
+@@ -484,35 +467,29 @@
+                             }
+                         }
+                     }catch (ProtoException e){
+-                        System.out.println("Nem sikerült!");
++                        System.out.println("Nem sikerult!");
+                     }
+                     break;
+                 case "Var":
+                     int msIdo = Integer.parseInt(arguments[1]);
+                     try{
+                         if (jelenlegiJatek == null) throw new ProtoException();
+-                        System.out.println(msIdo + "ms várása!");
++                        System.out.println(msIdo + "ms varasa!");
++                        try {
++                            Thread.sleep(msIdo);
++                        } catch (InterruptedException e) {
++                            throw new RuntimeException(e);
++                        }
++                        System.out.println(msIdo + " varasa befejezodott!");
+                     }catch (ProtoException e){
+-                        System.out.println("Nem sikerült várni!");
++                        System.out.println("Nem sikerült varni!");
+                     }
+                     break;
+                 case "Vizfolyas":
+                     try{
+                         if (jelenlegiJatek == null) throw new ProtoException();
+                         jelenlegiJatek.jatek.vizFolyas(jelenlegiJatek.randomKi);
+-                        for (Forras f : jelenlegiJatek.jatek.getForrasok()) {
+-                            System.out.println(f + "-ből elindult a víz! ");
+-                        }
+-                        for (Cso cs : jelenlegiJatek.jatek.getCsovek()) {
+-                            System.out.println(cs + "-be befolyt a víz! ");
+-                        }
+-                        for (Pumpa p : jelenlegiJatek.jatek.getPumpak()) {
+-                            System.out.println(p + "-be befolyt a víz! ");
+-                        }
+-                        for (Ciszterna c : jelenlegiJatek.jatek.getCiszternak()) {
+-                            System.out.println(c + " elnyelte a vizet! ");
+-                        }
+-
++                        System.out.println("Elindult a viz!");
+                     }catch (ProtoException e){
+                         System.out.println("Nem sikerült!");
+                     }
+Index: src/Vizhalozat/Cso.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Vizhalozat;\r\nimport java.util.Random;\r\nimport java.util.Scanner;\r\n\r\n/**\r\n * Két mezőt csatlakoztató mezőtípus, a vízhálózat építőeleme.\r\n */\r\npublic class Cso extends Mezo implements Viheto {\r\n    /** Azt jelzi, hogy lyukas-e a cső */\r\n    protected boolean lyukas;\r\n    /** Azt jelzi, hogy ragados-e a cso vagy sem*/\r\n    protected boolean ragad;\r\n    /** Azt jelzi, hogy csuszik-e a cso vagy sem*/\r\n    protected boolean csuszik;\r\n    /** Azt jelzi, hogy milyen reg lyukasztottak ki a csovet */\r\n    protected int lyukasztasiIdo;\r\n    /** Annak a jatekosnak a referenciaja, aki ragadossa tette a csovet*/\r\n    protected Jatekos ragasztotta;\r\n\r\n    public Cso(Jatek jatek) {\r\n        super(jatek);\r\n        lyukas = false; ragad = false; csuszik = false;\r\n    }\r\n\r\n    /**\r\n     *  Visszaadja, hogy az adott cső telített-e\r\n     * @return true, ha telitett\r\n     */\r\n    public boolean getTelitett() {\r\n//        if(ertek.equals(\"Igen\") ){\r\n//            return true;\r\n//        }\r\n        return telitett;\r\n    }\r\n\r\n    @Override\r\n    public boolean felveszik() {\r\n//        if(ertek.equals(\"Nem\") ){\r\n//            return true;\r\n//        }\r\n        if(rajtaAllnak.size()==0) return true;\r\n\r\n        return false;\r\n    }\r\n    /**\r\n     * Telitett lesz,ha nem volt az, es meghivja az osszes szomszedjara a\r\n     * befolyik() fuggvenyt.\r\n     */\r\n    @Override\r\n    public void befolyik() {\r\n        if(!telitett)  telitett = true;\r\n        for (Mezo szomszed : szomszedok) {\r\n            if(szomszed != null) {\r\n                szomszed.removeSzomszed(this);\r\n                szomszed.befolyik();\r\n                szomszed.addSzomszed(this);\r\n            }\r\n        }\r\n    }\r\n\r\n    /**\r\n     * @param j a Jatekos, aki megprobal ralepni\r\n     * @return true, ha senki nem all meg rajta\r\n     */\r\n    @Override\r\n    public boolean ralep(Jatekos j){\r\n//        if(rajtaAllnak.size()==0){\r\n//            rajtaAllnak.add(j);\r\n//            return true;\r\n//        }\r\n\r\n        if(rajtaAllnak.size() == 0) {\r\n            rajtaAllnak.add(j);\r\n            if(j != ragasztotta && ragad){\r\n                j.setRagadasiIdo(30);\r\n            }\r\n\r\n            if(csuszik){\r\n                megcsuszik().ralep(j);\r\n                rajtaAllnak.remove(j);\r\n            }\r\n\r\n            return true;\r\n        }\r\n        return false;\r\n    }\r\n\r\n    public Mezo megcsuszik(){\r\n        if(csuszik){\r\n            Random r = new Random();\r\n            int randszomsz = r.nextInt(szomszedok.size());\r\n            return szomszedok.get(randszomsz);\r\n        } else {\r\n            return null;\r\n        }\r\n\r\n    }\r\n\r\n\r\n\r\n    /**\r\n     * @param p Pumpat var\r\n     * @return true, ha nem allnak a csövön\r\n     */\r\n    @Override\r\n    public boolean pumpaLehelyez(Pumpa p) {\r\n        Cso ujCso = new Cso(jatek);\r\n        ujCso.addSzomszed(szomszedok.get(0));\r\n        removeSzomszed(szomszedok.get(0));\r\n\r\n        ujCso.addSzomszed(p);\r\n        p.addSzomszed(ujCso);\r\n\r\n        p.addSzomszed(this);\r\n        addSzomszed(p);\r\n        return true;\r\n    }\r\n\r\n    /**\r\n     * Cso foltozasa\r\n     * @return true, ha sikeres volt, false ha nem\r\n     */\r\n    @Override\r\n    public boolean foltoz()\r\n    {\r\n        if(lyukas){\r\n            lyukas = false;\r\n            return true;\r\n        }\r\n\r\n        return false;\r\n    }\r\n    /**\r\n     * Cso lyukasztasa\r\n     * @return true, ha sikeres volt, false ha nem\r\n     */\r\n    @Override\r\n    public boolean lyukaszt() {\r\n//        String answer = szkeleton.kerdes(this, \"Lyukas vagyok(Igen/Nem)\");\r\n//        if(answer.equals(\"Nem\")){\r\n//            lyukas = true;\r\n//            return true;\r\n//        }\r\n//        lyukas = true;\r\n\r\n        if(!lyukas){\r\n            lyukas = true;\r\n            return true;\r\n        }\r\n\r\n        return false;\r\n    }\r\n\r\n    /**\r\n     * Szerelő megkísérli egy pumpa vásárlását a csövön\r\n     * @return Mindig null\r\n     */\r\n    @Override\r\n    public Pumpa pumpaVasarlas() {\r\n        return null;\r\n    }\r\n\r\n    /**\r\n     * Játékos megkísérli a cső átállítását\r\n     * @param be Az új bemenet\r\n     * @param ki Az új kimenet\r\n     * @return Mindig false\r\n     */\r\n    @Override\r\n    public boolean atAllit(Cso be, Cso ki) {\r\n        return false;\r\n    }\r\n\r\n    /**\r\n     * Szerelő megkísérli a cső javítását\r\n     * @return Mindig false\r\n     */\r\n    @Override\r\n    public boolean javitjak() {\r\n        return false;\r\n    }\r\n\r\n    /**\r\n     * Játékos megpróbál csövet lehelyezni a csőre\r\n     * @param cs A lehelyezendő cső\r\n     * @return Mindig false\r\n     */\r\n    @Override\r\n    public boolean csoLehelyezes(Cso cs) {\r\n        return false;\r\n    }\r\n\r\n    /**\r\n     * Lerakják a csövet\r\n     * @param lerako a Jatekos, aki lerakja a az adott objektumot\r\n     */\r\n    @Override\r\n    public void lerakjak(Jatekos lerako) {\r\n//        rajtaAllnak.add(lerako);\r\n    }\r\n\r\n    /**\r\n     * ha ragadossa akarja egy jatekos tenni a csovet akkor ezt hivja meg\r\n     * @return igaz/hamis ertek attol fuggoen, hogy sikerult e a ragasztas vagy sem\r\n     */\r\n    public boolean ragaszt() {\r\n        if(!ragad){\r\n            ragad = true;\r\n            return true;\r\n        }\r\n        return false;\r\n    }\r\n\r\n    /**\r\n     * ha csuszossa akarja egy szabotor tenni a csovet akkor ezt hivja meg\r\n     * @return igaz/hamis ertek attol fuggoen, hogy sikerult e a csusztatas vagy sem\r\n     */\r\n    public boolean csuszik() {\r\n        if(!csuszik){\r\n            csuszik = true;\r\n            return true;\r\n        }\r\n        return false;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Vizhalozat/Cso.java b/src/Vizhalozat/Cso.java
+--- a/src/Vizhalozat/Cso.java	(revision 31540484e23b0dad48b5a7bef5683ee3bf5aba58)
++++ b/src/Vizhalozat/Cso.java	(date 1684091063376)
+@@ -15,11 +15,22 @@
+     /** Azt jelzi, hogy milyen reg lyukasztottak ki a csovet */
+     protected int lyukasztasiIdo;
+     /** Annak a jatekosnak a referenciaja, aki ragadossa tette a csovet*/
++    private int csuszasIdo;
++    private int ragasztasiIdo;
+     protected Jatekos ragasztotta;
+ 
++    public void tick() {
++        if(lyukasztasiIdo > 0) lyukasztasiIdo--;
++        if(csuszasIdo > 0) csuszasIdo--;
++        if(ragasztasiIdo > 0) ragasztasiIdo--;
++    }
++
+     public Cso(Jatek jatek) {
+         super(jatek);
+         lyukas = false; ragad = false; csuszik = false;
++        lyukasztasiIdo = 0;
++        csuszasIdo = 0;
++        ragasztasiIdo = 0;
+     }
+ 
+     /**
+@@ -27,19 +38,12 @@
+      * @return true, ha telitett
+      */
+     public boolean getTelitett() {
+-//        if(ertek.equals("Igen") ){
+-//            return true;
+-//        }
+         return telitett;
+     }
+ 
+     @Override
+     public boolean felveszik() {
+-//        if(ertek.equals("Nem") ){
+-//            return true;
+-//        }
+         if(rajtaAllnak.size()==0) return true;
+-
+         return false;
+     }
+     /**
+@@ -48,13 +52,11 @@
+      */
+     @Override
+     public void befolyik() {
+-        if(!telitett)  telitett = true;
+-        for (Mezo szomszed : szomszedok) {
+-            if(szomszed != null) {
+-                szomszed.removeSzomszed(this);
++        if (!telitett) {
++            for (Mezo szomszed : szomszedok) {
+                 szomszed.befolyik();
+-                szomszed.addSzomszed(this);
+             }
++            telitett = true;
+         }
+     }
+ 
+@@ -64,11 +66,6 @@
+      */
+     @Override
+     public boolean ralep(Jatekos j){
+-//        if(rajtaAllnak.size()==0){
+-//            rajtaAllnak.add(j);
+-//            return true;
+-//        }
+-
+         if(rajtaAllnak.size() == 0) {
+             rajtaAllnak.add(j);
+             if(j != ragasztotta && ragad){
+@@ -136,12 +133,6 @@
+      */
+     @Override
+     public boolean lyukaszt() {
+-//        String answer = szkeleton.kerdes(this, "Lyukas vagyok(Igen/Nem)");
+-//        if(answer.equals("Nem")){
+-//            lyukas = true;
+-//            return true;
+-//        }
+-//        lyukas = true;
+ 
+         if(!lyukas){
+             lyukas = true;
+Index: src/Vizhalozat/Jatekos.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Vizhalozat;\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\n/**\r\n * A játékot játszó játékosok absztrakt osztálya, definálja a közös akciókat.\r\n */\r\npublic abstract class Jatekos {\r\n    protected Szkeleton szkeleton;  // a figyelő és hívásszámontartó osztály referenciája\r\n    protected Jatek jatek;  // Jatekot irányító osztály referenciája\r\n    protected Viheto tart; //referencia a tárgyra, amit a játékos tart\r\n    protected Cso csoTart; //a játékos kezében lévő cső referenciája\r\n    protected Mezo rajtaAll; // referencia a mezőre, amin a játékos áll\r\n    protected int varakozasiIdo; // a játékosnak mennyi időt kell várnia a következő aktív akciójáig\r\n    protected int ragadasiIdo;\r\n\r\n    /**\r\n     * A játékos egyetlen konstruktora\r\n     */\r\n    public Jatekos() {\r\n    }\r\n\r\n    /**\r\n     * Amikor a játékos csőre lép, ekkor hívja ezt a függvényt\r\n     * lekéri a pozíciója szomszédjait és ha nem állnak a lépni kívánt csövön átlép rá és lelép az aktuálísról\r\n     * @param szomszed a cso típusú objektum amire lép a játékos\r\n     */\r\n    public void lepes(Cso szomszed){\r\n        if(rajtaAll.getSzomszedok().contains(szomszed) && szomszed.getRajtaAllnak().isEmpty()){\r\n            szomszed.ralep(this);\r\n            rajtaAll.lelep(this);\r\n        }\r\n    }\r\n\r\n    public void setRagadasiIdo(int x) { ragadasiIdo = x; }\r\n\r\n    /**\r\n     * Amikor a játékos NEM csőre lép, ekkor hívja ezt a függvényt\r\n     * lekéri a pozíciója szomszédjait és ha a visszakapott szomszédok között van a lépni kívánt AktívElem, rálép\r\n     * @param szomszed a AktivElemek típusú objektum amire lép a játékos\r\n     */\r\n    public void lepes(AktivElemek szomszed){\r\n//        ArrayList<Mezo> szomszedok = rajtaAll.getSzomszedok();\r\n//        szomszedok.add(szomszed);\r\n\r\n        if(rajtaAll.getSzomszedok().contains(szomszed)){\r\n            szomszed.ralep(this);\r\n            rajtaAll.lelep(this);\r\n        }\r\n    }\r\n\r\n    /**\r\n     * megkísérli átállítani a mezőt, amin áll, csak pumpa mezőn hatásos\r\n     * @param be bemenet\r\n     * @param ki kimenete\r\n     */\r\n    public void pumpaAllitas(Cso be, Cso ki){\r\n//        ArrayList<Mezo> szomszedok = rajtaAll.getSzomszedok();\r\n//        Cso[] csovek = new Cso[2];\r\n//        if(szomszedok.size() > 0) {\r\n//            for (int i = 0; i < 2; i++) {\r\n//                int valasz = Integer.parseInt(szkeleton.kerdes(this, \"Az \" + (i + 1) + \". cső kiválasztása: (A fentiek közül)\"));\r\n//                if (valasz > 0 && valasz <= szomszedok.size()) csovek[i] = (Cso) szomszedok.remove(valasz - 1);\r\n//                else {\r\n//                    System.out.println(\"Nem megfelelő válasz!\");\r\n//                    i--;\r\n//                }\r\n//            }\r\n//        }\r\n//        rajtaAll.atAllit(csovek[0], csovek[1]);\r\n\r\n        List<Mezo> szomszedok = rajtaAll.getSzomszedok();\r\n        if(szomszedok.contains(be) && szomszedok.contains(ki))\r\n            rajtaAll.atAllit(be, ki);\r\n    }\r\n\r\n    /**\r\n     * Megkísérli a cső lehelyézést a mezőn amin áll a\r\n     * csoLehelyez függvény meghívásával,\r\n     * ha sikeres lerakja a csövet az aktuális és az m: Mező közé\r\n     */\r\n    public void lerak_cso(){\r\n        if(csoTart != null){\r\n            boolean siker = rajtaAll.csoLehelyezes(csoTart);\r\n            if(siker){\r\n                csoTart = null;\r\n            }\r\n        }\r\n\r\n    }\r\n\r\n    /**\r\n     * Megkísérel felvenni egy csövet a megadott mezőről\r\n     * @param felvesz annak csőnek a referenciája, amit felvesz\r\n     */\r\n    public void felvesz_cso(Cso felvesz){\r\n//        // itt at lehetne adni a Pumpat, amin a jatekos all, es akkor mehetne\r\n//        if(felvesz.felveszik()) {\r\n//            // remove jatekos.felvesz_cso()-ben van vagy a cso.felveszik()-ben\r\n//            rajtaAll.removeSzomszed(felvesz);\r\n//        }\r\n\r\n        if(rajtaAll.getSzomszedok().contains(felvesz) && csoTart==null){\r\n            boolean siker = felvesz.felveszik();\r\n            if(siker){\r\n                csoTart = felvesz;\r\n                felvesz.removeSzomszed(rajtaAll);\r\n            }\r\n        }\r\n\r\n    }\r\n\r\n    /**\r\n     * A Jatekos kezebe teszi valamilyen Vihető objektum referenciáját\r\n     * @param t\r\n     */\r\n    public void add_Kezebe(Viheto t){\r\n        this.tart = t;\r\n    }\r\n    /**\r\n     *  Megprobalja leragasztani a mezot\r\n     */\r\n    public void ragaszt(){\r\n        if(varakozasiIdo == 0) {\r\n            boolean siker = rajtaAll.ragaszt();\r\n            if(siker){\r\n                varakozasiIdo = 3;\r\n            }\r\n        }\r\n    }\r\n\r\n    public void lyukaszt(){\r\n        if(varakozasiIdo == 0) {\r\n            boolean siker = rajtaAll.lyukaszt();\r\n            if(siker){\r\n                varakozasiIdo = 3;\r\n            }\r\n        }\r\n    }\r\n\r\n    public Mezo getRajtaAll() {\r\n        return rajtaAll;\r\n    }\r\n\r\n    public Viheto getTart() {\r\n        return tart;\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Vizhalozat/Jatekos.java b/src/Vizhalozat/Jatekos.java
+--- a/src/Vizhalozat/Jatekos.java	(revision 31540484e23b0dad48b5a7bef5683ee3bf5aba58)
++++ b/src/Vizhalozat/Jatekos.java	(date 1684090746587)
+@@ -11,13 +11,17 @@
+     protected Viheto tart; //referencia a tárgyra, amit a játékos tart
+     protected Cso csoTart; //a játékos kezében lévő cső referenciája
+     protected Mezo rajtaAll; // referencia a mezőre, amin a játékos áll
+-    protected int varakozasiIdo; // a játékosnak mennyi időt kell várnia a következő aktív akciójáig
+     protected int ragadasiIdo;
+ 
+     /**
+      * A játékos egyetlen konstruktora
+      */
+     public Jatekos() {
++        ragadasiIdo = 0;
++    }
++
++    public void tick() {
++        if(ragadasiIdo > 0) ragadasiIdo--;
+     }
+ 
+     /**
+@@ -55,20 +59,6 @@
+      * @param ki kimenete
+      */
+     public void pumpaAllitas(Cso be, Cso ki){
+-//        ArrayList<Mezo> szomszedok = rajtaAll.getSzomszedok();
+-//        Cso[] csovek = new Cso[2];
+-//        if(szomszedok.size() > 0) {
+-//            for (int i = 0; i < 2; i++) {
+-//                int valasz = Integer.parseInt(szkeleton.kerdes(this, "Az " + (i + 1) + ". cső kiválasztása: (A fentiek közül)"));
+-//                if (valasz > 0 && valasz <= szomszedok.size()) csovek[i] = (Cso) szomszedok.remove(valasz - 1);
+-//                else {
+-//                    System.out.println("Nem megfelelő válasz!");
+-//                    i--;
+-//                }
+-//            }
+-//        }
+-//        rajtaAll.atAllit(csovek[0], csovek[1]);
+-
+         List<Mezo> szomszedok = rajtaAll.getSzomszedok();
+         if(szomszedok.contains(be) && szomszedok.contains(ki))
+             rajtaAll.atAllit(be, ki);
+@@ -121,21 +111,11 @@
+      *  Megprobalja leragasztani a mezot
+      */
+     public void ragaszt(){
+-        if(varakozasiIdo == 0) {
+-            boolean siker = rajtaAll.ragaszt();
+-            if(siker){
+-                varakozasiIdo = 3;
+-            }
+-        }
++        boolean siker = rajtaAll.ragaszt();
+     }
+ 
+     public void lyukaszt(){
+-        if(varakozasiIdo == 0) {
+-            boolean siker = rajtaAll.lyukaszt();
+-            if(siker){
+-                varakozasiIdo = 3;
+-            }
+-        }
++        boolean siker = rajtaAll.lyukaszt();
+     }
+ 
+     public Mezo getRajtaAll() {
+Index: src/Vizhalozat/Jatek.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Vizhalozat;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.Timer;\r\n\r\n/**\r\n * A játék belső szerkezetéért felelős osztály. A játék ciklusának futtatásáért, játékosok és mezők létrehozasaért\r\n * és az aktuális állás számontartásáért felelős\r\n */\r\npublic class Jatek {\r\n    /** A játékosokat tartalmazó lista */\r\n    private ArrayList<Jatekos> jatekosok = new ArrayList<>();\r\n    /** A szerelőket tartalmazó lista */\r\n    private ArrayList<Szerelo> szerelok = new ArrayList<>();\r\n    /** A szabotőröket tartalmazó lista */\r\n    private ArrayList<Szabotor> szabotorok = new ArrayList<>();\r\n    /** A mezőket tartalmazó lista */\r\n    private ArrayList<Mezo> mezok = new ArrayList<>();\r\n    /** A ciszternákat tartalmazó lista */\r\n    private ArrayList<Ciszterna> ciszternak = new ArrayList<>();\r\n    /** A forrásokat tartalmazó lista */\r\n    private ArrayList<Forras> forrasok = new ArrayList<>();\r\n    /** A pumpákat tartalmazó lista */\r\n    private final ArrayList<Pumpa> pumpak;\r\n    /** A szabotőrök pontjait jelző egész érték */\r\n    int szabotorPont;\r\n    /** A szerelők pontjait jelző egész érték */\r\n    int szereloPont;\r\n    /** időzítő, ami a vizFolyas és pumpaElromlik metódus időközönkénti meghívásáért felelős*/\r\n    private Timer timer;\r\n    /** A csöveket tartalmazó lista */\r\n    private final ArrayList<Cso> csovek;\r\n\r\n    /**\r\n     * A játék osztály egyetlen konstruktora\r\n     */\r\n    public Jatek() {\r\n        pumpak = new ArrayList<>();\r\n        csovek = new ArrayList<>();\r\n    }\r\n\r\n    /**\r\n     * A játék Játékosok listájához ad hozzá egy szerelőt\r\n     * @param jatekos Szerelo tipust ad a listához\r\n     */\r\n    public void addJatekos(Szerelo jatekos) {\r\n        jatekosok.add(jatekos);\r\n        szerelok.add(jatekos);\r\n    }\r\n    /**\r\n     * A játék Játékosok listájához ad hozzá egy szabotőrt\r\n     * @param jatekos Szabotor tipust ad a listához\r\n     */\r\n    public void addJatekos(Szabotor jatekos) {\r\n        jatekosok.add(jatekos);\r\n        szabotorok.add(jatekos);\r\n    }\r\n    /**\r\n     * A játék Mezők listájához ad hozzá egy ciszternát\r\n     * @param mezo Ciszterna tipust ad a listához\r\n     */\r\n    public void addMezo(Ciszterna mezo) {\r\n        mezok.add(mezo);\r\n        ciszternak.add(mezo);\r\n    }\r\n    /**\r\n     * A játék Mezők listájához ad hozzá egy csövet\r\n     * @param mezo Cso tipust ad a listához\r\n     */\r\n    public void addMezo(Cso mezo) {\r\n        mezok.add(mezo);\r\n        csovek.add(mezo);\r\n    }\r\n    /**\r\n     * A játék Mezők listájához ad hozzá egy forást\r\n     * @param mezo Forras tipust ad a listához\r\n     */\r\n    public void addMezo(Forras mezo) {\r\n        mezok.add(mezo);\r\n        forrasok.add(mezo);\r\n    }\r\n    /**\r\n     * A játék Mezők listájához ad hozzá egy pumpát\r\n     * @param mezo Pumpa tipust ad a listához\r\n     */\r\n    public void addMezo(Pumpa mezo) {\r\n        mezok.add(mezo);\r\n        pumpak.add(mezo);\r\n    }\r\n\r\n    /**\r\n     * A játék folyamán használatban lévő pumpák listájához ad hozzá egy új elemet\r\n     * @param pumpa Az új elem amit hozzáfűz a listához\r\n     */\r\n    public void addPumpa(Pumpa pumpa) {\r\n        pumpak.add(pumpa);\r\n    }\r\n\r\n    /**\r\n     * Minden pumpára kisorsolja, hogy elromlik-e vagy sem\r\n     */\r\n    public void pumpaElRomlik(boolean randomKi) {\r\n\r\n        if(randomKi) {\r\n            for (Pumpa p: pumpak) {\r\n                p.elromlik();\r\n            }\r\n        }\r\n    }\r\n\r\n    public void vizFolyas(boolean randomKi){\r\n        if(randomKi){\r\n            for (Pumpa p : pumpak) {\r\n                p.setTelitett(false);\r\n            }\r\n            for (Mezo m : mezok) {\r\n                m.setTelitett(false);\r\n            }\r\n            for (Cso cs : csovek) {\r\n                cs.setTelitett(false);\r\n            }\r\n            for (Forras f : forrasok) {\r\n                f.setTelitett(false);\r\n            }\r\n            for (Ciszterna c : ciszternak) {\r\n                c.setTelitett(false);\r\n            }\r\n\r\n            for (Forras f : forrasok) {\r\n                f.vizTermeles();\r\n            }\r\n        }\r\n    }\r\n\r\n\r\n    public ArrayList<Jatekos> getJatekosok() { return jatekosok; }\r\n    public ArrayList<Szerelo> getSzerelok() { return szerelok; }\r\n    public ArrayList<Szabotor> getSzabotorok() { return szabotorok; }\r\n    public ArrayList<Mezo> getMezok() { return mezok; }\r\n    public ArrayList<Forras> getForrasok() { return forrasok; }\r\n    public ArrayList<Ciszterna> getCiszternak() { return ciszternak; }\r\n    public ArrayList<Pumpa> getPumpak() { return pumpak; }\r\n    public ArrayList<Cso> getCsovek() { return csovek; }\r\n\r\n\r\n    /**\r\n     * A szerelők pontját növelő függvény\r\n     */\r\n    public void szereloPontSzerzes(){\r\n        szereloPont++;\r\n    }\r\n\r\n    /**\r\n     * A szabotőrök pontját növelő függvény\r\n     */\r\n    public void szabotorPontSzerzes(){\r\n        szabotorPont++;\r\n    }\r\n\r\n    /**\r\n     *A játék indulásakor hívódik meg\r\n     * Legenerálja az alap pályát és beállítja az elemeket szomszédoknak\r\n     */\r\n    public void init(){\r\n//        Forras f1 = new Forras(this, szkeleton);\r\n\r\n//        Cso cs1 = new Cso(this, szkeleton);\r\n\r\n//        Pumpa p1 = new Pumpa(this, szkeleton);\r\n\r\n//        Cso cs2 = new Cso(this, szkeleton);\r\n\r\n//        Ciszterna c1 = new Ciszterna(this, szkeleton);\r\n\r\n//        cs1.addSzomszed(f1);\r\n//        f1.addSzomszed(cs1);\r\n//\r\n//        p1.addSzomszed(cs1);\r\n//        cs1.addSzomszed(p1);\r\n//\r\n//        cs2.addSzomszed(p1);\r\n//        p1.addSzomszed(cs2);\r\n//\r\n//        c1.addSzomszed(cs2);\r\n//        cs2.addSzomszed(c1);\r\n\r\n        timer.notify();\r\n        szabotorPont = 0;\r\n        szereloPont = 0;\r\n\r\n        Szabotor szab1 = new Szabotor();\r\n        Szabotor szab2 = new Szabotor();\r\n        szabotorok.add(szab1); szabotorok.add(szab2);\r\n\r\n        Szerelo szer1 = new Szerelo();\r\n        Szerelo szer2 = new Szerelo();\r\n        szerelok.add(szer1); szerelok.add(szer2);\r\n\r\n        Forras f1 = new Forras(this);\r\n        Forras f2 = new Forras(this);\r\n        forrasok.add(f1); forrasok.add(f2);\r\n\r\n        Ciszterna c1 = new Ciszterna(this);\r\n        Ciszterna c2 = new Ciszterna(this);\r\n        ciszternak.add(c1); ciszternak.add(c2);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Vizhalozat/Jatek.java b/src/Vizhalozat/Jatek.java
+--- a/src/Vizhalozat/Jatek.java	(revision 31540484e23b0dad48b5a7bef5683ee3bf5aba58)
++++ b/src/Vizhalozat/Jatek.java	(date 1684092669343)
+@@ -2,6 +2,7 @@
+ 
+ import java.util.ArrayList;
+ import java.util.Timer;
++import java.util.TimerTask;
+ 
+ /**
+  * A játék belső szerkezetéért felelős osztály. A játék ciklusának futtatásáért, játékosok és mezők létrehozasaért
+@@ -30,15 +31,23 @@
+     private Timer timer;
+     /** A csöveket tartalmazó lista */
+     private final ArrayList<Cso> csovek;
++    private boolean randomKi;
++    private boolean gameOver;
+ 
+     /**
+      * A játék osztály egyetlen konstruktora
+      */
+     public Jatek() {
++        randomKi = false;
++        timer = new Timer();
+         pumpak = new ArrayList<>();
+         csovek = new ArrayList<>();
+     }
+ 
++    public void setRandomKi(boolean randomKi) {
++        this.randomKi = randomKi;
++    }
++
+     /**
+      * A játék Játékosok listájához ad hozzá egy szerelőt
+      * @param jatekos Szerelo tipust ad a listához
+@@ -100,11 +109,8 @@
+      * Minden pumpára kisorsolja, hogy elromlik-e vagy sem
+      */
+     public void pumpaElRomlik(boolean randomKi) {
+-
+-        if(randomKi) {
+-            for (Pumpa p: pumpak) {
+-                p.elromlik();
+-            }
++        for (Pumpa p: pumpak) {
++            p.elromlik();
+         }
+     }
+ 
+@@ -162,29 +168,6 @@
+      * Legenerálja az alap pályát és beállítja az elemeket szomszédoknak
+      */
+     public void init(){
+-//        Forras f1 = new Forras(this, szkeleton);
+-
+-//        Cso cs1 = new Cso(this, szkeleton);
+-
+-//        Pumpa p1 = new Pumpa(this, szkeleton);
+-
+-//        Cso cs2 = new Cso(this, szkeleton);
+-
+-//        Ciszterna c1 = new Ciszterna(this, szkeleton);
+-
+-//        cs1.addSzomszed(f1);
+-//        f1.addSzomszed(cs1);
+-//
+-//        p1.addSzomszed(cs1);
+-//        cs1.addSzomszed(p1);
+-//
+-//        cs2.addSzomszed(p1);
+-//        p1.addSzomszed(cs2);
+-//
+-//        c1.addSzomszed(cs2);
+-//        cs2.addSzomszed(c1);
+-
+-        timer.notify();
+         szabotorPont = 0;
+         szereloPont = 0;
+ 
+@@ -204,4 +187,33 @@
+         Ciszterna c2 = new Ciszterna(this);
+         ciszternak.add(c1); ciszternak.add(c2);
+     }
++
++    public void tick() {
++        for(Jatekos jatekos : jatekosok ) {
++            jatekos.tick();
++        }
++        for(Cso cso : csovek) {
++            cso.tick();
++        }
++    }
++
++    public void inditas() {
++        TimerTask timerTask = new TimerTask() {
++            @Override
++            public void run() {
++                if(!gameOver) {
++                    vizFolyas(randomKi);
++                    tick();
++                    pumpaElRomlik(randomKi);
++                    if(szereloPont == 15) {
++                        gameOver = true;
++                    }
++                    if(szabotorPont == 15) {
++                        gameOver = false;
++                    }
++                }
++            }
++        };
++        timer.scheduleAtFixedRate(timerTask, 0, 1000);
++    }
+ }
+Index: src/Vizhalozat/Pumpa.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Vizhalozat;\r\n\r\nimport java.util.Random;\r\n\r\n/**\r\n * Legalább két csövet csatlakoztató mező típus a bemenetéből a kimenetébe pumpálja a vizet, ha működik.\r\n */\r\npublic class Pumpa extends AktivElemek implements Viheto{\r\n    /**\r\n     * Azt jelöli, hogy a pumpa rossz-e vagy működik\r\n     */\r\n    private boolean mukodik;\r\n    /**\r\n     * A bemeneti cső referenciája\r\n     */\r\n    private Cso bemenet;\r\n    /**\r\n     * A kimeneti cső referenciája\r\n     */\r\n    private Cso kimenet;\r\n\r\n    /**\r\n     * A Pumpa egyetlen konstruktora\r\n     * @param jatek A játék objektum referenciája\r\n     */\r\n    public Pumpa(Jatek jatek) {\r\n        super(jatek);\r\n        mukodik = true;\r\n    }\r\n\r\n    /**\r\n     *  ha a függvény hívásakor a pumpa nem vízzel telített\r\n     *  és a bemenete vízzel telített, vízzel telítetté válik a pumpa is,\r\n     *  meghívja a kimenetének a befolyik függvényét\r\n     */\r\n    @Override\r\n    public void befolyik() {\r\n        if(mukodik && kimenet != null) {\r\n            telitett = true;\r\n            kimenet.szomszedok.remove(this);\r\n            kimenet.befolyik();\r\n            kimenet.szomszedok.add(this);\r\n        }\r\n        else System.out.println(\"Nincs csatlakoztatva kimenet\");\r\n\r\n    }\r\n\r\n    /**\r\n     * Átállítja a pumpa be- és kimenetét a megadott csövekre\r\n     * @param be A pumpa új bemenete\r\n     * @param ki A pumpa új kimenete\r\n     * @return Mindig true-val tér vissza\r\n     */\r\n    @Override\r\n    public boolean atAllit(Cso be, Cso ki) {\r\n        if(be != null && ki != null) {\r\n            bemenet = be;\r\n            kimenet = ki;\r\n        }\r\n        else throw new RuntimeException(\"Nem megfelelo be / kimenet\");\r\n        return true;\r\n    }\r\n\r\n    /**\r\n     * ha a pumpa eddig rossz volt megjavítódik\r\n     * @return ha pumpa rossz volt true-val tér vissza, ha nem akkor false-al\r\n     */\r\n    @Override\r\n    public boolean javitjak() {\r\n        if(!mukodik){\r\n            mukodik = true;\r\n            return true;\r\n        }\r\n        else\r\n            return false;\r\n    }\r\n\r\n\r\n    /**\r\n     * csak a cső mezőn hatásos\r\n     * @return\r\n     */\r\n    @Override\r\n    public Mezo megcsuszik() {\r\n        return null;\r\n    }\r\n\r\n    /**\r\n     * csak a cső mezőn hatásos\r\n     * @return\r\n     */\r\n    @Override\r\n    public boolean ragaszt() {\r\n        return false;\r\n    }\r\n    /**\r\n     * csak a cső mezőn hatásos\r\n     * @return\r\n     */\r\n\r\n    @Override\r\n    public boolean csuszik() {\r\n        return false;\r\n    }\r\n\r\n    /**\r\n     * minden körben lefut a függvény és randomizált folyamat végén eldől,\r\n     * hogy elromlik az adott pumpa vagy sem\r\n     */\r\n    public void elromlik() {\r\n        Random rnd = new Random();\r\n        int hatar = rnd.nextInt(10) + 1;\r\n        if(hatar == 10){\r\n            mukodik = false;\r\n        }\r\n    }\r\n\r\n    /**\r\n     * meghívja a tartó játékos lerak_pumpa metódusát\r\n     * @param lerako az a jatekos, akinek meghivja a metodusat\r\n     */\r\n    @Override\r\n    public void lerakjak(Jatekos lerako) {\r\n//        szkeleton.hivas(this, \"lerakjak\");\r\n//        szkeleton.visszateres(this, \"lerakjak\");\r\n    }\r\n\r\n    @Override\r\n    public boolean felveszik() {\r\n        return super.felveszik();\r\n    }\r\n\r\n    /**\r\n     * egy szerelő megpróbálja letenni a pumpát a kezéből a pumpára amin áll\r\n     * @param p A lehelyezendő pumpa\r\n     * @return Mindig hamissal tér vissza és nem történik semmi\r\n     */\r\n    @Override\r\n    public boolean pumpaLehelyez(Pumpa p) {\r\n        return false;\r\n    }\r\n\r\n    /**\r\n     * setter\r\n     * @param cs lesz az új bemenet\r\n     */\r\n    public void setBemenet(Cso cs){\r\n        this.bemenet = cs;\r\n    }\r\n    /**\r\n     * setter\r\n     * @param cs lesz az új kimenet\r\n     */\r\n    public void setKimenet(Cso cs){\r\n        this.kimenet = cs;\r\n    }\r\n\r\n    public void setMukodik(boolean mukodik) {\r\n        this.mukodik = mukodik;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Vizhalozat/Pumpa.java b/src/Vizhalozat/Pumpa.java
+--- a/src/Vizhalozat/Pumpa.java	(revision 31540484e23b0dad48b5a7bef5683ee3bf5aba58)
++++ b/src/Vizhalozat/Pumpa.java	(date 1684089544315)
+@@ -35,14 +35,12 @@
+      */
+     @Override
+     public void befolyik() {
+-        if(mukodik && kimenet != null) {
+-            telitett = true;
+-            kimenet.szomszedok.remove(this);
+-            kimenet.befolyik();
+-            kimenet.szomszedok.add(this);
++        if(!telitett) {
++            if(mukodik && bemenet != null && bemenet.getTelitett() && kimenet != null) {
++                kimenet.befolyik();
++                telitett = true;
++            }
+         }
+-        else System.out.println("Nincs csatlakoztatva kimenet");
+-
+     }
+ 
+     /**
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"42eca659-eca3-45a1-802e-11296cb13373\" name=\"Changes\" comment=\"Utolso parancsok\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Vizhalozat/Proto.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Vizhalozat/Proto.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2OPjhpCATCZ3MLgG7nsG1xmDBF6\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;master&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\Szelestey\\IdeaProjects\\Vizhalozat\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"App\" type=\"Application\" factoryName=\"Application\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Vizhalozat.App\" />\r\n      <module name=\"Vizhalozat\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"42eca659-eca3-45a1-802e-11296cb13373\" name=\"Changes\" comment=\"\" />\r\n      <created>1681469248739</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1681469248739</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"elso commit\">\r\n      <created>1681469342419</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1681469342420</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"masodik\">\r\n      <created>1681469449647</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1681469449647</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"szkeleton, félig kész osztályok\">\r\n      <created>1681475786680</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1681475786680</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"javitas\">\r\n      <created>1681476055212</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1681476055212</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"69 kilepes\">\r\n      <created>1681476354109</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1681476354109</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"16-17-es teszt esetek elkészítése\">\r\n      <created>1681598772351</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1681598772351</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Szabotor osztaly\">\r\n      <created>1681598949648</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1681598949648</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"20-as teszt eset elkészítése\">\r\n      <created>1681601609432</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1681601609432</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"18-as teszt eset elkészítése\">\r\n      <created>1681603519626</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1681603519626</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"19-es teszt eset elkészítése\">\r\n      <created>1681604676023</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1681604676023</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"első 20 teszt fasza, minimális javítások\">\r\n      <created>1681670843667</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1681670843667</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\"kommentek csőnél\">\r\n      <created>1681675334635</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1681675334635</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00013\" summary=\"kommentek csőnél\">\r\n      <created>1681675455800</created>\r\n      <option name=\"number\" value=\"00013\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1681675455800</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00014\" summary=\"szkeleton kommentezése\">\r\n      <created>1681676699224</created>\r\n      <option name=\"number\" value=\"00014\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00014\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1681676699224</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00015\" summary=\"szkeleton kommentezése\">\r\n      <created>1681676745972</created>\r\n      <option name=\"number\" value=\"00015\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00015\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1681676745972</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00016\" summary=\"&#10;Push hogy mas ne kezdje el ami mar meglehet\">\r\n      <created>1684005333841</created>\r\n      <option name=\"number\" value=\"00016\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00016\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1684005333841</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00017\" summary=\"Utolso parancsok\">\r\n      <created>1684068524084</created>\r\n      <option name=\"number\" value=\"00017\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00017\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1684068524084</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"18\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"origin/master\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"elso commit\" />\r\n    <MESSAGE value=\"masodik\" />\r\n    <MESSAGE value=\"szkeleton, félig kész osztályok\" />\r\n    <MESSAGE value=\"javitas\" />\r\n    <MESSAGE value=\"69 kilepes\" />\r\n    <MESSAGE value=\"16-17-es teszt esetek elkészítése\" />\r\n    <MESSAGE value=\"Szabotor osztaly\" />\r\n    <MESSAGE value=\"20-as teszt eset elkészítése\" />\r\n    <MESSAGE value=\"18-as teszt eset elkészítése\" />\r\n    <MESSAGE value=\"19-es teszt eset elkészítése\" />\r\n    <MESSAGE value=\"első 20 teszt fasza, minimális javítások\" />\r\n    <MESSAGE value=\"kommentek csőnél\" />\r\n    <MESSAGE value=\"szkeleton kommentezése\" />\r\n    <MESSAGE value=\"&#10;Push hogy mas ne kezdje el ami mar meglehet\" />\r\n    <MESSAGE value=\"Utolso parancsok\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Utolso parancsok\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <breakpoint enabled=\"true\" type=\"java-exception\">\r\n          <properties class=\"java.lang.StackOverflowError\" package=\"java.lang\" />\r\n          <option name=\"timeStamp\" value=\"1\" />\r\n        </breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n    <watches-manager>\r\n      <configuration name=\"Application\">\r\n        <watch expression=\"jelenlegiJatek.mezok\" language=\"JAVA\" />\r\n      </configuration>\r\n    </watches-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 31540484e23b0dad48b5a7bef5683ee3bf5aba58)
++++ b/.idea/workspace.xml	(date 1684091193859)
+@@ -4,9 +4,17 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="Utolso parancsok">
++    <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="proto elkezdése első 3 osztály és első 7 parancs">
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023__05__14__12_14__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023__05__14__12_14__Changes_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023__05__14__9_56__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023__05__14__9_56__Changes_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023__05__14__9_56__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023__05__14__9_56__Changes_1.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Cso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Cso.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Forras.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Forras.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Jatek.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Jatek.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Jatekos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Jatekos.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Proto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Proto.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Pumpa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Pumpa.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -32,15 +40,16 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "RunOnceActivity.OpenProjectViewOnStart": "true",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
++    "git-widget-placeholder": "master",
++    "node.js.selected.package.tslint": "(autodetect)",
++    "run.code.analysis.last.selected.profile": "pProject Default"
+   }
+-}</component>
++}]]></component>
+   <component name="RecentsManager">
+     <key name="MoveFile.RECENT_KEYS">
+       <recent name="C:\Users\Szelestey\IdeaProjects\Vizhalozat" />

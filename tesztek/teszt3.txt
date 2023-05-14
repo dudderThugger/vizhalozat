@@ -4,6 +4,7 @@ RandomKi
 Init
 MezoLetrehoz cso1 cso
 SzomszedBeallit cso1 forras1
-BeallitCso nem igen nem 0 nem
-Raallit szerelo1 cso1
+BeallitCso cso1 nem igen nem 0 szabotor1
+RaAllit szerelo1 cso1
 Leptet szerelo1 forras1
+
