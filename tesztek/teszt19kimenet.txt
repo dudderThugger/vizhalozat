@@ -1,0 +1,13 @@
+jatek1 sikeresen létrehozva! 
+jatek1 kiválasztva!
+Random mód kikapcsolása!
+Inicializálás! 
+A következő objektumok jöttek létre: szerelo1, szerelo2, szabotor1, szabotor2, forras1, forras2, ciszterna1, ciszterna 2
+cso1 mező sikeresen létrehozva!
+Szomszédság beállítva!
+Szomszédság beállítva!
+pumpa1 mező sikeresen létrehozva!
+szerelo1  kezében pumpa1  van!
+szerelo1  ráállt a cso1 mezőre!
+szerelo1 lerakta a <Mező neve> pumpát!
+
