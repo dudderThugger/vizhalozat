@@ -9,3 +9,5 @@ SzomszedBeallit cso1 pumpa1
 SzomszedBeallit cso2 pumpa1
 Pumpaszerkesztes pumpa1 cso2 cso1
 Befolyik cso1
+Nedvese pumpa1
+Nedvese cso2
