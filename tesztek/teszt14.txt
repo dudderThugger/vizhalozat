@@ -1,0 +1,10 @@
+JatekLetrehoz jatek1
+JatekKivalaszt jatek1
+RandomKi
+Init
+MezoLetrehoz cso1 cso
+KezebeAd szerelo1 cso1
+MezoLetrehoz mezo1 mezo
+SzomszedBeallit mezo1 ciszterna1
+RaAllit szerelo1 mezo1
+CsoLerak szerelo1 mezo1

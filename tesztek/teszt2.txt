@@ -2,11 +2,7 @@ JatekLetrehoz jatek1
 JatekKivalaszt jatek1
 RandomKi
 Init
-RandomBe
 MezoLetrehoz cso1 cso
 SzomszedBeallit cso1 forras1
-MezoLetrehoz pumpa1 pumpa
-SzomszedBeallit cso1 pumpa1
-BeallitCso cso1 nem nem igen 0 szabotor1
 RaAllit szerelo1 forras1
 Leptet szerelo1 cso1
