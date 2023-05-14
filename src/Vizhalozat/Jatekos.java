@@ -117,7 +117,9 @@ public abstract class Jatekos {
 //        rajtaAll.atAllit(csovek[0], csovek[1]);
 //
 //        szkeleton.visszateres(this, "pumpaAllitas");
-        rajtaAll.atAllit(be, ki);
+        List<Mezo> szomszedok = rajtaAll.getSzomszedok();
+        if(szomszedok.contains(be) && szomszedok.contains(ki))
+            rajtaAll.atAllit(be, ki);
     }
 
     /**
@@ -129,6 +131,13 @@ public abstract class Jatekos {
 //        szkeleton.hivas(this,"lerak_cso");
 //        rajtaAll.csoLehelyezes(csoTart);
 //        szkeleton.visszateres(this,"lerak_cso");
+
+        if(csoTart != null){
+           boolean siker = rajtaAll.csoLehelyezes(csoTart);
+           if(siker){
+               csoTart = null;
+           }
+        }
 
     }
 
@@ -146,7 +155,14 @@ public abstract class Jatekos {
 //        }
 //        szkeleton.visszateres(this,"felvesz_cso");
 
-        rajtaAll.felveszik();
+        if(rajtaAll.getSzomszedok().contains(felvesz) && csoTart==null){
+            boolean siker = felvesz.felveszik();
+            if(siker){
+                csoTart = felvesz;
+                felvesz.removeSzomszed(rajtaAll);
+            }
+        }
+
     }
 
     /**

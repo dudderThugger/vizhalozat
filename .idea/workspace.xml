@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="&#10;Push hogy mas ne kezdje el ami mar meglehet">
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Mezo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Mezo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Jatekos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Jatekos.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +67,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1681469248739</updated>
-      <workItem from="1684056752468" duration="843000" />
+      <workItem from="1684056752468" duration="2150000" />
     </task>
     <task id="LOCAL-00001" summary="elso commit">
       <created>1681469342419</created>
