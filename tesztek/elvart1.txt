@@ -11,4 +11,4 @@ Szomszédság beállítva!
 cso1 allapota sikeresen beallitva: nem nem igen 0 nem
 szerelo1 ráállt a forras1 mezőre!
 szerelo1 rálépett a  cso1 mezőre!
-szerelo1 rálépett a  forras1 mezőre! / szerelo1 rálépett a  pumpa1 mezőre!
+szerelo1 a forras1 / pumpa1 mezőn áll

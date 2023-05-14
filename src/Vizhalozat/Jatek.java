@@ -170,22 +170,6 @@ public class Jatek {
     public void init(){
         szabotorPont = 0;
         szereloPont = 0;
-
-        Szabotor szab1 = new Szabotor();
-        Szabotor szab2 = new Szabotor();
-        szabotorok.add(szab1); szabotorok.add(szab2);
-
-        Szerelo szer1 = new Szerelo();
-        Szerelo szer2 = new Szerelo();
-        szerelok.add(szer1); szerelok.add(szer2);
-
-        Forras f1 = new Forras(this);
-        Forras f2 = new Forras(this);
-        forrasok.add(f1); forrasok.add(f2);
-
-        Ciszterna c1 = new Ciszterna(this);
-        Ciszterna c2 = new Ciszterna(this);
-        ciszternak.add(c1); ciszternak.add(c2);
     }
 
     public void tick() {

@@ -10,3 +10,4 @@ SzomszedBeallit cso1 pumpa1
 BeallitCso cso1 nem nem igen 0 szerelo1
 RaAllit szerelo1 forras1
 Leptet szerelo1 cso1
+HolAll szerelo1
