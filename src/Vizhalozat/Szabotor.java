@@ -12,7 +12,9 @@ public class Szabotor extends Jatekos{
      * egy akciójával képes azt kilyukasztani, amivel a csőben lévő víz elfolyik a sivatagban
      */
     public void lyukaszt(){
-        rajtaAll.lyukaszt();
+        if (akcioIdo == 0) {
+            if(rajtaAll.lyukaszt()) akcioIdo = 5;
+        }
     }
 
     /**

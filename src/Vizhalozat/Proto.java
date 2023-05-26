@@ -1,3 +1,4 @@
+/*
 package Vizhalozat;
 
 import javax.sound.midi.Soundbank;
@@ -12,16 +13,20 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+*/
 /**
  * Prototípus osztály megvalósítása
- */
+ *//*
+
 public class Proto {
     private HashMap<String, ProtoJatek> jatekAdatok = new HashMap<String, ProtoJatek>();
     private ProtoJatek jelenlegiJatek = null;
 
-    /**
+    */
+/**
      * Prototípusjáték
-     */
+     *//*
+
     private class ProtoJatek {
         Jatek jatek = new Jatek();
         boolean randomKi;
@@ -653,3 +658,4 @@ public class Proto {
         }
     }
 }
+*/

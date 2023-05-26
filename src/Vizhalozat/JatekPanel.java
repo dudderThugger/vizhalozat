@@ -53,4 +53,15 @@ public class JatekPanel extends JPanel {
         this.add(actionsav);
     }
 
+    public void frissit() {
+        // TODO
+    }
+
+    public void addMegfigyelo(Megfigyelo megfigyelo) {
+        // TODO
+    }
+
+    public void jatekVege(String nyertesCsapat) {
+        // TODO
+    }
 }

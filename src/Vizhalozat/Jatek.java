@@ -108,13 +108,13 @@ public class Jatek {
     /**
      * Minden pumpára kisorsolja, hogy elromlik-e vagy sem
      */
-    public void pumpaElRomlik(boolean randomKi) {
+    public void pumpaElRomlik() {
         for (Pumpa p: pumpak) {
             p.elromlik();
         }
     }
 
-    public void vizFolyas(boolean randomKi){
+    public void vizFolyas(){
         if(randomKi){
             for (Pumpa p : pumpak) {
                 p.setTelitett(false);
@@ -179,25 +179,5 @@ public class Jatek {
         for(Cso cso : csovek) {
             cso.tick();
         }
-    }
-
-    public void inditas() {
-        TimerTask timerTask = new TimerTask() {
-            @Override
-            public void run() {
-                if(!gameOver) {
-                    vizFolyas(randomKi);
-                    tick();
-                    pumpaElRomlik(randomKi);
-                    if(szereloPont == 15) {
-                        gameOver = true;
-                    }
-                    if(szabotorPont == 15) {
-                        gameOver = false;
-                    }
-                }
-            }
-        };
-        timer.scheduleAtFixedRate(timerTask, 0, 1000);
     }
 }

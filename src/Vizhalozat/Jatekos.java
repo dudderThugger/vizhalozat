@@ -11,16 +11,19 @@ public abstract class Jatekos {
     protected Cso csoTart; //a játékos kezében lévő cső referenciája
     protected Mezo rajtaAll; // referencia a mezőre, amin a játékos áll
     protected int ragadasiIdo;
+    protected int akcioIdo;
 
     /**
      * A játékos egyetlen konstruktora
      */
     public Jatekos() {
         ragadasiIdo = 0;
+        akcioIdo = 0;
     }
 
     public void tick() {
         if(ragadasiIdo > 0) ragadasiIdo--;
+        if(akcioIdo > 0) akcioIdo--;
     }
 
     public void raAllit(Mezo m) {
@@ -85,12 +88,6 @@ public abstract class Jatekos {
      * @param felvesz annak csőnek a referenciája, amit felvesz
      */
     public void felvesz_cso(Cso felvesz){
-//        // itt at lehetne adni a Pumpat, amin a jatekos all, es akkor mehetne
-//        if(felvesz.felveszik()) {
-//            // remove jatekos.felvesz_cso()-ben van vagy a cso.felveszik()-ben
-//            rajtaAll.removeSzomszed(felvesz);
-//        }
-
         if(rajtaAll.getSzomszedok().contains(felvesz) && csoTart==null){
             boolean siker = felvesz.felveszik();
             if(siker){
@@ -98,7 +95,6 @@ public abstract class Jatekos {
                 felvesz.removeSzomszed(rajtaAll);
             }
         }
-
     }
 
     /**
@@ -112,11 +108,15 @@ public abstract class Jatekos {
      *  Megprobalja leragasztani a mezot
      */
     public void ragaszt(){
-        boolean siker = rajtaAll.ragaszt();
+        if (akcioIdo == 0) {
+            if(rajtaAll.ragaszt()) akcioIdo = 5;
+        }
     }
 
     public void lyukaszt(){
-        boolean siker = rajtaAll.lyukaszt();
+        if (akcioIdo == 0) {
+            if(rajtaAll.lyukaszt()) akcioIdo = 5;
+        }
     }
 
     public Mezo getRajtaAll() {

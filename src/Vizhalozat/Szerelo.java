@@ -68,7 +68,9 @@ public class Szerelo extends Jatekos{
      * Amennyiben lyukas az adott cső amin a Szerelő áll, azt ezzel a függvénnyel befoltozza
      */
     public void foltoz() {
-            rajtaAll.foltoz();
+        if (akcioIdo == 0) {
+            if(rajtaAll.foltoz()) akcioIdo = 5;
+        }
     }
 
     /**
