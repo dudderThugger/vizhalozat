@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="kevés gui">
-      <change afterPath="$PROJECT_DIR$/src/Vizhalozat/ImageExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Vizhalozat/MainFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/bg.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_04_2023_21_17__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_04_2023_21_17__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023__05__14__9_56__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023__05__14__9_56__Changes_.xml" afterDir="false" />
+    <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="egy kicsit tobb gui">
+      <change afterPath="$PROJECT_DIR$/src/Vizhalozat/JatekPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/MainFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -263,7 +259,21 @@
       <option name="project" value="LOCAL" />
       <updated>1684616993174</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="egy kicsit tobb gui">
+      <created>1685100996492</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1685100996492</updated>
+    </task>
+    <task id="LOCAL-00028" summary="egy kicsit tobb gui">
+      <created>1685101022556</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1685101022556</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -308,7 +318,8 @@
     <MESSAGE value="faszkodás" />
     <MESSAGE value="lolol" />
     <MESSAGE value="kevés gui" />
-    <option name="LAST_COMMIT_MESSAGE" value="kevés gui" />
+    <MESSAGE value="egy kicsit tobb gui" />
+    <option name="LAST_COMMIT_MESSAGE" value="egy kicsit tobb gui" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

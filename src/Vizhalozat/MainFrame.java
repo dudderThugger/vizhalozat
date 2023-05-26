@@ -3,6 +3,8 @@ package Vizhalozat;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
@@ -32,9 +34,17 @@ public class MainFrame extends JFrame {
     private final JLabel menu;
     private final ImageIcon background;
 
+    private final JPanel cardPanel = new JPanel();
+    private final JPanel menuPanel = new JPanel();
+    private final JatekPanel jatekpanel = new JatekPanel(this.height,this.width);
+    private CardLayout c1 = new CardLayout();
+
+
     public MainFrame(){
 
         super("Sivatagi Vizhalozat");
+
+
 
 
         background =  new ImageIcon("src/images/bg.jpg");
@@ -45,6 +55,12 @@ public class MainFrame extends JFrame {
         start.setFont(new Font("Times New Roman", Font.BOLD, 25));
         start.setBounds(500,180,150,50);
         start.setBackground(Color.lightGray);
+        start.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                c1.show(cardPanel,"2");
+            }
+        });
 
         szerelo1 = new JLabel("1.szerelő játékos neve:");
         szerelo1.setForeground(Color.black);
@@ -83,7 +99,22 @@ public class MainFrame extends JFrame {
         szabotor2Text.setBounds(985,215,150,30);
         szabotor2Text.setFont(new Font("Times New Roman", Font.BOLD, 30));
 
-        this.add(start);
+
+        menuPanel.setBounds(0,0,width,height);
+        menuPanel.setLayout(null);
+
+        menuPanel.add(start);
+        menuPanel.add(szerelo1);
+        menuPanel.add(szerelo1Text);
+        menuPanel.add(szerelo2);
+        menuPanel.add(szerelo2Text);
+        menuPanel.add(szabotor1);
+        menuPanel.add(szabotor1Text);
+        menuPanel.add(szabotor2);
+        menuPanel.add(szabotor2Text);
+        menuPanel.add(menu);
+
+        /*this.add(start);
 
         this.add(szerelo1);
         this.add(szerelo1Text);
@@ -97,7 +128,14 @@ public class MainFrame extends JFrame {
         this.add(szabotor2);
         this.add(szabotor2Text);
 
-        this.add(menu);
+        this.add(menu);*/
+
+        cardPanel.setLayout(c1);
+        cardPanel.add(menuPanel,"1");
+        cardPanel.add(jatekpanel,"2");
+        c1.show(cardPanel,"1");
+
+        this.add(cardPanel);
         this.setSize(width,height);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
