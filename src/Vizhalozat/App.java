@@ -10,8 +10,7 @@ public class App {
      * @param args a program argumentumai
      */
     public static void main(String[] args) {
-        Proto proto = new Proto();
-        proto.parancsIndito();
+
     }
 
     /**

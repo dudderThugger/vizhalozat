@@ -19,6 +19,7 @@ public class Forras extends AktivElemek{
      * Víz folyatás szomszédos mezőkbe
      */
     public void vizTermeles() {
+        telitett = true;
         for (Mezo m: szomszedok) {
             m.befolyik();
         }

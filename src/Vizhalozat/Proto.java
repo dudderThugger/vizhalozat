@@ -550,16 +550,16 @@ public class Proto {
                     if (jelenlegiJatek == null) throw new ProtoException();
                     jelenlegiJatek.jatek.vizFolyas(jelenlegiJatek.randomKi);
                     for (Forras f : jelenlegiJatek.jatek.getForrasok()) {
-                        System.out.println(f + "-ből elindult a víz! ");
+                        System.out.println("-ből elindult a víz! ");
                     }
                     for (Cso cs : jelenlegiJatek.jatek.getCsovek()) {
-                        System.out.println(cs + "-be befolyt a víz! ");
+                        System.out.println("-be befolyt a víz! ");
                     }
                     for (Pumpa p : jelenlegiJatek.jatek.getPumpak()) {
-                        System.out.println(p + "-be befolyt a víz! ");
+                        System.out.println("-be befolyt a víz! ");
                     }
                     for (Ciszterna c : jelenlegiJatek.jatek.getCiszternak()) {
-                        System.out.println(c + " elnyelte a vizet! ");
+                        System.out.println(" elnyelte a vizet! ");
                     }
 
                 }catch (ProtoException e){
