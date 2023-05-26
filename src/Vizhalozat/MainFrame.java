@@ -17,7 +17,6 @@ public class MainFrame extends JFrame {
 
     private final JButton start;
 
-
     private final JLabel szerelo1;
     private final JLabel szerelo2;
 
@@ -36,7 +35,7 @@ public class MainFrame extends JFrame {
 
     private final JPanel cardPanel = new JPanel();
     private final JPanel menuPanel = new JPanel();
-    private final JatekPanel jatekpanel = new JatekPanel(this.height,this.width);
+    private final JatekPanel jatekpanel = new JatekPanel(height,width);
     private CardLayout c1 = new CardLayout();
 
 
@@ -58,7 +57,7 @@ public class MainFrame extends JFrame {
         start.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                c1.show(cardPanel,"2");
+                c1.show(cardPanel,"jatek");
             }
         });
 
@@ -114,26 +113,12 @@ public class MainFrame extends JFrame {
         menuPanel.add(szabotor2Text);
         menuPanel.add(menu);
 
-        /*this.add(start);
 
-        this.add(szerelo1);
-        this.add(szerelo1Text);
-
-        this.add(szerelo2);
-        this.add(szerelo2Text);
-
-        this.add(szabotor1);
-        this.add(szabotor1Text);
-
-        this.add(szabotor2);
-        this.add(szabotor2Text);
-
-        this.add(menu);*/
 
         cardPanel.setLayout(c1);
-        cardPanel.add(menuPanel,"1");
-        cardPanel.add(jatekpanel,"2");
-        c1.show(cardPanel,"1");
+        cardPanel.add(menuPanel,"menu");
+        cardPanel.add(jatekpanel,"jatek");
+        c1.show(cardPanel,"menu");
 
         this.add(cardPanel);
         this.setSize(width,height);
