@@ -1,5 +1,7 @@
 package Vizhalozat;
 
+import com.sun.tools.javac.Main;
+
 /**
  * Létrehozza a játék objektumot és elindítja a játékot.
  */
@@ -10,7 +12,7 @@ public class App {
      * @param args a program argumentumai
      */
     public static void main(String[] args) {
-
+        MainFrame f = new MainFrame();
     }
 
     /**
