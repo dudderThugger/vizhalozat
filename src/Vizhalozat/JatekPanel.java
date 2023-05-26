@@ -1,5 +1,7 @@
 package Vizhalozat;
 
+import Megfigyelok.ForrasMegfigyelo;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -51,6 +53,20 @@ public class JatekPanel extends JPanel {
         csolyuksztas.setBorder(BorderFactory.createEmptyBorder());
         actionsav.add(csolyuksztas);
         this.add(actionsav);
+
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) // a törzse effektive csak teszteloi celzattal van, de magat a paintcomponentet szerintem kell majd hasznalni
+    {
+        super.paintComponent(g);
+        Jatek j = new Jatek();
+        Forras f1 = new Forras(j);
+        ForrasMegfigyelo fm = new ForrasMegfigyelo(new Point(30, 450), f1);
+        Forras f2 = new Forras(j);
+        ForrasMegfigyelo fm2 = new ForrasMegfigyelo(new Point(15, 50), f2);
+        fm.draw(g);
+        fm2.draw(g);
     }
 
 }
