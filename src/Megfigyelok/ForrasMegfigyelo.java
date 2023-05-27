@@ -1,6 +1,7 @@
 package Megfigyelok;
 
 import Vizhalozat.Forras;
+import Vizhalozat.Point;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -23,9 +24,16 @@ public class ForrasMegfigyelo extends Megfigyelo{
      */
     public void draw(Graphics g){
         try {
-            File file = new File("src/images/forras.png");
-            BufferedImage img = ImageIO.read(file);
-            g.drawImage(img, coordinates.x, coordinates.y, 100, 100, null);
+            if(!selected) {
+                File file = new File("src/images/forras.png");
+                BufferedImage img = ImageIO.read(file);
+                g.drawImage(img, coordinates.x, coordinates.y, 100, 100, null);
+            }
+            else{
+                File file = new File("src/images/forras_kijelolt.png");
+                BufferedImage img = ImageIO.read(file);
+                g.drawImage(img, coordinates.x, coordinates.y, 100, 100, null);
+            }
         } catch(IOException e) {
             System.out.println("File not found exception!");
         }

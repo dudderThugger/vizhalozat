@@ -1,6 +1,8 @@
 package Megfigyelok;
 
-import javax.swing.*;
+
+import Vizhalozat.Point;
+
 import java.awt.*;
 
 /**

@@ -5,22 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="egy kicsit megtobb gui">
-      <change afterPath="$PROJECT_DIR$/src/Vizhalozat/CiszternaMegfigyelo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Vizhalozat/CsoMegfigyelo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Vizhalozat/ForrasMegfigyelo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Vizhalozat/Megfigyelo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Vizhalozat/Point.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Vizhalozat/PumpaMegfigyelo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Vizhalozat/SzabotorMegfigyelo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Vizhalozat/SzereloMegfigyelo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Vizhalozat/Vezerlo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/ciszterna_kijelolt.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/forras_kijelolt.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_04_2023_21_17__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_04_2023_21_17__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023__05__14__9_56__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023__05__14__9_56__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023__05__26__22_59__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023__05__26__22_59__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Jatek.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Jatek.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/JatekPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/JatekPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Jatekos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Jatekos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Proto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Proto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Szabotor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Szabotor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Szerelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Szerelo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Megfigyelok/ForrasMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Megfigyelok/ForrasMegfigyelo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Megfigyelok/Megfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Megfigyelok/Megfigyelo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,25 +36,28 @@
     <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2OPjhpCATCZ3MLgG7nsG1xmDBF6" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW&quot;: &quot;true&quot;,
-    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;340&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Szelestey/Desktop&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "true",
+    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "340",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/Szelestey/Desktop",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="Vizhalozat" />
@@ -326,6 +321,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="elso commit" />
     <MESSAGE value="masodik" />
     <MESSAGE value="szkeleton, félig kész osztályok" />
