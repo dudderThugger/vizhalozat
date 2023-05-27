@@ -1,6 +1,7 @@
 package Vizhalozat;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -33,15 +34,17 @@ public class Jatek {
     private final ArrayList<Cso> csovek;
     private boolean randomKi;
     private boolean gameOver;
+    Vezerlo vezerlo;
 
     /**
      * A játék osztály egyetlen konstruktora
      */
-    public Jatek() {
+    public Jatek(Vezerlo vezerlo) {
         randomKi = false;
         timer = new Timer();
         pumpak = new ArrayList<>();
         csovek = new ArrayList<>();
+        this.vezerlo = vezerlo;
     }
 
     public void setRandomKi(boolean randomKi) {
@@ -170,6 +173,51 @@ public class Jatek {
     public void init(){
         szabotorPont = 0;
         szereloPont = 0;
+        Szerelo szerelo1 = new Szerelo();
+        Szerelo szerelo2 = new Szerelo();
+        Szabotor szabotor1 = new Szabotor();
+        Szabotor szabotor2 = new Szabotor();
+        Forras forras1 = new Forras(this);
+        Forras forras2 = new Forras(this);
+        Ciszterna ciszterna1 = new Ciszterna(this);
+        Ciszterna ciszterna2 = new Ciszterna(this);
+        Cso cso1 = new Cso(this);
+        Cso cso2 = new Cso(this);
+
+        jatekosok.add(szerelo1);
+        szerelok.add(szerelo1);
+        jatekosok.add(szerelo2);
+        szerelok.add(szerelo2);
+        jatekosok.add(szabotor1);
+        szabotorok.add(szabotor1);
+        jatekosok.add(szabotor2);
+        szabotorok.add(szabotor2);
+
+        mezok.add(forras1);
+        forrasok.add(forras1);
+        vezerlo.addForras(forras1, new Point(20, 20));
+        mezok.add(forras2);
+        forrasok.add(forras2);
+        vezerlo.addForras(forras2, new Point(20, 220));
+        mezok.add(ciszterna1);
+        ciszternak.add(ciszterna1);
+        vezerlo.addCiszterna(ciszterna1, new Point(300, 20));
+        mezok.add(ciszterna2);
+        ciszternak.add(ciszterna2);
+        vezerlo.addCiszterna(ciszterna2, new Point(300, 220));
+        mezok.add(cso1);
+        csovek.add(cso1);
+        vezerlo.addCso(cso1, new Point(0, 0));
+        mezok.add(cso2);
+        csovek.add(cso2);
+        vezerlo.addCso(cso2, new Point(0, 0));
+
+        cso1.setSzomszedok(new ArrayList<Mezo>( List.of(forras1, ciszterna1)));
+        cso2.setSzomszedok(new ArrayList<Mezo>( List.of(forras2, ciszterna2)));
+        szerelo1.raAllit(ciszterna1);
+        szerelo2.raAllit(ciszterna2);
+        szabotor1.raAllit(forras1);
+        szabotor2.raAllit(forras2);
     }
 
     public void tick() {

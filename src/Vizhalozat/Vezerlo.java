@@ -53,7 +53,7 @@ public class Vezerlo {
         jatekosNevek.add(szabotor2name);
         szabotorok.add(szabotor2);
         jatekosok.add(szabotor2);
-        jatek = new Jatek();
+        jatek = new Jatek(this);
         timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
@@ -64,6 +64,7 @@ public class Vezerlo {
         actualJatekosIndex = 0;
         selected = null;
         korIdo = 15;
+        jatek.init();
     }
 
     public void kattintas(Mezo mezo) {
