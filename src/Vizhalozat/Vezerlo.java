@@ -186,7 +186,7 @@ public class Vezerlo {
 
     public void addForras(Forras forras, Point hova) {
         forrasok.add(forras);
-        panel.addElemMegfigyelo(new ForrasMegfigyelo1(forras, hova));
+        panel.addElemMegfigyelo(new ForrasMegfigyelo(forras, hova));
     }
 
     public void addCiszterna(Ciszterna ciszterna, Point hova) {
