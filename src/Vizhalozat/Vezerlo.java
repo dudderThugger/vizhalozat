@@ -6,14 +6,14 @@ import java.util.TimerTask;
 
 public class Vezerlo {
     private Jatek jatek;
-    private ArrayList<Forras> forrasok;
-    private ArrayList<Cso> csovek;
-    private ArrayList<Ciszterna> ciszternak;
-    private ArrayList<Pumpa> pumpak;
-    private ArrayList<Szerelo> szerelok;
-    private ArrayList<Szabotor> szabotorok;
-    private ArrayList<Jatekos> jatekosok;
-    private ArrayList<String> jatekosNevek;
+    private ArrayList<Forras> forrasok=new ArrayList<>();
+    private ArrayList<Cso> csovek=new ArrayList<>();
+    private ArrayList<Ciszterna> ciszternak=new ArrayList<>();
+    private ArrayList<Pumpa> pumpak=new ArrayList<>();
+    private ArrayList<Szerelo> szerelok=new ArrayList<>();
+    private ArrayList<Szabotor> szabotorok=new ArrayList<>();
+    private ArrayList<Jatekos> jatekosok=new ArrayList<>();
+    private ArrayList<String> jatekosNevek = new ArrayList<>();
     private Timer timer;
     private int roundTime;
     private Akcio akcio;
@@ -37,6 +37,7 @@ public class Vezerlo {
     }
 
     public Vezerlo(String szerelo1name, String szerelo2name, String szabotor1name, String szabotor2name) {
+
         jatekosNevek.add(szerelo1name);
         Szerelo szerelo1 = new Szerelo();
         szerelok.add(szerelo1);
@@ -64,9 +65,13 @@ public class Vezerlo {
         actualJatekosIndex = 0;
         selected = null;
         korIdo = 15;
+        //jatek.init();
+    }
+    public void init(){
         jatek.init();
     }
 
+    public void panel(JatekPanel p){panel=p;}
     public void kattintas(Mezo mezo) {
         Jatekos jatekos = jatekosok.get(actualJatekosIndex);
         switch(akcio){
@@ -153,7 +158,7 @@ public class Vezerlo {
         } else {
             jatekosValtas();
         }
-        panel.frissit();
+        panel.frissit(jatekosNevek.get(actualJatekosIndex),korIdo);
     }
 
     public void jatekosValtas() {
@@ -171,31 +176,31 @@ public class Vezerlo {
 
     public void addCso(Cso cso, Point hova) {
         csovek.add(cso);
-        panel.addMegfigyelo(new CsoMegfigyelo(cso, hova));
+        panel.addElemMegfigyelo(new CsoMegfigyelo(cso, hova));
     }
 
     public void addPumpa(Pumpa pumpa, Point hova) {
         pumpak.add(pumpa);
-        panel.addMegfigyelo(new PumpaMegfigyelo(pumpa, hova));
+        panel.addElemMegfigyelo(new PumpaMegfigyelo(pumpa, hova));
     }
 
     public void addForras(Forras forras, Point hova) {
         forrasok.add(forras);
-        panel.addMegfigyelo(new ForrasMegfigyelo(forras, hova));
+        panel.addElemMegfigyelo(new ForrasMegfigyelo1(forras, hova));
     }
 
     public void addCiszterna(Ciszterna ciszterna, Point hova) {
         ciszternak.add(ciszterna);
-        panel.addMegfigyelo(new CiszternaMegfigyelo(ciszterna, hova));
+        panel.addElemMegfigyelo(new CiszternaMegfigyelo(ciszterna, hova));
     }
 
     public void addSzerelo(Szerelo szerelo, Point hova) {
         szerelok.add(szerelo);
-        panel.addMegfigyelo(new SzereloMegfigyelo(szerelo, hova));
+        panel.addSzereloMegfigyelo(new SzereloMegfigyelo(szerelo, hova));
     }
 
     public void addSzabotor(Szabotor szabotor, Point hova) {
         szabotorok.add(szabotor);
-        panel.addMegfigyelo(new SzabotorMegfigyelo(szabotor, hova));
+        panel.addSzabotorMegfigyelok(new SzabotorMegfigyelo(szabotor, hova));
     }
 }

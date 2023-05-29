@@ -35,16 +35,14 @@ public class MainFrame extends JFrame {
 
     private final JPanel cardPanel = new JPanel();
     private final JPanel menuPanel = new JPanel();
-    private final JatekPanel jatekpanel = new JatekPanel(height,width);
-    private CardLayout c1 = new CardLayout();
+    private  JatekPanel jatekpanel=jatekpanel = new JatekPanel(height,width);
+    public CardLayout c1 = new CardLayout();
 
-
+    private Jatek jatek;
+    //private Vezerlo vezer;
     public MainFrame(){
 
         super("Sivatagi Vizhalozat");
-
-
-
 
         background =  new ImageIcon("src/images/bg.jpg");
         menu = new JLabel(background);
@@ -57,6 +55,17 @@ public class MainFrame extends JFrame {
         start.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String szerelo1 = szerelo1Text.getText();
+                System.out.println(szerelo1);
+                String szerelo2 = szerelo2Text.getText();
+                System.out.println(szerelo2);
+
+                String szabotor1 = szabotor1Text.getText();
+                String szabotor2 = szabotor2Text.getText();
+                Vezerlo vezer = new Vezerlo(szerelo1, szerelo2,szabotor1,szabotor2);
+                jatekpanel.vezer(vezer);
+                vezer.panel(jatekpanel);
+                vezer.init();
                 c1.show(cardPanel,"jatek");
             }
         });

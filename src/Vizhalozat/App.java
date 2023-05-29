@@ -19,8 +19,8 @@ public class App {
      * A rendes játékban létező main függvény, ami legenerálja a mapot és elindítja a játékot
      */
     public void main(){
-        Jatek j = new Jatek();
-        j.init();
+        //Jatek j = new Jatek();
+        //j.init();
     }
 
 }

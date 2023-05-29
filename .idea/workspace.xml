@@ -5,10 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="egy kicsit megtobb gui">
-      <change afterPath="$PROJECT_DIR$/src/images/cso_kijelolt.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/cso_sima.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/buy_pumpa.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/pickup_cso.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/putdown_csopumpa.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/repair_pumpa.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/slip_cso.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/tape_cso.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/CsoMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/CsoMegfigyelo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Megfigyelok/Megfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Megfigyelok/Megfigyelo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/ForrasMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/ForrasMegfigyelo1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/JatekPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/JatekPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Vezerlo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Vezerlo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,11 +76,11 @@
       <recent name="D:\BME\4.félév\projektlab\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\BME\IV.félév\Vizhalozat\src\images" />
       <recent name="E:\munka nem kell\bme 2023  tavasz jegyzet\projlab\projlab\vizhalozat\src\images" />
       <recent name="D:\BME\4.félév\projektlab\src\images" />
       <recent name="D:\BME\4.félév\projektlab\src\Vizhalozat" />
       <recent name="D:\BME\4.félév\projektlab\src" />
-      <recent name="D:\BME\4.félév\projektlab\pics" />
     </key>
   </component>
   <component name="RunManager">

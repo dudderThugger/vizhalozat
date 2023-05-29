@@ -2,8 +2,8 @@ package Vizhalozat;
 
 import java.awt.*;
 
-public class ForrasMegfigyelo extends Megfigyelo {
-    public ForrasMegfigyelo(Forras forras, Point hova) {
+public class ForrasMegfigyelo1 extends Megfigyelo {
+    public ForrasMegfigyelo1(Forras forras, Point hova) {
         super(hova);
     }
 
