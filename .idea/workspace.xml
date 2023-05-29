@@ -5,17 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="egy kicsit megtobb gui">
-      <change afterPath="$PROJECT_DIR$/src/images/szerelo_kijelolt.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/szerelo_sima.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023__05__26__22_59__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023__05__26__22_59__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/cso_kijelolt.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/cso_sima.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/CiszternaMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/CiszternaMegfigyelo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Vizhalozat/CsoMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/CsoMegfigyelo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/ForrasMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/ForrasMegfigyelo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Megfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Megfigyelo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/PumpaMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/PumpaMegfigyelo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/SzabotorMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/SzabotorMegfigyelo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/SzereloMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/SzereloMegfigyelo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,25 +39,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "true",
-    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "340",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "E:/munka nem kell/bme 2023  tavasz jegyzet/projlab/projlab/vizhalozat/src/images",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW&quot;: &quot;true&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;340&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/munka nem kell/bme 2023  tavasz jegyzet/projlab/projlab/vizhalozat/src/images&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="Vizhalozat" />
@@ -99,6 +92,7 @@
       <option name="presentableId" value="Default" />
       <updated>1681469248739</updated>
       <workItem from="1685252904310" duration="2900000" />
+      <workItem from="1685387615293" duration="173000" />
     </task>
     <task id="LOCAL-00001" summary="elso commit">
       <created>1681469342419</created>
