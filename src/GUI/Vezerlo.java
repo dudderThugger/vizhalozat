@@ -162,7 +162,7 @@ public class Vezerlo {
         } else {
             jatekosValtas();
         }
-        panel.frissit(jatekosNevek.get(actualJatekosIndex),korIdo);
+        panel.frissit(jatekosNevek.get(actualJatekosIndex),korIdo,actualJatekosIndex);
     }
 
     public void jatekosValtas() {

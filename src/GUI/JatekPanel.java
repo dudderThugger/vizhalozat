@@ -27,12 +27,17 @@ public class JatekPanel extends JPanel {
 
     private  JButton pumpavetel;
     private  JButton csofelvesz;
-    private  JButton elemlerak;
+    private  JButton elemlerak_pumpa;
     private  JButton pumpajavit;
     private  JButton csocsusztat;
     private  JButton csojavit;
     private JButton csoragaszt;
     private JButton pumpaallit;
+    private JButton elemlerak_cso;
+
+    private JButton csolyukaszt2;
+    private JButton pumpaallit2;
+    private JButton csoragaszt2;
 
     private ArrayList<GUI.SzabotorMegfigyelo> szabotorok= new ArrayList<>();
     private ArrayList<GUI.SzereloMegfigyelo> szerelok = new ArrayList<>();
@@ -45,6 +50,9 @@ public class JatekPanel extends JPanel {
     private JPanel szabotoractions;
     private JatekTer jatekter = new JatekTer();
     private Jatekos aktualisPlayer;
+
+    JPanel blank = new JPanel();
+    public CardLayout c1 = new CardLayout();
     public JatekPanel(int height,int width){
 
 
@@ -73,65 +81,83 @@ public class JatekPanel extends JPanel {
         actionsav.add(playername);
         actionsav.add(actionTime);
 
-        szereloaction();
+        buttonadd();
 
         jatekter.setBounds(0, 100, 1200, height-100);
         jatekter.setBackground(new Color(212, 209, 144));
 
         this.add(jatekter);
-        this.add(szabotoractions);
-        JPanel blank = new JPanel();
+        this.add(szereloactions);
+
+        blank.setLayout(c1);
+        blank.add(szereloactions,"szerelo");
+        blank.add(szabotoractions,"szabotor");
         actionsav.add(blank);
 
         this.add(actionsav);
 
         frissit =false;
     }
-    public void szereloaction(){
+    public void buttonadd(){
         szereloactions = new JPanel();
         szabotoractions = new JPanel();
 
         //csolyukaszt button
         Icon iconlyuk = new ImageIcon("src/images/crack_cso.png");
         csolyuksztas = new JButton(iconlyuk);
-        csolyuksztas.setSize(new Dimension(5,5));
         csolyuksztas.setBackground(Color.darkGray);
         csolyuksztas.setBorder(BorderFactory.createEmptyBorder());
+
+        //csolyukaszt2
+        csolyukaszt2 = new JButton(iconlyuk);
+        csolyukaszt2.setBackground(Color.darkGray);
+
 
         //csojavit button
         Icon iconjavit = new ImageIcon("src/images/tape_cso.png");
         csojavit= new JButton(iconjavit);
-        csojavit.setSize(new Dimension(5,5));
         csojavit.setBackground(Color.darkGray);
         csojavit.setBorder(BorderFactory.createEmptyBorder());
 
         //csoragaszt
         Icon iconragaszt = new ImageIcon("src/images/glue_cso.png");
         csoragaszt= new JButton(iconragaszt);
-        csoragaszt.setSize(new Dimension(5,5));
         csoragaszt.setBackground(Color.darkGray);
         csoragaszt.setBorder(BorderFactory.createEmptyBorder());
 
-        //lerak-cso-pumpa
+        csoragaszt2= new JButton(iconragaszt);
+        csoragaszt2.setBackground(Color.darkGray);
+        csoragaszt2.setBorder(BorderFactory.createEmptyBorder());
+
+
+
+        //lerak-pumpa
         Icon elemlerakcion = new ImageIcon("src/images/putdown_csopumpa.png");
-        elemlerak = new JButton(elemlerakcion);
-        elemlerak.setSize(new Dimension(5,5));
-        elemlerak.setBackground(Color.darkGray);
-        elemlerak.setBorder(BorderFactory.createEmptyBorder());
+        elemlerak_pumpa = new JButton(elemlerakcion);
+        elemlerak_pumpa.setBackground(Color.darkGray);
+        elemlerak_pumpa.setBorder(BorderFactory.createEmptyBorder());
+
+        //lerak-cso
+        elemlerak_cso = new JButton(elemlerakcion);
+        elemlerak_cso.setBackground(Color.darkGray);
+        elemlerak_cso.setBorder(BorderFactory.createEmptyBorder());
 
         // felveszcso
         Icon felveszcso = new ImageIcon("src/images/pickup_cso.png");
         csofelvesz = new JButton(felveszcso);
-        csofelvesz.setSize(new Dimension(5,5));
         csofelvesz.setBackground(Color.darkGray);
         csofelvesz.setBorder(BorderFactory.createEmptyBorder());
 
         //pumpaatallit
         Icon pumpaset = new ImageIcon("src/images/set_pumpa.png");
         pumpaallit = new JButton(pumpaset);
-        pumpaallit.setSize(new Dimension(5,5));
         pumpaallit.setBackground(Color.darkGray);
         pumpaallit.setBorder(BorderFactory.createEmptyBorder());
+
+        pumpaallit2=new JButton(pumpaset);
+        pumpaallit2.setBackground(Color.darkGray);
+        pumpaallit2.setBorder(BorderFactory.createEmptyBorder());
+
 
         //pumpavesz
         Icon pumpavesz = new ImageIcon("src/images/buy_pumpa.png");
@@ -160,11 +186,11 @@ public class JatekPanel extends JPanel {
         szereloactions.setBounds(600,50,300,50);
         szabotoractions.setBounds(600,50,300,50);
 
-        szereloactions.setLayout(new GridLayout(2,4));
+        szereloactions.setLayout(new GridLayout(2,5));
         szereloactions.add(csolyuksztas);
         szereloactions.add(csojavit);
-        szereloactions.add(csoragaszt);
-        szereloactions.add(elemlerak);
+        szereloactions.add(elemlerak_pumpa);
+        szereloactions.add(elemlerak_cso);
         szereloactions.add(csofelvesz);
         szereloactions.add(pumpaallit);
         szereloactions.add(pumpavetel);
@@ -173,18 +199,27 @@ public class JatekPanel extends JPanel {
         szereloactions.setBackground(Color.darkGray);
 
         szabotoractions.setLayout(new GridLayout(2,3));
-        szabotoractions.add(csolyuksztas);
+        szabotoractions.add(csolyukaszt2);
         szabotoractions.add(csofelvesz);
-        szabotoractions.add(csoragaszt);
-        szabotoractions.add(elemlerak);
+        szabotoractions.add(csoragaszt2);
+        szabotoractions.add(elemlerak_cso);
         szabotoractions.add(csocsusztat);
-        szabotoractions.add(pumpaallit);
+        szabotoractions.add(pumpaallit2);
 
         //szerelo = javit,lyukaszt,ragaszt,lerak cso/pumpa ,felvesz cso,szerel,pumpatvesz,pumpaallitas
     }
 
+
+
     public void KattGomboknak(){
         csolyuksztas.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                vezer.gombLenyomas(Vezerlo.Akcio.LYUKASZT);
+            }
+        });
+
+        csolyukaszt2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 vezer.gombLenyomas(Vezerlo.Akcio.LYUKASZT);
@@ -202,11 +237,22 @@ public class JatekPanel extends JPanel {
                 vezer.gombLenyomas(Vezerlo.Akcio.RAGASZT);
             }
         });
-        elemlerak.addActionListener(new ActionListener() {
+        csoragaszt2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO
-                //vezer.gombLenyomas(Akcio.);
+                vezer.gombLenyomas(Vezerlo.Akcio.RAGASZT);
+            }
+        });
+        elemlerak_pumpa.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                vezer.gombLenyomas(Vezerlo.Akcio.PUMPALERAKAS);
+            }
+        });
+        elemlerak_cso.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                vezer.gombLenyomas(Vezerlo.Akcio.CSOLERAKAS);
             }
         });
         csofelvesz.addActionListener(new ActionListener() {
@@ -216,6 +262,12 @@ public class JatekPanel extends JPanel {
             }
         });
         pumpaallit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                vezer.gombLenyomas(Vezerlo.Akcio.PUMPATALLIT);
+            }
+        });
+        pumpaallit2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 vezer.gombLenyomas(Vezerlo.Akcio.PUMPATALLIT);
@@ -250,10 +302,17 @@ public class JatekPanel extends JPanel {
         }
     }
     public void vezer(Vezerlo v){vezer=v;}
-    public void frissit(String jatekosnev, int ido){
+    public void frissit(String jatekosnev, int ido,int i){
         playername.setText(jatekosnev);
         actionTime.setText(Integer.toString(ido));
 
+        System.out.println(i);
+        if(i<2){
+           c1.show(blank,"szerelo");
+        }
+        else{
+            c1.show(blank,"szabotor");
+        }
 
         frissit = true;
     }
