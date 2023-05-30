@@ -1,12 +1,14 @@
 package GUI;
 
 import Vizhalozat.Pumpa;
+import Vizhalozat.Szerelo;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class PumpaMegfigyelo extends MezoMegfigyelo {
 
@@ -14,6 +16,9 @@ public class PumpaMegfigyelo extends MezoMegfigyelo {
     public PumpaMegfigyelo(Pumpa pumpa, Point hova, JatekPanel panel) {
         super(pumpa, hova, panel);
         observed = pumpa;
+        Vizhalozat.Szerelo akiLerakata = (Szerelo) pumpa.getRajtaAllnak().get(0);
+        coordinate = panel.getObservedCoordinate(akiLerakata);
+        System.out.println(coordinate.x);
     }
 
     @Override
@@ -47,6 +52,4 @@ public class PumpaMegfigyelo extends MezoMegfigyelo {
         if((x >= coordinate.x - 50 && x <= coordinate.x + 50) && (y >= coordinate.y - 50 && y <= coordinate.y + 50))  return true;
         else return false;
     }
-
-    
 }

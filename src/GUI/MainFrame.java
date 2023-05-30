@@ -117,8 +117,6 @@ public class MainFrame extends JFrame {
         menuPanel.add(szabotor2Text);
         menuPanel.add(menu);
 
-
-
         cardPanel.setLayout(c1);
         cardPanel.add(menuPanel,"menu");
         cardPanel.add(jatekpanel,"jatek");

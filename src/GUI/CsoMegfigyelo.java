@@ -16,24 +16,26 @@ public class CsoMegfigyelo extends MezoMegfigyelo {
     @Override
     public void draw(Graphics g) {
         ArrayList<Mezo> szomszedok = observed.getSzomszedok();
-        Point coordinate1 = panel.getObservedCoordinate(szomszedok.get(0));
-        Point coordinate2 = panel.getObservedCoordinate(szomszedok.get(1));
-        Graphics2D g2 = (Graphics2D)g;
-        g2.setStroke(new BasicStroke(30));
-        if(selected) {
-            g2.setColor(Color.ORANGE);
-            g2.drawLine(coordinate1.x, coordinate1.y, coordinate2.x, coordinate2.y);
-        }
-        else if(observed.isLyukas()){
-            g2.setColor(Color.RED);
-            g2.drawLine(coordinate1.x, coordinate1.y, coordinate2.x, coordinate2.y);
-        }
-        else if (observed.getTelitett()) {
-            g2.setColor(Color.BLUE);
-            g2.drawLine(coordinate1.x, coordinate1.y, coordinate2.x, coordinate2.y);
-        } else {
-            g2.setColor(Color.BLACK);
-            g2.drawLine(coordinate1.x, coordinate1.y, coordinate2.x, coordinate2.y);
+        if(szomszedok.size() == 2) {
+            Point coordinate1 = panel.getObservedCoordinate(szomszedok.get(0));
+            Point coordinate2 = panel.getObservedCoordinate(szomszedok.get(1));
+            Graphics2D g2 = (Graphics2D)g;
+            g2.setStroke(new BasicStroke(30));
+            if(selected) {
+                g2.setColor(Color.ORANGE);
+                g2.drawLine(coordinate1.x, coordinate1.y, coordinate2.x, coordinate2.y);
+            }
+            else if(observed.isLyukas()){
+                g2.setColor(Color.RED);
+                g2.drawLine(coordinate1.x, coordinate1.y, coordinate2.x, coordinate2.y);
+            }
+            else if (observed.getTelitett()) {
+                g2.setColor(Color.BLUE);
+                g2.drawLine(coordinate1.x, coordinate1.y, coordinate2.x, coordinate2.y);
+            } else {
+                g2.setColor(Color.BLACK);
+                g2.drawLine(coordinate1.x, coordinate1.y, coordinate2.x, coordinate2.y);
+            }
         }
     }
 

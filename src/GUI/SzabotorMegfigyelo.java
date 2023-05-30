@@ -40,4 +40,7 @@ public class SzabotorMegfigyelo extends Megfigyelo{
     public boolean intersect(int x, int y) {
         return false;
     }
+
+    @Override
+    public Object getObserved() { return observed; }
 }

@@ -4,7 +4,8 @@ package Vizhalozat;
  * A szabotőröket reprezentáló osztály, a közös akciókon felül képesek csöveket lyukasztani.
  */
 public class Szabotor extends Jatekos{
-    public Szabotor(){
+    public Szabotor(Jatek jatek){
+        super(jatek);
     }
 
     /**

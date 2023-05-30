@@ -1,6 +1,5 @@
 package GUI;
 
-import Vizhalozat.AktivElemek;
 import Vizhalozat.Jatekos;
 
 import javax.swing.*;
@@ -11,7 +10,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
-public class JatekPanel extends JPanel implements MouseListener {
+public class JatekPanel extends JPanel {
 
 
     private int currentPlayersync = 0;
@@ -50,11 +49,11 @@ public class JatekPanel extends JPanel implements MouseListener {
     private JButton csoragaszt2;
     private JButton elemfelvesz_cso1;
     private JButton csolerak1;
-
+    private ArrayList<Megfigyelo> megfigyelok = new ArrayList<>();
     private ArrayList<GUI.SzabotorMegfigyelo> szabotorok= new ArrayList<>();
     private ArrayList<GUI.SzereloMegfigyelo> szerelok = new ArrayList<>();
     private ArrayList<GUI.CsoMegfigyelo> csovek = new ArrayList<>();
-    private ArrayList<GUI.AktivMegfigyelo> elemfigyelok = new ArrayList<>();
+    private ArrayList<GUI.MezoMegfigyelo> mezofigyelok = new ArrayList<>();
     private Vezerlo vezer;
     private boolean vege=false;
 
@@ -103,6 +102,7 @@ public class JatekPanel extends JPanel implements MouseListener {
 
         jatekter.setBounds(0, 100, 1200, height-100);
         jatekter.setBackground(new Color(212, 209, 144));
+        jatekter.addMouseListener(new Katt());
 
         this.add(jatekter);
         this.add(szereloactions);
@@ -357,40 +357,39 @@ public class JatekPanel extends JPanel implements MouseListener {
 
     }
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        int X = e.getX();
-        int Y = e.getY();
+    private class Katt implements MouseListener {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            int X = e.getX();
+            int Y = e.getY();
 
-        for(CsoMegfigyelo m: csovek){
-            if( m.intersect(X,Y)){
-                vezer.kattintas(m.getObserved());
+            for(MezoMegfigyelo m: mezofigyelok){
+                if(m.intersect(X,Y)){
+                    vezer.kattintas(m.getObserved());
+                }
             }
+            System.out.println("la");
         }
-        for(AktivMegfigyelo m:elemfigyelok){
-            if(m.intersect(X,Y)){
-                vezer.kattintas(m.getObserved());
-            }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
         }
-    }
 
-    @Override
-    public void mousePressed(MouseEvent e) {
+        @Override
+        public void mouseReleased(MouseEvent e) {
 
-    }
+        }
 
-    @Override
-    public void mouseReleased(MouseEvent e) {
+        @Override
+        public void mouseEntered(MouseEvent e) {
 
-    }
+        }
 
-    @Override
-    public void mouseEntered(MouseEvent e) {
+        @Override
+        public void mouseExited(MouseEvent e) {
 
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
+        }
 
     }
 
@@ -406,14 +405,14 @@ public class JatekPanel extends JPanel implements MouseListener {
         playername.setText(jatekosnev);
         actionTime.setText(Integer.toString(ido));
         cooldownTime.setText(Integer.toString(cooldown));
-        if(i<2){
+        if(i < 2){
            c1.show(blank,"szerelo");
         }
         else{
             c1.show(blank,"szabotor");
         }
 
-        if(ido == 2)
+        if(ido == 15)
         {
             switch(currentPlayersync) {
                 case 0: {
@@ -449,14 +448,13 @@ public class JatekPanel extends JPanel implements MouseListener {
         frissit = true;
     }
     public void drawAll(Graphics g) {
-        for(GUI.Megfigyelo m : csovek){m.draw(g);}
-        for(GUI.Megfigyelo m : elemfigyelok){m.draw(g);}
+        for(GUI.Megfigyelo m : mezofigyelok){ m.draw(g); }
         for(GUI.SzabotorMegfigyelo m:szabotorok){m.draw(g);}
         for(GUI.SzereloMegfigyelo m:szerelok){m.draw(g);}
     }
 
     public GUI.Point getObservedCoordinate(Object object) {
-        for(AktivMegfigyelo mf : elemfigyelok) {
+        for(Megfigyelo mf : megfigyelok) {
             if(mf.getObserved() == object) {
                 return mf.getCoordinate();
             }
@@ -464,15 +462,17 @@ public class JatekPanel extends JPanel implements MouseListener {
         return null;
     }
 
-    public void addElemMegfigyelo(GUI.AktivMegfigyelo megfigyelo) {
-        elemfigyelok.add(megfigyelo);
+    public void addElemMegfigyelo(GUI.MezoMegfigyelo megfigyelo) {
+        megfigyelok.add(megfigyelo);
+        mezofigyelok.add(megfigyelo);
     }
-    public void addCsomegfigyelo(GUI.CsoMegfigyelo megfigyelo) { csovek.add(megfigyelo); }
     public void addSzereloMegfigyelo(GUI.SzereloMegfigyelo sz){
+        megfigyelok.add(sz);
         szerelok.add(sz);
         szerelok.get(0).setSelected(true);
     }
     public void addSzabotorMegfigyelok(GUI.SzabotorMegfigyelo sz){
+        megfigyelok.add(sz);
         szabotorok.add(sz);
     }
     public void jatekVege(String nyertesCsapat) {

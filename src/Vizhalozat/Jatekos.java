@@ -15,9 +15,10 @@ public abstract class Jatekos {
     /**
      * A játékos egyetlen konstruktora
      */
-    public Jatekos() {
+    public Jatekos(Jatek jatek) {
         ragadasiIdo = 0;
         akcioIdo = 0;
+        this.jatek = jatek;
     }
 
     public void tick() {
@@ -30,20 +31,6 @@ public abstract class Jatekos {
         m.ralep(this);
     }
 
-    /**
-     * Amikor a játékos csőre lép, ekkor hívja ezt a függvényt
-     * lekéri a pozíciója szomszédjait és ha nem állnak a lépni kívánt csövön átlép rá és lelép az aktuálísról
-     * @param szomszed a cso típusú objektum amire lép a játékos
-     */
-    public void lepes(Cso szomszed){
-        if(rajtaAll.getSzomszedok().contains(szomszed) && szomszed.getRajtaAllnak().isEmpty()) {
-            szomszed.ralep(this);
-            rajtaAll.lelep(this);
-            rajtaAll = szomszed;
-            System.out.println(rajtaAll.getSzomszedok().contains(szomszed) + " " + rajtaAll + "\n");
-        }
-    }
-
     public void setRagadasiIdo(int x) { ragadasiIdo = x; }
 
     /**
@@ -51,10 +38,12 @@ public abstract class Jatekos {
      * lekéri a pozíciója szomszédjait és ha a visszakapott szomszédok között van a lépni kívánt AktívElem, rálép
      * @param szomszed a AktivElemek típusú objektum amire lép a játékos
      */
-    public void lepes(AktivElemek szomszed){
+    public void lepes(Mezo szomszed){
         if(rajtaAll.getSzomszedok().contains(szomszed)){
-            szomszed.ralep(this);
-            rajtaAll.lelep(this);
+            if(szomszed.ralep(this)) {
+                this.rajtaAll = szomszed;
+                rajtaAll.lelep(this);
+            }
         }
     }
 

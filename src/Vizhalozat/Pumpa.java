@@ -121,7 +121,7 @@ public class Pumpa extends AktivElemek implements Viheto{
      */
     @Override
     public void lerakjak(Jatekos lerako) {
-
+        rajtaAllnak.add(lerako);
     }
 
     @Override

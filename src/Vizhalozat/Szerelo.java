@@ -9,8 +9,8 @@ import java.util.Scanner;
  */
 public class Szerelo extends Jatekos{
     private Pumpa pumpaTart;
-    public Szerelo() {
-
+    public Szerelo(Jatek jatek) {
+        super(jatek);
     }
 
     /**
@@ -27,11 +27,13 @@ public class Szerelo extends Jatekos{
                 rajtaAll.removeSzomszed(szomszed);
                 uj.addSzomszed(szomszed);
                 uj.addSzomszed(pumpaTart);
-                tart.lerakjak(this);
+                pumpaTart.lerakjak(this);
                 pumpaTart.addSzomszed(uj);
                 pumpaTart.addSzomszed(rajtaAll);
                 szomszed.removeSzomszed(rajtaAll);
                 szomszed.addSzomszed(uj);
+                jatek.addPumpa(pumpaTart);
+                jatek.addMezo(uj);
             }
         }
     }
@@ -42,9 +44,10 @@ public class Szerelo extends Jatekos{
      */
     public void pumpatvesz(){
         Pumpa p = rajtaAll.pumpaVasarlas();
-        if(tart == null){
-            tart =p;
+        if(pumpaTart == null){
+            pumpaTart =p;
         }
+        System.out.println(p);
     }
 
     /**

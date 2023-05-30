@@ -8,6 +8,7 @@ import java.awt.*;
  * leszármazott osztálynak meg kell valósítania.
  */
 public abstract class Megfigyelo {
+    protected Point coordinate;
     JatekPanel panel;
     protected boolean selected = false; /**azt jelöli, hogy az adott megfigyelő éppen ki van jelölve vagy nincs, alapból hamis*/
     public Megfigyelo(JatekPanel panel) {
@@ -19,4 +20,8 @@ public abstract class Megfigyelo {
     public abstract boolean intersect(int x, int y); /**Eldönti, hogy az adott pont benne van-e a megfigyelt alakzatban.*/
 
     protected void setSelected(boolean b) {selected = b;}
+    public Point getCoordinate() {
+        return coordinate;
+    }
+    public abstract Object getObserved();
 }

@@ -8,6 +8,7 @@ import java.util.TimerTask;
 
 public class Vezerlo {
     private Jatek jatek;
+    ArrayList<Mezo> mezok = new ArrayList<>();
     private ArrayList<Forras> forrasok=new ArrayList<>();
     private ArrayList<Cso> csovek=new ArrayList<>();
     private ArrayList<Ciszterna> ciszternak=new ArrayList<>();
@@ -62,10 +63,12 @@ public class Vezerlo {
     public void panel(JatekPanel p){panel=p;}
     public void kattintas(Mezo mezo) {
         Jatekos jatekos = jatekosok.get(actualJatekosIndex);
+        System.out.println(akcio + " " + mezo);
         if(akcio != null) {
             switch (akcio) {
                 case LEP: {
-                    if (csovek.contains(mezo)) {jatekos.lepes((Cso) mezo);}
+                    if (mezok.contains(mezo)) {jatekos.lepes(mezo);
+                    System.out.println("vaalmi\n");}
                     else jatekos.lepes((AktivElemek) mezo);
                 }
                 break;
@@ -171,21 +174,25 @@ public class Vezerlo {
     }
 
     public void addCso(Cso cso) {
+        mezok.add(cso);
         csovek.add(cso);
         panel.addElemMegfigyelo(new GUI.CsoMegfigyelo(cso, panel));
     }
 
     public void addPumpa(Pumpa pumpa, Point hova) {
+        mezok.add(pumpa);
         pumpak.add(pumpa);
         panel.addElemMegfigyelo(new GUI.PumpaMegfigyelo(pumpa, hova, panel));
     }
 
     public void addForras(Forras forras, Point hova) {
+        mezok.add(forras);
         forrasok.add(forras);
         panel.addElemMegfigyelo(new GUI.ForrasMegfigyelo(forras, hova, panel));
     }
 
     public void addCiszterna(Ciszterna ciszterna, Point hova) {
+        mezok.add(ciszterna);
         ciszternak.add(ciszterna);
         panel.addElemMegfigyelo(new GUI.CiszternaMegfigyelo(ciszterna, hova, panel));
     }

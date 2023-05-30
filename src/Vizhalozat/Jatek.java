@@ -84,6 +84,7 @@ public class Jatek {
     public void addMezo(Cso mezo) {
         mezok.add(mezo);
         csovek.add(mezo);
+        vezerlo.addCso(mezo);
     }
     /**
      * A játék Mezők listájához ad hozzá egy forást
@@ -108,6 +109,7 @@ public class Jatek {
      */
     public void addPumpa(Pumpa pumpa) {
         pumpak.add(pumpa);
+        vezerlo.addPumpa(pumpa, new Point(200, 200));
     }
 
     /**
@@ -175,10 +177,10 @@ public class Jatek {
     public void init(){
         szabotorPont = 0;
         szereloPont = 0;
-        Szerelo szerelo1 = new Szerelo();
-        Szerelo szerelo2 = new Szerelo();
-        Szabotor szabotor1 = new Szabotor();
-        Szabotor szabotor2 = new Szabotor();
+        Szerelo szerelo1 = new Szerelo(this);
+        Szerelo szerelo2 = new Szerelo(this);
+        Szabotor szabotor1 = new Szabotor(this);
+        Szabotor szabotor2 = new Szabotor(this);
         Forras forras1 = new Forras(this);
         Forras forras2 = new Forras(this);
         Ciszterna ciszterna1 = new Ciszterna(this);
@@ -228,8 +230,6 @@ public class Jatek {
         szerelo2.raAllit(ciszterna2);
         szabotor1.raAllit(forras1);
         szabotor2.raAllit(forras2);
-
-        System.out.println("rajta"+szerelo1.getRajtaAll());
     }
 
     public void tick() {

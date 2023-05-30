@@ -17,6 +17,7 @@ public class SzereloMegfigyelo extends Megfigyelo {
     public SzereloMegfigyelo(Szerelo szerelo, JatekPanel panel) {
         super(panel);
         observed = szerelo;
+        coordinate = panel.getObservedCoordinate(observed.getRajtaAll());
     }
 
 
@@ -46,4 +47,7 @@ public class SzereloMegfigyelo extends Megfigyelo {
     public boolean intersect(int x, int y) {
         return false;
     }
+
+    @Override
+    public Object getObserved() { return observed; }
 }
