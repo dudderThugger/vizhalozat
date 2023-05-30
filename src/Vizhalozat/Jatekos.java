@@ -28,7 +28,6 @@ public abstract class Jatekos {
 
     public void raAllit(Mezo m) {
         rajtaAll = m;
-        System.out.println("raallit="+rajtaAll);
         m.ralep(this);
     }
 
@@ -116,7 +115,6 @@ public abstract class Jatekos {
 
     public void lyukaszt(){
         if (akcioIdo == 0) {
-            System.out.println("lyukaszt=" +rajtaAll);
             if(rajtaAll.lyukaszt()) akcioIdo = 5;
         }
     }

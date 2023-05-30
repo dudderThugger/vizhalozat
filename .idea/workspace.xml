@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="SAJAT BRANKCs">
+    <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="mouselistener goes bra">
+      <change afterPath="$PROJECT_DIR$/src/images/move.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/CiszternaMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/CiszternaMegfigyelo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/CsoMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/CsoMegfigyelo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/JatekPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/JatekPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Megfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Megfigyelo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Jatek.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Jatek.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Vezerlo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Vezerlo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Jatekos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Jatekos.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -307,7 +304,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685452639123</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="mouselistener goes bra">
+      <created>1685455321152</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1685455321152</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -356,7 +360,8 @@
     <MESSAGE value="egy kicsit megtobb gui" />
     <MESSAGE value="gombok goes brrrr" />
     <MESSAGE value="SAJAT BRANKCs" />
-    <option name="LAST_COMMIT_MESSAGE" value="SAJAT BRANKCs" />
+    <MESSAGE value="mouselistener goes bra" />
+    <option name="LAST_COMMIT_MESSAGE" value="mouselistener goes bra" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -365,6 +370,11 @@
           <properties class="java.lang.StackOverflowError" package="java.lang" />
           <option name="timeStamp" value="1" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/GUI/JatekPanel.java</url>
+          <line>350</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
