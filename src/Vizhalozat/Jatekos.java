@@ -80,7 +80,7 @@ public abstract class Jatekos {
      */
     public void felvesz_cso(Cso felvesz){
         if(rajtaAll.getSzomszedok().contains(felvesz) && csoTart==null){
-            boolean siker = felvesz.felveszik();
+            boolean siker = felvesz.felveszik(this);
             if(siker){
                 csoTart = felvesz;
                 felvesz.removeSzomszed(rajtaAll);

@@ -1,6 +1,7 @@
 package GUI;
 
 import Vizhalozat.Cso;
+import Vizhalozat.Jatekos;
 import Vizhalozat.Mezo;
 
 import java.awt.*;
@@ -32,10 +33,19 @@ public class CsoMegfigyelo extends MezoMegfigyelo {
             else if (observed.getTelitett()) {
                 g2.setColor(Color.BLUE);
                 g2.drawLine(coordinate1.x, coordinate1.y, coordinate2.x, coordinate2.y);
-            } else {
+            }else {
                 g2.setColor(Color.BLACK);
                 g2.drawLine(coordinate1.x, coordinate1.y, coordinate2.x, coordinate2.y);
             }
+        }
+        if(szomszedok.size()==1){
+            Jatekos j = observed.getTarto();
+            Point coordinate1 = panel.getObservedCoordinate(j.getRajtaAll());
+            Point coordinate2 = panel.getObservedCoordinate(szomszedok.get(0));
+            Graphics2D g2 = (Graphics2D)g;
+            Stroke dashed = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[]{9}, 0);
+            g2.setStroke(dashed);
+            g.drawLine(coordinate1.x,coordinate1.y,coordinate2.x,coordinate2.y);
         }
     }
 

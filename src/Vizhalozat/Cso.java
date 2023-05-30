@@ -17,8 +17,9 @@ public class Cso extends Mezo implements Viheto {
     /** Annak a jatekosnak a referenciaja, aki ragadossa tette a csovet*/
     private int csuszasIdo;
     private int ragasztasiIdo;
+    private boolean felvettek =false;
     protected Jatekos ragasztotta;
-
+    protected Jatekos tartja;
     public void tick() {
         if(lyukasztasiIdo > 0) lyukasztasiIdo--;
         if(csuszasIdo > 0) csuszasIdo--;
@@ -40,12 +41,17 @@ public class Cso extends Mezo implements Viheto {
     public boolean getTelitett() {
         return telitett;
     }
-
+    public boolean getFelvettek(){return felvettek;}
     @Override
-    public boolean felveszik() {
-        if(rajtaAllnak.size()==0) return true;
+    public boolean felveszik(Jatekos j) {
+        if(rajtaAllnak.size()==0) {
+            tartja=j;
+            felvettek=true;
+            return true;
+        }
         return false;
     }
+    public Jatekos getTarto(){return tartja;}
     /**
      * Telitett lesz,ha nem volt az, es meghivja az osszes szomszedjara a
      * befolyik() fuggvenyt.
