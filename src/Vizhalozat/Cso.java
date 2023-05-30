@@ -214,4 +214,16 @@ public class Cso extends Mezo implements Viheto {
         }
         return false;
     }
+
+    public boolean isLyukas() {
+        return lyukas;
+    }
+
+    public boolean isRagad() {
+        return ragad;
+    }
+
+    public boolean isCsuszik() {
+        return csuszik;
+    }
 }
