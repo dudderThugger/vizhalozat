@@ -31,7 +31,6 @@ public abstract class Mezo {
      * @param j Jatekos próbál lelépni a mezőről
      */
     public void lelep(Jatekos j) {
-
         rajtaAllnak.remove(j);
     }
 
@@ -42,10 +41,7 @@ public abstract class Mezo {
      *      ha sikeres és hozzáadja a játékost a rajtaÁllók
      *      attribútumhoz egyébként hamissal tér vissza
      */
-    public Mezo ralep(Jatekos j) {
-        rajtaAllnak.add(j);
-        return this;
-    }
+    public abstract Mezo ralep(Jatekos j);
 
     /**
      * Visszaadja a mezővel szomszédos mezők referenciáit

@@ -80,6 +80,13 @@ public abstract class AktivElemek extends Mezo{
     @Override
     public boolean csoLehelyezes(Cso cs) {
         cs.addSzomszed(this);
+        this.addSzomszed(cs);
         return false;
+    }
+
+    @Override
+    public Mezo ralep(Jatekos j) {
+        rajtaAllnak.add(j);
+        return this;
     }
 }

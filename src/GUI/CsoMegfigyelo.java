@@ -9,8 +9,11 @@ import java.util.ArrayList;
 
 public class CsoMegfigyelo extends MezoMegfigyelo {
     private Cso observed;
+    private boolean log;
     public CsoMegfigyelo(Cso cso, JatekPanel panel) {
         super(cso, new Point(0, 0), panel);
+        if(observed.getSzomszedok().size() == 2) log = true;
+        else log = false
         this.observed = cso;
     }
 
@@ -61,12 +64,14 @@ public class CsoMegfigyelo extends MezoMegfigyelo {
             double d = (double)Math.abs(a * x + b * y + c) / Math.sqrt(a * a + b * b);
             if(d < 8 ) {
                 if(coordinate1.x < coordinate2.x ? coordinate1.x - 7 < x && coordinate2.x + 7 > x : coordinate2.x - 7 < x && coordinate1.x + 7 > x) {
-                    System.out.println(d + " " + ((coordinate1.x < coordinate2.x) ? coordinate1.x - 7 < x && coordinate2.x + 7 > x : coordinate2.x - 7 < x && coordinate1.x + 7 > x));
                     return true;
                 }
             }else {
                 return false;
             }
+        }
+        if(log) {
+            coordinate = observed.getRajtaAllnak();
         }
         return false;
     }

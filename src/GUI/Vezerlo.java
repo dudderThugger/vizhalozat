@@ -70,17 +70,19 @@ public class Vezerlo {
                     if (mezok.contains(mezo)) {
                         jatekos.lepes(mezo);
                         panel.jatekosLep(jatekos);
-                        System.out.println(jatekos.getRajtaAll());
                     }
                     else jatekos.lepes((AktivElemek) mezo);
                 }
                 break;
                 case PUMPATALLIT: {
-                    if (selected != null && csovek.contains(mezo)) {
-                        jatekos.pumpaAllitas(selected, (Cso) mezo);
-                    }
-                    if (selected == null && csovek.contains(mezo)) {
-                        selected = (Cso) mezo;
+                    if (selected != null && csovek.contains(selected)) {
+                        System.out.println(selected);
+                        Cso ki = (Cso) mezo;
+                        jatekos.pumpaAllitas(selected, ki);
+                        selected = null;
+                    } else if (selected == null && csovek.contains(mezo)) {
+                        selected = (Cso)mezo;
+                        System.out.println(selected);
                     }
                 }
                 break;
@@ -148,7 +150,8 @@ public class Vezerlo {
             case CSOLERAKAS: {
                 jatekos.lerak_cso();
             } break;
-            default: break;
+            default:
+                break;
         }
         panel.frissit2();
     }

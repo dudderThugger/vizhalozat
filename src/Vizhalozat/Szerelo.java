@@ -24,8 +24,8 @@ public class Szerelo extends Jatekos{
                 Cso uj = new Cso(jatek); // uj cso
                 ArrayList<Mezo> szomszedok = rajtaAll.getSzomszedok();
                 Mezo szomszed1 = szomszedok.get(0); // ciszterna
-                Mezo szomszed2 = szomszedok.get(1); // forras
                 rajtaAll.removeSzomszed(szomszed1);
+                rajtaAll.lelep(this);
                 uj.addSzomszed(pumpaTart);
                 uj.addSzomszed(szomszed1);
                 szomszed1.removeSzomszed(rajtaAll);

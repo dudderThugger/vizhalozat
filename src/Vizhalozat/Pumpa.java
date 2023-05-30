@@ -54,11 +54,8 @@ public class Pumpa extends AktivElemek implements Viheto{
      */
     @Override
     public boolean atAllit(Cso be, Cso ki) {
-        if(be != null && ki != null) {
-            bemenet = be;
-            kimenet = ki;
-        }
-        else throw new RuntimeException("Nem megfelelo be / kimenet");
+        bemenet = be;
+        kimenet = ki;
         return true;
     }
 

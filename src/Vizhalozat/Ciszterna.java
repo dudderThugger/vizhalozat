@@ -1,5 +1,7 @@
 package Vizhalozat;
 
+import java.util.Random;
+
 /**
  * A ciszterna a bele folyó víz (azaz a szerelők pontjainak) számlálásáért felelős, illetve a szerelők itt
  * tudnak felvenni további pumpákat.
@@ -66,10 +68,14 @@ public class Ciszterna extends AktivElemek{
      * Ez hozza létre az új csöveket, amik az egyes ciszternákhoz kapcsolódnak létrejöttükkor
      */
     public void csoKeszul(){
-        Cso cs = new Cso(jatek);
+        Random random = new Random();
+        if (random.nextInt() % 4 == 0) {
+            Cso cs = new Cso(jatek);
 
-        cs.addSzomszed(this);
-        addSzomszed(cs);
+            cs.addSzomszed(this);
+            addSzomszed(cs);
+            jatek.addMezo(cs);
+        }
     }
 
     /**

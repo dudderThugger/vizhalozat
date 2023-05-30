@@ -5,6 +5,7 @@ import GUI.Vezerlo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Timer;
 
 /**
@@ -48,35 +49,6 @@ public class Jatek {
         csovek = new ArrayList<>();
         this.vezerlo = vezerlo;
     }
-
-    public void setRandomKi(boolean randomKi) {
-        this.randomKi = randomKi;
-    }
-
-    /**
-     * A játék Játékosok listájához ad hozzá egy szerelőt
-     * @param jatekos Szerelo tipust ad a listához
-     */
-    public void addJatekos(Szerelo jatekos) {
-        jatekosok.add(jatekos);
-        szerelok.add(jatekos);
-    }
-    /**
-     * A játék Játékosok listájához ad hozzá egy szabotőrt
-     * @param jatekos Szabotor tipust ad a listához
-     */
-    public void addJatekos(Szabotor jatekos) {
-        jatekosok.add(jatekos);
-        szabotorok.add(jatekos);
-    }
-    /**
-     * A játék Mezők listájához ad hozzá egy ciszternát
-     * @param mezo Ciszterna tipust ad a listához
-     */
-    public void addMezo(Ciszterna mezo) {
-        mezok.add(mezo);
-        ciszternak.add(mezo);
-    }
     /**
      * A játék Mezők listájához ad hozzá egy csövet
      * @param mezo Cso tipust ad a listához
@@ -86,14 +58,7 @@ public class Jatek {
         csovek.add(mezo);
         vezerlo.addCso(mezo);
     }
-    /**
-     * A játék Mezők listájához ad hozzá egy forást
-     * @param mezo Forras tipust ad a listához
-     */
-    public void addMezo(Forras mezo) {
-        mezok.add(mezo);
-        forrasok.add(mezo);
-    }
+
     /**
      * A játék Mezők listájához ad hozzá egy pumpát
      * @param mezo Pumpa tipust ad a listához
@@ -136,16 +101,6 @@ public class Jatek {
             }
         }
     }
-
-
-    public ArrayList<Jatekos> getJatekosok() { return jatekosok; }
-    public ArrayList<Szerelo> getSzerelok() { return szerelok; }
-    public ArrayList<Szabotor> getSzabotorok() { return szabotorok; }
-    public ArrayList<Mezo> getMezok() { return mezok; }
-    public ArrayList<Forras> getForrasok() { return forrasok; }
-    public ArrayList<Ciszterna> getCiszternak() { return ciszternak; }
-    public ArrayList<Pumpa> getPumpak() { return pumpak; }
-    public ArrayList<Cso> getCsovek() { return csovek; }
 
 
     /**
@@ -242,4 +197,9 @@ public class Jatek {
     }
     public int getSzabotorPont(){return szabotorPont;}
     public int getSzereloPont(){return szereloPont;}
+    public void csoSpawn() {
+        for(Ciszterna cisz : ciszternak) {
+            cisz.csoKeszul();
+        }
+    }
 }

@@ -61,10 +61,10 @@ public class Cso extends Mezo implements Viheto {
     @Override
     public void befolyik() {
         if (!telitett && !lyukas) {
+            telitett = true;
             for(Mezo m : szomszedok) {
                 m.befolyik();
             }
-            telitett = true;
         }
         if(lyukas) jatek.szabotorPontSzerzes();
     }
@@ -77,7 +77,6 @@ public class Cso extends Mezo implements Viheto {
     public Mezo ralep(Jatekos j){
         if(rajtaAllnak.size() == 0) {
             rajtaAllnak.add(j);
-            j.rajtaAll = this;
             if(j != ragasztotta && ragad){
                 j.setRagadasiIdo(15);
             }
@@ -87,7 +86,6 @@ public class Cso extends Mezo implements Viheto {
                 rajtaAllnak.remove(j);
                 return m;
             }
-
             return this;
         }
         return null;
@@ -187,7 +185,7 @@ public class Cso extends Mezo implements Viheto {
      */
     @Override
     public void lerakjak(Jatekos lerako) {
-//        rajtaAllnak.add(lerako);
+        felvettek = false;
     }
 
     /**
