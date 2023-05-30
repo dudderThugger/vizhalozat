@@ -11,7 +11,7 @@ public class Forras extends AktivElemek{
      * @return mindig false
      */
     @Override
-    public boolean felveszik() {
+    public boolean felveszik(Jatekos j) {
         return false;
     }
 

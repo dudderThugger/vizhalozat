@@ -75,7 +75,7 @@ public abstract class Mezo {
      * Egy mező elem felvevését megkísérlő absztrakt metódus
      * @return igaz, ha sikerült felvenni
      */
-    public abstract boolean felveszik();
+    public abstract boolean felveszik(Jatekos j);
 
     /**
      * absztrakt függvény, ha egy szomszéd vizet szállít az adott mezőbe,

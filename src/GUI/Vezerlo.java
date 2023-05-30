@@ -218,4 +218,6 @@ public class Vezerlo {
     public int getStickTime() {
         return jatekosok.get(actualJatekosIndex).getRagadasiIdo();
     }
+
+    public Jatekos getAktualisJatekos(){return jatekosok.get(actualJatekosIndex);}
 }

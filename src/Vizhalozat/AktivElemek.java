@@ -17,7 +17,7 @@ public abstract class AktivElemek extends Mezo{
      * Megkísérlik az aktív elem felvételét
      * @return Mindig false
      */
-    public boolean felveszik() {
+    public boolean felveszik(Jatekos j) {
         return false;
     }
 

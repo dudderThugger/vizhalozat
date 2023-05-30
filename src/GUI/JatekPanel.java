@@ -535,4 +535,7 @@ public class JatekPanel extends JPanel {
     public void frissit2() {
         repaint();
     }
+    public Jatekos getjatekos(){
+        return vezer.getAktualisJatekos();
+    }
 }

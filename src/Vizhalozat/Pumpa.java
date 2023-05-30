@@ -126,8 +126,8 @@ public class Pumpa extends AktivElemek implements Viheto{
     }
 
     @Override
-    public boolean felveszik() {
-        return super.felveszik();
+    public boolean felveszik(Jatekos j) {
+        return super.felveszik(j);
     }
 
     /**
