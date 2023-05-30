@@ -4,16 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="551c08cb-9e8f-47ae-9eed-e4c23141f681" name="Changes" comment="naaa">
+    <list default="true" id="551c08cb-9e8f-47ae-9eed-e4c23141f681" name="Changes" comment="ciszterna/forras inter">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_04_2023_21_17__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_04_2023_21_17__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023__05__14__9_56__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023__05__14__9_56__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023__05__26__22_59__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023__05__26__22_59__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/CsoMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/CsoMegfigyelo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/JatekPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/JatekPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/PumpaMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/PumpaMegfigyelo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/SzereloMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/SzereloMegfigyelo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/Vezerlo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Vezerlo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Cso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Cso.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Pumpa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Pumpa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Szerelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Szerelo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Jatekos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Jatekos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Mezo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Mezo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -443,6 +442,26 @@
           <properties class="java.lang.StackOverflowError" package="java.lang" />
           <option name="timeStamp" value="1" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Vizhalozat/Cso.java</url>
+          <line>91</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Vizhalozat/Cso.java</url>
+          <line>79</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Vizhalozat/Jatekos.java</url>
+          <line>43</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/GUI/Vezerlo.java</url>
+          <line>69</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>

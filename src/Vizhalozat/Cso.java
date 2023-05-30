@@ -22,7 +22,9 @@ public class Cso extends Mezo implements Viheto {
     public void tick() {
         if(lyukasztasiIdo > 0) lyukasztasiIdo--;
         if(csuszasIdo > 0) csuszasIdo--;
+        if (csuszasIdo == 0) csuszik = false;
         if(ragasztasiIdo > 0) ragasztasiIdo--;
+        if (ragasztasiIdo == 0) ragad = false;
     }
 
     public Cso(Jatek jatek) {
@@ -66,31 +68,29 @@ public class Cso extends Mezo implements Viheto {
      * @return true, ha senki nem all meg rajta
      */
     @Override
-    public boolean ralep(Jatekos j){
+    public Mezo ralep(Jatekos j){
         if(rajtaAllnak.size() == 0) {
             rajtaAllnak.add(j);
+            j.rajtaAll = this;
             if(j != ragasztotta && ragad){
-                j.setRagadasiIdo(30);
+                j.setRagadasiIdo(15);
             }
 
             if(csuszik){
-                megcsuszik().ralep(j);
+                Mezo m = megcsuszik();
                 rajtaAllnak.remove(j);
+                return m;
             }
 
-            return true;
+            return this;
         }
-        return false;
+        return null;
     }
 
     public Mezo megcsuszik(){
-        if(csuszik){
-            Random r = new Random();
-            int randszomsz = r.nextInt(szomszedok.size());
-            return szomszedok.get(randszomsz);
-        } else {
-            return null;
-        }
+        Random r = new Random();
+        int randszomsz = r.nextInt(szomszedok.size());
+        return szomszedok.get(randszomsz);
 
     }
 
@@ -191,6 +191,7 @@ public class Cso extends Mezo implements Viheto {
     public boolean ragaszt() {
         if(!ragad){
             ragad = true;
+            ragasztasiIdo = 20;
             return true;
         }
         return false;
@@ -203,6 +204,7 @@ public class Cso extends Mezo implements Viheto {
     public boolean csuszik() {
         if(!csuszik){
             csuszik = true;
+            csuszasIdo = 10;
             return true;
         }
         return false;

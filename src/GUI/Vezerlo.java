@@ -69,6 +69,7 @@ public class Vezerlo {
                     if (mezok.contains(mezo)) {
                         jatekos.lepes(mezo);
                         panel.jatekosLep(jatekos);
+                        System.out.println(jatekos.getRajtaAll());
                     }
                     else jatekos.lepes((AktivElemek) mezo);
                 }

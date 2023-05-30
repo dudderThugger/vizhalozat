@@ -41,9 +41,10 @@ public abstract class Jatekos {
      */
     public void lepes(Mezo szomszed){
         if(rajtaAll.getSzomszedok().contains(szomszed)){
-            if(szomszed.ralep(this)) {
-                this.rajtaAll = szomszed;
+            Mezo temp = szomszed.ralep(this);
+            if( temp  != null) {
                 rajtaAll.lelep(this);
+                rajtaAll = temp;
             }
         }
     }
