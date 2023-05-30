@@ -1,6 +1,7 @@
 package Vizhalozat;
 
 import GUI.Point;
+import GUI.Vezerlo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -208,10 +209,10 @@ public class Jatek {
         vezerlo.addCiszterna(ciszterna2, new Point(300, 220));
         mezok.add(cso1);
         csovek.add(cso1);
-        vezerlo.addCso(cso1, new Point(0, 0));
+        vezerlo.addCso(cso1);
         mezok.add(cso2);
         csovek.add(cso2);
-        vezerlo.addCso(cso2, new Point(0, 0));
+        vezerlo.addCso(cso2);
 
         cso1.setSzomszedok(new ArrayList<Mezo>( List.of(forras1, ciszterna1)));
         cso2.setSzomszedok(new ArrayList<Mezo>( List.of(forras2, ciszterna2)));

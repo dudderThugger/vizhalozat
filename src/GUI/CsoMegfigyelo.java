@@ -9,8 +9,8 @@ import java.io.File;
 import java.io.IOException;
 
 public class CsoMegfigyelo extends Megfigyelo {
-    public CsoMegfigyelo(Cso cso, Point hova) {
-        super(hova);
+    public CsoMegfigyelo(Cso cso, JatekPanel panel) {
+        super(panel);
     }
 
     @Override
@@ -19,12 +19,12 @@ public class CsoMegfigyelo extends Megfigyelo {
             if(!selected) {
                 File file = new File("src/images/cso_sima.png");
                 BufferedImage img = ImageIO.read(file);
-                g.drawImage(img, coordinates.x, coordinates.y, 50, 50, null);
+                //g.drawImage(img, coordinates.x, coordinates.y, 50, 50, null);
             }
             else{
                 File file = new File("src/images/cso_kijelolt.png");
                 BufferedImage img = ImageIO.read(file);
-                g.drawImage(img, coordinates.x, coordinates.y, 50, 50, null);
+                //g.drawImage(img, coordinates.x, coordinates.y, 50, 50, null);
             }
         } catch(IOException e) {
             System.out.println("File not found exception!");

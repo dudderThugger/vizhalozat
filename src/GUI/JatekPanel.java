@@ -1,9 +1,5 @@
 package GUI;
 
-import GUI.ForrasMegfigyelo;
-import GUI.Point;
-import Vizhalozat.Vezerlo;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -34,9 +30,10 @@ public class JatekPanel extends JPanel {
     private JButton csoragaszt;
     private JButton pumpaallit;
 
-    private ArrayList<GUI.SzabotorMegfigyelo> szabotorok=new ArrayList<>();
-    private ArrayList<GUI.SzereloMegfigyelo> szerelok=new ArrayList<>();
-    private ArrayList<GUI.Megfigyelo> elemfigyelok = new ArrayList<>();
+    private ArrayList<GUI.SzabotorMegfigyelo> szabotorok= new ArrayList<>();
+    private ArrayList<GUI.SzereloMegfigyelo> szerelok = new ArrayList<>();
+    private ArrayList<GUI.CsoMegfigyelo> csovek = new ArrayList<>();
+    private ArrayList<GUI.AktivMegfigyelo> elemfigyelok = new ArrayList<>();
     private Vezerlo vezer;
     private boolean vege=false;
 
@@ -200,9 +197,19 @@ public class JatekPanel extends JPanel {
         for(GUI.SzereloMegfigyelo m:szerelok){m.draw(g);}
     }
 
-    public void addElemMegfigyelo(GUI.Megfigyelo megfigyelo) {
+    public GUI.Point getObservedCoordinate(Object object) {
+        for(AktivMegfigyelo mf : elemfigyelok) {
+            if(mf.getObserved() == object) {
+                return mf.getCoordinate();
+            }
+        }
+        return null;
+    }
+
+    public void addElemMegfigyelo(GUI.AktivMegfigyelo megfigyelo) {
         elemfigyelok.add(megfigyelo);
     }
+    public void addCsomegfigyelo(GUI.CsoMegfigyelo megfigyelo) { csovek.add(megfigyelo); }
     public void addSzereloMegfigyelo(GUI.SzereloMegfigyelo sz){
         szerelok.add(sz);
     }
