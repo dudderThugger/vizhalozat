@@ -305,15 +305,13 @@ public class JatekPanel extends JPanel {
     public void frissit(String jatekosnev, int ido,int i){
         playername.setText(jatekosnev);
         actionTime.setText(Integer.toString(ido));
-
-        System.out.println(i);
         if(i<2){
            c1.show(blank,"szerelo");
         }
         else{
             c1.show(blank,"szabotor");
         }
-
+        invalidate();
         frissit = true;
     }
     public void drawAll(Graphics g) {

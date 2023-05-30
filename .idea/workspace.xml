@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="gombok goes brrrr">
+    <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="vannak csöveg pog">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/JatekPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/JatekPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/SzereloMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/SzereloMegfigyelo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/Vezerlo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Vezerlo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Jatekos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Jatekos.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,13 +23,26 @@
       </list>
     </option>
   </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="origin/megfigyelok/pumpcisz" />
+  </component>
+  <component name="Git.Rebase.Settings">
+    <option name="NEW_BASE" value="master" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="megfigyelok/pumpcisz" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubProjectSettings">
+    <option name="branchProtectionPatterns">
+      <list>
+        <option value="master" />
+      </list>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -36,35 +51,47 @@
     <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2OPjhpCATCZ3MLgG7nsG1xmDBF6" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW&quot;: &quot;true&quot;,
     &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;340&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Szelestey/Desktop&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Homework/4. felev/Szoftt/vizhalozat/src/images&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="Vizhalozat" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Homework\4. felev\Szoftt\vizhalozat\src\images" />
+      <recent name="E:\munka nem kell\bme 2023  tavasz jegyzet\projlab\projlab\vizhalozat\src\images" />
       <recent name="D:\BME\4.félév\projektlab\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\BME\4.félév\projektlab\src\images" />
-      <recent name="D:\BME\4.félév\projektlab\src\Vizhalozat" />
-      <recent name="D:\BME\4.félév\projektlab\src" />
-      <recent name="D:\BME\4.félév\projektlab\pics" />
-      <recent name="D:\BME\4.félév\projektlab\images" />
+      <recent name="C:\Users\Szelestey\IdeaProjects\Vizhalozat\src\images" />
+      <recent name="D:\BME\IV.félév\Vizhalozat\src\images\szabotor" />
+      <recent name="D:\BME\IV.félév\Vizhalozat\src\images\szereloimages" />
+      <recent name="D:\BME\IV.félév\Vizhalozat\src\images" />
+      <recent name="E:\munka nem kell\bme 2023  tavasz jegyzet\projlab\projlab\vizhalozat\src\images" />
     </key>
   </component>
   <component name="RunManager">
@@ -84,6 +111,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1681469248739</updated>
+      <workItem from="1685252904310" duration="2900000" />
+      <workItem from="1685387615293" duration="173000" />
     </task>
     <task id="LOCAL-00001" summary="elso commit">
       <created>1681469342419</created>
@@ -288,15 +317,39 @@
       <option name="project" value="LOCAL" />
       <updated>1685103599870</updated>
     </task>
-    <task id="LOCAL-00030" summary="gombok goes brrrr">
-      <created>1685449828489</created>
+    <task id="LOCAL-00030" summary="talan vezerlo jo de nem rajzol a panel">
+      <created>1685398487338</created>
       <option name="number" value="00030" />
       <option name="presentableId" value="LOCAL-00030" />
       <option name="project" value="LOCAL" />
-      <updated>1685449828489</updated>
+      <updated>1685398487338</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="talan vezerlo jo de nem rajzol a panel">
+      <created>1685398548504</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1685398548504</updated>
+    </task>
+    <task id="LOCAL-00032" summary="valami történik">
+      <created>1685446712137</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1685446712137</updated>
+    </task>
+    <task id="LOCAL-00033" summary="vannak csöveg pog">
+      <created>1685448938039</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1685448938039</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -309,7 +362,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/master" />
+                        <option value="origin/Maximilien" />
                       </list>
                     </value>
                   </entry>
@@ -322,6 +375,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="elso commit" />
     <MESSAGE value="masodik" />
     <MESSAGE value="szkeleton, félig kész osztályok" />
@@ -342,8 +396,10 @@
     <MESSAGE value="kevés gui" />
     <MESSAGE value="egy kicsit tobb gui" />
     <MESSAGE value="egy kicsit megtobb gui" />
-    <MESSAGE value="gombok goes brrrr" />
-    <option name="LAST_COMMIT_MESSAGE" value="gombok goes brrrr" />
+    <MESSAGE value="talan vezerlo jo de nem rajzol a panel" />
+    <MESSAGE value="valami történik" />
+    <MESSAGE value="vannak csöveg pog" />
+    <option name="LAST_COMMIT_MESSAGE" value="vannak csöveg pog" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

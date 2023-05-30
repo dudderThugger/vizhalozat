@@ -43,9 +43,6 @@ public class SzereloMegfigyelo extends Megfigyelo {
 
     @Override
     public boolean intersect(int x, int y) {
-        /*if(x >= coordinates.x && x <=coordinates.x + 50 && y <= coordinates.y && y >= coordinates.y - 50){
-            return true;
-        }*/
         return false;
     }
 }

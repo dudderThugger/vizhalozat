@@ -41,23 +41,7 @@ public class Vezerlo {
     }
 
     public Vezerlo(String szerelo1name, String szerelo2name, String szabotor1name, String szabotor2name) {
-
         jatekosNevek.add(szerelo1name);
-        Szerelo szerelo1 = new Szerelo();
-        szerelok.add(szerelo1);
-        jatekosok.add(szerelo1);
-        Szerelo szerelo2 = new Szerelo();
-        jatekosNevek.add(szerelo2name);
-        szerelok.add(szerelo2);
-        jatekosok.add(szerelo2);
-        Szabotor szabotor1 = new Szabotor();
-        jatekosNevek.add(szabotor1name);
-        szabotorok.add(szabotor1);
-        jatekosok.add(szabotor1);
-        Szabotor szabotor2 = new Szabotor();
-        jatekosNevek.add(szabotor2name);
-        szabotorok.add(szabotor2);
-        jatekosok.add(szabotor2);
         jatek = new Jatek(this);
         timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
@@ -69,7 +53,6 @@ public class Vezerlo {
         actualJatekosIndex = 0;
         selected = null;
         korIdo = 15;
-        //jatek.init();
     }
     public void init(){
         jatek.init();
@@ -199,11 +182,13 @@ public class Vezerlo {
     }
 
     public void addSzerelo(Szerelo szerelo) {
+        jatekosok.add(szerelo);
         szerelok.add(szerelo);
         panel.addSzereloMegfigyelo(new GUI.SzereloMegfigyelo(szerelo, panel));
     }
 
     public void addSzabotor(Szabotor szabotor) {
+        jatekosok.add(szabotor);
         szabotorok.add(szabotor);
         panel.addSzabotorMegfigyelok(new GUI.SzabotorMegfigyelo(szabotor, panel));
     }

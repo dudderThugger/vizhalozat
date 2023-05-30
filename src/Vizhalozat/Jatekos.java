@@ -28,6 +28,7 @@ public abstract class Jatekos {
 
     public void raAllit(Mezo m) {
         rajtaAll = m;
+        System.out.println(rajtaAll.toString());
         m.ralep(this);
     }
 
