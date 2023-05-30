@@ -18,7 +18,6 @@ public class PumpaMegfigyelo extends MezoMegfigyelo {
         observed = pumpa;
         Vizhalozat.Szerelo akiLerakata = (Szerelo) pumpa.getRajtaAllnak().get(0);
         coordinate = panel.getObservedCoordinate(akiLerakata);
-        System.out.println(coordinate.x);
     }
 
     @Override

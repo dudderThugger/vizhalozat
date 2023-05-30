@@ -88,8 +88,7 @@ public class Vezerlo {
                     if (csovek.contains(mezo)) {
                         jatekos.felvesz_cso((Cso) mezo);
                     }
-                }
-                break;
+                } break;
                 default:
                     break;
             }

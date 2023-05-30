@@ -306,7 +306,7 @@ public class JatekPanel extends JPanel {
         pumpaallit2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                vezer.gombLenyomas(Vezerlo.Akcio.CSOLERAKAS);
+                vezer.gombLenyomas(Vezerlo.Akcio.PUMPATALLIT);
             }
         });
         csoragaszt2.addActionListener(new ActionListener() {
