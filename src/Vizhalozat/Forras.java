@@ -31,10 +31,10 @@ public class Forras extends AktivElemek{
     @Override
     public void befolyik() {
         if (!telitett) {
+            telitett = true;
             for (Mezo szomszed : szomszedok) {
                     szomszed.befolyik();
             }
-            telitett = true;
         }
     }
 

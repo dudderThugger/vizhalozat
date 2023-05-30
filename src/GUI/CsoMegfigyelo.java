@@ -50,7 +50,8 @@ public class CsoMegfigyelo extends MezoMegfigyelo {
             int c = -(a * coordinate1.x + b * coordinate1.y);
             double d = (double)Math.abs(a * x + b * y + c) / Math.sqrt(a * a + b * b);
             if(d < 8 ) {
-                if(coordinate1.x < coordinate2.x ? coordinate1.x < x && coordinate2.x > x : coordinate2.x < x && coordinate1.x > x) {
+                if(coordinate1.x < coordinate2.x ? coordinate1.x - 7 < x && coordinate2.x + 7 > x : coordinate2.x - 7 < x && coordinate1.x + 7 > x) {
+                    System.out.println(d + " " + ((coordinate1.x < coordinate2.x) ? coordinate1.x - 7 < x && coordinate2.x + 7 > x : coordinate2.x - 7 < x && coordinate1.x + 7 > x));
                     return true;
                 }
             }else {

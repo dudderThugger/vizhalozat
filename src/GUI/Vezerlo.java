@@ -20,7 +20,6 @@ public class Vezerlo {
     private ArrayList<Jatekos> jatekosok=new ArrayList<>();
     private ArrayList<String> jatekosNevek = new ArrayList<>();
     private Timer timer;
-    private int roundTime;
     private Akcio akcio;
     private int actualJatekosIndex;
     private int korIdo;
