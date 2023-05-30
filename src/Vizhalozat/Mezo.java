@@ -42,9 +42,9 @@ public abstract class Mezo {
      *      ha sikeres és hozzáadja a játékost a rajtaÁllók
      *      attribútumhoz egyébként hamissal tér vissza
      */
-    public boolean ralep(Jatekos j) {
+    public Mezo ralep(Jatekos j) {
         rajtaAllnak.add(j);
-        return true;
+        return this;
     }
 
     /**
