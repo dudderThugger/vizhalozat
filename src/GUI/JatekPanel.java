@@ -87,63 +87,63 @@ public class JatekPanel extends JPanel {
         szabotoractions = new JPanel();
 
         //csolyukaszt button
-        Icon iconlyuk = new ImageIcon("src/images/szereloimages/crack_cso.png");
+        Icon iconlyuk = new ImageIcon("src/images/crack_cso.png");
         csolyuksztas = new JButton(iconlyuk);
         csolyuksztas.setSize(new Dimension(5,5));
         csolyuksztas.setBackground(Color.darkGray);
         csolyuksztas.setBorder(BorderFactory.createEmptyBorder());
 
         //csojavit button
-        Icon iconjavit = new ImageIcon("src/images/szereloimages/tape_cso.png");
+        Icon iconjavit = new ImageIcon("src/images/tape_cso.png");
         csojavit= new JButton(iconjavit);
         csojavit.setSize(new Dimension(5,5));
         csojavit.setBackground(Color.darkGray);
         csojavit.setBorder(BorderFactory.createEmptyBorder());
 
         //csoragaszt
-        Icon iconragaszt = new ImageIcon("src/images/szereloimages/glue_cso.png");
+        Icon iconragaszt = new ImageIcon("src/images/glue_cso.png");
         csoragaszt= new JButton(iconragaszt);
         csoragaszt.setSize(new Dimension(5,5));
         csoragaszt.setBackground(Color.darkGray);
         csoragaszt.setBorder(BorderFactory.createEmptyBorder());
 
         //lerak-cso-pumpa
-        Icon elemlerakcion = new ImageIcon("src/images/szereloimages/putdown_csopumpa.png");
+        Icon elemlerakcion = new ImageIcon("src/images/putdown_csopumpa.png");
         elemlerak = new JButton(elemlerakcion);
         elemlerak.setSize(new Dimension(5,5));
         elemlerak.setBackground(Color.darkGray);
         elemlerak.setBorder(BorderFactory.createEmptyBorder());
 
         // felveszcso
-        Icon felveszcso = new ImageIcon("src/images/szereloimages/pickup_cso.png");
+        Icon felveszcso = new ImageIcon("src/images/pickup_cso.png");
         csofelvesz = new JButton(felveszcso);
         csofelvesz.setSize(new Dimension(5,5));
         csofelvesz.setBackground(Color.darkGray);
         csofelvesz.setBorder(BorderFactory.createEmptyBorder());
 
         //pumpaatallit
-        Icon pumpaset = new ImageIcon("src/images/szereloimages/set_pumpa.png");
+        Icon pumpaset = new ImageIcon("src/images/set_pumpa.png");
         pumpaallit = new JButton(pumpaset);
         pumpaallit.setSize(new Dimension(5,5));
         pumpaallit.setBackground(Color.darkGray);
         pumpaallit.setBorder(BorderFactory.createEmptyBorder());
 
         //pumpavesz
-        Icon pumpavesz = new ImageIcon("src/images/szereloimages/buy_pumpa.png");
+        Icon pumpavesz = new ImageIcon("src/images/buy_pumpa.png");
         pumpavetel = new JButton(pumpavesz);
         pumpavetel.setSize(5,5);
         pumpavetel.setBackground(Color.darkGray);
         pumpavetel.setBorder(BorderFactory.createEmptyBorder());
 
         //pumpaszerel
-        Icon pumpajav = new ImageIcon("src/images/szereloimages/repair_pumpa .png");
+        Icon pumpajav = new ImageIcon("src/images/repair_pumpa .png");
         pumpajavit = new JButton(pumpajav);
         pumpajavit.setSize(5,5);
         pumpajavit.setBackground(Color.darkGray);
         pumpajavit.setBorder(BorderFactory.createEmptyBorder());
 
         //csocsuzik
-        Icon csuszik = new ImageIcon("src/images/szabotor/slip_cso.png");
+        Icon csuszik = new ImageIcon("src/images/slip_cso.png");
         csocsusztat = new JButton(csuszik);
         csocsusztat.setSize(5,5);
         csocsusztat.setBackground(Color.darkGray);

@@ -188,12 +188,16 @@ public class Jatek {
 
         jatekosok.add(szerelo1);
         szerelok.add(szerelo1);
+        vezerlo.addSzerelo(szerelo1);
         jatekosok.add(szerelo2);
         szerelok.add(szerelo2);
+        vezerlo.addSzerelo(szerelo2);
         jatekosok.add(szabotor1);
         szabotorok.add(szabotor1);
+        vezerlo.addSzabotor(szabotor1);
         jatekosok.add(szabotor2);
         szabotorok.add(szabotor2);
+        vezerlo.addSzabotor(szabotor2);
 
         mezok.add(forras1);
         forrasok.add(forras1);
@@ -203,10 +207,10 @@ public class Jatek {
         vezerlo.addForras(forras2, new Point(20, 220));
         mezok.add(ciszterna1);
         ciszternak.add(ciszterna1);
-        vezerlo.addCiszterna(ciszterna1, new Point(300, 20));
+        vezerlo.addCiszterna(ciszterna1, new Point(1000, 20));
         mezok.add(ciszterna2);
         ciszternak.add(ciszterna2);
-        vezerlo.addCiszterna(ciszterna2, new Point(300, 220));
+        vezerlo.addCiszterna(ciszterna2, new Point(1000, 220));
         mezok.add(cso1);
         csovek.add(cso1);
         vezerlo.addCso(cso1);

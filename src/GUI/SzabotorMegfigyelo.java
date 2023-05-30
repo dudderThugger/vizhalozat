@@ -22,15 +22,16 @@ public class SzabotorMegfigyelo extends Megfigyelo{
                 if (!selected) {
                     File file = new File("src/images/szabotor_sima.png");
                     BufferedImage img = ImageIO.read(file);
-                    //g.drawImage(img, coordinates.x, coordinates.y, 50, 50, null);
+                    g.drawImage(img, coordinate.x, coordinate.y, 50, 50, null);
                 } else {
                     File file = new File("src/images/szabotor_kijelolt.png");
                     BufferedImage img = ImageIO.read(file);
-                    //g.drawImage(img, coordinates.x, coordinates.y, 50, 50, null);
+                    g.drawImage(img, coordinate.x, coordinate.y, 50, 50, null);
                 }
             } catch (IOException e) {
-                System.out.println("File not found exception!");
+                System.out.println("File not found exception szabotor!");
             }
+        } else {
         }
     }
 
