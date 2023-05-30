@@ -1,7 +1,6 @@
 package GUI;
 
 import Vizhalozat.Ciszterna;
-import Vizhalozat.Mezo;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -9,7 +8,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class CiszternaMegfigyelo extends AktivMegfigyelo {
+public class CiszternaMegfigyelo extends MezoMegfigyelo {
 
     Ciszterna observed;
     public CiszternaMegfigyelo(Ciszterna ciszterna, Point hova, JatekPanel panel) {
@@ -39,8 +38,7 @@ public class CiszternaMegfigyelo extends AktivMegfigyelo {
 
     @Override
     public boolean intersect(int x, int y) {
-        return false;
+        if((x >= coordinate.x - 50 && x <= coordinate.x + 50) && (y >= coordinate.y - 50 && y <= coordinate.y + 50))  return true;
+        else return false;
     }
-
-
 }

@@ -3,17 +3,13 @@ package GUI;
 import Vizhalozat.Cso;
 import Vizhalozat.Mezo;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
-public class CsoMegfigyelo extends Megfigyelo {
+public class CsoMegfigyelo extends MezoMegfigyelo {
     private Cso observed;
     public CsoMegfigyelo(Cso cso, JatekPanel panel) {
-        super(panel);
+        super(cso, new Point(0, 0), panel);
         this.observed = cso;
     }
 
@@ -44,18 +40,30 @@ public class CsoMegfigyelo extends Megfigyelo {
     @Override
     public boolean intersect(int x, int y) {
         ArrayList<Mezo> szomszedok = observed.getSzomszedok();
-        Point coordinate1 = panel.getObservedCoordinate(szomszedok.get(0));
-        Point coordinate2 = panel.getObservedCoordinate(szomszedok.get(1));
-        int minX = Math.min(coordinate1.x, coordinate2.x);
-        int maxX = Math.max(coordinate1.x, coordinate2.x);
-        int minY = Math.min(coordinate1.y, coordinate2.y);
-        int maxY = Math.max(coordinate1.y, coordinate2.y);
-
-        boolean isXInRange = (x >= minX && x <= maxX);
-
-        boolean isYInRange = (y >= minY && y <= maxY);
-        
-        return isXInRange && isYInRange;
+        if (szomszedok.size() == 2) {
+            Point coordinate1 = panel.getObservedCoordinate(szomszedok.get(0));
+            Point coordinate2 = panel.getObservedCoordinate(szomszedok.get(1));
+            int a = coordinate1.y - coordinate2.y;
+            int b = coordinate2.x - coordinate1.x;
+            int c = -(a * coordinate1.x + b * coordinate1.y);
+            double d = (double)Math.abs(a * x + b * y + c) / Math.sqrt(a * a + b * b);
+            if(d < 30) {
+                return true;
+            }else {
+                return false;
+            }
+        }
+        return false;
+    }
+    @Override
+    public Point getCoordinate() {
+        ArrayList<Mezo> szomszedok = observed.getSzomszedok();
+        if (szomszedok.size() == 2) {
+            Point coordinate1 = panel.getObservedCoordinate(szomszedok.get(0));
+            Point coordinate2 = panel.getObservedCoordinate(szomszedok.get(1));
+            return new Point(coordinate2.x + (coordinate1.x - coordinate2.x / 2), coordinate2.y + (coordinate1.y - coordinate2.y / 2));
+        }
+        return new Point(0, 0);
     }
 
     public Mezo getObserved(){return observed;}

@@ -221,7 +221,9 @@ public class Jatek {
         cso1.setSzomszedok(new ArrayList<Mezo>( List.of(forras1, ciszterna1)));
         cso2.setSzomszedok(new ArrayList<Mezo>( List.of(forras2, ciszterna2)));
         forras1.addSzomszed(cso1);
+        ciszterna1.addSzomszed(cso1);
         forras2.addSzomszed(cso2);
+        ciszterna2.addSzomszed(cso2);
         szerelo1.raAllit(ciszterna1);
         szerelo2.raAllit(ciszterna2);
         szabotor1.raAllit(forras1);

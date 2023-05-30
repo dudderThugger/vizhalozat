@@ -36,9 +36,11 @@ public abstract class Jatekos {
      * @param szomszed a cso típusú objektum amire lép a játékos
      */
     public void lepes(Cso szomszed){
-        if(rajtaAll.getSzomszedok().contains(szomszed) && szomszed.getRajtaAllnak().isEmpty()){
+        if(rajtaAll.getSzomszedok().contains(szomszed) && szomszed.getRajtaAllnak().isEmpty()) {
             szomszed.ralep(this);
             rajtaAll.lelep(this);
+            rajtaAll = szomszed;
+            System.out.println(rajtaAll.getSzomszedok().contains(szomszed) + " " + rajtaAll + "\n");
         }
     }
 

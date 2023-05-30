@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * A forrás megfigyelőjét reprezentálja. Ez a forrás kirajzolásáért felelős.
  */
-public class ForrasMegfigyelo extends AktivMegfigyelo {
+public class ForrasMegfigyelo extends MezoMegfigyelo {
     private Forras observed; /**Az osztály által reprezentált forrás osztály egy pédányát tárolja. Ennek az obejktumnak az állapotát figyeli és ennek megfelelően zajlik a kirajzolás.*/
     public ForrasMegfigyelo(Forras f, Point p, JatekPanel panel) {
         super(f, p, panel); observed = f;

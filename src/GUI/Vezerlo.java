@@ -53,7 +53,7 @@ public class Vezerlo {
         }, 1000, 1000);
         actualJatekosIndex = 0;
         selected = null;
-        korIdo = 2;
+        korIdo = 15;
     }
     public void init(){
         jatek.init();
@@ -62,24 +62,31 @@ public class Vezerlo {
     public void panel(JatekPanel p){panel=p;}
     public void kattintas(Mezo mezo) {
         Jatekos jatekos = jatekosok.get(actualJatekosIndex);
-        switch(akcio){
-            case LEP: {
-                if(csovek.contains(mezo)) jatekos.lepes((Cso)mezo);
-                else jatekos.lepes((AktivElemek)mezo);
-            }break;
-            case PUMPATALLIT: {
-                if(selected != null && csovek.contains(mezo)) {
-                    jatekos.pumpaAllitas(selected, (Cso)mezo);
-                } if(selected == null && csovek.contains(mezo)) {
-                    selected = (Cso)mezo;
+        if(akcio != null) {
+            switch (akcio) {
+                case LEP: {
+                    if (csovek.contains(mezo)) {jatekos.lepes((Cso) mezo);}
+                    else jatekos.lepes((AktivElemek) mezo);
                 }
-            } break;
-            case CSOFELVEVES: {
-                if(csovek.contains(mezo)) {
-                    jatekos.felvesz_cso((Cso)mezo);
+                break;
+                case PUMPATALLIT: {
+                    if (selected != null && csovek.contains(mezo)) {
+                        jatekos.pumpaAllitas(selected, (Cso) mezo);
+                    }
+                    if (selected == null && csovek.contains(mezo)) {
+                        selected = (Cso) mezo;
+                    }
                 }
-            } break;
-            default: break;
+                break;
+                case CSOFELVEVES: {
+                    if (csovek.contains(mezo)) {
+                        jatekos.felvesz_cso((Cso) mezo);
+                    }
+                }
+                break;
+                default:
+                    break;
+            }
         }
     }
 
@@ -88,13 +95,13 @@ public class Vezerlo {
         selected = null;
         switch(akcio) {
             case LEP: {
-                akcio = Akcio.LEP;
+                this.akcio = Akcio.LEP;
             } break;
             case PUMPATALLIT: {
-                akcio = Akcio.PUMPATALLIT;
+                this.akcio = Akcio.PUMPATALLIT;
             } break;
             case CSOFELVEVES: {
-                akcio = Akcio.CSOFELVEVES;
+                this.akcio = Akcio.CSOFELVEVES;
             } break;
             case PUMPAVASARLAS: {
                 if(szerelok.contains(jatekos)) {
@@ -151,7 +158,7 @@ public class Vezerlo {
     }
 
     public void jatekosValtas() {
-        korIdo = 2;
+        korIdo = 15;
         if(actualJatekosIndex == 3) { actualJatekosIndex = 0; }
         else ++actualJatekosIndex;
         jatek.vizFolyas();
@@ -165,7 +172,7 @@ public class Vezerlo {
 
     public void addCso(Cso cso) {
         csovek.add(cso);
-        panel.addCsomegfigyelo(new GUI.CsoMegfigyelo(cso, panel));
+        panel.addElemMegfigyelo(new GUI.CsoMegfigyelo(cso, panel));
     }
 
     public void addPumpa(Pumpa pumpa, Point hova) {

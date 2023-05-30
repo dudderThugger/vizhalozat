@@ -7,9 +7,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.nio.Buffer;
 
-public class PumpaMegfigyelo extends AktivMegfigyelo {
+public class PumpaMegfigyelo extends MezoMegfigyelo {
 
     Pumpa observed;
     public PumpaMegfigyelo(Pumpa pumpa, Point hova, JatekPanel panel) {
@@ -45,7 +44,8 @@ public class PumpaMegfigyelo extends AktivMegfigyelo {
 
     @Override
     public boolean intersect(int x, int y) {
-        return false;
+        if((x >= coordinate.x - 50 && x <= coordinate.x + 50) && (y >= coordinate.y - 50 && y <= coordinate.y + 50))  return true;
+        else return false;
     }
 
     
