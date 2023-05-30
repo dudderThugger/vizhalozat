@@ -14,6 +14,7 @@ public class MainFrame extends JFrame {
     private final boolean resizeable = false;
 
     private final JButton start;
+    private final JButton exit;
 
     private final JLabel szerelo1;
     private final JLabel szerelo2;
@@ -33,7 +34,10 @@ public class MainFrame extends JFrame {
 
     private final JPanel cardPanel = new JPanel();
     private final JPanel menuPanel = new JPanel();
-    private  JatekPanel jatekpanel=jatekpanel = new JatekPanel(height,width);
+    private  JatekPanel jatekpanel;
+    private final JPanel vegePanel = new JPanel();
+
+    private JLabel winnerwinerchicekndinner = new JLabel();
     public CardLayout c1 = new CardLayout();
 
     private Jatek jatek;
@@ -52,13 +56,18 @@ public class MainFrame extends JFrame {
         start.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                jatekpanel =  new JatekPanel(height,width,MainFrame.this);
+                cardPanel.add(jatekpanel,"jatek");
+
                 String szerelo1 = szerelo1Text.getText();
                 String szerelo2 = szerelo2Text.getText();
                 String szabotor1 = szabotor1Text.getText();
                 String szabotor2 = szabotor2Text.getText();
+
                 Vezerlo vezer = new Vezerlo(szerelo1, szerelo2,szabotor1,szabotor2);
                 jatekpanel.vezer(vezer);
                 vezer.panel(jatekpanel);
+
                 jatekpanel.KattGomboknak();
                 vezer.init();
                 c1.show(cardPanel,"jatek");
@@ -103,9 +112,26 @@ public class MainFrame extends JFrame {
         szabotor2Text.setFont(new Font("Times New Roman", Font.BOLD, 30));
 
 
+        vegePanel.setLayout(new GridLayout(2,1));
+        vegePanel.setBackground(Color.darkGray);
+        winnerwinerchicekndinner.setForeground(Color.orange);
+        winnerwinerchicekndinner.setFont(new Font("Times New Roman", Font.BOLD, 50));
+        winnerwinerchicekndinner.setHorizontalAlignment(0);
+        winnerwinerchicekndinner.setBackground(Color.black);
+        winnerwinerchicekndinner.setBounds(100,10,400,400);
+
         menuPanel.setBounds(0,0,width,height);
         menuPanel.setLayout(null);
 
+        exit = new JButton("exit");
+        exit.setBackground(Color.lightGray);
+        exit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                c1.show(cardPanel,"menu");
+
+            }
+        });
         menuPanel.add(start);
         menuPanel.add(szerelo1);
         menuPanel.add(szerelo1Text);
@@ -117,10 +143,13 @@ public class MainFrame extends JFrame {
         menuPanel.add(szabotor2Text);
         menuPanel.add(menu);
 
+        vegePanel.add(winnerwinerchicekndinner);
+        vegePanel.add(exit);
         cardPanel.setLayout(c1);
         cardPanel.add(menuPanel,"menu");
-        cardPanel.add(jatekpanel,"jatek");
+        cardPanel.add(vegePanel,"vege");
         c1.show(cardPanel,"menu");
+
 
         this.add(cardPanel);
         this.setSize(width,height);
@@ -128,5 +157,11 @@ public class MainFrame extends JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(resizeable);
         this.setVisible(true);
+    }
+
+    public void vege(String n){
+        winnerwinerchicekndinner.setText("Gratulálunk,a "+ n + " megnyerték a játékot");
+        vegePanel.add(winnerwinerchicekndinner);
+        c1.show(cardPanel,"vege");
     }
 }
