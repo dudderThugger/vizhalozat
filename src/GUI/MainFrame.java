@@ -59,6 +59,7 @@ public class MainFrame extends JFrame {
                 String szabotor2 = szabotor2Text.getText();
                 Vezerlo vezer = new Vezerlo(szerelo1, szerelo2,szabotor1,szabotor2);
                 jatekpanel.vezer(vezer);
+                //jatekpanel.jatekosok(szerelo1, szerelo2,szabotor1,szabotor2);
                 vezer.panel(jatekpanel);
                 vezer.init();
                 c1.show(cardPanel,"jatek");

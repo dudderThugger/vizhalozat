@@ -26,12 +26,12 @@ public class ForrasMegfigyelo extends AktivMegfigyelo {
             if(!selected) {
                 File file = new File("src/images/forras.png");
                 BufferedImage img = ImageIO.read(file);
-                g.drawImage(img, coordinate.x, coordinate.y, 100, 100, null);
+                g.drawImage(img, coordinate.x - 50, coordinate.y - 50, 100, 100, null);
             }
             else{
                 File file = new File("src/images/forras_kijelolt.png");
                 BufferedImage img = ImageIO.read(file);
-                g.drawImage(img, coordinate.x, coordinate.y, 100, 100, null);
+                g.drawImage(img, coordinate.x - 50, coordinate.y - 50, 100, 100, null);
             }
         } catch(IOException e) {
             System.out.println("File not found exception!");

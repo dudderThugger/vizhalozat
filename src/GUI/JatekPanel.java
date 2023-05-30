@@ -1,5 +1,7 @@
 package GUI;
 
+import Vizhalozat.Jatekos;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -40,6 +42,7 @@ public class JatekPanel extends JPanel {
     private  JPanel szereloactions;
     private JPanel szabotoractions;
     private JatekTer jatekter = new JatekTer();
+    private Jatekos aktualisPlayer;
     public JatekPanel(int height,int width){
 
 
@@ -189,9 +192,12 @@ public class JatekPanel extends JPanel {
     public void frissit(String jatekosnev, int ido){
         playername.setText(jatekosnev);
         actionTime.setText(Integer.toString(ido));
+
+
         frissit = true;
     }
     public void drawAll(Graphics g) {
+        for(GUI.Megfigyelo m : csovek){m.draw(g);}
         for(GUI.Megfigyelo m : elemfigyelok){m.draw(g);}
         for(GUI.SzabotorMegfigyelo m:szabotorok){m.draw(g);}
         for(GUI.SzereloMegfigyelo m:szerelok){m.draw(g);}

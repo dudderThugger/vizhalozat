@@ -28,12 +28,12 @@ public class SzereloMegfigyelo extends Megfigyelo {
                 if(!selected) {
                     File file = new File("src/images/szerelo_sima.png");
                     BufferedImage img = ImageIO.read(file);
-                    g.drawImage(img, coordinate.x, coordinate.y, 50, 50, null);
+                    g.drawImage(img, coordinate.x - 15, coordinate.y - 15, 50, 50, null);
                 }
                 else{
                     File file = new File("src/images/szerelo_kijelolt.png");
                     BufferedImage img = ImageIO.read(file);
-                    g.drawImage(img, coordinate.x, coordinate.y, 50, 50, null);
+                    g.drawImage(img, coordinate.x - 25, coordinate.y - 25, 50, 50, null);
                 }
             } catch(IOException e) {
                 System.out.println("File not found exception!");

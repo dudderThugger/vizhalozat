@@ -201,16 +201,16 @@ public class Jatek {
 
         mezok.add(forras1);
         forrasok.add(forras1);
-        vezerlo.addForras(forras1, new Point(20, 20));
+        vezerlo.addForras(forras1, new Point(50, 50));
         mezok.add(forras2);
         forrasok.add(forras2);
-        vezerlo.addForras(forras2, new Point(20, 220));
+        vezerlo.addForras(forras2, new Point(50, 450));
         mezok.add(ciszterna1);
         ciszternak.add(ciszterna1);
-        vezerlo.addCiszterna(ciszterna1, new Point(1000, 20));
+        vezerlo.addCiszterna(ciszterna1, new Point(1000, 50));
         mezok.add(ciszterna2);
         ciszternak.add(ciszterna2);
-        vezerlo.addCiszterna(ciszterna2, new Point(1000, 220));
+        vezerlo.addCiszterna(ciszterna2, new Point(1000, 450));
         mezok.add(cso1);
         csovek.add(cso1);
         vezerlo.addCso(cso1);

@@ -22,12 +22,12 @@ public class CiszternaMegfigyelo extends AktivMegfigyelo {
             if(!selected) {
                 File file = new File("src/images/ciszterna.png");
                 BufferedImage img = ImageIO.read(file);
-                g.drawImage(img, coordinate.x, coordinate.y, 50, 50, null);
+                g.drawImage(img, coordinate.x - 50, coordinate.y - 50, 100, 100, null);
             }
             else{
                 File file = new File("src/images/ciszterna_kijelolt.png");
                 BufferedImage img = ImageIO.read(file);
-                g.drawImage(img, coordinate.x, coordinate.y, 50, 50, null);
+                g.drawImage(img, coordinate.x - 50, coordinate.y - 50, 100, 100, null);
             }
         }
         catch (IOException e){
