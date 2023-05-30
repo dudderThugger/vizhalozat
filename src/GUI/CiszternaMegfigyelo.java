@@ -8,11 +8,11 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class CiszternaMegfigyelo extends Megfigyelo {
+public class CiszternaMegfigyelo extends AktivMegfigyelo {
 
     Ciszterna observed;
-    public CiszternaMegfigyelo(Ciszterna ciszterna, Point hova) {
-        super(hova);
+    public CiszternaMegfigyelo(Ciszterna ciszterna, Point hova, JatekPanel panel) {
+        super(ciszterna, hova, panel);
         observed = ciszterna;
     }
 
@@ -22,12 +22,12 @@ public class CiszternaMegfigyelo extends Megfigyelo {
             if(!selected) {
                 File file = new File("src/images/ciszterna.png");
                 BufferedImage img = ImageIO.read(file);
-                g.drawImage(img, coordinates.x, coordinates.y, 50, 50, null);
+                g.drawImage(img, coordinate.x, coordinate.y, 50, 50, null);
             }
             else{
                 File file = new File("src/images/ciszterna_kijelolt.png");
                 BufferedImage img = ImageIO.read(file);
-                g.drawImage(img, coordinates.x, coordinates.y, 50, 50, null);
+                g.drawImage(img, coordinate.x, coordinate.y, 50, 50, null);
             }
         }
         catch (IOException e){
