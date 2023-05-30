@@ -8,20 +8,34 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * A szerelő megfigyelőjét reprezentálja. Ez a szerelő kirajzolásáért felelős.
+ */
 public class SzereloMegfigyelo extends Megfigyelo {
     /**
      * Az osztály által reprezentált szerelo osztály egy pédányát tárolja.
      * Ennek az obejktumnak az állapotát figyeli és ennek megfelelően zajlik a kirajzolás.
      */
     Szerelo observed;
+
+    /**
+     * Beállítja a megfigyelt csövet és a panelt
+     * @param szerelo
+     * @param panel
+     */
     public SzereloMegfigyelo(Szerelo szerelo, JatekPanel panel) {
         super(panel);
         observed = szerelo;
     }
 
 
+    /**
+     * Kirajzol egy szerelőt reprezentáló alakzatot a képernyőre, a Graphics objektum segítségével.
+     * @param g Graphics objektum
+     */
     @Override
     public void draw(Graphics g) {
+        //lekéri a koordinátákat
         Point coordinate = panel.getObservedCoordinate(observed.getRajtaAll());
         if (coordinate != null) {
             try {
@@ -41,6 +55,13 @@ public class SzereloMegfigyelo extends Megfigyelo {
         }
     }
 
+
+    /**
+     * Eldönti, hogy az adott pont benne van-e a megfigyelt alakzatban.
+     * @param x kapott x koordináta
+     * @param y kapott y koordináta
+     * @return iagz, ha benne volt különben hamis
+     */
     @Override
     public boolean intersect(int x, int y) {
         /*if(x >= coordinates.x && x <=coordinates.x + 50 && y <= coordinates.y && y >= coordinates.y - 50){
