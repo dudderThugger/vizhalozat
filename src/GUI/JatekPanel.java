@@ -2,7 +2,6 @@ package GUI;
 
 import Vizhalozat.AktivElemek;
 import Vizhalozat.Jatekos;
-import com.sun.tools.javadoc.Main;
 
 import javax.swing.*;
 import java.awt.*;
@@ -433,11 +432,14 @@ public class JatekPanel extends JPanel implements MouseListener {
         }
     }
     public void vezer(Vezerlo v){vezer=v;}
-    public void frissit(String jatekosnev, int ido,int i,int cooldown){
+    public void frissit(String jatekosnev, int ido,int i,int cooldown, int szerelopont, int szabotorpont, int ragadasido){
         ii++;
         playername.setText(jatekosnev);
         actionTime.setText(Integer.toString(ido));
         cooldownTime.setText(Integer.toString(cooldown));
+        szereloPont.setText(Integer.toString(szerelopont));
+        szabotorPont.setText(Integer.toString(szabotorpont));
+        ragadasTime.setText(Integer.toString(ragadasido));
         if(i<2){
            c1.show(buttons,"szerelo");
         }
@@ -445,8 +447,11 @@ public class JatekPanel extends JPanel implements MouseListener {
             c1.show(buttons,"szabotor");
         }
 
-        if(ii==3){
-            this.jatekVege("as");
+        if(szerelopont==15){
+            this.jatekVege("Szerelo");
+        }
+        else if(szabotorpont==15){
+            this.jatekVege("Szabotor");
         }
 
 

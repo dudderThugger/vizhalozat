@@ -236,4 +236,6 @@ public class Jatek {
             cso.tick();
         }
     }
+    public int getSzabotorPont(){return szabotorPont;}
+    public int getSzereloPont(){return szereloPont;}
 }

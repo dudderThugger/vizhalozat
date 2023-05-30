@@ -26,6 +26,7 @@ public class Vezerlo {
     private Cso selected;
     private JatekPanel panel;
 
+
     enum Akcio {
         LEP,
         LYUKASZT,
@@ -162,8 +163,8 @@ public class Vezerlo {
         } else {
             jatekosValtas();
         }
-        int i = 0;
-        panel.frissit(jatekosNevek.get(actualJatekosIndex),korIdo,actualJatekosIndex,i);
+
+        panel.frissit(jatekosNevek.get(actualJatekosIndex),korIdo,actualJatekosIndex,getCooldown(),jatek.getSzereloPont(),jatek.getSzabotorPont(),getStickTime());
     }
 
     public void jatekosValtas() {
@@ -207,5 +208,11 @@ public class Vezerlo {
     public void addSzabotor(Szabotor szabotor) {
         szabotorok.add(szabotor);
         panel.addSzabotorMegfigyelok(new GUI.SzabotorMegfigyelo(szabotor, panel));
+    }
+    public int getCooldown() {
+        return jatekosok.get(actualJatekosIndex).getAkcioIdo();
+    }
+    public int getStickTime() {
+        return jatekosok.get(actualJatekosIndex).getRagadasiIdo();
     }
 }

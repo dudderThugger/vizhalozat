@@ -126,4 +126,8 @@ public abstract class Jatekos {
     public Viheto getTart() {
         return tart;
     }
+
+    public int getAkcioIdo() { return akcioIdo; }
+
+    public int getRagadasiIdo() {return ragadasiIdo; }
 }
