@@ -4,9 +4,9 @@ import Vizhalozat.Ciszterna;
 
 import java.awt.*;
 
-public class CiszternaMegfigyelo extends Megfigyelo {
-    public CiszternaMegfigyelo(Ciszterna ciszterna, Point hova) {
-        super(hova);
+public class CiszternaMegfigyelo extends AktivMegfigyelo {
+    public CiszternaMegfigyelo(Ciszterna ciszterna, Point hova, JatekPanel panel) {
+        super(ciszterna, hova, panel);
     }
 
     @Override

@@ -4,9 +4,9 @@ import Vizhalozat.Pumpa;
 
 import java.awt.*;
 
-public class PumpaMegfigyelo extends Megfigyelo {
-    public PumpaMegfigyelo(Pumpa pumpa, Point hova) {
-        super(hova);
+public class PumpaMegfigyelo extends AktivMegfigyelo {
+    public PumpaMegfigyelo(Pumpa pumpa, Point hova, JatekPanel panel) {
+        super(pumpa, hova, panel);
     }
 
     @Override

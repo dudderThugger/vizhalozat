@@ -1,7 +1,6 @@
 package GUI;
 
 import Vizhalozat.Jatek;
-import Vizhalozat.Vezerlo;
 
 import javax.swing.*;
 import java.awt.*;

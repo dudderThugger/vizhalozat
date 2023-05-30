@@ -9,24 +9,28 @@ import java.io.File;
 import java.io.IOException;
 
 public class SzabotorMegfigyelo extends Megfigyelo{
-    public SzabotorMegfigyelo(Szabotor observed, Point hova) {
-        super(hova);
+    Szabotor observed;
+    public SzabotorMegfigyelo(Szabotor observed, JatekPanel panel) {
+        super(panel);
+        this.observed = observed;
     }
     @Override
     public void draw(Graphics g) {
-        try {
-            if(!selected) {
-                File file = new File("src/images/szabotor_sima.png");
-                BufferedImage img = ImageIO.read(file);
-                g.drawImage(img, coordinates.x, coordinates.y, 50, 50, null);
+        Point coordinate = panel.getObservedCoordinate(observed.getRajtaAll());
+        if(coordinate != null) {
+            try {
+                if (!selected) {
+                    File file = new File("src/images/szabotor_sima.png");
+                    BufferedImage img = ImageIO.read(file);
+                    //g.drawImage(img, coordinates.x, coordinates.y, 50, 50, null);
+                } else {
+                    File file = new File("src/images/szabotor_kijelolt.png");
+                    BufferedImage img = ImageIO.read(file);
+                    //g.drawImage(img, coordinates.x, coordinates.y, 50, 50, null);
+                }
+            } catch (IOException e) {
+                System.out.println("File not found exception!");
             }
-            else{
-                File file = new File("src/images/szabotor_kijelolt.png");
-                BufferedImage img = ImageIO.read(file);
-                g.drawImage(img, coordinates.x, coordinates.y, 50, 50, null);
-            }
-        } catch(IOException e) {
-            System.out.println("File not found exception!");
         }
     }
 
