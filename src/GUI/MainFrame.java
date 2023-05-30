@@ -61,6 +61,7 @@ public class MainFrame extends JFrame {
                 jatekpanel.vezer(vezer);
                 //jatekpanel.jatekosok(szerelo1, szerelo2,szabotor1,szabotor2);
                 vezer.panel(jatekpanel);
+                jatekpanel.KattGomboknak();
                 vezer.init();
                 c1.show(cardPanel,"jatek");
             }

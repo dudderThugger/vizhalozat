@@ -4,6 +4,8 @@ import Vizhalozat.Jatekos;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class JatekPanel extends JPanel {
@@ -181,6 +183,65 @@ public class JatekPanel extends JPanel {
         //szerelo = javit,lyukaszt,ragaszt,lerak cso/pumpa ,felvesz cso,szerel,pumpatvesz,pumpaallitas
     }
 
+    public void KattGomboknak(){
+        csolyuksztas.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                vezer.gombLenyomas(Vezerlo.Akcio.LYUKASZT);
+            }
+        });
+        csojavit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                vezer.gombLenyomas(Vezerlo.Akcio.FOLTOZ);
+            }
+        });
+        csoragaszt.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                vezer.gombLenyomas(Vezerlo.Akcio.RAGASZT);
+            }
+        });
+        elemlerak.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //TODO
+                //vezer.gombLenyomas(Akcio.);
+            }
+        });
+        csofelvesz.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                vezer.gombLenyomas(Vezerlo.Akcio.CSOFELVEVES);
+            }
+        });
+        pumpaallit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                vezer.gombLenyomas(Vezerlo.Akcio.PUMPATALLIT);
+            }
+        });
+        pumpavetel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                vezer.gombLenyomas(Vezerlo.Akcio.PUMPAVASARLAS);
+            }
+        });
+        pumpajavit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                vezer.gombLenyomas(Vezerlo.Akcio.JAVIT);
+            }
+        });
+        csocsusztat.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                vezer.gombLenyomas(Vezerlo.Akcio.VAZELINEZ);
+            }
+        });
+
+
+    }
     private class JatekTer extends JPanel {
         @Override
         protected void paintComponent(Graphics g) {
