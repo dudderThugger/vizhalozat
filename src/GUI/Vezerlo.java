@@ -39,7 +39,7 @@ public class Vezerlo {
     }
 
     public Vezerlo(String szerelo1name, String szerelo2name, String szabotor1name, String szabotor2name) {
-        jatekosNevek.add(szerelo1name);
+        jatekosNevek.add(szerelo1name); jatekosNevek.add(szerelo2name); jatekosNevek.add(szabotor1name); jatekosNevek.add(szabotor2name);
         jatekosNevek.add(szerelo2name);
         jatekosNevek.add(szabotor1name);
         jatekosNevek.add(szabotor2name);

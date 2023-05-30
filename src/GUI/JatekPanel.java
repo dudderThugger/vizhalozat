@@ -1,20 +1,17 @@
 package GUI;
 
-import Vizhalozat.AktivElemek;
 import Vizhalozat.Jatekos;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
-public class JatekPanel extends JPanel implements MouseListener {
+public class JatekPanel extends JPanel {
 
 
-
+    private int currentPlayersync = 0;
     private final JPanel actionsav = new JPanel();
     private final JLabel playerText = new JLabel("Current Player");
     private final JLabel playername = new JLabel();
@@ -25,10 +22,6 @@ public class JatekPanel extends JPanel implements MouseListener {
     private final JLabel cooldownText = new JLabel("Cooldown:");
     private final JLabel cooldownTime = new JLabel("hatralevo cooldown ido");
 
-    private final JLabel szereloText = new JLabel("Szerelopontok");
-    private final JLabel szabotorText = new JLabel("Szabotorpont");
-
-    private final JLabel szabotorPont = new JLabel();
     private boolean frissit;
     private  JButton csolyuksztas;
 
@@ -212,6 +205,8 @@ public class JatekPanel extends JPanel implements MouseListener {
         szabotoractions.add(elemlerak_cso);
         szabotoractions.add(csocsusztat);
         szabotoractions.add(pumpaallit2);
+
+        //szerelo = javit,lyukaszt,ragaszt,lerak cso/pumpa ,felvesz cso,szerel,pumpatvesz,pumpaallitas
     }
 
 
@@ -299,44 +294,6 @@ public class JatekPanel extends JPanel implements MouseListener {
 
 
     }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        int X = e.getX();
-        int Y = e.getY();
-
-        for(CsoMegfigyelo m: csovek){
-            if( m.intersect(X,Y)){
-                vezer.kattintas(m.getObserved());
-            }
-        }
-        for(AktivMegfigyelo m:elemfigyelok){
-            if(m.intersect(X,Y)){
-                vezer.kattintas(m.getObserved());
-            }
-        }
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
-    }
-
     private class JatekTer extends JPanel {
         @Override
         protected void paintComponent(Graphics g) {
@@ -348,7 +305,6 @@ public class JatekPanel extends JPanel implements MouseListener {
     public void frissit(String jatekosnev, int ido,int i){
         playername.setText(jatekosnev);
         actionTime.setText(Integer.toString(ido));
-
         if(i<2){
            c1.show(blank,"szerelo");
         }
@@ -356,9 +312,38 @@ public class JatekPanel extends JPanel implements MouseListener {
             c1.show(blank,"szabotor");
         }
 
-        invalidate();
-        revalidate();
-        repaint();
+        if(ido == 2)
+        {
+            switch(currentPlayersync) {
+                case 0: {
+                    szerelok.get(0).setSelected(false);
+                    szerelok.get(1).setSelected(true);
+                    break;
+                }
+                case 1:{
+                    szerelok.get(1).setSelected(false);
+                    szabotorok.get(0).setSelected(true);
+                    break;
+                }
+                case 2:{
+                    szabotorok.get(0).setSelected(false);
+                    szabotorok.get(1).setSelected(true);
+                    break;
+                }
+                case 3:{
+                    szabotorok.get(1).setSelected(false);
+                    szerelok.get(0).setSelected(true);
+                    break;
+                }
+            }
+            currentPlayersync++;
+            if(currentPlayersync == 4) currentPlayersync = 0;
+
+        }
+
+        this.invalidate();
+        this.revalidate();
+        this.repaint();
 
         frissit = true;
     }
@@ -384,12 +369,12 @@ public class JatekPanel extends JPanel implements MouseListener {
     public void addCsomegfigyelo(GUI.CsoMegfigyelo megfigyelo) { csovek.add(megfigyelo); }
     public void addSzereloMegfigyelo(GUI.SzereloMegfigyelo sz){
         szerelok.add(sz);
+        szerelok.get(0).setSelected(true);
     }
     public void addSzabotorMegfigyelok(GUI.SzabotorMegfigyelo sz){
         szabotorok.add(sz);
     }
     public void jatekVege(String nyertesCsapat) {
         vege = true;
-        this.setVisible(false);
     }
 }

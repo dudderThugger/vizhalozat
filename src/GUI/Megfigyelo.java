@@ -18,4 +18,5 @@ public abstract class Megfigyelo {
      amely lehetővé teszi a rajzolási műveletek végrehajtását.*/
     public abstract boolean intersect(int x, int y); /**Eldönti, hogy az adott pont benne van-e a megfigyelt alakzatban.*/
 
+    protected void setSelected(boolean b) {selected = b;}
 }
