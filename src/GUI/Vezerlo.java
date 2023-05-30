@@ -92,6 +92,7 @@ public class Vezerlo {
                     break;
             }
         }
+        panel.frissit2();
     }
 
     public void gombLenyomas(Akcio akcio) {
@@ -148,6 +149,7 @@ public class Vezerlo {
             } break;
             default: break;
         }
+        panel.frissit2();
     }
 
     public void tickeles() {

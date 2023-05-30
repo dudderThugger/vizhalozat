@@ -29,7 +29,6 @@ public class JatekPanel extends JPanel {
 
     private final JLabel szabotorPont = new JLabel();
     private final JLabel szereloPont = new JLabel();
-    private boolean frissit;
     private  JButton csolyuksztas;
 
     private  JButton pumpavetel;
@@ -52,7 +51,6 @@ public class JatekPanel extends JPanel {
     private ArrayList<Megfigyelo> megfigyelok = new ArrayList<>();
     private ArrayList<GUI.SzabotorMegfigyelo> szabotorok= new ArrayList<>();
     private ArrayList<GUI.SzereloMegfigyelo> szerelok = new ArrayList<>();
-    private ArrayList<GUI.CsoMegfigyelo> csovek = new ArrayList<>();
     private ArrayList<GUI.MezoMegfigyelo> mezofigyelok = new ArrayList<>();
     private Vezerlo vezer;
     private boolean vege=false;
@@ -60,7 +58,6 @@ public class JatekPanel extends JPanel {
     private  JPanel szereloactions;
     private JPanel szabotoractions;
     private JatekTer jatekter = new JatekTer();
-    private Jatekos aktualisPlayer;
 
     JPanel blank = new JPanel();
     public CardLayout c1 = new CardLayout();
@@ -115,8 +112,6 @@ public class JatekPanel extends JPanel {
         actionsav.add(szereloPont);
         actionsav.add(szabotorPont);
         this.add(actionsav);
-
-        frissit =false;
     }
     public void buttonadd(){
         szereloactions = new JPanel();
@@ -368,7 +363,6 @@ public class JatekPanel extends JPanel {
                     vezer.kattintas(m.getObserved());
                 }
             }
-            System.out.println("la");
         }
 
         @Override
@@ -440,12 +434,7 @@ public class JatekPanel extends JPanel {
             if(currentPlayersync == 4) currentPlayersync = 0;
 
         }
-
-        this.invalidate();
-        this.revalidate();
         this.repaint();
-
-        frissit = true;
     }
     public void drawAll(Graphics g) {
         for(GUI.Megfigyelo m : mezofigyelok){ m.draw(g); }
@@ -487,5 +476,9 @@ public class JatekPanel extends JPanel {
                 jmf.lep();
             }
         }
+    }
+
+    public void frissit2() {
+        repaint();
     }
 }

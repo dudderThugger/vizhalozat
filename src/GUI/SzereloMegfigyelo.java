@@ -18,14 +18,12 @@ public class SzereloMegfigyelo extends JatekosMegfigyelo {
         super(panel, szerelo);
         observed = szerelo;
         coordinate = panel.getObservedCoordinate(observed.getRajtaAll());
-        System.out.println(coordinate.x);
     }
 
 
     @Override
     public void draw(Graphics g) {
         Point coordinate = panel.getObservedCoordinate(observed.getRajtaAll());
-        System.out.println(coordinate.x + " " + coordinate.y + "\n");
         if (coordinate != null) {
             try {
                 if(!selected) {
