@@ -35,12 +35,14 @@ public class Pumpa extends AktivElemek implements Viheto{
      */
     @Override
     public void befolyik() {
-        if(!telitett) {
-            if(mukodik && bemenet != null && bemenet.getTelitett() && kimenet != null) {
-                kimenet.befolyik();
-                telitett = true;
-            }
+        if(mukodik && kimenet != null) {
+            telitett = true;
+            kimenet.szomszedok.remove(this);
+            kimenet.befolyik();
+            kimenet.szomszedok.add(this);
         }
+        else System.out.println("Nincs csatlakoztatva kimenet");
+
     }
 
     /**
@@ -119,8 +121,7 @@ public class Pumpa extends AktivElemek implements Viheto{
      */
     @Override
     public void lerakjak(Jatekos lerako) {
-//        szkeleton.hivas(this, "lerakjak");
-//        szkeleton.visszateres(this, "lerakjak");
+
     }
 
     @Override
@@ -156,4 +157,6 @@ public class Pumpa extends AktivElemek implements Viheto{
     public void setMukodik(boolean mukodik) {
         this.mukodik = mukodik;
     }
+
+    public boolean isMukodik(){ return this.mukodik; }
 }
