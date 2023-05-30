@@ -4,26 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="szopóföld">
-      <change afterPath="$PROJECT_DIR$/src/GUI/AktivMegfigyelo.java" afterDir="false" />
+    <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="talan vezerlo jo de nem rajzol a panel">
+      <change afterPath="$PROJECT_DIR$/src/images/ciszterna.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/pumpa_elromlott.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/pumpa_kijelolt.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/pumpa_nedves.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/pumpa_sima.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023__05__26__22_59__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023__05__26__22_59__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/CiszternaMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/CiszternaMegfigyelo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/CsoMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/CsoMegfigyelo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/ForrasMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/ForrasMegfigyelo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/JatekPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/JatekPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Megfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Megfigyelo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/PumpaMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/PumpaMegfigyelo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/SzabotorMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/SzabotorMegfigyelo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/SzereloMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/SzereloMegfigyelo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Jatek.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Jatek.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Vezerlo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Vezerlo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/cso_kijelolt.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/mezok/cso_kijelolt.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/cso_sima.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/mezok/cso_sima.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/forras.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/mezok/forras.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/forras_kijelolt.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/mezok/forras_kijelolt.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/szabotor_kijelolt.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/szabotor/szabotor_kijelolt.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/szabotor_sima.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/szabotor/szabotor_sima.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Proto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Proto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Pumpa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Pumpa.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,11 +31,6 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="master" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -59,39 +47,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW&quot;: &quot;true&quot;,
-    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;340&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/munka nem kell/bme 2023  tavasz jegyzet/projlab/projlab/vizhalozat/src/images&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "true",
+    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "340",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "D:/Homework/4. felev/Szoftt/vizhalozat/src/images",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="Vizhalozat" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Homework\4. felev\Szoftt\vizhalozat\src\images" />
       <recent name="E:\munka nem kell\bme 2023  tavasz jegyzet\projlab\projlab\vizhalozat\src\images" />
       <recent name="D:\BME\4.félév\projektlab\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Szelestey\IdeaProjects\Vizhalozat\src\images\mezok" />
-      <recent name="C:\Users\Szelestey\IdeaProjects\Vizhalozat\src\images\szabotor" />
       <recent name="D:\BME\IV.félév\Vizhalozat\src\images\szabotor" />
       <recent name="D:\BME\IV.félév\Vizhalozat\src\images\szereloimages" />
       <recent name="D:\BME\IV.félév\Vizhalozat\src\images" />
+      <recent name="E:\munka nem kell\bme 2023  tavasz jegyzet\projlab\projlab\vizhalozat\src\images" />
+      <recent name="D:\BME\4.félév\projektlab\src\images" />
     </key>
   </component>
   <component name="RunManager">
@@ -331,21 +320,7 @@
       <option name="project" value="LOCAL" />
       <updated>1685398548504</updated>
     </task>
-    <task id="LOCAL-00032" summary="mi af assssz">
-      <created>1685404880877</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1685404880877</updated>
-    </task>
-    <task id="LOCAL-00033" summary="na mi van már">
-      <created>1685439794464</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1685439794464</updated>
-    </task>
-    <option name="localTasksCounter" value="34" />
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -362,7 +337,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="faszos" />
+                        <option value="origin/master" />
                       </list>
                     </value>
                   </entry>
@@ -397,10 +372,7 @@
     <MESSAGE value="egy kicsit tobb gui" />
     <MESSAGE value="egy kicsit megtobb gui" />
     <MESSAGE value="talan vezerlo jo de nem rajzol a panel" />
-    <MESSAGE value="mi af assssz" />
-    <MESSAGE value="na mi van már" />
-    <MESSAGE value="szopóföld" />
-    <option name="LAST_COMMIT_MESSAGE" value="szopóföld" />
+    <option name="LAST_COMMIT_MESSAGE" value="talan vezerlo jo de nem rajzol a panel" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
