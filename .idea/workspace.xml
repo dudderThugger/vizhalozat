@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="mouselistener goes bra">
-      <change afterPath="$PROJECT_DIR$/src/images/move.png" afterDir="false" />
+    <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="actionsav goes druuuh">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/JatekPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/JatekPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Vezerlo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Vezerlo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Jatekos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Jatekos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/App.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -311,7 +310,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685455321152</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="actionsav goes druuuh">
+      <created>1685457436917</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1685457436917</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -361,7 +367,8 @@
     <MESSAGE value="gombok goes brrrr" />
     <MESSAGE value="SAJAT BRANKCs" />
     <MESSAGE value="mouselistener goes bra" />
-    <option name="LAST_COMMIT_MESSAGE" value="mouselistener goes bra" />
+    <MESSAGE value="actionsav goes druuuh" />
+    <option name="LAST_COMMIT_MESSAGE" value="actionsav goes druuuh" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -372,7 +379,7 @@
         </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/GUI/JatekPanel.java</url>
-          <line>350</line>
+          <line>380</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>

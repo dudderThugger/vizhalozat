@@ -2,6 +2,7 @@ package GUI;
 
 import Vizhalozat.AktivElemek;
 import Vizhalozat.Jatekos;
+import com.sun.tools.javadoc.Main;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,6 +15,9 @@ import java.util.ArrayList;
 public class JatekPanel extends JPanel implements MouseListener {
 
 
+    private MainFrame frame;
+    private JLabel vege = new JLabel();
+    private int ii=0;
 
     private final JPanel actionsav = new JPanel();
     private final JLabel playerText = new JLabel("Current Player");
@@ -25,8 +29,10 @@ public class JatekPanel extends JPanel implements MouseListener {
     private final JLabel cooldownText = new JLabel("Cooldown:");
     private final JLabel cooldownTime = new JLabel();
 
-    private final JLabel szereloText = new JLabel("Szerelopontok");
-    private final JLabel szabotorText = new JLabel("Szabotorpont");
+    private final JLabel ragadasText = new JLabel("StickyTime");
+    private final JLabel ragadasTime = new JLabel();
+    private final JLabel szereloText = new JLabel("Szerelo");
+    private final JLabel szabotorText = new JLabel("Szabotor");
 
     private final JLabel szabotorPont = new JLabel();
     private final JLabel szereloPont = new JLabel();
@@ -56,34 +62,55 @@ public class JatekPanel extends JPanel implements MouseListener {
     private ArrayList<GUI.CsoMegfigyelo> csovek = new ArrayList<>();
     private ArrayList<GUI.AktivMegfigyelo> elemfigyelok = new ArrayList<>();
     private Vezerlo vezer;
-    private boolean vege=false;
+    public boolean vege1=false;
 
     private  JPanel szereloactions;
     private JPanel szabotoractions;
     private JatekTer jatekter = new JatekTer();
     private Jatekos aktualisPlayer;
 
-    JPanel blank = new JPanel();
+    JPanel buttons = new JPanel();
+
+
     public CardLayout c1 = new CardLayout();
-    public JatekPanel(int height,int width){
+    public CardLayout c2 = new CardLayout();
+    public JatekPanel(int height, int width, MainFrame f){
 
-
+        frame =f;
         this.setBounds(0,0,width,height);
         this.setBackground(Color.white);
         this.setLayout(null);
 
+        buttonadd();
         playerText.setForeground(Color.white);
         timeText.setForeground(Color.white);
         actionText.setForeground(Color.white);
         cooldownText.setForeground(Color.white);
+        ragadasText.setForeground(Color.white);
         szereloText.setForeground(Color.white);
         szabotorText.setForeground(Color.white);
+
+        playerText.setHorizontalAlignment(0);
+        timeText.setHorizontalAlignment(0);
+        actionText.setHorizontalAlignment(0);
+        cooldownText.setHorizontalAlignment(0);
+        ragadasText.setHorizontalAlignment(0);
+        szereloText.setHorizontalAlignment(0);
+        szabotorText.setHorizontalAlignment(0);
 
         playername.setForeground(Color.orange);
         actionTime.setForeground(Color.orange);
         cooldownTime.setForeground(Color.orange);
         szereloPont.setForeground(Color.orange);
         szabotorPont.setForeground(Color.orange);
+        ragadasTime.setForeground(Color.orange);
+
+        playername.setHorizontalAlignment(0);
+        actionTime.setHorizontalAlignment(0);
+        szereloPont.setHorizontalAlignment(0);
+        cooldownTime.setHorizontalAlignment(0);
+        szabotorPont.setHorizontalAlignment(0);
+        ragadasTime.setHorizontalAlignment(0);
 
         actionsav.setBounds(0,0,1200,100);
         actionsav.setLayout(new GridLayout(2,7));
@@ -93,31 +120,34 @@ public class JatekPanel extends JPanel implements MouseListener {
         actionsav.add(timeText);
         actionsav.add(actionText);
         actionsav.add(cooldownText);
+        actionsav.add(ragadasText);
         actionsav.add(szereloText);
         actionsav.add(szabotorText);
 
         actionsav.add(playername);
         actionsav.add(actionTime);
 
+        buttons.setLayout(c1);
+        buttons.add(szereloactions,"szerelo");
+        buttons.add(szabotoractions,"szabotor");
+
+        actionsav.add(buttons);
+        actionsav.add(cooldownTime);
+        actionsav.add(ragadasTime);
+        actionsav.add(szereloPont);
+        actionsav.add(szabotorPont);
 
         buttonadd();
 
         jatekter.setBounds(0, 100, 1200, height-100);
         jatekter.setBackground(new Color(212, 209, 144));
 
-        this.add(jatekter);
-        this.add(szereloactions);
-
-        blank.setLayout(c1);
-        blank.add(szereloactions,"szerelo");
-        blank.add(szabotoractions,"szabotor");
-        actionsav.add(blank);
-        actionsav.add(cooldownTime);
-        actionsav.add(szereloPont);
-        actionsav.add(szabotorPont);
         this.add(actionsav);
+        this.add(jatekter);
 
-        frissit =false;
+    }
+    public void setFrame(MainFrame f){
+        frame =f;
     }
     public void buttonadd(){
         szereloactions = new JPanel();
@@ -404,17 +434,22 @@ public class JatekPanel extends JPanel implements MouseListener {
     }
     public void vezer(Vezerlo v){vezer=v;}
     public void frissit(String jatekosnev, int ido,int i,int cooldown){
+        ii++;
         playername.setText(jatekosnev);
         actionTime.setText(Integer.toString(ido));
         cooldownTime.setText(Integer.toString(cooldown));
         if(i<2){
-           c1.show(blank,"szerelo");
+           c1.show(buttons,"szerelo");
         }
         else{
-            c1.show(blank,"szabotor");
+            c1.show(buttons,"szabotor");
         }
 
-        frissit = true;
+        if(ii==3){
+            this.jatekVege("as");
+        }
+
+
     }
     public void drawAll(Graphics g) {
         for(GUI.Megfigyelo m : csovek){m.draw(g);}
@@ -443,7 +478,9 @@ public class JatekPanel extends JPanel implements MouseListener {
         szabotorok.add(sz);
     }
     public void jatekVege(String nyertesCsapat) {
-        vege = true;
-        this.setVisible(false);
+
+
+        frame.vege(nyertesCsapat);
+
     }
 }
