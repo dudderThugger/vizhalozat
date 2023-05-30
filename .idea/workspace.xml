@@ -4,26 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="talan vezerlo jo de nem rajzol a panel">
-      <change afterPath="$PROJECT_DIR$/src/GUI/SzabotorMegfigyelo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/szabotor_kijelolt.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/szabotor_sima.png" afterDir="false" />
+    <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="mi af assssz">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Megfigyelok/ForrasMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/ForrasMegfigyelo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Megfigyelok/Megfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Megfigyelo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/CiszternaMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/CiszternaMegfigyelo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/CsoMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/CsoMegfigyelo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/ForrasMegfigyelo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Jatek.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Jatek.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/JatekPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/JatekPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Megfigyelo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Point.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/PumpaMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/PumpaMegfigyelo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/SzabotorMegfigyelo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/SzereloMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/SzereloMegfigyelo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Vezerlo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Vezerlo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/JatekPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/JatekPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -326,7 +309,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685398548504</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="mi af assssz">
+      <created>1685404880877</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1685404880877</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -378,7 +368,8 @@
     <MESSAGE value="egy kicsit tobb gui" />
     <MESSAGE value="egy kicsit megtobb gui" />
     <MESSAGE value="talan vezerlo jo de nem rajzol a panel" />
-    <option name="LAST_COMMIT_MESSAGE" value="talan vezerlo jo de nem rajzol a panel" />
+    <MESSAGE value="mi af assssz" />
+    <option name="LAST_COMMIT_MESSAGE" value="mi af assssz" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

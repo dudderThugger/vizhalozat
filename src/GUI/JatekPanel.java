@@ -42,6 +42,7 @@ public class JatekPanel extends JPanel {
 
     private  JPanel szereloactions;
     private JPanel szabotoractions;
+    private JatekTer jatekter = new JatekTer();
     public JatekPanel(int height,int width){
 
 
@@ -72,7 +73,10 @@ public class JatekPanel extends JPanel {
 
         szereloaction();
 
+        jatekter.setBounds(0, 100, 1200, height-100);
+        jatekter.setBackground(new Color(212, 209, 144));
 
+        this.add(jatekter);
         this.add(szabotoractions);
         JPanel blank = new JPanel();
         actionsav.add(blank);
@@ -177,11 +181,12 @@ public class JatekPanel extends JPanel {
         //szerelo = javit,lyukaszt,ragaszt,lerak cso/pumpa ,felvesz cso,szerel,pumpatvesz,pumpaallitas
     }
 
-    @Override
-    protected void paintComponent(Graphics g) // a törzse effektive csak teszteloi celzattal van, de magat a paintcomponentet szerintem kell majd hasznalni
-    {
-        super.paintComponent(g);
-        drawAll(g);
+    private class JatekTer extends JPanel {
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            drawAll(g);
+        }
     }
     public void vezer(Vezerlo v){vezer=v;}
     public void frissit(String jatekosnev, int ido){
