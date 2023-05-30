@@ -83,12 +83,13 @@ public class Vezerlo {
      */
     public void kattintas(Mezo mezo) {
         Jatekos jatekos = jatekosok.get(actualJatekosIndex);
-        System.out.println(akcio + " " + mezo);
         if(akcio != null) {
             switch (akcio) {
                 case LEP: {
-                    if (mezok.contains(mezo)) {jatekos.lepes(mezo);
-                    System.out.println("vaalmi\n");}
+                    if (mezok.contains(mezo)) {
+                        jatekos.lepes(mezo);
+                        panel.jatekosLep(jatekos);
+                    }
                     else jatekos.lepes((AktivElemek) mezo);
                 }
                 break;
@@ -111,6 +112,7 @@ public class Vezerlo {
                     break;
             }
         }
+        panel.frissit2();
     }
 
     /**
@@ -171,6 +173,7 @@ public class Vezerlo {
             } break;
             default: break;
         }
+        panel.frissit2();
     }
 
     /**

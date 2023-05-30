@@ -9,8 +9,8 @@ import java.util.Scanner;
  */
 public class Szerelo extends Jatekos{
     private Pumpa pumpaTart;
-    public Szerelo(Jatek jatek) {
-        super(jatek);
+    public Szerelo(Jatek jatek, Mezo mezo) {
+        super(jatek, mezo);
     }
 
     /**
@@ -21,18 +21,19 @@ public class Szerelo extends Jatekos{
     public void lerak_pumpa() {
         if (pumpaTart != null) {
             if (rajtaAll.pumpaLehelyez(pumpaTart)) {
-                Cso uj = new Cso(jatek);
+                Cso uj = new Cso(jatek); // uj cso
                 ArrayList<Mezo> szomszedok = rajtaAll.getSzomszedok();
-                Mezo szomszed = szomszedok.get(0);
-                rajtaAll.removeSzomszed(szomszed);
-                uj.addSzomszed(szomszed);
+                Mezo szomszed1 = szomszedok.get(0); // ciszterna
+                Mezo szomszed2 = szomszedok.get(1); // forras
+                rajtaAll.removeSzomszed(szomszed1);
                 uj.addSzomszed(pumpaTart);
-                pumpaTart.lerakjak(this);
+                uj.addSzomszed(szomszed1);
+                szomszed1.removeSzomszed(rajtaAll);
+                szomszed1.addSzomszed(uj);
                 pumpaTart.addSzomszed(uj);
-                pumpaTart.addSzomszed(rajtaAll);
-                szomszed.removeSzomszed(rajtaAll);
-                szomszed.addSzomszed(uj);
-                jatek.addPumpa(pumpaTart);
+                pumpaTart.lerakjak(this);
+                rajtaAll = pumpaTart;
+                jatek.addMezo(pumpaTart);
                 jatek.addMezo(uj);
             }
         }
@@ -45,7 +46,7 @@ public class Szerelo extends Jatekos{
     public void pumpatvesz(){
         Pumpa p = rajtaAll.pumpaVasarlas();
         if(pumpaTart == null){
-            pumpaTart =p;
+            pumpaTart = p;
         }
         System.out.println(p);
     }

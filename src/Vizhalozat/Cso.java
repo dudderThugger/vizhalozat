@@ -102,13 +102,6 @@ public class Cso extends Mezo implements Viheto {
      */
     @Override
     public boolean pumpaLehelyez(Pumpa p) {
-        Cso ujCso = new Cso(jatek);
-        ujCso.addSzomszed(szomszedok.get(0));
-        removeSzomszed(szomszedok.get(0));
-
-        ujCso.addSzomszed(p);
-        p.addSzomszed(ujCso);
-
         p.addSzomszed(this);
         addSzomszed(p);
         return true;

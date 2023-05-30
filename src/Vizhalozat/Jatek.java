@@ -101,15 +101,7 @@ public class Jatek {
     public void addMezo(Pumpa mezo) {
         mezok.add(mezo);
         pumpak.add(mezo);
-    }
-
-    /**
-     * A játék folyamán használatban lévő pumpák listájához ad hozzá egy új elemet
-     * @param pumpa Az új elem amit hozzáfűz a listához
-     */
-    public void addPumpa(Pumpa pumpa) {
-        pumpak.add(pumpa);
-        vezerlo.addPumpa(pumpa, new Point(200, 200));
+        vezerlo.addPumpa(mezo, new Point(0, 0));
     }
 
     /**
@@ -177,29 +169,18 @@ public class Jatek {
     public void init(){
         szabotorPont = 0;
         szereloPont = 0;
-        Szerelo szerelo1 = new Szerelo(this);
-        Szerelo szerelo2 = new Szerelo(this);
-        Szabotor szabotor1 = new Szabotor(this);
-        Szabotor szabotor2 = new Szabotor(this);
         Forras forras1 = new Forras(this);
         Forras forras2 = new Forras(this);
         Ciszterna ciszterna1 = new Ciszterna(this);
         Ciszterna ciszterna2 = new Ciszterna(this);
         Cso cso1 = new Cso(this);
         Cso cso2 = new Cso(this);
+        Szerelo szerelo1 = new Szerelo(this, ciszterna1);
+        Szerelo szerelo2 = new Szerelo(this, ciszterna2);
+        Szabotor szabotor1 = new Szabotor(this, forras1);
+        Szabotor szabotor2 = new Szabotor(this, forras2);
 
-        jatekosok.add(szerelo1);
-        szerelok.add(szerelo1);
-        vezerlo.addSzerelo(szerelo1);
-        jatekosok.add(szerelo2);
-        szerelok.add(szerelo2);
-        vezerlo.addSzerelo(szerelo2);
-        jatekosok.add(szabotor1);
-        szabotorok.add(szabotor1);
-        vezerlo.addSzabotor(szabotor1);
-        jatekosok.add(szabotor2);
-        szabotorok.add(szabotor2);
-        vezerlo.addSzabotor(szabotor2);
+
 
         mezok.add(forras1);
         forrasok.add(forras1);
@@ -219,6 +200,19 @@ public class Jatek {
         mezok.add(cso2);
         csovek.add(cso2);
         vezerlo.addCso(cso2);
+
+        jatekosok.add(szerelo1);
+        szerelok.add(szerelo1);
+        vezerlo.addSzerelo(szerelo1);
+        jatekosok.add(szerelo2);
+        szerelok.add(szerelo2);
+        vezerlo.addSzerelo(szerelo2);
+        jatekosok.add(szabotor1);
+        szabotorok.add(szabotor1);
+        vezerlo.addSzabotor(szabotor1);
+        jatekosok.add(szabotor2);
+        szabotorok.add(szabotor2);
+        vezerlo.addSzabotor(szabotor2);
 
         cso1.setSzomszedok(new ArrayList<Mezo>( List.of(forras1, ciszterna1)));
         cso2.setSzomszedok(new ArrayList<Mezo>( List.of(forras2, ciszterna2)));

@@ -41,7 +41,6 @@ public class Pumpa extends AktivElemek implements Viheto{
             kimenet.befolyik();
             kimenet.szomszedok.add(this);
         }
-        else System.out.println("Nincs csatlakoztatva kimenet");
 
     }
 

@@ -8,10 +8,10 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class SzabotorMegfigyelo extends Megfigyelo{
+public class SzabotorMegfigyelo extends JatekosMegfigyelo{
     Szabotor observed;
     public SzabotorMegfigyelo(Szabotor observed, JatekPanel panel) {
-        super(panel);
+        super(panel, observed);
         this.observed = observed;
     }
     @Override

@@ -8,14 +8,14 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class SzereloMegfigyelo extends Megfigyelo {
+public class SzereloMegfigyelo extends JatekosMegfigyelo {
     /**
      * Az osztály által reprezentált szerelo osztály egy pédányát tárolja.
      * Ennek az obejktumnak az állapotát figyeli és ennek megfelelően zajlik a kirajzolás.
      */
     Szerelo observed;
     public SzereloMegfigyelo(Szerelo szerelo, JatekPanel panel) {
-        super(panel);
+        super(panel, szerelo);
         observed = szerelo;
         coordinate = panel.getObservedCoordinate(observed.getRajtaAll());
     }
@@ -24,7 +24,6 @@ public class SzereloMegfigyelo extends Megfigyelo {
     @Override
     public void draw(Graphics g) {
         Point coordinate = panel.getObservedCoordinate(observed.getRajtaAll());
-        System.out.println(coordinate.x + " " + coordinate.y + "\n");
         if (coordinate != null) {
             try {
                 if(!selected) {
@@ -47,7 +46,4 @@ public class SzereloMegfigyelo extends Megfigyelo {
     public boolean intersect(int x, int y) {
         return false;
     }
-
-    @Override
-    public Object getObserved() { return observed; }
 }

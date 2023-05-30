@@ -27,19 +27,19 @@ public class PumpaMegfigyelo extends MezoMegfigyelo {
             if(selected){
                 File file = new File("src/images/pumpa_kijelolt.png");                      ///sarga
                 BufferedImage img = ImageIO.read(file);
-                g.drawImage(img, coordinate.x - 25, coordinate.y - 25, 50, 50, null);
+                g.drawImage(img, coordinate.x - 36, coordinate.y - 36, 75, 75, null);
             } else if (!observed.isMukodik()) {
                 File file = new File("src/images/pumpa_elromlott.png");                      ///piros
                 BufferedImage img = ImageIO.read(file);
-                g.drawImage(img, coordinate.x - 25, coordinate.y - 25, 50, 50, null);
+                g.drawImage(img, coordinate.x - 36, coordinate.y - 36, 75, 75, null);
             }else if (observed.getTelitett()) {
                 File file = new File("src/images/pumpa_nedves.png");                      ///kék
                 BufferedImage img = ImageIO.read(file);
-                g.drawImage(img, coordinate.x - 25, coordinate.y - 25, 50, 50, null);
+                g.drawImage(img, coordinate.x - 36, coordinate.y - 36, 75, 75, null);
             } else{
                 File file = new File("src/images/pumpa_sima.png");                  ///fekete
                 BufferedImage img = ImageIO.read(file);
-                g.drawImage(img, coordinate.x - 25, coordinate.y - 25, 50, 50, null);
+                g.drawImage(img, coordinate.x - 36, coordinate.y - 36, 75, 75, null);
             }
         }
         catch(IOException e){
@@ -49,7 +49,7 @@ public class PumpaMegfigyelo extends MezoMegfigyelo {
 
     @Override
     public boolean intersect(int x, int y) {
-        if((x >= coordinate.x - 50 && x <= coordinate.x + 50) && (y >= coordinate.y - 50 && y <= coordinate.y + 50))  return true;
+        if((x >= coordinate.x - 75 && x <= coordinate.x + 75) && (y >= coordinate.y - 75 && y <= coordinate.y + 75))  return true;
         else return false;
     }
 }
