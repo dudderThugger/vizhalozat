@@ -1,6 +1,7 @@
 package GUI;
 
 import Vizhalozat.Ciszterna;
+import Vizhalozat.Mezo;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -40,4 +41,6 @@ public class CiszternaMegfigyelo extends AktivMegfigyelo {
     public boolean intersect(int x, int y) {
         return false;
     }
+
+
 }

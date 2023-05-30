@@ -4,10 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="gombok goes brrrr">
+    <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="SAJAT BRANKCs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/CiszternaMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/CiszternaMegfigyelo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/CsoMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/CsoMegfigyelo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/JatekPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/JatekPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Vezerlo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Vezerlo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Megfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Megfigyelo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Jatek.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Jatek.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Jatekos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Jatekos.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -295,7 +300,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685449828489</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="SAJAT BRANKCs">
+      <created>1685452639123</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1685452639123</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -343,7 +355,8 @@
     <MESSAGE value="egy kicsit tobb gui" />
     <MESSAGE value="egy kicsit megtobb gui" />
     <MESSAGE value="gombok goes brrrr" />
-    <option name="LAST_COMMIT_MESSAGE" value="gombok goes brrrr" />
+    <MESSAGE value="SAJAT BRANKCs" />
+    <option name="LAST_COMMIT_MESSAGE" value="SAJAT BRANKCs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

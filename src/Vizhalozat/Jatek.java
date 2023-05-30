@@ -224,6 +224,8 @@ public class Jatek {
         szerelo2.raAllit(ciszterna2);
         szabotor1.raAllit(forras1);
         szabotor2.raAllit(forras2);
+
+        System.out.println("rajta"+szerelo1.getRajtaAll());
     }
 
     public void tick() {
