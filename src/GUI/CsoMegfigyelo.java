@@ -45,4 +45,6 @@ public class CsoMegfigyelo extends Megfigyelo {
     public boolean intersect(int x, int y) {
         return false;
     }
+
+    public Mezo getObserved(){return observed;}
 }

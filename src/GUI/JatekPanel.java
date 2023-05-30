@@ -1,14 +1,17 @@
 package GUI;
 
+import Vizhalozat.AktivElemek;
 import Vizhalozat.Jatekos;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
-public class JatekPanel extends JPanel {
+public class JatekPanel extends JPanel implements MouseListener {
 
 
 
@@ -22,6 +25,10 @@ public class JatekPanel extends JPanel {
     private final JLabel cooldownText = new JLabel("Cooldown:");
     private final JLabel cooldownTime = new JLabel("hatralevo cooldown ido");
 
+    private final JLabel szereloText = new JLabel("Szerelopontok");
+    private final JLabel szabotorText = new JLabel("Szabotorpont");
+
+    private final JLabel szabotorPont = new JLabel();
     private boolean frissit;
     private  JButton csolyuksztas;
 
@@ -205,8 +212,6 @@ public class JatekPanel extends JPanel {
         szabotoractions.add(elemlerak_cso);
         szabotoractions.add(csocsusztat);
         szabotoractions.add(pumpaallit2);
-
-        //szerelo = javit,lyukaszt,ragaszt,lerak cso/pumpa ,felvesz cso,szerel,pumpatvesz,pumpaallitas
     }
 
 
@@ -294,6 +299,44 @@ public class JatekPanel extends JPanel {
 
 
     }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        int X = e.getX();
+        int Y = e.getY();
+
+        for(CsoMegfigyelo m: csovek){
+            if( m.intersect(X,Y)){
+                vezer.kattintas(m.getObserved());
+            }
+        }
+        for(AktivMegfigyelo m:elemfigyelok){
+            if(m.intersect(X,Y)){
+                vezer.kattintas(m.getObserved());
+            }
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
+
     private class JatekTer extends JPanel {
         @Override
         protected void paintComponent(Graphics g) {
@@ -305,13 +348,14 @@ public class JatekPanel extends JPanel {
     public void frissit(String jatekosnev, int ido,int i){
         playername.setText(jatekosnev);
         actionTime.setText(Integer.toString(ido));
+
         if(i<2){
            c1.show(blank,"szerelo");
         }
         else{
             c1.show(blank,"szabotor");
         }
-        invalidate();
+
         frissit = true;
     }
     public void drawAll(Graphics g) {
@@ -342,5 +386,6 @@ public class JatekPanel extends JPanel {
     }
     public void jatekVege(String nyertesCsapat) {
         vege = true;
+        this.setVisible(false);
     }
 }
