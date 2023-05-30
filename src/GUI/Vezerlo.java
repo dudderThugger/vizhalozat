@@ -1,7 +1,5 @@
 package GUI;
 
-import GUI.JatekPanel;
-import GUI.Point;
 import Vizhalozat.*;
 
 import java.util.ArrayList;
@@ -42,6 +40,9 @@ public class Vezerlo {
 
     public Vezerlo(String szerelo1name, String szerelo2name, String szabotor1name, String szabotor2name) {
         jatekosNevek.add(szerelo1name);
+        jatekosNevek.add(szerelo2name);
+        jatekosNevek.add(szabotor1name);
+        jatekosNevek.add(szabotor2name);
         jatek = new Jatek(this);
         timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
@@ -52,7 +53,7 @@ public class Vezerlo {
         }, 1000, 1000);
         actualJatekosIndex = 0;
         selected = null;
-        korIdo = 15;
+        korIdo = 2;
     }
     public void init(){
         jatek.init();
@@ -149,7 +150,7 @@ public class Vezerlo {
     }
 
     public void jatekosValtas() {
-        korIdo = 15;
+        korIdo = 2;
         if(actualJatekosIndex == 3) { actualJatekosIndex = 0; }
         else ++actualJatekosIndex;
         jatek.vizFolyas();
@@ -191,5 +192,13 @@ public class Vezerlo {
         jatekosok.add(szabotor);
         szabotorok.add(szabotor);
         panel.addSzabotorMegfigyelok(new GUI.SzabotorMegfigyelo(szabotor, panel));
+    }
+
+    public int getCooldown() {
+        return jatekosok.get(actualJatekosIndex).getAkcioIdo();
+    }
+
+    public int getStickTime() {
+        return jatekosok.get(actualJatekosIndex).getRagadasiIdo();
     }
 }

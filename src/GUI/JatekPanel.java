@@ -356,6 +356,10 @@ public class JatekPanel extends JPanel implements MouseListener {
             c1.show(blank,"szabotor");
         }
 
+        invalidate();
+        revalidate();
+        repaint();
+
         frissit = true;
     }
     public void drawAll(Graphics g) {

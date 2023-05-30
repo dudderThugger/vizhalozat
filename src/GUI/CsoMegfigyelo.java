@@ -24,8 +24,8 @@ public class CsoMegfigyelo extends Megfigyelo {
         Point coordinate2 = panel.getObservedCoordinate(szomszedok.get(1));
         Graphics2D g2 = (Graphics2D)g;
         g2.setStroke(new BasicStroke(30));
-        if(!selected) {
-            g2.setColor(Color.BLACK);
+        if(selected) {
+            g2.setColor(Color.ORANGE);
             g2.drawLine(coordinate1.x, coordinate1.y, coordinate2.x, coordinate2.y);
         }
         else if(observed.isLyukas()){
@@ -35,8 +35,8 @@ public class CsoMegfigyelo extends Megfigyelo {
         else if (observed.getTelitett()) {
             g2.setColor(Color.BLUE);
             g2.drawLine(coordinate1.x, coordinate1.y, coordinate2.x, coordinate2.y);
-        } else if(selected){
-            g2.setColor(Color.ORANGE);
+        } else {
+            g2.setColor(Color.BLACK);
             g2.drawLine(coordinate1.x, coordinate1.y, coordinate2.x, coordinate2.y);
         }
     }

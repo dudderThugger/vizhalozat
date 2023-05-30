@@ -6,9 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="vannak csöveg pog">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/CsoMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/CsoMegfigyelo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/JatekPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/JatekPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/SzereloMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/SzereloMegfigyelo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/Vezerlo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Vezerlo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Jatek.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Jatek.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Jatekos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Jatekos.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -345,7 +346,21 @@
       <option name="project" value="LOCAL" />
       <updated>1685448938039</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="nincs exception faszikák">
+      <created>1685453520433</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1685453520433</updated>
+    </task>
+    <task id="LOCAL-00035" summary="nincs exception faszikák">
+      <created>1685453661605</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1685453661605</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -362,7 +377,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/Maximilien" />
+                        <option value="origin/Csoves-cso" />
                       </list>
                     </value>
                   </entry>
@@ -399,7 +414,8 @@
     <MESSAGE value="talan vezerlo jo de nem rajzol a panel" />
     <MESSAGE value="valami történik" />
     <MESSAGE value="vannak csöveg pog" />
-    <option name="LAST_COMMIT_MESSAGE" value="vannak csöveg pog" />
+    <MESSAGE value="nincs exception faszikák" />
+    <option name="LAST_COMMIT_MESSAGE" value="nincs exception faszikák" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -408,6 +424,11 @@
           <properties class="java.lang.StackOverflowError" package="java.lang" />
           <option name="timeStamp" value="1" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/GUI/Vezerlo.java</url>
+          <line>153</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>

@@ -1,5 +1,4 @@
 package Vizhalozat;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,7 +27,6 @@ public abstract class Jatekos {
 
     public void raAllit(Mezo m) {
         rajtaAll = m;
-        System.out.println(rajtaAll.toString());
         m.ralep(this);
     }
 
@@ -127,4 +125,8 @@ public abstract class Jatekos {
     public Viheto getTart() {
         return tart;
     }
+
+    public int getAkcioIdo() { return akcioIdo; }
+
+    public int getRagadasiIdo() {return ragadasiIdo; }
 }
