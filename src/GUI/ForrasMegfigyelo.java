@@ -1,7 +1,6 @@
-package Megfigyelok;
+package GUI;
 
 import Vizhalozat.Forras;
-import Vizhalozat.Point;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -12,9 +11,9 @@ import java.io.IOException;
 /**
  * A forrás megfigyelőjét reprezentálja. Ez a forrás kirajzolásáért felelős.
  */
-public class ForrasMegfigyelo extends Megfigyelo{
+public class ForrasMegfigyelo extends Megfigyelo {
     private Forras observed; /**Az osztály által reprezentált forrás osztály egy pédányát tárolja. Ennek az obejktumnak az állapotát figyeli és ennek megfelelően zajlik a kirajzolás.*/
-    public ForrasMegfigyelo(Point p, Forras f) {
+    public ForrasMegfigyelo(Forras f, Point p) {
         super(p); observed = f;
     }
 

@@ -1,4 +1,4 @@
-package Vizhalozat;
+package GUI;
 
 public class Point {
     public int x;

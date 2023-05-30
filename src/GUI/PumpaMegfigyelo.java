@@ -1,9 +1,11 @@
-package Vizhalozat;
+package GUI;
+
+import Vizhalozat.Pumpa;
 
 import java.awt.*;
 
-public class CiszternaMegfigyelo extends Megfigyelo {
-    public CiszternaMegfigyelo(Ciszterna ciszterna, Point hova) {
+public class PumpaMegfigyelo extends Megfigyelo {
+    public PumpaMegfigyelo(Pumpa pumpa, Point hova) {
         super(hova);
     }
 

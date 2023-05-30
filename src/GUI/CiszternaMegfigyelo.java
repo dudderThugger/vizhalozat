@@ -1,9 +1,11 @@
-package Vizhalozat;
+package GUI;
+
+import Vizhalozat.Ciszterna;
 
 import java.awt.*;
 
-public class ForrasMegfigyelo extends Megfigyelo {
-    public ForrasMegfigyelo(Forras forras, Point hova) {
+public class CiszternaMegfigyelo extends Megfigyelo {
+    public CiszternaMegfigyelo(Ciszterna ciszterna, Point hova) {
         super(hova);
     }
 

@@ -1,5 +1,8 @@
 package Vizhalozat;
 
+import GUI.JatekPanel;
+import GUI.Point;
+
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -176,31 +179,31 @@ public class Vezerlo {
 
     public void addCso(Cso cso, Point hova) {
         csovek.add(cso);
-        panel.addElemMegfigyelo(new CsoMegfigyelo(cso, hova));
+        panel.addElemMegfigyelo(new GUI.CsoMegfigyelo(cso, hova));
     }
 
     public void addPumpa(Pumpa pumpa, Point hova) {
         pumpak.add(pumpa);
-        panel.addElemMegfigyelo(new PumpaMegfigyelo(pumpa, hova));
+        panel.addElemMegfigyelo(new GUI.PumpaMegfigyelo(pumpa, hova));
     }
 
     public void addForras(Forras forras, Point hova) {
         forrasok.add(forras);
-        panel.addElemMegfigyelo(new ForrasMegfigyelo(forras, hova));
+        panel.addElemMegfigyelo(new GUI.ForrasMegfigyelo(forras, hova));
     }
 
     public void addCiszterna(Ciszterna ciszterna, Point hova) {
         ciszternak.add(ciszterna);
-        panel.addElemMegfigyelo(new CiszternaMegfigyelo(ciszterna, hova));
+        panel.addElemMegfigyelo(new GUI.CiszternaMegfigyelo(ciszterna, hova));
     }
 
     public void addSzerelo(Szerelo szerelo, Point hova) {
         szerelok.add(szerelo);
-        panel.addSzereloMegfigyelo(new SzereloMegfigyelo(szerelo, hova));
+        panel.addSzereloMegfigyelo(new GUI.SzereloMegfigyelo(szerelo, hova));
     }
 
     public void addSzabotor(Szabotor szabotor, Point hova) {
         szabotorok.add(szabotor);
-        panel.addSzabotorMegfigyelok(new SzabotorMegfigyelo(szabotor, hova));
+        panel.addSzabotorMegfigyelok(new GUI.SzabotorMegfigyelo(szabotor, hova));
     }
 }

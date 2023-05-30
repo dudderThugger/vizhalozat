@@ -1,4 +1,6 @@
-package Vizhalozat;
+package GUI;
+
+import Vizhalozat.Cso;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

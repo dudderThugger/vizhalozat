@@ -1,4 +1,5 @@
-package Vizhalozat;
+package GUI;
+
 
 import java.awt.*;
 
@@ -16,4 +17,5 @@ public abstract class Megfigyelo {
 
     public abstract  void draw(Graphics g); /**A rajzolásért felelős absztrakt metódus. Egy Graphics paramétert kap, amely lehetővé teszi a rajzolási műveletek végrehajtását.*/
     public abstract boolean intersect(int x, int y); /**Eldönti, hogy az adott pont benne van-e a megfigyelt alakzatban.*/
+
 }

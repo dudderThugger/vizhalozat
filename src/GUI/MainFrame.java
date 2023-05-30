@@ -1,13 +1,12 @@
-package Vizhalozat;
+package GUI;
 
-import javax.imageio.ImageIO;
+import Vizhalozat.Jatek;
+import Vizhalozat.Vezerlo;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
-import java.util.Objects;
 
 public class MainFrame extends JFrame {
 
@@ -56,10 +55,7 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String szerelo1 = szerelo1Text.getText();
-                System.out.println(szerelo1);
                 String szerelo2 = szerelo2Text.getText();
-                System.out.println(szerelo2);
-
                 String szabotor1 = szabotor1Text.getText();
                 String szabotor2 = szabotor2Text.getText();
                 Vezerlo vezer = new Vezerlo(szerelo1, szerelo2,szabotor1,szabotor2);

@@ -1,4 +1,6 @@
-package Vizhalozat;
+package GUI;
+
+import Vizhalozat.Szabotor;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -6,28 +8,20 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class SzereloMegfigyelo extends Megfigyelo {
-    /**
-     * Az osztály által reprezentált szerelo osztály egy pédányát tárolja.
-     * Ennek az obejktumnak az állapotát figyeli és ennek megfelelően zajlik a kirajzolás.
-     */
-    Szerelo observed;
-    public SzereloMegfigyelo(Szerelo szerelo, Point hova) {
+public class SzabotorMegfigyelo extends Megfigyelo{
+    public SzabotorMegfigyelo(Szabotor observed, Point hova) {
         super(hova);
-        observed = szerelo;
     }
-
-
     @Override
     public void draw(Graphics g) {
         try {
             if(!selected) {
-                File file = new File("src/images/szerelo_sima.png");
+                File file = new File("src/images/szabotor_sima.png");
                 BufferedImage img = ImageIO.read(file);
                 g.drawImage(img, coordinates.x, coordinates.y, 50, 50, null);
             }
             else{
-                File file = new File("src/images/szerelo_kijelolt.png");
+                File file = new File("src/images/szabotor_kijelolt.png");
                 BufferedImage img = ImageIO.read(file);
                 g.drawImage(img, coordinates.x, coordinates.y, 50, 50, null);
             }
@@ -38,9 +32,6 @@ public class SzereloMegfigyelo extends Megfigyelo {
 
     @Override
     public boolean intersect(int x, int y) {
-        if(x >= coordinates.x && x <=coordinates.x + 50 && y <= coordinates.y && y >= coordinates.y - 50){
-            return true;
-        }
         return false;
     }
 }

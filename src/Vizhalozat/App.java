@@ -1,6 +1,6 @@
 package Vizhalozat;
 
-import com.sun.tools.javac.Main;
+import GUI.MainFrame;
 
 /**
  * Létrehozza a játék objektumot és elindítja a játékot.

@@ -1,11 +1,11 @@
-package Vizhalozat;
+package GUI;
 
-import Megfigyelok.ForrasMegfigyelo;
+import GUI.ForrasMegfigyelo;
+import GUI.Point;
+import Vizhalozat.Vezerlo;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.ImageObserver;
-import java.text.AttributedCharacterIterator;
 import java.util.ArrayList;
 
 public class JatekPanel extends JPanel {
@@ -34,10 +34,10 @@ public class JatekPanel extends JPanel {
     private JButton csoragaszt;
     private JButton pumpaallit;
 
-    private ArrayList<SzabotorMegfigyelo> szabotorok=new ArrayList<>();
-    private ArrayList<SzereloMegfigyelo> szerelok=new ArrayList<>();
-    private ArrayList<Megfigyelo> elemfigyelok = new ArrayList<>();
-    private  Vezerlo vezer;
+    private ArrayList<GUI.SzabotorMegfigyelo> szabotorok=new ArrayList<>();
+    private ArrayList<GUI.SzereloMegfigyelo> szerelok=new ArrayList<>();
+    private ArrayList<GUI.Megfigyelo> elemfigyelok = new ArrayList<>();
+    private Vezerlo vezer;
     private boolean vege=false;
 
     private  JPanel szereloactions;
@@ -182,37 +182,29 @@ public class JatekPanel extends JPanel {
     {
         super.paintComponent(g);
         drawAll(g);
-        Jatek j = new Jatek(vezer);
-        Forras f1 = new Forras(j);
-        ForrasMegfigyelo fm = new ForrasMegfigyelo(new Point(30, 450), f1);
-        Forras f2 = new Forras(j);
-        ForrasMegfigyelo fm2 = new ForrasMegfigyelo(new Point(15, 50), f2);
-        fm.draw(g);
-        fm2.draw(g);
     }
     public void vezer(Vezerlo v){vezer=v;}
     public void frissit(String jatekosnev, int ido){
         playername.setText(jatekosnev);
         actionTime.setText(Integer.toString(ido));
         frissit = true;
-
     }
     public void drawAll(Graphics g) {
-        for(Megfigyelo m : elemfigyelok){m.draw(g);}
-        for(SzabotorMegfigyelo m:szabotorok){m.draw(g);}
-        for(SzereloMegfigyelo m:szerelok){m.draw(g);}
+        for(GUI.Megfigyelo m : elemfigyelok){m.draw(g);}
+        for(GUI.SzabotorMegfigyelo m:szabotorok){m.draw(g);}
+        for(GUI.SzereloMegfigyelo m:szerelok){m.draw(g);}
     }
 
-    public void addElemMegfigyelo(Megfigyelo megfigyelo) {
+    public void addElemMegfigyelo(GUI.Megfigyelo megfigyelo) {
         elemfigyelok.add(megfigyelo);
     }
-    public void addSzereloMegfigyelo(SzereloMegfigyelo sz){
+    public void addSzereloMegfigyelo(GUI.SzereloMegfigyelo sz){
         szerelok.add(sz);
     }
-    public void addSzabotorMegfigyelok(SzabotorMegfigyelo sz){
+    public void addSzabotorMegfigyelok(GUI.SzabotorMegfigyelo sz){
         szabotorok.add(sz);
     }
     public void jatekVege(String nyertesCsapat) {
-      vege = true;
+        vege = true;
     }
 }

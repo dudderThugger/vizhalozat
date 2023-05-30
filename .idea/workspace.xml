@@ -5,18 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="42eca659-eca3-45a1-802e-11296cb13373" name="Changes" comment="talan vezerlo jo de nem rajzol a panel">
-      <change afterPath="$PROJECT_DIR$/src/images/szabotor/slip_cso.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/szereloimages/glue_cso.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/szereloimages/repair_pumpa .png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/szereloimages/set_pumpa.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/SzabotorMegfigyelo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/szabotor_kijelolt.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/szabotor_sima.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/JatekPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/JatekPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/buy_pumpa.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/szereloimages/buy_pumpa.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/crack_cso.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/szereloimages/crack_cso.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/pickup_cso.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/szereloimages/pickup_cso.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/putdown_csopumpa.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/szereloimages/putdown_csopumpa.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/repair_pumpa.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/tape_cso.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/szereloimages/tape_cso.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Megfigyelok/ForrasMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/ForrasMegfigyelo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Megfigyelok/Megfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Megfigyelo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/CiszternaMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/CiszternaMegfigyelo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/CsoMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/CsoMegfigyelo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/ForrasMegfigyelo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Jatek.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Jatek.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/JatekPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/JatekPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Megfigyelo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Point.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/PumpaMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/PumpaMegfigyelo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/SzabotorMegfigyelo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/SzereloMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/SzereloMegfigyelo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Vezerlo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Vezerlo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
