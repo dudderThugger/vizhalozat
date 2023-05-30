@@ -32,7 +32,6 @@ public class SzabotorMegfigyelo extends JatekosMegfigyelo{
                 System.out.println("File not found exception szabotor!");
             }
         } else {
-            System.out.println("fasz\n");
         }
     }
 

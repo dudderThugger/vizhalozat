@@ -175,11 +175,11 @@ public class Jatek {
         Ciszterna ciszterna2 = new Ciszterna(this);
         Cso cso1 = new Cso(this);
         Cso cso2 = new Cso(this);
+        Cso cso3 = new Cso(this);
         Szerelo szerelo1 = new Szerelo(this, ciszterna1);
         Szerelo szerelo2 = new Szerelo(this, ciszterna2);
         Szabotor szabotor1 = new Szabotor(this, forras1);
         Szabotor szabotor2 = new Szabotor(this, forras2);
-
 
 
         mezok.add(forras1);
@@ -200,6 +200,9 @@ public class Jatek {
         mezok.add(cso2);
         csovek.add(cso2);
         vezerlo.addCso(cso2);
+        mezok.add(cso3);
+        csovek.add(cso3);
+        vezerlo.addCso(cso3);
 
         jatekosok.add(szerelo1);
         szerelok.add(szerelo1);
@@ -216,6 +219,7 @@ public class Jatek {
 
         cso1.setSzomszedok(new ArrayList<Mezo>( List.of(forras1, ciszterna1)));
         cso2.setSzomszedok(new ArrayList<Mezo>( List.of(forras2, ciszterna2)));
+        cso3.setSzomszedok(new ArrayList<Mezo>( List.of(ciszterna1, ciszterna2)));
         forras1.addSzomszed(cso1);
         ciszterna1.addSzomszed(cso1);
         forras2.addSzomszed(cso2);
@@ -234,4 +238,6 @@ public class Jatek {
             cso.tick();
         }
     }
+    public int getSzabotorPont(){return szabotorPont;}
+    public int getSzereloPont(){return szereloPont;}
 }

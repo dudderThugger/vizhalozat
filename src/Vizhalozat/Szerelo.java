@@ -48,7 +48,6 @@ public class Szerelo extends Jatekos{
         if(pumpaTart == null){
             pumpaTart = p;
         }
-        System.out.println(p);
     }
 
     /**

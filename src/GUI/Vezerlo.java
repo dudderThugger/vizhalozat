@@ -1,5 +1,7 @@
 package GUI;
 
+import GUI.JatekPanel;
+import GUI.Point;
 import Vizhalozat.*;
 
 import java.util.ArrayList;
@@ -106,8 +108,7 @@ public class Vezerlo {
                     if (csovek.contains(mezo)) {
                         jatekos.felvesz_cso((Cso) mezo);
                     }
-                }
-                break;
+                } break;
                 default:
                     break;
             }
@@ -298,7 +299,4 @@ public class Vezerlo {
     public int getStickTime() {
         return jatekosok.get(actualJatekosIndex).getRagadasiIdo();
     }
-
-
-
 }

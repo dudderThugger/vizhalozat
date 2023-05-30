@@ -1,5 +1,6 @@
 package GUI;
 
+import Vizhalozat.AktivElemek;
 import Vizhalozat.Jatekos;
 
 import javax.swing.*;
@@ -12,8 +13,11 @@ import java.util.ArrayList;
 
 public class JatekPanel extends JPanel {
 
-
     private int currentPlayersync = 0;
+    private MainFrame frame;
+    private JLabel vege = new JLabel();
+    private int ii=0;
+
     private final JPanel actionsav = new JPanel();
     private final JLabel playerText = new JLabel("Current Player");
     private final JLabel playername = new JLabel();
@@ -24,8 +28,10 @@ public class JatekPanel extends JPanel {
     private final JLabel cooldownText = new JLabel("Cooldown:");
     private final JLabel cooldownTime = new JLabel("hatralevo cooldown ido");
 
-    private final JLabel szereloText = new JLabel("Szerelopontok");
-    private final JLabel szabotorText = new JLabel("Szabotorpont");
+    private final JLabel ragadasText = new JLabel("StickyTime");
+    private final JLabel ragadasTime = new JLabel();
+    private final JLabel szereloText = new JLabel("Szerelo");
+    private final JLabel szabotorText = new JLabel("Szabotor");
 
     private final JLabel szabotorPont = new JLabel();
     private final JLabel szereloPont = new JLabel();
@@ -53,33 +59,54 @@ public class JatekPanel extends JPanel {
     private ArrayList<GUI.SzereloMegfigyelo> szerelok = new ArrayList<>();
     private ArrayList<GUI.MezoMegfigyelo> mezofigyelok = new ArrayList<>();
     private Vezerlo vezer;
-    private boolean vege=false;
+    private boolean vege1 = false;
 
     private  JPanel szereloactions;
     private JPanel szabotoractions;
     private JatekTer jatekter = new JatekTer();
 
-    JPanel blank = new JPanel();
+    JPanel buttons = new JPanel();
+
+
     public CardLayout c1 = new CardLayout();
-    public JatekPanel(int height,int width){
+    public CardLayout c2 = new CardLayout();
+    public JatekPanel(int height, int width, MainFrame f){
 
-
+        frame =f;
         this.setBounds(0,0,width,height);
         this.setBackground(Color.white);
         this.setLayout(null);
 
+        buttonadd();
         playerText.setForeground(Color.white);
         timeText.setForeground(Color.white);
         actionText.setForeground(Color.white);
         cooldownText.setForeground(Color.white);
+        ragadasText.setForeground(Color.white);
         szereloText.setForeground(Color.white);
         szabotorText.setForeground(Color.white);
+
+        playerText.setHorizontalAlignment(0);
+        timeText.setHorizontalAlignment(0);
+        actionText.setHorizontalAlignment(0);
+        cooldownText.setHorizontalAlignment(0);
+        ragadasText.setHorizontalAlignment(0);
+        szereloText.setHorizontalAlignment(0);
+        szabotorText.setHorizontalAlignment(0);
 
         playername.setForeground(Color.orange);
         actionTime.setForeground(Color.orange);
         cooldownTime.setForeground(Color.orange);
         szereloPont.setForeground(Color.orange);
         szabotorPont.setForeground(Color.orange);
+        ragadasTime.setForeground(Color.orange);
+
+        playername.setHorizontalAlignment(0);
+        actionTime.setHorizontalAlignment(0);
+        szereloPont.setHorizontalAlignment(0);
+        cooldownTime.setHorizontalAlignment(0);
+        szabotorPont.setHorizontalAlignment(0);
+        ragadasTime.setHorizontalAlignment(0);
 
         actionsav.setBounds(0,0,1200,100);
         actionsav.setLayout(new GridLayout(2,7));
@@ -89,11 +116,22 @@ public class JatekPanel extends JPanel {
         actionsav.add(timeText);
         actionsav.add(actionText);
         actionsav.add(cooldownText);
+        actionsav.add(ragadasText);
         actionsav.add(szereloText);
         actionsav.add(szabotorText);
 
         actionsav.add(playername);
         actionsav.add(actionTime);
+
+        buttons.setLayout(c1);
+        buttons.add(szereloactions,"szerelo");
+        buttons.add(szabotoractions,"szabotor");
+
+        actionsav.add(buttons);
+        actionsav.add(cooldownTime);
+        actionsav.add(ragadasTime);
+        actionsav.add(szereloPont);
+        actionsav.add(szabotorPont);
 
         buttonadd();
 
@@ -101,17 +139,20 @@ public class JatekPanel extends JPanel {
         jatekter.setBackground(new Color(212, 209, 144));
         jatekter.addMouseListener(new Katt());
 
+        this.add(actionsav);
         this.add(jatekter);
-        this.add(szereloactions);
 
-        blank.setLayout(c1);
-        blank.add(szereloactions,"szerelo");
-        blank.add(szabotoractions,"szabotor");
-        actionsav.add(blank);
+        buttons.setLayout(c1);
+        buttons.add(szereloactions,"szerelo");
+        buttons.add(szabotoractions,"szabotor");
+        actionsav.add(buttons);
         actionsav.add(cooldownTime);
         actionsav.add(szereloPont);
         actionsav.add(szabotorPont);
         this.add(actionsav);
+    }
+    public void setFrame(MainFrame f){
+        frame =f;
     }
     public void buttonadd(){
         szereloactions = new JPanel();
@@ -265,7 +306,7 @@ public class JatekPanel extends JPanel {
         pumpaallit2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                vezer.gombLenyomas(Vezerlo.Akcio.CSOLERAKAS);
+                vezer.gombLenyomas(Vezerlo.Akcio.PUMPATALLIT);
             }
         });
         csoragaszt2.addActionListener(new ActionListener() {
@@ -395,16 +436,27 @@ public class JatekPanel extends JPanel {
         }
     }
     public void vezer(Vezerlo v){vezer=v;}
-    public void frissit(String jatekosnev, int ido,int i,int cooldown){
+    public void frissit(String jatekosnev, int ido,int i,int cooldown, int szerelopont, int szabotorpont, int ragadasido){
         playername.setText(jatekosnev);
         actionTime.setText(Integer.toString(ido));
         cooldownTime.setText(Integer.toString(cooldown));
-        if(i < 2){
-           c1.show(blank,"szerelo");
+        szereloPont.setText(Integer.toString(szerelopont));
+        szabotorPont.setText(Integer.toString(szabotorpont));
+        ragadasTime.setText(Integer.toString(ragadasido));
+        if(i<2){
+           c1.show(buttons,"szerelo");
         }
         else{
-            c1.show(blank,"szabotor");
+            c1.show(buttons,"szabotor");
         }
+
+        if(szerelopont==15){
+            this.jatekVege("Szerelo");
+        }
+        else if(szabotorpont==15){
+            this.jatekVege("Szabotor");
+        }
+
 
         if(ido == 15)
         {
@@ -465,8 +517,10 @@ public class JatekPanel extends JPanel {
         szabotorok.add(sz);
     }
     public void jatekVege(String nyertesCsapat) {
-        vege = true;
-        this.setVisible(false);
+
+
+        frame.vege(nyertesCsapat);
+
     }
 
     public void jatekosLep(Jatekos jatekos) {
