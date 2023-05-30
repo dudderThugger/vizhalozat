@@ -204,7 +204,7 @@ public class Vezerlo {
     public void addSzerelo(Szerelo szerelo) {
         jatekosok.add(szerelo);
         szerelok.add(szerelo);
-        panel.addSzereloMegfigyelo(new GUI.SzereloMegfigyelo(szerelo, panel));
+        panel.addSzereloMegfigyelo(new SzereloMegfigyelo(szerelo, panel));
     }
 
     public void addSzabotor(Szabotor szabotor) {

@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="551c08cb-9e8f-47ae-9eed-e4c23141f681" name="Changes" comment="minden faszaaa">
+    <list default="true" id="551c08cb-9e8f-47ae-9eed-e4c23141f681" name="Changes" comment="a cső megy">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/CsoMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/CsoMegfigyelo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/SzereloMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/SzereloMegfigyelo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/Vezerlo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Vezerlo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Forras.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Forras.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Jatek.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Jatek.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -395,7 +393,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685477467103</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="a cső megy">
+      <created>1685479037660</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1685479037660</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -412,7 +417,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="origin/Maximilien" />
                       </list>
                     </value>
                   </entry>
@@ -426,7 +431,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="szkeleton, félig kész osztályok" />
     <MESSAGE value="javitas" />
     <MESSAGE value="69 kilepes" />
     <MESSAGE value="16-17-es teszt esetek elkészítése" />
@@ -451,7 +455,8 @@
     <MESSAGE value="kééééék" />
     <MESSAGE value="naaa" />
     <MESSAGE value="minden faszaaa" />
-    <option name="LAST_COMMIT_MESSAGE" value="minden faszaaa" />
+    <MESSAGE value="a cső megy" />
+    <option name="LAST_COMMIT_MESSAGE" value="a cső megy" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -8,11 +8,10 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class SzereloMegfigyelo extends JatekosMegfigyelo {
 /**
  * A szerelő megfigyelőjét reprezentálja. Ez a szerelő kirajzolásáért felelős.
  */
-public class SzereloMegfigyelo extends Megfigyelo {
+public class SzereloMegfigyelo extends JatekosMegfigyelo {
     /**
      * Az osztály által reprezentált szerelo osztály egy pédányát tárolja.
      * Ennek az obejktumnak az állapotát figyeli és ennek megfelelően zajlik a kirajzolás.
