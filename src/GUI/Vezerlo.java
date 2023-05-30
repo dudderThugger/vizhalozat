@@ -63,12 +63,13 @@ public class Vezerlo {
     public void panel(JatekPanel p){panel=p;}
     public void kattintas(Mezo mezo) {
         Jatekos jatekos = jatekosok.get(actualJatekosIndex);
-        System.out.println(akcio + " " + mezo);
         if(akcio != null) {
             switch (akcio) {
                 case LEP: {
-                    if (mezok.contains(mezo)) {jatekos.lepes(mezo);
-                    System.out.println("vaalmi\n");}
+                    if (mezok.contains(mezo)) {
+                        jatekos.lepes(mezo);
+                        panel.jatekosLep(jatekos);
+                    }
                     else jatekos.lepes((AktivElemek) mezo);
                 }
                 break;

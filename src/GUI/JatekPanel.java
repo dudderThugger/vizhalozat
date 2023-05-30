@@ -479,4 +479,13 @@ public class JatekPanel extends JPanel {
         vege = true;
         this.setVisible(false);
     }
+
+    public void jatekosLep(Jatekos jatekos) {
+        for (Megfigyelo mf : megfigyelok) {
+            if(mf.getObserved() == jatekos) {
+                JatekosMegfigyelo jmf = (JatekosMegfigyelo) mf;
+                jmf.lep();
+            }
+        }
+    }
 }

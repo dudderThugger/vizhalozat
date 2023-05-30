@@ -9,8 +9,8 @@ import java.util.Scanner;
  */
 public class Szerelo extends Jatekos{
     private Pumpa pumpaTart;
-    public Szerelo(Jatek jatek) {
-        super(jatek);
+    public Szerelo(Jatek jatek, Mezo mezo) {
+        super(jatek, mezo);
     }
 
     /**
@@ -32,7 +32,8 @@ public class Szerelo extends Jatekos{
                 pumpaTart.addSzomszed(rajtaAll);
                 szomszed.removeSzomszed(rajtaAll);
                 szomszed.addSzomszed(uj);
-                jatek.addPumpa(pumpaTart);
+                rajtaAll = pumpaTart;
+                jatek.addMezo(pumpaTart);
                 jatek.addMezo(uj);
             }
         }

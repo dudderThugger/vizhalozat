@@ -15,10 +15,11 @@ public abstract class Jatekos {
     /**
      * A játékos egyetlen konstruktora
      */
-    public Jatekos(Jatek jatek) {
+    public Jatekos(Jatek jatek, Mezo mezo) {
         ragadasiIdo = 0;
         akcioIdo = 0;
         this.jatek = jatek;
+        rajtaAll = mezo;
     }
 
     public void tick() {

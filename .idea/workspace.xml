@@ -4,20 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="551c08cb-9e8f-47ae-9eed-e4c23141f681" name="Changes" comment="kééééék">
+    <list default="true" id="551c08cb-9e8f-47ae-9eed-e4c23141f681" name="Changes" comment="naaa">
+      <change afterPath="$PROJECT_DIR$/src/GUI/JatekosMegfigyelo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/CsoMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/CsoMegfigyelo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/JatekPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/JatekPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Megfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Megfigyelo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/MezoMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/MezoMegfigyelo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/PumpaMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/PumpaMegfigyelo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/SzabotorMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/SzabotorMegfigyelo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/SzereloMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/SzereloMegfigyelo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/Vezerlo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Vezerlo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Jatek.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Jatek.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Jatekos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Jatekos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Pumpa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Pumpa.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Szabotor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Szabotor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Szerelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Szerelo.java" afterDir="false" />
     </list>
@@ -370,7 +365,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685456090498</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="naaa">
+      <created>1685468239870</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1685468239870</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -401,7 +403,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="elso commit" />
     <MESSAGE value="masodik" />
     <MESSAGE value="szkeleton, félig kész osztályok" />
     <MESSAGE value="javitas" />
@@ -426,7 +427,8 @@
     <MESSAGE value="vannak csöveg pog" />
     <MESSAGE value="nincs exception faszikák" />
     <MESSAGE value="kééééék" />
-    <option name="LAST_COMMIT_MESSAGE" value="kééééék" />
+    <MESSAGE value="naaa" />
+    <option name="LAST_COMMIT_MESSAGE" value="naaa" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -437,7 +439,7 @@
         </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/GUI/Vezerlo.java</url>
-          <line>156</line>
+          <line>157</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
