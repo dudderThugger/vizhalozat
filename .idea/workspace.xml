@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="551c08cb-9e8f-47ae-9eed-e4c23141f681" name="Changes" comment="valami készült." />
+    <list default="true" id="551c08cb-9e8f-47ae-9eed-e4c23141f681" name="Changes" comment="valami készült.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/JatekPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/JatekPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Jatek.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Jatek.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Jatekos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Jatekos.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -396,35 +402,7 @@
       <option name="project" value="LOCAL" />
       <updated>1685479037660</updated>
     </task>
-    <task id="LOCAL-00042" summary="összemerged">
-      <created>1685479660636</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1685479660636</updated>
-    </task>
-    <task id="LOCAL-00043" summary="szaroos">
-      <created>1685486231490</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1685486231490</updated>
-    </task>
-    <task id="LOCAL-00044" summary="valami készül?!">
-      <created>1685492011055</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1685492011055</updated>
-    </task>
-    <task id="LOCAL-00045" summary="valami készült.">
-      <created>1685492590962</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1685492590962</updated>
-    </task>
-    <option name="localTasksCounter" value="46" />
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -441,7 +419,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="origin/Maximilien" />
                       </list>
                     </value>
                   </entry>
@@ -455,6 +433,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="javitas" />
+    <MESSAGE value="69 kilepes" />
+    <MESSAGE value="16-17-es teszt esetek elkészítése" />
+    <MESSAGE value="Szabotor osztaly" />
     <MESSAGE value="20-as teszt eset elkészítése" />
     <MESSAGE value="18-as teszt eset elkészítése" />
     <MESSAGE value="19-es teszt eset elkészítése" />
@@ -476,11 +458,7 @@
     <MESSAGE value="naaa" />
     <MESSAGE value="minden faszaaa" />
     <MESSAGE value="a cső megy" />
-    <MESSAGE value="összemerged" />
-    <MESSAGE value="szaroos" />
-    <MESSAGE value="valami készül?!" />
-    <MESSAGE value="valami készült." />
-    <option name="LAST_COMMIT_MESSAGE" value="valami készült." />
+    <option name="LAST_COMMIT_MESSAGE" value="a cső megy" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

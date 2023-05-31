@@ -40,7 +40,7 @@ public abstract class Jatekos {
      * @param szomszed a AktivElemek típusú objektum amire lép a játékos
      */
     public void lepes(Mezo szomszed){
-        if(rajtaAll.getSzomszedok().contains(szomszed)){
+        if (rajtaAll.getSzomszedok().contains(szomszed) && ragadasiIdo < 1) {
             Mezo temp = szomszed.ralep(this);
             if(temp != null) {
                 rajtaAll.lelep(this);
@@ -71,7 +71,6 @@ public abstract class Jatekos {
             boolean siker = rajtaAll.csoLehelyezes(csoTart, this);
             if(siker){
                 csoTart = null;
-                System.out.println("siker!\n");
             }
         }
 

@@ -128,6 +128,8 @@ public class MainFrame extends JFrame {
         exit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                MainFrame.this.dispose();
+                MainFrame.this.setVisible(false);
                 c1.show(cardPanel,"menu");
                 MainFrame.this.dispose();
                 System.exit(0);

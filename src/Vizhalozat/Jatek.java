@@ -35,19 +35,41 @@ public class Jatek {
     private Timer timer;
     /** A csöveket tartalmazó lista */
     private final ArrayList<Cso> csovek;
-    private boolean randomKi;
-    private boolean gameOver;
     Vezerlo vezerlo;
 
     /**
      * A játék osztály egyetlen konstruktora
      */
     public Jatek(Vezerlo vezerlo) {
-        randomKi = true;
         timer = new Timer();
         pumpak = new ArrayList<>();
         csovek = new ArrayList<>();
         this.vezerlo = vezerlo;
+    }
+
+    /**
+     * A játék Játékosok listájához ad hozzá egy szerelőt
+     * @param jatekos Szerelo tipust ad a listához
+     */
+    public void addJatekos(Szerelo jatekos) {
+        jatekosok.add(jatekos);
+        szerelok.add(jatekos);
+    }
+    /**
+     * A játék Játékosok listájához ad hozzá egy szabotőrt
+     * @param jatekos Szabotor tipust ad a listához
+     */
+    public void addJatekos(Szabotor jatekos) {
+        jatekosok.add(jatekos);
+        szabotorok.add(jatekos);
+    }
+    /**
+     * A játék Mezők listájához ad hozzá egy ciszternát
+     * @param mezo Ciszterna tipust ad a listához
+     */
+    public void addMezo(Ciszterna mezo) {
+        mezok.add(mezo);
+        ciszternak.add(mezo);
     }
     /**
      * A játék Mezők listájához ad hozzá egy csövet
@@ -79,26 +101,24 @@ public class Jatek {
     }
 
     public void vizFolyas(){
-        if(randomKi){
-            for (Pumpa p : pumpak) {
-                p.setTelitett(false);
-            }
-            for (Mezo m : mezok) {
-                m.setTelitett(false);
-            }
-            for (Cso cs : csovek) {
-                cs.setTelitett(false);
-            }
-            for (Forras f : forrasok) {
-                f.setTelitett(false);
-            }
-            for (Ciszterna c : ciszternak) {
-                c.setTelitett(false);
-            }
+        for (Pumpa p : pumpak) {
+            p.setTelitett(false);
+        }
+        for (Mezo m : mezok) {
+            m.setTelitett(false);
+        }
+        for (Cso cs : csovek) {
+            cs.setTelitett(false);
+        }
+        for (Forras f : forrasok) {
+            f.setTelitett(false);
+        }
+        for (Ciszterna c : ciszternak) {
+            c.setTelitett(false);
+        }
 
-            for (Forras f : forrasok) {
-                f.vizTermeles();
-            }
+        for (Forras f : forrasok) {
+            f.vizTermeles();
         }
     }
 

@@ -533,6 +533,7 @@ public class JatekPanel extends JPanel {
     }
 
     public void frissit2() {
+        ragadasTime.setText(Integer.toString(vezer.getStickTime()));
         repaint();
     }
     public Jatekos getjatekos(){
