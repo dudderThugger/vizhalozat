@@ -71,7 +71,7 @@ public class Ciszterna extends AktivElemek{
         Random random = new Random();
         if (random.nextInt() % 4 == 0) {
             Cso cs = new Cso(jatek);
-
+            cs.setLog();
             cs.addSzomszed(this);
             addSzomszed(cs);
             jatek.addMezo(cs);

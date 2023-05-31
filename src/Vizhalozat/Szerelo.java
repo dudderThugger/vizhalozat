@@ -35,6 +35,7 @@ public class Szerelo extends Jatekos{
                 rajtaAll = pumpaTart;
                 jatek.addMezo(pumpaTart);
                 jatek.addMezo(uj);
+                pumpaTart = null;
             }
         }
     }

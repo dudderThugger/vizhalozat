@@ -129,7 +129,7 @@ public abstract class Mezo {
      * @param cs a lehelyezendő cső
      * @return igaz ha sikerült lehelyezni a csövet
      */
-    public abstract boolean csoLehelyezes(Cso cs);
+    public abstract boolean csoLehelyezes(Cso cs, Jatekos lerakja);
 
     /**
      * absztrakt függvény, ami ragadóssá teszi a mezőt.

@@ -450,10 +450,10 @@ public class JatekPanel extends JPanel {
             c1.show(buttons,"szabotor");
         }
 
-        if(szerelopont==15){
+        if(szerelopont>15){
             this.jatekVege("Szerelo");
         }
-        else if(szabotorpont==15){
+        else if(szabotorpont>15){
             this.jatekVege("Szabotor");
         }
 

@@ -68,9 +68,10 @@ public abstract class Jatekos {
      */
     public void lerak_cso(){
         if(csoTart != null){
-            boolean siker = rajtaAll.csoLehelyezes(csoTart);
+            boolean siker = rajtaAll.csoLehelyezes(csoTart, this);
             if(siker){
                 csoTart = null;
+                System.out.println("siker!\n");
             }
         }
 
@@ -85,7 +86,9 @@ public abstract class Jatekos {
             boolean siker = felvesz.felveszik(this);
             if(siker){
                 csoTart = felvesz;
-                felvesz.removeSzomszed(rajtaAll);
+                if (!felvesz.getLog()) {
+                    felvesz.removeSzomszed(rajtaAll);
+                }
             }
         }
     }

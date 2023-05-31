@@ -1,5 +1,6 @@
 package GUI;
 
+import Vizhalozat.Jatekos;
 import Vizhalozat.Pumpa;
 import Vizhalozat.Szerelo;
 
@@ -16,7 +17,7 @@ public class PumpaMegfigyelo extends MezoMegfigyelo {
     public PumpaMegfigyelo(Pumpa pumpa, Point hova, JatekPanel panel) {
         super(pumpa, hova, panel);
         observed = pumpa;
-        Vizhalozat.Szerelo akiLerakata = (Szerelo) pumpa.getRajtaAllnak().get(0);
+        Object akiLerakata = pumpa.getRajtaAllnak().get(0);
         coordinate = panel.getObservedCoordinate(akiLerakata);
     }
 

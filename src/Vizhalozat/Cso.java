@@ -1,4 +1,5 @@
 package Vizhalozat;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -19,7 +20,22 @@ public class Cso extends Mezo implements Viheto {
     private int ragasztasiIdo;
     private boolean felvettek =false;
     protected Jatekos ragasztotta;
-    protected Jatekos tartja;
+    private boolean log;
+    private ArrayList<Jatekos> tartjak = new ArrayList<>();
+    public ArrayList<Jatekos> getTarto() {
+        return tartjak;
+    }
+    public boolean felveszik(Jatekos j) {
+        if(rajtaAllnak.size()==0) {
+            tartjak.add(j);
+            log = false;
+            return true;
+        }
+        return false;
+    }
+    public void lerakjak(Jatekos lerako) {
+        tartjak.remove(lerako);
+    }
     public void tick() {
         if(lyukasztasiIdo > 0) lyukasztasiIdo--;
         if(csuszasIdo > 0) csuszasIdo--;
@@ -34,6 +50,7 @@ public class Cso extends Mezo implements Viheto {
         lyukasztasiIdo = 0;
         csuszasIdo = 0;
         ragasztasiIdo = 0;
+        log = false;
     }
 
     /**
@@ -43,17 +60,6 @@ public class Cso extends Mezo implements Viheto {
     public boolean getTelitett() {
         return telitett;
     }
-    public boolean getFelvettek(){return felvettek;}
-    @Override
-    public boolean felveszik(Jatekos j) {
-        if(rajtaAllnak.size()==0) {
-            tartja=j;
-            felvettek=true;
-            return true;
-        }
-        return false;
-    }
-    public Jatekos getTarto(){return tartja;}
     /**
      * Telitett lesz,ha nem volt az, es meghivja az osszes szomszedjara a
      * befolyik() fuggvenyt.
@@ -175,17 +181,8 @@ public class Cso extends Mezo implements Viheto {
      * @return Mindig false
      */
     @Override
-    public boolean csoLehelyezes(Cso cs) {
+    public boolean csoLehelyezes(Cso cs, Jatekos lerakja) {
         return false;
-    }
-
-    /**
-     * Lerakják a csövet
-     * @param lerako a Jatekos, aki lerakja a az adott objektumot
-     */
-    @Override
-    public void lerakjak(Jatekos lerako) {
-        felvettek = false;
     }
 
     /**
@@ -217,12 +214,6 @@ public class Cso extends Mezo implements Viheto {
     public boolean isLyukas() {
         return lyukas;
     }
-
-    public boolean isRagad() {
-        return ragad;
-    }
-
-    public boolean isCsuszik() {
-        return csuszik;
-    }
+    public void setLog() { this.log = true; }
+    public boolean getLog() { return log; }
 }

@@ -78,10 +78,11 @@ public abstract class AktivElemek extends Mezo{
      * @return Mindig true
      */
     @Override
-    public boolean csoLehelyezes(Cso cs) {
+    public boolean csoLehelyezes(Cso cs, Jatekos lerakja) {
         cs.addSzomszed(this);
         this.addSzomszed(cs);
-        return false;
+        cs.lerakjak(lerakja);
+        return true;
     }
 
     @Override

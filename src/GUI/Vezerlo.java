@@ -173,6 +173,7 @@ public class Vezerlo {
         else ++actualJatekosIndex;
         jatek.vizFolyas();
         jatek.pumpaElRomlik();
+        jatek.csoSpawn();
         jatek.tick();
     }
 
