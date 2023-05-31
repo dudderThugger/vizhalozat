@@ -4,18 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="551c08cb-9e8f-47ae-9eed-e4c23141f681" name="Changes" comment="szaroos">
+    <list default="true" id="551c08cb-9e8f-47ae-9eed-e4c23141f681" name="Changes" comment="valami készül?!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/CsoMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/CsoMegfigyelo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/JatekPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/JatekPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/PumpaMegfigyelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/PumpaMegfigyelo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/MainFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/Vezerlo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Vezerlo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/AktivElemek.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/AktivElemek.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Ciszterna.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Ciszterna.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Cso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Cso.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Jatekos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Jatekos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Mezo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Mezo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vizhalozat/Szerelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vizhalozat/Szerelo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -422,7 +415,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685486231490</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="valami készül?!">
+      <created>1685492011055</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1685492011055</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -453,7 +453,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="16-17-es teszt esetek elkészítése" />
     <MESSAGE value="Szabotor osztaly" />
     <MESSAGE value="20-as teszt eset elkészítése" />
     <MESSAGE value="18-as teszt eset elkészítése" />
@@ -478,7 +477,8 @@
     <MESSAGE value="a cső megy" />
     <MESSAGE value="összemerged" />
     <MESSAGE value="szaroos" />
-    <option name="LAST_COMMIT_MESSAGE" value="szaroos" />
+    <MESSAGE value="valami készül?!" />
+    <option name="LAST_COMMIT_MESSAGE" value="valami készül?!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

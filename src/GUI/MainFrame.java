@@ -129,7 +129,8 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 c1.show(cardPanel,"menu");
-
+                MainFrame.this.dispose();
+                System.exit(0);
             }
         });
         menuPanel.add(start);

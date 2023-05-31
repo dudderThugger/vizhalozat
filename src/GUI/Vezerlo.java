@@ -76,13 +76,11 @@ public class Vezerlo {
                 break;
                 case PUMPATALLIT: {
                     if (selected != null && csovek.contains(selected)) {
-                        System.out.println(selected);
                         Cso ki = (Cso) mezo;
                         jatekos.pumpaAllitas(selected, ki);
                         selected = null;
                     } else if (selected == null && csovek.contains(mezo)) {
                         selected = (Cso)mezo;
-                        System.out.println(selected);
                     }
                 }
                 break;

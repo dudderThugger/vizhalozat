@@ -21,7 +21,6 @@ public class CsoMegfigyelo extends MezoMegfigyelo {
             float phi = new Random().nextFloat();
             Point base = new Point(60, 0);
             logoKoordinata = new Point((int)(ciszteraKoo.x + base.x * Math.cos(phi) - base.y * Math.sin(phi)), (int) (ciszteraKoo.y + base.x * Math.sin(phi) + base.y * Math.cos(phi)));
-            System.out.println(logoKoordinata.x + " " + logoKoordinata.y);
         } else {
             coordinate = getCoordinate();
             log = false;
@@ -58,6 +57,7 @@ public class CsoMegfigyelo extends MezoMegfigyelo {
             Point coordinate1 = panel.getObservedCoordinate(j.getRajtaAll());
             Point coordinate2 = panel.getObservedCoordinate(szomszedok.get(0));
             Graphics2D g2 = (Graphics2D)g;
+            g2.setColor(Color.BLACK);
             Stroke dashed = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[]{9}, 0);
             g2.setStroke(dashed);
             g.drawLine(coordinate1.x,coordinate1.y,coordinate2.x,coordinate2.y);
